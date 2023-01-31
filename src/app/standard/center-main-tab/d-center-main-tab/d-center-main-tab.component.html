@@ -1,0 +1,382 @@
+<!-- component header type 1 -->
+<div class="col-md-12 m-0 p-0 d-none d-lg-block">
+        <!-- TH -->
+        <div *ngIf="serviceProviderService.lang == 'th'" class="col-md-12 col-s-12">
+                <div class="df" style="flex-wrap: wrap;column-gap: 8px;row-gap: 10px;margin-top: 15px;">
+                        <div *ngFor="let category of listGroup;let i = index;">
+                                <div class="menu-office pointer"
+                                        [class.menu-office-active]="category.code === categorySelected.code"
+                                        (click)="selectedCategory(category.code)">{{getTitle(category.code)}}</div>
+                        </div>
+                </div>
+                <div class="col-md-12 pd0 mt20" *ngIf="modelFile.length > 0">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="kanit_l color_grey70">ไฟล์</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="kanit_l color_grey70">File</div>
+                        <div class="color_grey70 kanit_s" *ngFor="let m of modelFile">
+                                <div class="df pd0 mt5">
+                                        <span class="pointer"><a class="font-des-footer-ra" href="{{m.imageUrl}}"
+                                                        target="_blank">{{m.title}}
+                                                        <span *ngIf="m.size == undefined">(30 MB)</span>
+                                                        <span *ngIf="m.size != undefined && m.size != ''">({{(m.size / 1048567).toFixed(2)}}
+                                                                MB)</span>
+                                                </a>
+                                        </span>
+                                        <div style="width: 10px;"></div>
+                                        <div class="btn-action background-active pointer"
+                                                (click)="downloadPDF(m.imageUrl)">
+                                                ดาวน์โหลด
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+                <div class="col-md-12 pd0 mt20" *ngIf="modelExcel.length > 0">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="kanit_l color_grey70">เอกซ์เซล</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="kanit_l color_grey70">Excel</div>
+                        <div class="color_grey70 kanit_s" *ngFor="let m of modelExcel">
+                                <div class="df pd0 mt5">
+                                        <span class="pointer"><a class="font-des-footer-ra" href="{{m.imageUrl}}"
+                                                        target="_blank">{{m.title}}
+                                                        <span *ngIf="m.size == undefined">(30 MB)</span>
+                                                        <span *ngIf="m.size != undefined && m.size != ''">({{(m.size / 1048567).toFixed(2)}}
+                                                                MB)</span>
+                                                </a>
+                                        </span>
+                                        <div style="width: 10px;"></div>
+                                        <div class="btn-action background-active pointer"
+                                                (click)="downloadPDF(m.imageUrl)">
+                                                ดาวน์โหลด
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+                <div class="col-md-12 pd0 mt20" *ngIf="modelWord.length > 0">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="kanit_l color_grey70">เวิร์ด</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="kanit_l color_grey70">Word</div>
+                        <div class="color_grey70 kanit_s" *ngFor="let m of modelWord">
+                                <div class="df pd0 mt5">
+                                        <span class="pointer"><a class="font-des-footer-ra" href="{{m.imageUrl}}"
+                                                        target="_blank">{{m.title}}
+                                                        <span *ngIf="m.size == undefined">(30 MB)</span>
+                                                        <span *ngIf="m.size != undefined && m.size != ''">({{(m.size / 1048567).toFixed(2)}}
+                                                                MB)</span>
+                                                </a>
+                                        </span>
+                                        <div style="width: 10px;"></div>
+                                        <div class="btn-action background-active pointer"
+                                                (click)="downloadPDF(m.imageUrl)">
+                                                ดาวน์โหลด
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+                <div class="col-md-12 pd0 mt20" *ngIf="modelVdo.length > 0">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="kanit_l color_grey70">วีดีโอ</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="kanit_l color_grey70">Vdo</div>
+                        <div class="color_grey70 kanit_s" style="text-align: center;" *ngFor="let m of modelVdo">
+                                <div class="df pd0 mt5">
+                                        <div class="video" style="width: 100%;">
+                                                <video controls #videoPlayer style="width: 50%;">
+                                                        <source src="{{m.imageUrl}}" type="video/mp4" />
+                                                </video>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+                <!-- <div class="row" *ngIf="modelFile.length > 0 || modelExcel.length > 0 || modelWord.length > 0 || modelVdo.length > 0" ></div> -->
+                <div class="row mt5" style="padding-top:20px;padding-bottom: 20px;"
+                        [innerHTML]="model.description | safeHtml">
+                </div>
+        </div>
+        <!-- EN -->
+        <div *ngIf="serviceProviderService.lang == 'en'" class="col-md-12 col-s-12">
+                <div class="df" style="flex-wrap: wrap;column-gap: 8px;row-gap: 10px;margin-top: 15px;">
+                        <div *ngFor="let category of listGroup;let i = index;">
+                                <div class="menu-office pointer"
+                                        [class.menu-office-active]="category.code === categorySelected.code"
+                                        (click)="selectedCategory(category.code)">{{getTitle(category.code)}}</div>
+                        </div>
+                </div>
+                <div class="col-md-12 pd0 mt20" *ngIf="modelFile.length > 0">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="kanit_l color_grey70">ไฟล์</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="kanit_l color_grey70">File</div>
+                        <div class="color_grey70 kanit_s" *ngFor="let m of modelFile">
+                                <div class="df pd0 mt5">
+                                        <span class="pointer"><a class="font-des-footer-ra" href="{{m.imageUrl}}"
+                                                        target="_blank">{{m.title}}
+                                                        <span *ngIf="m.size == undefined">(30 MB)</span>
+                                                        <span *ngIf="m.size != undefined && m.size != ''">({{(m.size / 1048567).toFixed(2)}}
+                                                                MB)</span>
+                                                </a>
+                                        </span>
+                                        <div style="width: 10px;"></div>
+                                        <div class="btn-action background-active pointer"
+                                                (click)="downloadPDF(m.imageUrl)">
+                                                ดาวน์โหลด
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+                <div class="col-md-12 pd0 mt20" *ngIf="modelExcel.length > 0">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="kanit_l color_grey70">เอกซ์เซล</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="kanit_l color_grey70">Excel</div>
+                        <div class="color_grey70 kanit_s" *ngFor="let m of modelExcel">
+                                <div class="df pd0 mt5">
+                                        <span class="pointer"><a class="font-des-footer-ra" href="{{m.imageUrl}}"
+                                                        target="_blank">{{m.title}}
+                                                        <span *ngIf="m.size == undefined">(30 MB)</span>
+                                                        <span *ngIf="m.size != undefined && m.size != ''">({{(m.size / 1048567).toFixed(2)}}
+                                                                MB)</span>
+                                                </a>
+                                        </span>
+                                        <div style="width: 10px;"></div>
+                                        <div class="btn-action background-active pointer"
+                                                (click)="downloadPDF(m.imageUrl)">
+                                                ดาวน์โหลด
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+                <div class="col-md-12 pd0 mt20" *ngIf="modelWord.length > 0">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="kanit_l color_grey70">เวิร์ด</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="kanit_l color_grey70">Word</div>
+                        <div class="color_grey70 kanit_s" *ngFor="let m of modelWord">
+                                <div class="df pd0 mt5">
+                                        <span class="pointer"><a class="font-des-footer-ra" href="{{m.imageUrl}}"
+                                                        target="_blank">{{m.title}}
+                                                        <span *ngIf="m.size == undefined">(30 MB)</span>
+                                                        <span *ngIf="m.size != undefined && m.size != ''">({{(m.size / 1048567).toFixed(2)}}
+                                                                MB)</span>
+                                                </a>
+                                        </span>
+                                        <div style="width: 10px;"></div>
+                                        <div class="btn-action background-active pointer"
+                                                (click)="downloadPDF(m.imageUrl)">
+                                                ดาวน์โหลด
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+                <div class="col-md-12 pd0 mt20" *ngIf="modelVdo.length > 0">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="kanit_l color_grey70">วีดีโอ</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="kanit_l color_grey70">Vdo</div>
+                        <div class="color_grey70 kanit_s" style="text-align: center;" *ngFor="let m of modelVdo">
+                                <div class="df pd0 mt5">
+                                        <div class="video" style="width: 100%;">
+                                                <video controls #videoPlayer style="width: 50%;">
+                                                        <source src="{{m.imageUrl}}" type="video/mp4" />
+                                                </video>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+                <div class="row mt5" style="padding-top:20px;padding-bottom: 20px;"
+                        [innerHTML]="model.descriptionEN | safeHtml"></div>
+        </div>
+</div>
+
+<div class="col-xs-12 m-0 p-0 d-block d-lg-none">
+        <!-- TH -->
+        <div *ngIf="serviceProviderService.lang == 'th'">
+                <div style="height: 1em;"></div>
+                <div style="display: flex;justify-content: start;width: 100%;">
+                        <div class="div-dropdown" #droppedCenter (click)="showCategory = !showCategory">
+                                <div class="div-dropdown-content"
+                                        [ngStyle]="{'display': showCategory ? 'flex' : 'none'}" style="padding: 10px;">
+                                        <div class="div-dropdown-item" *ngFor="let category of listGroup">
+                                                <div class="div-menu-knowledge pointer kanit_m"
+                                                        [class.div-menu-knowledge-active]="category.code === categorySelected.code"
+                                                        (click)="selectedCategory(category.code)">
+                                                        {{getTitle(category.code)}}</div>
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="div-category-knowledge pointer kanit_m" [class.div-category-knowledge-active]="true"
+                                style="margin-left: 20px;max-width: 70vw;">{{getTitle(categorySelected.code)}}</div>
+                </div>
+                <div class="col-xs-12 pd0 mt20" *ngIf="modelFile.length > 0">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="kanit_l color_grey70">ไฟล์</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="kanit_l color_grey70">File</div>
+                        <div class="color_grey70 kanit_s" *ngFor="let m of modelFile">
+                                <div class="df pd0 mt5">
+                                        <span class="pointer"><a class="font-des-footer-ra" href="{{m.imageUrl}}"
+                                                        target="_blank">{{m.title}}
+                                                        <span *ngIf="m.size == undefined">(30 MB)</span>
+                                                        <span *ngIf="m.size != undefined && m.size != ''">({{(m.size / 1048567).toFixed(2)}}
+                                                                MB)</span>
+                                                </a>
+                                        </span>
+                                        <div style="width: 10px;"></div>
+                                        <div class="btn-action background-active pointer"
+                                                (click)="downloadPDF(m.imageUrl)">
+                                                ดาวน์โหลด
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+                <div class="col-xs-12 pd0 mt20" *ngIf="modelExcel.length > 0">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="kanit_l color_grey70">เอกซ์เซล</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="kanit_l color_grey70">Excel</div>
+                        <div class="color_grey70 kanit_s" *ngFor="let m of modelExcel">
+                                <div class="df pd0 mt5">
+                                        <span class="pointer"><a class="font-des-footer-ra" href="{{m.imageUrl}}"
+                                                        target="_blank">{{m.title}}
+                                                        <span *ngIf="m.size == undefined">(30 MB)</span>
+                                                        <span *ngIf="m.size != undefined && m.size != ''">({{(m.size / 1048567).toFixed(2)}}
+                                                                MB)</span>
+                                                </a>
+                                        </span>
+                                        <div style="width: 10px;"></div>
+                                        <div class="btn-action background-active pointer"
+                                                (click)="downloadPDF(m.imageUrl)">
+                                                ดาวน์โหลด
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+                <div class="col-xs-12 pd0 mt20" *ngIf="modelWord.length > 0">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="kanit_l color_grey70">เวิร์ด</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="kanit_l color_grey70">Word</div>
+                        <div class="color_grey70 kanit_s" *ngFor="let m of modelWord">
+                                <div class="df pd0 mt5">
+                                        <span class="pointer"><a class="font-des-footer-ra" href="{{m.imageUrl}}"
+                                                        target="_blank">{{m.title}}
+                                                        <span *ngIf="m.size == undefined">(30 MB)</span>
+                                                        <span *ngIf="m.size != undefined && m.size != ''">({{(m.size / 1048567).toFixed(2)}}
+                                                                MB)</span>
+                                                </a>
+                                        </span>
+                                        <div style="width: 10px;"></div>
+                                        <div class="btn-action background-active pointer"
+                                                (click)="downloadPDF(m.imageUrl)">
+                                                ดาวน์โหลด
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+                <div class="col-xs-12 pd0 mt20" *ngIf="modelVdo.length > 0">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="kanit_l color_grey70">วีดีโอ</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="kanit_l color_grey70">Vdo</div>
+                        <div class="color_grey70 kanit_s" style="text-align: center;" *ngFor="let m of modelVdo">
+                                <div class="df pd0 mt5">
+                                        <div class="video" style="width: 100%;">
+                                                <video controls #videoPlayer style="width: 50%;">
+                                                        <source src="{{m.imageUrl}}" type="video/mp4" />
+                                                </video>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+                <!-- <div class="row" *ngIf="modelFile.length > 0 || modelExcel.length > 0 || modelWord.length > 0 || modelVdo.length > 0" ></div> -->
+                <div class="row mt5" style="padding-top:20px;padding-bottom: 20px;"
+                        [innerHTML]="model.description | safeHtml">
+                </div>
+        </div>
+        <!-- EN -->
+        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 col-s-12">
+                <div style="height: 1em;"></div>
+                <div style="display: flex;justify-content: start;width: 100%;">
+                        <div class="div-dropdown" #droppedCenter (click)="showCategory = !showCategory">
+                                <div class="div-dropdown-content"
+                                        [ngStyle]="{'display': showCategory ? 'flex' : 'none'}" style="padding: 10px;">
+                                        <div class="div-dropdown-item" *ngFor="let category of listGroup">
+                                                <div class="div-menu-knowledge pointer kanit_m"
+                                                        [class.div-menu-knowledge-active]="category.code === categorySelected.code"
+                                                        (click)="selectedCategory(category.code)">
+                                                        {{getTitle(category.code)}}</div>
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="div-category-knowledge pointer kanit_m" [class.div-category-knowledge-active]="true"
+                                style="margin-left: 20px;max-width: 70vw;">{{getTitle(categorySelected.code)}}</div>
+                </div>
+                <div class="col-xs-12 pd0 mt20" *ngIf="modelFile.length > 0">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="kanit_l color_grey70">ไฟล์</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="kanit_l color_grey70">File</div>
+                        <div class="color_grey70 kanit_s" *ngFor="let m of modelFile">
+                                <div class="df pd0 mt5">
+                                        <span class="pointer"><a class="font-des-footer-ra" href="{{m.imageUrl}}"
+                                                        target="_blank">{{m.title}}
+                                                        <span *ngIf="m.size == undefined">(30 MB)</span>
+                                                        <span *ngIf="m.size != undefined && m.size != ''">({{(m.size / 1048567).toFixed(2)}}
+                                                                MB)</span>
+                                                </a>
+                                        </span>
+                                        <div style="width: 10px;"></div>
+                                        <div class="btn-action background-active pointer"
+                                                (click)="downloadPDF(m.imageUrl)">
+                                                ดาวน์โหลด
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+                <div class="col-xs-12 pd0 mt20" *ngIf="modelExcel.length > 0">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="kanit_l color_grey70">เอกซ์เซล</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="kanit_l color_grey70">Excel</div>
+                        <div class="color_grey70 kanit_s" *ngFor="let m of modelExcel">
+                                <div class="df pd0 mt5">
+                                        <span class="pointer"><a class="font-des-footer-ra" href="{{m.imageUrl}}"
+                                                        target="_blank">{{m.title}}
+                                                        <span *ngIf="m.size == undefined">(30 MB)</span>
+                                                        <span *ngIf="m.size != undefined && m.size != ''">({{(m.size / 1048567).toFixed(2)}}
+                                                                MB)</span>
+                                                </a>
+                                        </span>
+                                        <div style="width: 10px;"></div>
+                                        <div class="btn-action background-active pointer"
+                                                (click)="downloadPDF(m.imageUrl)">
+                                                ดาวน์โหลด
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+                <div class="col-xs-12 pd0 mt20" *ngIf="modelWord.length > 0">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="kanit_l color_grey70">เวิร์ด</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="kanit_l color_grey70">Word</div>
+                        <div class="color_grey70 kanit_s" *ngFor="let m of modelWord">
+                                <div class="df pd0 mt5">
+                                        <span class="pointer"><a class="font-des-footer-ra" href="{{m.imageUrl}}"
+                                                        target="_blank">{{m.title}}
+                                                        <span *ngIf="m.size == undefined">(30 MB)</span>
+                                                        <span *ngIf="m.size != undefined && m.size != ''">({{(m.size / 1048567).toFixed(2)}}
+                                                                MB)</span>
+                                                </a>
+                                        </span>
+                                        <div style="width: 10px;"></div>
+                                        <div class="btn-action background-active pointer"
+                                                (click)="downloadPDF(m.imageUrl)">
+                                                ดาวน์โหลด
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+                <div class="col-xs-12 pd0 mt20" *ngIf="modelVdo.length > 0">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="kanit_l color_grey70">วีดีโอ</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="kanit_l color_grey70">Vdo</div>
+                        <div class="color_grey70 kanit_s" style="text-align: center;" *ngFor="let m of modelVdo">
+                                <div class="df pd0 mt5">
+                                        <div class="video" style="width: 100%;">
+                                                <video controls #videoPlayer style="width: 50%;">
+                                                        <source src="{{m.imageUrl}}" type="video/mp4" />
+                                                </video>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+                <div class="row mt5" style="padding-top:20px;padding-bottom: 20px;"
+                        [innerHTML]="model.descriptionEN | safeHtml"></div>
+        </div>
+</div>
+
+
+<div *ngIf="galleryImages.length != 0" class="col-md-12 col-xs-12 col-s-12">
+        <div class="col-md-12 col-xs-12 col-s-12 pd0">
+                <div class="div-galleryImages-title-detail">
+                        <!-- title -->
+                </div>
+                <div class="div-galleryImages-detail">
+                        <div class="div-gallery">
+                                <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+                        </div>
+                </div>
+        </div>
+</div>

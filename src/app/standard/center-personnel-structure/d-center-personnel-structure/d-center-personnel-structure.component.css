@@ -1,0 +1,145 @@
+.btn-personnel {
+    /* position: absolute; */
+    top: 100%;
+    transform: translate(0%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2.1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    height: 50px;
+    padding: 0 40px;
+    margin-right: 20px;
+    border-radius: 30px;
+    background-color: #E4E4E4;
+    color: #ffffff;
+    font-family: "kanit", sans-serif;
+}
+
+.btn-personnel-active {
+    background-color: #E19B24;
+}
+
+.menu-personnel {
+    border: 1px solid #216DA6;
+    border-radius: 15px;
+    opacity: 1;
+    padding: 2px 5px;
+    background-color: white;
+    margin-right: 10px;
+    color: #216DA6;
+    font-size: 1.8rem;
+}
+
+.menu-personnel:hover {
+    background-color: #216DA6;
+    color: white;
+}
+
+.menu-personnel-active {
+    background-color: #216DA6;
+    color: white;
+}
+
+.box-personnel-card {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 15px;
+    column-gap: 2em;
+    justify-content: center;
+    padding: 1%;
+}
+
+.personnel-card {
+    background-color: #CFDAE3;
+    border-radius: 15px;
+    opacity: 1;
+    /* height: 500px; */
+    width: 30%;
+    max-width: 300px;
+    align-items: center;
+    padding: 2% 1%;
+    cursor: pointer;
+}
+
+.box-header-position-personnel {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.header-position-personnel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background: #1B6CA8;
+    color: #ffffff;
+    font-size: 2.2rem;
+    /* height: 50px; */
+    transform: translate(0%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+.btn-personnel-m {
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    height: 35px;
+    padding: 0 10px;
+    border-radius: 30px;
+    background-color: #E4E4E4;
+    color: #ffffff;
+}
+
+.btn-personnel-m-active {
+    background-color: #E19B24;
+}
+
+.box-personnel-card-m {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 3vw;
+    column-gap: 1vw;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.personnel-card-m {
+    background-color: #CFDAE3;
+    border-radius: 15px;
+    opacity: 1;
+    /* height: 500px; */
+    width: 100%;
+    max-width: 385px;
+    align-items: center;
+    padding: 2% 1%;
+    cursor: pointer;
+}
+
+.personnel-card-m img {
+    object-fit: fill;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}
+
+.box-uni {
+    padding-left: 40px;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    row-gap: 5px;
+}
+
+.university {
+    display: flex;
+    padding: 5px;
+    height: max-content;
+    border: solid 1px #ffffff;
+    border-radius: 10px;
+    align-items: center;
+    color: #ffffff;
+}

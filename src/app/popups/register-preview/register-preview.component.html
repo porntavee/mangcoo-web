@@ -1,0 +1,272 @@
+<div id="modal">
+    <div>
+        <div class="shopee-modal__transition-enter-done"></div>
+    </div>
+    <div tabindex="0" class="_2IJN-0">
+        <div class="_1lzg0h">
+            <div class="col-md-12" style="padding: 1vw;">
+                <div class="col-ms-12">
+                    <div class="head-preview">ตรวจสอบข้อมูล</div>
+                    <div class="col-md-12 p-0 m-0">
+                        <div class="col-md-6 p-0 m-0 font-calcu">
+                            email: {{model.email}}
+                        </div>
+                        <div class="col-md-6 p-0 m-0 font-calcu">
+                            password: {{model.password}}
+                        </div>
+                    </div>
+                    <div class="col-md-12 p-0 m-0">
+                        <div class="col-md-6 p-0 m-0 font-calcu">
+                            เลขประจำตัวประชาชน: {{model.idcard}}
+                        </div>
+                        <div class="col-md-6 p-0 m-0 font-calcu">
+                            เบอร์ติดต่อ: {{model.phone}}
+                        </div>
+                    </div>
+                    <div class="col-md-12 p-0 m-0">
+                        <div class="col-md-6 p-0 m-0 font-calcu">
+                            Line ID: {{model.lineID}}
+                        </div>
+                    </div>
+                    <div class="col-md-12 p-0 mt-4">
+                        <div class="col-md-6 p-0 m-0 font-calcu">
+                            ชื่อ - นามสกุล
+                        </div>
+                    </div>
+                    <div class="col-md-12 p-0 m-0">
+                        <div class="col-md-6 p-0 m-0 font-calcu">
+                            ยศ: {{model.position}}
+                        </div>
+                        <div class="col-md-6 p-0 m-0 font-calcu">
+                            คำนำหน้า: {{model.prefixName}}
+                        </div>
+                    </div>
+                    <div class="col-md-12 p-0 m-0">
+                        <div class="col-md-6 p-0 m-0 font-calcu">
+                            ชื่อ: {{model.firstName}}
+                        </div>
+                        <div class="col-md-6 p-0 m-0 font-calcu">
+                            นามสกุล: {{model.lastName}}
+                        </div>
+                    </div>
+                    <div class="col-md-12 p-0 m-0">
+                        <div class="col-md-6 p-0 m-0 font-calcu">
+                            Name: {{model.firstNameEN}}
+                        </div>
+                        <div class="col-md-6 p-0 m-0 font-calcu">
+                            Family Name: {{model.lastNameEN}}
+                        </div>
+                    </div>
+                    <div class="col-md-12 p-0 mt-4">
+                        <div class="col-md-6 p-0 m-0 font-calcu">
+                            ชื่อ - นามสกุล เดิม
+                        </div>
+                    </div>
+                    <div class="col-md-12 p-0 m-0">
+                        <div class="col-md-6 p-0 m-0 font-calcu">
+                            ยศ: {{model.oldPosition}}
+                        </div>
+                        <div class="col-md-6 p-0 m-0 font-calcu">
+                            คำนำหน้า: {{model.oldPrefixName}}
+                        </div>
+                    </div>
+                    <div class="col-md-12 p-0 m-0">
+                        <div class="col-md-6 p-0 m-0 font-calcu">
+                            ชื่อ: {{model.oldFirstName}}
+                        </div>
+                        <div class="col-md-6 p-0 m-0 font-calcu">
+                            นามสกุล: {{model.oldLastName}}
+                        </div>
+                    </div>
+                    <div class="col-md-12 p-0 m-0">
+                        <div class="col-md-6 p-0 m-0 font-calcu">
+                            Name: {{model.oldFirstNameEN}}
+                        </div>
+                        <div class="col-md-6 p-0 m-0 font-calcu">
+                            Family Name: {{model.oldLastNameEN}}
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 p-0">
+                        <div class="col-md-6 p-0 m-0 font-calcu">
+                            วันเดือนปีเกิด: {{model.birthDay | dateFormat}}
+                        </div>
+                        <div class="col-md-6 p-0 m-0 font-calcu">
+                            อายุ: {{model.age}}
+                        </div>
+                    </div>
+                    <div class="col-md-12 p-0 mt-2">
+                        <div class="col-md-4 p-0 m-0 font-calcu">
+                            สัญชาติ: {{model.nationality}}
+                        </div>
+                        <div class="col-md-4 p-0 m-0 font-calcu">
+                            เชื้อสัญชาติ: {{model.race}}
+                        </div>
+                        <div class="col-md-4 p-0 m-0 font-calcu">
+                            ศาสนา: {{model.religion}}
+                        </div>
+                    </div>
+                    <div class="col-md-12 p-0 mt-4" style="height: 1px;width: 100%;background-color: #707070;"></div>
+                    <div class="col-md-12 p-0">
+                        <div class="col-md-6 p-0 m-0 font-calcu">
+                            ที่อยู่ตามทะเบียนบ้าน
+                        </div>
+                        <div class="col-md-6 p-0 m-0 font-calcu">
+                            เบอร์โทรศัพท์บ้าน: {{model.telephone}}
+                        </div>
+                    </div>
+                    <div class="col-md-12 p-0 mt-2">
+                        <div class="col-md-4 p-0 m-0 font-calcu">
+                            เลขที่: {{model.address}}
+                        </div>
+                        <div class="col-md-4 p-0 m-0 font-calcu">
+                            หมู่ที่: {{model.moo}}
+                        </div>
+                        <div class="col-md-4 p-0 m-0 font-calcu">
+                            อาคาร / หมู่บ้าน: {{model.address2}}
+                        </div>
+                    </div>
+                    <div class="col-md-12 p-0 mt-2">
+                        <div class="col-md-4 p-0 m-0 font-calcu">
+                            ซอย: {{model.soi}}
+                        </div>
+                        <div class="col-md-4 p-0 m-0 font-calcu">
+                            ถนน: {{model.road}}
+                        </div>
+                        <div class="col-md-4 p-0 m-0 font-calcu">
+                            แขวง / ตำบล: {{model.tambon}}
+                        </div>
+                    </div>
+                    <div class="col-md-12 p-0 mt-2">
+                        <div class="col-md-4 p-0 m-0 font-calcu">
+                            เขต / อำเภอ: {{model.amphoe}}
+                        </div>
+                        <div class="col-md-4 p-0 m-0 font-calcu">
+                            จังหวัด: {{model.province}}
+                        </div>
+                        <div class="col-md-4 p-0 m-0 font-calcu">
+                            รหัสไปรษณีย์: {{model.postno}}
+                        </div>
+                    </div>
+                    <div class="col-md-12 p-0 mt-4" style="height: 1px;width: 100%;background-color: #707070;"></div>
+                    <div class="col-md-12 p-0">
+                        <div class="col-md-3 p-0 m-0 font-calcu">
+                            ที่อยู่ที่ทำงาน
+                        </div>
+                        <div class="col-md-4 p-0 m-0 font-calcu">
+                            ประเภทหน่วยงาน: {{model.workType}}
+                        </div>
+                        <div class="col-md-4 p-0 m-0 font-calcu">
+                            เบอร์โทรศัพท์บ้าน: {{model.workPhone}}
+                        </div>
+                    </div>
+                    <div class="col-md-12 p-0 mt-2">
+                        <div class="col-md-4 p-0 m-0 font-calcu">
+                            เลขที่: {{model.workAddress}}
+                        </div>
+                        <div class="col-md-4 p-0 m-0 font-calcu">
+                            หมู่ที่: {{model.workMoo}}
+                        </div>
+                        <div class="col-md-4 p-0 m-0 font-calcu">
+                            อาคาร / หมู่บ้าน: {{model.workAddress2}}
+                        </div>
+                    </div>
+                    <div class="col-md-12 p-0 mt-2">
+                        <div class="col-md-4 p-0 m-0 font-calcu">
+                            ซอย: {{model.workSoi}}
+                        </div>
+                        <div class="col-md-4 p-0 m-0 font-calcu">
+                            ถนน: {{model.workRoad}}
+                        </div>
+                        <div class="col-md-4 p-0 m-0 font-calcu">
+                            แขวง / ตำบล: {{model.workTambon}}
+                        </div>
+                    </div>
+                    <div class="col-md-12 p-0 mt-2">
+                        <div class="col-md-4 p-0 m-0 font-calcu">
+                            เขต / อำเภอ: {{model.workAmphoe}}
+                        </div>
+                        <div class="col-md-4 p-0 m-0 font-calcu">
+                            จังหวัด: {{model.workProvince}}
+                        </div>
+                        <div class="col-md-4 p-0 m-0 font-calcu">
+                            รหัสไปรษณีย์: {{model.workPostno}}
+                        </div>
+                    </div>
+                    <div class="col-md-12 p-0 mt-4" style="height: 1px;width: 100%;background-color: #707070;"></div>
+                    <div class="col-md-12 p-0">
+                        <div class="col-md-6 p-0 m-0 font-calcu">
+                            ที่อยู่ที่ติดต่อได้
+                        </div>
+                        <div class="col-md-6 p-0 m-0 font-calcu">
+                            เบอร์โทรศัพท์บ้าน: {{model.currentPhone}}
+                        </div>
+                    </div>
+                    <div class="col-md-12 p-0 mt-2">
+                        <div class="col-md-4 p-0 m-0 font-calcu">
+                            เลขที่: {{model.currentAddress}}
+                        </div>
+                        <div class="col-md-4 p-0 m-0 font-calcu">
+                            หมู่ที่: {{model.currentMoo}}
+                        </div>
+                        <div class="col-md-4 p-0 m-0 font-calcu">
+                            อาคาร / หมู่บ้าน: {{model.currentAddress2}}
+                        </div>
+                    </div>
+                    <div class="col-md-12 p-0 mt-2">
+                        <div class="col-md-4 p-0 m-0 font-calcu">
+                            ซอย: {{model.currentSoi}}
+                        </div>
+                        <div class="col-md-4 p-0 m-0 font-calcu">
+                            ถนน: {{model.currentRoad}}
+                        </div>
+                        <div class="col-md-4 p-0 m-0 font-calcu">
+                            แขวง / ตำบล: {{model.currentTambon}}
+                        </div>
+                    </div>
+                    <div class="col-md-12 p-0 mt-2">
+                        <div class="col-md-4 p-0 m-0 font-calcu">
+                            เขต / อำเภอ: {{model.currentAmphoe}}
+                        </div>
+                        <div class="col-md-4 p-0 m-0 font-calcu">
+                            จังหวัด: {{model.currentProvince}}
+                        </div>
+                        <div class="col-md-4 p-0 m-0 font-calcu">
+                            รหัสไปรษณีย์: {{model.currentPostno}}
+                        </div>
+                    </div>
+                    <!-- การศึกษาสูงสุด -->
+                    <div class="col-md-12 p-0 mt-2">
+                        <div class="col-md-12 p-0 m-0 font-calcu">
+                            การศึกษาสูงสุด: {{model.educationDegree}}
+                        </div>
+                    </div>
+                    <div class="col-md-12 p-0 mt-2">
+                        <div class="col-md-12 p-0 m-0 font-calcu">
+                            1. จบการศึกษาสัตวแพทยศาสตรบัณฑิตปีการศึกษา:&nbsp;&nbsp;{{model.educationDegree}}&nbsp;ปี:&nbsp;{{model.educationYear}}&nbsp;&nbsp;{{model.education}}
+                        </div>
+                        <div class="col-md-12 p-0 m-0 font-calcu">
+                            2. ได้รับปริญญาหรือประกาศนียบัตรในวิชาชีพอื่นคือ:&nbsp;ปี:&nbsp;{{model.secondaryEducationYear}}&nbsp;&nbsp;{{model.secondaryEducation}}
+                        </div>
+                    </div>
+                    <div class="col-md-12 p-0 mt-2">
+                        <div class="col-md-12 p-0 m-0 font-calcu">
+                            เลขใบอนุญาต:&nbsp;&nbsp;{{model.licenseNumber}}
+                        </div>
+                        <div class="col-md-12 p-0 m-0 font-calcu">
+                            วันที่เริ่มต้น:&nbsp;&nbsp;{{model.dateStart | dateFormat}}
+                        </div>
+                        <div class="col-md-12 p-0 m-0 font-calcu">
+                            วันที่สิ้นสุด:&nbsp;&nbsp;{{model.dateEnd | dateFormat}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12" style="display: flex;justify-content: flex-end;margin-top: 20px;">
+                    <button class="cancel-btn font-calcu" (click)="cancel()">ยกเลิก</button>
+                    <button type="button" class="font-calcu btn btn-solid-primary btn--s btn--inline btn-solid-primary _1wSE68" aria-disabled="false" (click)="submit()">ยืนยัน</button>
+                </div>
+            </div>
+        </div>
+        <div class="uYEgjK"></div>
+    </div>
+</div>

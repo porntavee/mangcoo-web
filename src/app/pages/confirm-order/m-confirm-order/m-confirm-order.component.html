@@ -1,0 +1,153 @@
+<!-- header 1 -->
+<div>
+  <div class="box-he bg-twotone">
+    <span style="margin-left: 10px;color: white;" class="glyphicon glyphicon-chevron-left fs2"
+      (click)="backClicked()"></span>
+    ชำระเงิน
+  </div>
+</div>
+
+<div *ngIf="!isShowAddress" class="bg-white" style="display: flex;padding: 10px;flex-direction: column;">
+  <div style="display: flex;justify-content: space-between;">
+    <h3 style="color: #EB5749;">ที่อยู่ในการจัดส่ง</h3>
+    <div *ngIf="address.code == null" style="display: flex;">
+      <div class="btnAddress pointer" style="margin-right: 15px;" (click)="showModal = !showModal">
+        เพิ่มที่อยู่
+      </div>
+      <div class="btnAdC pointer" (click)="goTo('address')">
+        จัดการที่อยู่
+      </div>
+    </div>
+  </div>
+  <div *ngIf="address.code != null" style="display: flex;flex-direction: column;">
+    <div style="display: flex;justify-content: space-between;">
+      <span style="font-size: 15px;margin-right: 15px;">{{address.title}}&nbsp;&nbsp;(+66)&nbsp;{{address.phone}}</span>
+      <p class="col-md-2 text-right" style="color: #707070;">ค่าเริ่มต้น</p>
+    </div>
+    <span
+      style="font-size: 14px;flex: auto;">{{address.address}}&nbsp;{{address.subDistrictTitle}}&nbsp;{{address.districtTitle}}&nbsp;{{address.provinceTitle}}&nbsp;{{address.postalCode}}
+    </span>
+    <div class="btnAddress pointer" style="margin-right: 15px;margin-top: 10px;"
+      (click)="isShowAddress = !isShowAddress">
+      เปลี่ยน
+    </div>
+  </div>
+</div>
+
+
+<!-- address list -->
+<div *ngIf="isShowAddress" style="display: flex;padding: 10px;flex-direction: column;background-color: white;">
+  <div>
+    <div style="display: flex;justify-content: space-between;">
+      <h3 style="color: #EB5749;">ที่อยู่ในการจัดส่ง</h3>
+      <div style="display: flex;">
+        <div class="btnAddress pointer" style="margin-right: 15px;" (click)="showModal = !showModal">
+          เพิ่มที่อยู่
+        </div>
+        <div class="btnAdC pointer" (click)="goTo('address')">
+          จัดการที่อยู่
+        </div>
+      </div>
+    </div>
+    <div *ngFor="let item of addressList;"
+      style="display: flex;flex-direction: column;padding: 15px 0;border-bottom: 1px solid #c5c5c5;">
+      <div style="display: flex;justify-content: space-between;">
+        <div style="display: flex;">
+          <input type="checkbox" class="radio" style="margin-right: 20px;" [(ngModel)]="item.check"
+            [ngModelOptions]="{standalone: true}" (click)="selectAddress(item)">
+          <span style="font-size: 14px;">{{item.title}}&nbsp;&nbsp;(+66)&nbsp;{{item.phone}}</span>
+        </div>
+        <p *ngIf="item.isDefault" style="color: #707070;">ค่าเริ่มต้น</p>
+      </div>
+      <span
+        style="font-size: 14px;flex: auto;">{{item.address}}&nbsp;{{item.subDistrictTitle}}&nbsp;{{item.districtTitle}}&nbsp;{{item.provinceTitle}}&nbsp;{{item.postalCode}}
+      </span>
+    </div>
+
+    <div class="bxM">
+      <div style="display:flex;">
+        <div class="btnAddress pointer" style="margin-right: 15px;" (click)="changeAddress()">
+          ยืนยัน
+        </div>
+        <div class="btnAdC pointer" (click)="isShowAddress = !isShowAddress">
+          ยกเลิก
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <div *ngFor="let i of model; let idxShop = index">
+    <div class="box-sh bg-white">
+      <!-- <div style="margin-right: 10px;">
+      </div> -->
+      <div>{{i.shopName}}</div>
+      <p style="color: #10BC37;">แชทเลย</p>
+    </div>
+    <div *ngFor="let j of i.items; let idxItem = index">
+      <div class="box-pr bg-white">
+        <div style="margin-right: 15px; margin-top: 35px;">
+        </div>
+        <img src="{{j.imageUrl}}" height="80px" width="80px" alt="" style="margin:10px 0">
+        <div class="pr-text-detail">
+          <span class="text">{{j.goodsTitle}}</span>
+          <div class="s5"></div>
+          <span class="text pointer">ตัวเลือกสินค้า: {{j.title}}</span>
+          <div class="s5"></div>
+          <div style="display: flex;">
+            <span  class="text-price-f pointer">{{formatPrice(j.price)}}</span>
+            <span class="text-price-s pointer">{{formatPrice(j.netPrice)}}</span>
+          </div>
+          <div class="s5"></div>
+          <div style="display: flex;">
+            <div class="pointer text-qty">x {{j.qty}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- total sum -->
+<div class="bg-white" style="margin-top: 15px;padding: 10px;">
+  <div class="bxFBtMt10">
+    <span class="textSum">ยอดรวมสินค้า:</span>
+    <span class="textSum">฿{{formatPrice(sumPriceTotal())}}</span>
+  </div>
+  <div class="bxFBtMt10">
+    <span class="textSum">รวมการจัดส่ง:</span>
+    <span class="textSum">฿{{formatPrice(sumShippingPrice())}}</span>
+  </div>
+  <div class="bxFBtMt10">
+    <span class="textSum">การชำระเงินทั้งหมด:</span>
+    <span class="textSum" style="font-size: 18px !important;color: #ED5643;">฿{{resultPrice()}}</span>
+  </div>
+</div>
+
+<form #form ngNoForm name='pymt' method='post' action='https://payment.webpakpay.com/api.php'>
+  <input type='hidden' name='pymtToken' value='0f13a9c9abae1a592cd197d54c089b103aaa7dc7e77f1cd718c3e90fa27b0e8e'>
+  <input type='hidden' name='pymtProcess' value='PAYMENT'>
+  <input type='hidden' name='pymtType' value='PDT'>
+  <input type='hidden' name='pymtMethod' value='TQ'>
+  <input type='hidden' name='pymtLang' value='TH'>
+  <input type='hidden' name='pymtCurrency' value='THB'>
+  <input type='hidden' name='pymtAmount' value='0.25'>  
+  <input type='hidden' name='pymtDesc' value='Description'>
+  <input type='hidden' name='pymtNumber' value="{{codes}}">
+  <input type='hidden' name='pymtCustName' value="{{address.title}}">
+  <input type='hidden' name='pymtCustMobile' value='{{address.phone}}'>
+  <input type='hidden' name='pymtCustEmail' value=''>
+  <input type='hidden' name='pymtCustIP' value="{{ipAddress}}">
+  <input type='hidden' name='pymtReturnURL' value='https://core148.we-builds.com/payment-gateway.php?codes={{codes}}&address={{address.code}}&pf={{userData.profileCode}}'>
+  <input type='hidden' name='pymtTermURL' value='https://suksapanonline.com/#/demo-routing-objects'>
+  <div class="bg-white" style="padding:10px;margin-top: 10px;">
+    <div style="display:flex;justify-content: flex-end;">
+      <input class="btnSm pointer" type='submit' name='submit' value='ชำระเงิน'>
+      <!-- <div class="btnSm pointer" type='submit' name='submit' value='ชำระเงิน'>ชำระเงิน -->
+      <!-- </div> -->
+    </div>
+  </div>
+</form>  
+
+<modal-address *ngIf="showModal" (callback)="fromModal($event)"></modal-address>

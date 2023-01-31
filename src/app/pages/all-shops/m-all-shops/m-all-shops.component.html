@@ -1,0 +1,15 @@
+<div>
+    <div class="box-he bg-twotone">
+      <span style="margin-left: 10px;color: white;" class="glyphicon glyphicon-chevron-left fs2"
+        (click)="backClicked()"></span>
+        ร้านค้าทั้งหมด
+    </div>
+  </div>
+
+<div class="bg-white">
+    <div><span class="fs1-5"><b>ร้านค้าทั้งหมด</b></span>
+    </div>
+    <div class="search-results pt-5" infinite-scroll [infiniteScrollDistance]="5" [infiniteScrollThrottle]="500" (scrolled)="onScrollDown()">
+        <shopall-card class="col-xs-6 p-0" *ngFor="let item of modelShopShowAll" [model]="item"></shopall-card>
+    </div>
+</div>

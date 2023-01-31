@@ -1,0 +1,206 @@
+.box-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box-hd {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  margin: 0 0 5px 0;
+  background-color: #00000026;
+  height: 40px;
+  width: 100%;
+}
+
+.circle-tb {
+  /* height: 30px;
+    width: 30px;
+    border-radius: 50%; */
+}
+
+div.scroll {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.title {
+  display: flex;
+  padding: 10px;
+}
+
+.imgm {
+  object-fit: contain;
+}
+
+.text-1 {
+  width: 70px;
+  overflow: hidden;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  white-space: normal;
+  font-size: 1rem;
+}
+
+.text-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  white-space: normal;
+}
+
+.text-price-f {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  color: #707070;
+  text-decoration: line-through;
+  margin-right: 10px;
+}
+
+.text-price-s {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  color: red;
+}
+
+.box-shop {
+  display: flex;
+  padding: 10px;
+}
+
+.cardimg {
+  border: 1px solid #c5c5c5;
+  padding: 5px;
+}
+
+.boxbs {
+  display: flex;
+  width: 90px;
+  height: 140px;
+  text-align: center;
+  justify-content: center;
+  padding: 10px 5px 10px 5px;
+  margin-right: 5px;
+}
+
+.imgp {
+  width: 80px;
+  height: 80px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+}
+
+.btn-buy {
+  display: flex;
+  width: 100%;
+  background-color: #ED5643;
+  color: white;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-a-cart {
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #1794D2;
+}
+
+.box-mall {
+  display: flex;
+  justify-content: space-between;
+  padding: 10.;
+  background-color: #ffffff;
+  padding: 5px 10px;
+}
+
+div.scroll {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+div.scrollmenu {
+  background-color: #333;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+div.scrollmenu a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
+
+div.scrollmenu a:hover {
+  background-color: #777;
+}
+
+.mallI {
+  border: 1px solid #c5c5c5;
+  width: 100px;
+  height: 50px;
+  margin-right: 5px;
+  align-items: center;
+  justify-content: center;
+  padding: 1px;
+}
+
+.box-top-pick {
+  display: flex;
+  justify-content: start;
+  padding: 10.;
+  background-color: #ffffff;
+  padding: 5px 10px;
+}
+
+div.topPI {
+  width: 80px;
+  height: 90px;
+  margin-right: 5px;
+  align-items: start;
+  justify-content: center;
+  padding: 1px;
+}
+
+div.topPI div {
+  width: 60px;
+  color: #707070;
+  font-size: 1.2rem;
+  overflow-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+div.sortCat {
+  height: 40px;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+div.sortCat .separate {
+  height: 15px;
+  background-color: #c5c5c5;
+  width: 1px;
+}

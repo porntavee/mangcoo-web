@@ -1,0 +1,57 @@
+<!-- Web -->
+<div *ngIf="model.length > 0" class="col-md-12 mt15 p-0 d-none d-lg-block">
+    <div class="df" style="justify-content: center;">
+        <div style="margin: 10px 0 20px;font-size: 35px;width: 100%;font-family: 'kanit', sans-serif;">
+            <span *ngIf="serviceProviderService.lang == 'th'">{{'partner'| langTh}}</span>
+            <span *ngIf="serviceProviderService.lang == 'en'">{{'partner'| langEn}}</span>
+        </div>
+    </div>
+    <div class="df">
+        <div>
+            <div class="df" style="flex-wrap: wrap;justify-content: center;">
+                <div *ngFor="let item of model" class="df pointer img-partner">
+                    <a *ngIf="item.linkUrl != ''" href="{{item.linkUrl}}" style="display: flex;align-items: center;justify-content: center;text-align: center;padding: 10px;height: 250px;width: 100%;">
+                        <img *ngIf="item.imageSize == '10'" src="{{item.imageUrl}}" width="auto" height="10%" style="object-fit: fill" alt="">
+                        <img *ngIf="item.imageSize == '20'" src="{{item.imageUrl}}" width="auto" height="20%" style="object-fit: fill" alt="">
+                        <img *ngIf="item.imageSize == '30'" src="{{item.imageUrl}}" width="auto" height="30%" style="object-fit: fill" alt="">
+                        <img *ngIf="item.imageSize == '40'" src="{{item.imageUrl}}" width="auto" height="40%" style="object-fit: fill" alt="">
+                        <img *ngIf="item.imageSize == '50'" src="{{item.imageUrl}}" width="auto" height="50%" style="object-fit: fill" alt="">
+                        <img *ngIf="item.imageSize == '60'" src="{{item.imageUrl}}" width="auto" height="60%" style="object-fit: fill" alt="">
+                        <img *ngIf="item.imageSize == '70'" src="{{item.imageUrl}}" width="auto" height="70%" style="object-fit: fill" alt="">
+                        <img *ngIf="item.imageSize == '80'" src="{{item.imageUrl}}" width="auto" height="80%" style="object-fit: fill" alt="">
+                        <img *ngIf="item.imageSize == '90'" src="{{item.imageUrl}}" width="auto" height="90%" style="object-fit: fill" alt="">
+                        <img *ngIf="item.imageSize == '100'" src="{{item.imageUrl}}" width="auto" height="100%" style="object-fit: fill" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Mobile -->
+<div *ngIf="model.length > 0" class="col-xs-12 m-0 p-0 d-block d-lg-none">
+    <div class="col-xs-12 df p-0 m-0" style="justify-content: center;">
+        <div style="margin: 10px 0 20px;font-size: 20px;width: 100%;font-family: 'kanit', sans-serif;">
+            <span *ngIf="serviceProviderService.lang == 'th'">{{'partner'| langTh}}</span>
+            <span *ngIf="serviceProviderService.lang == 'en'">{{'partner'| langEn}}</span>
+        </div>
+    </div>
+    <div class="col-xs-12 p-0 m-0">
+        <div class="df" style="flex-wrap: wrap;justify-content: left;">
+            <div *ngFor="let item of model" class="df pointer img-partner">
+                <a *ngIf="item.linkUrl != ''" href="{{item.linkUrl}}" style="display: flex;align-items: center;justify-content: center;text-align: center;padding: 5px;height: 150px;width: 100%;">
+                    <img *ngIf="item.imageSize == '10'" src="{{item.imageUrl}}" style=" margin-left: auto;margin-right: auto;display: block;" width="auto" height="10%" style="object-fit: fill" alt="">
+                    <img *ngIf="item.imageSize == '20'" src="{{item.imageUrl}}" style=" margin-left: auto;margin-right: auto;display: block;" width="auto" height="20%" style="object-fit: fill" alt="">
+                    <img *ngIf="item.imageSize == '30'" src="{{item.imageUrl}}" style=" margin-left: auto;margin-right: auto;display: block;" width="auto" height="30%" style="object-fit: fill" alt="">
+                    <img *ngIf="item.imageSize == '40'" src="{{item.imageUrl}}" style=" margin-left: auto;margin-right: auto;display: block;" width="auto" height="40%" style="object-fit: fill" alt="">
+                    <img *ngIf="item.imageSize == '50'" src="{{item.imageUrl}}" style=" margin-left: auto;margin-right: auto;display: block;" width="auto" height="50%" style="object-fit: fill" alt="">
+                    <img *ngIf="item.imageSize == '60'" src="{{item.imageUrl}}" style=" margin-left: auto;margin-right: auto;display: block;" width="auto" height="60%" style="object-fit: fill" alt="">
+                    <img *ngIf="item.imageSize == '70'" src="{{item.imageUrl}}" style=" margin-left: auto;margin-right: auto;display: block;" width="auto" height="70%" style="object-fit: fill" alt="">
+                    <img *ngIf="item.imageSize == '80'" src="{{item.imageUrl}}" style=" margin-left: auto;margin-right: auto;display: block;" width="auto" height="80%" style="object-fit: fill" alt="">
+                    <img *ngIf="item.imageSize == '90'" src="{{item.imageUrl}}" style=" margin-left: auto;margin-right: auto;display: block;" width="auto" height="90%" style="object-fit: fill" alt="">
+                    <img *ngIf="item.imageSize == '100'" src="{{item.imageUrl}}" style=" margin-left: auto;margin-right: auto;display: block;" width="auto" height="100%" style="object-fit: fill" alt="">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

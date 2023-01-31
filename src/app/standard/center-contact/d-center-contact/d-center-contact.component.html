@@ -1,0 +1,203 @@
+<!-- component header type 1 -->
+<!-- TH -->
+<div *ngIf="serviceProviderService.lang == 'th'" class="col-md-12 col-s-12">
+        <div class="row" style="color: #216DA6;margin: 20px 0;font-size: 24px;">{{messageInput.subTitle}}</div>
+
+        <div class="row" [innerHTML]="model.description | safeHtml"></div>
+        <div class="line-c5c5c5"></div>
+        <div class="row kanit_m" style="margin: 30px 0px;"><span>{{messageInput.referenceTitle}} : <a
+                                href="mailto:{{model.email}}">{{model.email}}</a> </span></div>
+        <div class="line-c5c5c5"></div>
+        <div class="row" style="margin: 30px 0px;">
+                <div class="col-md-12">
+                        <div class="col-md-2">
+
+                        </div>
+                        <div class="col-md-8" style="margin: 0px 15px;">
+                                <div class="dfc"
+                                        style="flex:1;background-color: white;padding: 14px;border-radius: 5px;min-height: 400px;">
+                                        <div class="col-md-12 pd0">
+                                                <div class="col-md-3 pd0" style="text-align: right;">
+                                                        <span>ชื่อ-สกุล : </span>
+                                                </div>
+                                                <div class="col-md-8">
+                                                        <input class="form-control kanit" type="text"
+                                                                [(ngModel)]="modelDetail.name"
+                                                                style="flex:1;border: none;background-color: #f7f7f7;font-size: 14px;">
+                                                </div>
+                                        </div>
+                                        <div style="height: 10px;"></div>
+                                        <div class="col-md-12 pd0">
+                                                <div class="col-md-3 pd0" style="text-align: right;">
+                                                        <span>เลขที่ใบอนุญาตฯ(ถ้ามี) : </span>
+                                                </div>
+                                                <div class="col-md-8">
+                                                        <input class="form-control kanit" type="text"
+                                                                [(ngModel)]="modelDetail.license"
+                                                                style="flex:1;border: none;background-color: #f7f7f7;font-size: 14px;">
+                                                </div>
+                                        </div>
+                                        <div style="height: 10px;"></div>
+                                        <div class="col-md-12 pd0">
+                                                <div class="col-md-3 pd0" style="text-align: right;">
+                                                        <span>E-Mail : </span>
+                                                </div>
+                                                <div class="col-md-8">
+                                                        <input class="form-control kanit" type="text"
+                                                                [(ngModel)]="modelDetail.email"
+                                                                style="flex:1;border: none;background-color: #f7f7f7;font-size: 14px;">
+                                                </div>
+                                        </div>
+                                        <div style="height: 10px;"></div>
+                                        <div class="col-md-12 pd0">
+                                                <div class="col-md-3 pd0" style="text-align: right;">
+                                                        <span>โทรศัพท์ : </span>
+                                                </div>
+                                                <div class="col-md-8">
+                                                        <input class="form-control kanit" type="text"
+                                                                [(ngModel)]="modelDetail.phone"
+                                                                style="flex:1;border: none;background-color: #f7f7f7;font-size: 14px;">
+                                                </div>
+                                        </div>
+                                        <div style="height: 10px;"></div>
+                                        <div class="col-md-12 pd0">
+                                                <div class="col-md-3 pd0" style="text-align: right;">
+                                                        <span>หัวข้อ : </span>
+                                                </div>
+                                                <div class="col-md-8">
+                                                        <input class="form-control kanit" type="text"
+                                                                [(ngModel)]="modelDetail.title"
+                                                                style="flex:1;border: none;background-color: #f7f7f7;font-size: 14px;">
+                                                </div>
+                                        </div>
+                                        <div style="height: 10px;"></div>
+                                        <div class="col-md-12 pd0">
+                                                <div class="col-md-3 pd0" style="text-align: right;">
+                                                        <span>ข้อความ : </span>
+                                                </div>
+                                                <div class="col-md-8">
+                                                        <textarea class="form-control kanit" name="" id="" cols="30"
+                                                                [(ngModel)]="modelDetail.description"
+                                                                rows="10"
+                                                                style="border: none;background-color: #F7F7F7;padding: 0 10px;height: 250px;font-size: 14px;"></textarea>
+                                                </div>
+                                        </div>
+                                        <div style="height: 20px;"></div>
+                                        <div class="col-md-12 pd0">
+                                                <div class="col-md-3 pd0">
+                                                        &nbsp;
+                                                </div>
+                                                <div class="col-md-8">
+                                                        <div class="send-btn pointer" (click)="create()">Sent Massge</div>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="col-md-2">
+                        </div>
+                </div>
+        </div>
+
+</div>
+
+
+<!-- EN -->
+<div *ngIf="serviceProviderService.lang == 'en'" class="col-md-12 col-s-12">
+        <div class="row" style="color: #216DA6;margin: 20px 0;font-size: 24px;">{{messageInput.subTitleEN}}</div>
+
+        <div class="row" [innerHTML]="model.descriptionEN | safeHtml"></div>
+        <div class="line-c5c5c5"></div>
+        <div class="row kanit_m" style="margin: 30px 0px;"><span>{{messageInput.referenceTitleEN}} : <a
+                                href="mailto:{{model.email}}">{{model.email}}</a> </span></div>
+        <div class="line-c5c5c5"></div>
+        <div class="row" style="margin: 30px 0px;">
+                <div class="col-md-12">
+                        <div class="col-md-2">
+
+                        </div>
+                        <div class="col-md-8" style="margin: 0px 15px;">
+                                <div class="dfc"
+                                        style="flex:1;background-color: white;padding: 14px;border-radius: 5px;min-height: 400px;">
+                                        <div class="col-md-12 pd0">
+                                                <div class="col-md-3 pd0" style="text-align: right;">
+                                                        <span>Name : </span>
+                                                </div>
+                                                <div class="col-md-8">
+                                                        <input class="form-control kanit" type="text"
+                                                                [(ngModel)]="modelDetail.name"
+                                                                style="flex:1;border: none;background-color: #f7f7f7;font-size: 14px;">
+                                                </div>
+                                        </div>
+                                        <div style="height: 10px;"></div>
+                                        <div class="col-md-12 pd0">
+                                                <div class="col-md-3 pd0" style="text-align: right;">
+                                                        <span>License Number : </span>
+                                                </div>
+                                                <div class="col-md-8">
+                                                        <input class="form-control kanit" type="text"
+                                                                [(ngModel)]="modelDetail.license"
+                                                                style="flex:1;border: none;background-color: #f7f7f7;font-size: 14px;">
+                                                </div>
+                                        </div>
+                                        <div style="height: 10px;"></div>
+                                        <div class="col-md-12 pd0">
+                                                <div class="col-md-3 pd0" style="text-align: right;">
+                                                        <span>E-Mail : </span>
+                                                </div>
+                                                <div class="col-md-8">
+                                                        <input class="form-control kanit" type="text"
+                                                                [(ngModel)]="modelDetail.email"
+                                                                style="flex:1;border: none;background-color: #f7f7f7;font-size: 14px;">
+                                                </div>
+                                        </div>
+                                        <div style="height: 10px;"></div>
+                                        <div class="col-md-12 pd0">
+                                                <div class="col-md-3 pd0" style="text-align: right;">
+                                                        <span>Tel : </span>
+                                                </div>
+                                                <div class="col-md-8">
+                                                        <input class="form-control kanit" type="text"
+                                                                [(ngModel)]="modelDetail.phone"
+                                                                style="flex:1;border: none;background-color: #f7f7f7;font-size: 14px;">
+                                                </div>
+                                        </div>
+                                        <div style="height: 10px;"></div>
+                                        <div class="col-md-12 pd0">
+                                                <div class="col-md-3 pd0" style="text-align: right;">
+                                                        <span>Title : </span>
+                                                </div>
+                                                <div class="col-md-8">
+                                                        <input class="form-control kanit" type="text"
+                                                                [(ngModel)]="modelDetail.title"
+                                                                style="flex:1;border: none;background-color: #f7f7f7;font-size: 14px;">
+                                                </div>
+                                        </div>
+                                        <div style="height: 10px;"></div>
+                                        <div class="col-md-12 pd0">
+                                                <div class="col-md-3 pd0" style="text-align: right;">
+                                                        <span>Description : </span>
+                                                </div>
+                                                <div class="col-md-8">
+                                                        <textarea class="form-control kanit" name="" id="" cols="30"
+                                                                [(ngModel)]="modelDetail.description"
+                                                                rows="10"
+                                                                style="border: none;background-color: #F7F7F7;padding: 0 10px;height: 250px;font-size: 14px;"></textarea>
+                                                </div>
+                                        </div>
+                                        <div style="height: 20px;"></div>
+                                        <div class="col-md-12 pd0">
+                                                <div class="col-md-3 pd0">
+                                                        &nbsp;
+                                                </div>
+                                                <div class="col-md-8">
+                                                        <div class="send-btn pointer" (click)="create()">Sent Massge</div>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="col-md-2">
+                        </div>
+                </div>
+        </div>
+
+</div>

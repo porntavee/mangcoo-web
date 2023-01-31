@@ -1,0 +1,42 @@
+.menu-knowledge {
+    border: 1px solid #216DA6;
+    border-radius: 15px;
+    opacity: 1;
+    padding: 1px 5px;
+    background-color: white;
+    margin-right: 10px;
+    color: #216DA6;
+}
+
+.menu-knowledge:hover {
+    background-color: #216DA6;
+    color: white;
+}
+
+.menu-knowledge-active {
+    background-color: #216DA6;
+    color: white;
+}
+
+.btn-action {
+    align-items: center;
+    justify-content: center;
+    width: 90px;
+    height: 30px;
+    display: flex;
+    border-radius: 3px;
+    color: white;
+    font-size: 1.7rem;
+}
+
+.background-active {
+    background-color: #E19B24;
+}
+.background-not-active {
+    background-color: #CFDAE3;
+}
+
+.background-not-active:hover {
+    background-color: #E19B24;
+    color: white;
+}

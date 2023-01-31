@@ -1,0 +1,325 @@
+<!-- component header type 1 -->
+<app-d-t1-header></app-d-t1-header>
+<div class="col-md-12 m-0 p-0 d-none d-lg-block minDiv" style="background-color: white !important;width: 100%;padding-bottom: 80px;">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+        <div style="display: flex;width: 100%;justify-content: center;">
+            <div style="max-width: 1980px;width: 100%;">
+                <div class="kanit_xxl font-w600" style="color: #216DA6;margin: 20px 0 0 0;">
+                    <span *ngIf="serviceProviderService.lang == 'th'">{{'sitemap'| langTh}}</span>
+                    <span *ngIf="serviceProviderService.lang == 'en'">{{'sitemap'| langEn}}</span>
+                </div>
+                <div class="line-c5c5c5" style="margin-bottom: 20px;"></div>
+                <div class="df" style="width: 100%;">
+                    <div class="dfc" style="flex:1;">
+                        <div class="kanit_xl font-w600" style="color: #216DA6">
+                            <span *ngIf="serviceProviderService.lang == 'th'">{{'mainPage'| langTh}}</span>
+                            <span *ngIf="serviceProviderService.lang == 'en'">{{'mainPage'| langEn}}</span>
+                        </div>
+                        <div class="row" style="padding: 20px 0 50px 0">
+                            <div class="col s3">
+                                <div class="row">
+                                    <div class="kanit_l font-w600" style="color: #216DA6">
+                                        <span *ngIf="serviceProviderService.lang == 'th'">{{'news'| langTh}}</span>
+                                        <span *ngIf="serviceProviderService.lang == 'en'">{{'news'| langEn}}</span>
+                                    </div>
+                                </div>
+                                <div class="row" style="padding-left: 40px;">
+                                    <div class="row" style="padding: 20px 40px 0 0;" *ngFor="let i of newsMoc; let idx = index">
+                                        <a href="{{i.link}}" style="text-decoration:none; color: black;">{{i.title}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s3">
+                                <div class="row">
+                                    <div class="kanit_l font-w600" style="color: #216DA6">
+                                        <span *ngIf="serviceProviderService.lang == 'th'">{{'imageEvent'| langTh}}</span>
+                                        <span *ngIf="serviceProviderService.lang == 'en'">{{'imageEvent'| langEn}}</span>
+                                    </div>
+                                </div>
+                                <div class="row" style="padding-left: 40px;">
+                                    <div class="row" style="padding: 20px 40px 0 0;" *ngFor="let i of imageEventMoc; let idx = index">
+                                        <a href="{{i.link}}" style="text-decoration:none; color: black;">{{i.title}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s3">
+                                <div class="row">
+                                    <div class="kanit_l font-w600" style="color: #216DA6">
+                                        <span *ngIf="serviceProviderService.lang == 'th'">{{'event'| langTh}}</span>
+                                        <span *ngIf="serviceProviderService.lang == 'en'">{{'event'| langEn}}</span>
+                                    </div>
+                                </div>
+                                <div class="row" style="padding-left: 40px;">
+                                    <div class="row" style="padding: 20px 40px 0 0;" *ngFor="let i of eventcalendarMoc; let idx = index">
+                                        <a href="{{i.link}}" style="text-decoration:none; color: black;">{{i.title}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s3">
+                                <div class="row">
+                                    <div class="kanit_l font-w600" style="color: #216DA6">
+                                        <span *ngIf="serviceProviderService.lang == 'th'">{{'knowledge'| langTh}}</span>
+                                        <span *ngIf="serviceProviderService.lang == 'en'">{{'knowledge'| langEn}}</span>
+                                    </div>
+                                </div>
+                                <div class="row" style="padding-left: 40px;">
+                                    <div class="row" style="padding: 20px 40px 0 0;" *ngFor="let i of knowledgeMoc; let idx = index">
+                                        <a href="{{i.link}}" style="text-decoration:none; color: black;">{{i.title}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="padding: 20px 0 50px 0">
+                            <div class="col s3">
+                                <div class="row">
+                                    <div class="kanit_l font-w600" style="color: #216DA6">
+                                        <span *ngIf="serviceProviderService.lang == 'th'">{{'pillar'| langTh}}</span>
+                                        <span *ngIf="serviceProviderService.lang == 'en'">{{'pillar'| langEn}}</span>
+                                    </div>
+                                </div>
+                                <div class="row" style="padding-left: 40px;">
+                                    <div class="row" style="padding: 20px 40px 0 0;" *ngFor="let i of dataMoc; let idx = index">
+                                        <a href="{{i.link}}" style="text-decoration:none; color: black;">{{i.title}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s3">
+                                <div class="row">
+                                    <div class="kanit_l font-w600" style="color: #216DA6">
+                                        <span *ngIf="serviceProviderService.lang == 'th'">{{'important'| langTh}}</span>
+                                        <span *ngIf="serviceProviderService.lang == 'en'">{{'important'| langEn}}</span>
+                                    </div>
+                                </div>
+                                <div class="row" style="padding-left: 40px;">
+                                    <div class="row" style="padding: 20px 40px 0 0;" *ngFor="let i of memberDataMoc; let idx = index">
+                                        <a href="{{i.link}}" style="text-decoration:none; color: black;">{{i.title}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s3">
+                                <div class="row">
+                                    <div class="kanit_l font-w600" style="color: #216DA6">
+                                        <span *ngIf="serviceProviderService.lang == 'th'">{{'searchVet'| langTh}}</span>
+                                        <span *ngIf="serviceProviderService.lang == 'en'">{{'searchVet'| langEn}}</span>
+                                    </div>
+                                </div>
+                                <div class="row" style="padding-left: 40px;">
+                                    <div class="row" style="padding: 20px 60px 0 0;">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s3">
+                                <div class="row">
+                                    <div class="kanit_l font-w600" style="color: #216DA6">
+                                        <span *ngIf="serviceProviderService.lang == 'th'">{{'vetsubstances'| langTh}}</span>
+                                        <span *ngIf="serviceProviderService.lang == 'en'">{{'vetsubstances'| langEn}}</span>
+                                    </div>
+                                </div>
+                                <div class="row" style="padding-left: 40px;">
+                                    <div class="row" style="padding: 20px 40px 0 0;" *ngFor="let i of journalMoc; let idx = index">
+                                        <a href="{{i.link}}" style="text-decoration:none; color: black;">{{i.title}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="padding: 20px 0 70px 0">
+                            <div class="col s3">
+                                <div class="row">
+                                    <div class="kanit_l font-w600" style="color: #216DA6">
+                                        <span *ngIf="serviceProviderService.lang == 'th'">{{'vetenews'| langTh}}</span>
+                                        <span *ngIf="serviceProviderService.lang == 'en'">{{'vetenews'| langEn}}</span>
+                                    </div>
+                                </div>
+                                <div class="row" style="padding-left: 40px;">
+                                    <div class="row" style="padding: 20px 40px 0 0;" *ngFor="let i of ENewsMoc; let idx = index">
+                                        <a href="{{i.link}}" style="text-decoration:none; color: black;">{{i.title}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s3">
+                                <div class="row">
+                                    <div class="kanit_l font-w600" style="color: #216DA6">
+                                        <span *ngIf="serviceProviderService.lang == 'th'">{{'login'| langTh}}</span>
+                                        <span *ngIf="serviceProviderService.lang == 'en'">{{'login'| langEn}}</span>
+                                    </div>
+                                </div>
+                                <div class="row" style="padding-left: 40px;">
+                                    <div class="row" style="padding: 20px 40px 0 0;" *ngFor="let i of loginMoc; let idx = index">
+                                        <a href="{{i.link}}" style="text-decoration:none; color: black;">{{i.title}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s3">
+                                <div class="row">
+                                    <div class="kanit_l font-w600" style="color: #216DA6">
+                                        <span *ngIf="serviceProviderService.lang == 'th'">{{'executive'| langTh}}</span>
+                                        <span *ngIf="serviceProviderService.lang == 'en'">{{'executive'| langEn}}</span>
+                                    </div>
+                                </div>
+                                <div class="row" style="padding-left: 40px;">
+                                    <div class="row" style="padding: 20px 40px 0 0;" *ngFor="let i of executive; let idx = index">
+                                        <a href="{{i.link}}" style="text-decoration:none; color: black;">{{i.title}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s3">
+                                <div class="row">
+                                    <div class="kanit_l font-w600" style="color: #216DA6">
+                                        <span *ngIf="serviceProviderService.lang == 'th'">{{'contactus'| langTh}}</span>
+                                        <span *ngIf="serviceProviderService.lang == 'en'">{{'contactus'| langEn}}</span>
+                                    </div>
+                                </div>
+                                <div class="row" style="padding-left: 40px;">
+                                    <div class="row" style="padding: 20px 40px 0 0;" *ngFor="let i of contactus; let idx = index">
+                                        <a href="{{i.link}}" style="text-decoration:none; color: black;">{{i.title}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div style="background-color: #CFDAE3;align-items: center;justify-content: center;width: 80px;
+                        height: 30px;display: flex;border-radius: 3px;color: white;font-size: 16px;margin: 20px 0 0 40px;">
+                            แชร์</div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+
+<!-- Mobile -->
+<div class="col-xs-12 p-0 m-0 d-block d-lg-none">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-10">
+        <div style="display: flex;width: 100%;justify-content: center;">
+            <div style="width: 100%;">
+                <div class="kanit_xxl font-w600" style="color: #216DA6;margin: 20px 0 0 0;">
+                    <span *ngIf="serviceProviderService.lang == 'th'">{{'sitemap'| langTh}}</span>
+                    <span *ngIf="serviceProviderService.lang == 'en'">{{'sitemap'| langEn}}</span>
+                </div>
+                <div class="line-c5c5c5" style="margin-bottom: 20px;"></div>
+                <div class="df" style="width: 100%;">
+                    <div class="dfc" style="flex:1;">
+                        <div class="kanit_xl font-w600" style="color: #216DA6">
+                            <span *ngIf="serviceProviderService.lang == 'th'">{{'mainPage'| langTh}}</span>
+                            <span *ngIf="serviceProviderService.lang == 'en'">{{'mainPage'| langEn}}</span>
+                        </div>
+                        <div class="row" style="padding: 20px 0">
+                            <div class="kanit_l font-w600" style="color: #216DA6">
+                                <span *ngIf="serviceProviderService.lang == 'th'">{{'news'| langTh}}</span>
+                                <span *ngIf="serviceProviderService.lang == 'en'">{{'news'| langEn}}</span>
+                            </div>
+                            <div class="row" style="padding: 20px 0 0 40px;" *ngFor="let i of newsMoc; let idx = index">
+                                <a href="{{i.link}}" style="text-decoration:none; color: black;">{{i.title}}</a>
+                            </div>
+                        </div>
+                        <div class="row" style="padding: 20px 0">
+                            <div class="kanit_l font-w600" style="color: #216DA6">
+                                <span *ngIf="serviceProviderService.lang == 'th'">{{'imageEvent'| langTh}}</span>
+                                <span *ngIf="serviceProviderService.lang == 'en'">{{'imageEvent'| langEn}}</span>
+                            </div>
+                            <div class="row" style="padding: 20px 0 0 40px;" *ngFor="let i of imageEventMoc; let idx = index">
+                                <a href="{{i.link}}" style="text-decoration:none; color: black;">{{i.title}}</a>
+                            </div>
+                        </div>
+                        <div class="row" style="padding: 20px 0">
+                            <div class="kanit_l font-w600" style="color: #216DA6">
+                                <span *ngIf="serviceProviderService.lang == 'th'">{{'event'| langTh}}</span>
+                                <span *ngIf="serviceProviderService.lang == 'en'">{{'event'| langEn}}</span>
+                            </div>
+                            <div class="row" style="padding: 20px 0 0 40px;" *ngFor="let i of eventcalendarMoc; let idx = index">
+                                <a href="{{i.link}}" style="text-decoration:none; color: black;">{{i.title}}</a>
+                            </div>
+                        </div>
+                        <div class="row" style="padding: 20px 0">
+                            <div class="kanit_l font-w600" style="color: #216DA6">
+                                <span *ngIf="serviceProviderService.lang == 'th'">{{'knowledge'| langTh}}</span>
+                                <span *ngIf="serviceProviderService.lang == 'en'">{{'knowledge'| langEn}}</span>
+                            </div>
+                            <div class="row" style="padding: 20px 0 0 40px;" *ngFor="let i of knowledgeMoc; let idx = index">
+                                <a href="{{i.link}}" style="text-decoration:none; color: black;">{{i.title}}</a>
+                            </div>
+                        </div>
+                        <div class="row" style="padding: 20px 0">
+                            <div class="kanit_l font-w600" style="color: #216DA6">
+                                <span *ngIf="serviceProviderService.lang == 'th'">{{'pillar'| langTh}}</span>
+                                <span *ngIf="serviceProviderService.lang == 'en'">{{'pillar'| langEn}}</span>
+                            </div>
+                            <div class="row" style="padding: 20px 0 0 40px;" *ngFor="let i of dataMoc; let idx = index">
+                                <a href="{{i.link}}" style="text-decoration:none; color: black;">{{i.title}}</a>
+                            </div>
+                        </div>
+                        <div class="row" style="padding: 20px 0">
+                            <div class="kanit_l font-w600" style="color: #216DA6">
+                                <span *ngIf="serviceProviderService.lang == 'th'">{{'important'| langTh}}</span>
+                                <span *ngIf="serviceProviderService.lang == 'en'">{{'important'| langEn}}</span>
+                            </div>
+                            <div class="row" style="padding: 20px 0 0 40px;" *ngFor="let i of memberDataMoc; let idx = index">
+                                <a href="{{i.link}}" style="text-decoration:none; color: black;">{{i.title}}</a>
+                            </div>
+                        </div>
+                        <div class="row" style="padding: 20px 0">
+                            <div class="kanit_l font-w600" style="color: #216DA6">
+                                <span *ngIf="serviceProviderService.lang == 'th'">{{'searchVet'| langTh}}</span>
+                                <span *ngIf="serviceProviderService.lang == 'en'">{{'searchVet'| langEn}}</span>
+                            </div>
+                            <div class="row" style="padding: 20px 0 0 40px;">
+                            </div>
+                        </div>
+                        <div class="row" style="padding: 20px 0">
+                            <div class="kanit_l font-w600" style="color: #216DA6">
+                                <span *ngIf="serviceProviderService.lang == 'th'">{{'vetsubstances'| langTh}}</span>
+                                <span *ngIf="serviceProviderService.lang == 'en'">{{'vetsubstances'| langEn}}</span>
+                            </div>
+                            <div class="row" style="padding: 20px 0 0 40px;" *ngFor="let i of journalMoc; let idx = index">
+                                <a href="{{i.link}}" style="text-decoration:none; color: black;">{{i.title}}</a>
+                            </div>
+                        </div>
+                        <div class="row" style="padding: 20px 0">
+                            <div class="kanit_l font-w600" style="color: #216DA6">
+                                <span *ngIf="serviceProviderService.lang == 'th'">{{'vetenews'| langTh}}</span>
+                                <span *ngIf="serviceProviderService.lang == 'en'">{{'vetenews'| langEn}}</span>
+                            </div>
+                            <div class="row" style="padding: 20px 0 0 40px;" *ngFor="let i of ENewsMoc; let idx = index">
+                                <a href="{{i.link}}" style="text-decoration:none; color: black;">{{i.title}}</a>
+                            </div>
+                        </div>
+                        <div class="row" style="padding: 20px 0">
+                            <div class="kanit_l font-w600" style="color: #216DA6">
+                                <span *ngIf="serviceProviderService.lang == 'th'">{{'login'| langTh}}</span>
+                                <span *ngIf="serviceProviderService.lang == 'en'">{{'login'| langEn}}</span>
+                            </div>
+                            <div class="row" style="padding: 20px 0 0 40px;" *ngFor="let i of loginMoc; let idx = index">
+                                <a href="{{i.link}}" style="text-decoration:none; color: black;">{{i.title}}</a>
+                            </div>
+                        </div>
+                        <div class="row" style="padding: 20px 0">
+                            <div class="kanit_l font-w600" style="color: #216DA6">
+                                <span *ngIf="serviceProviderService.lang == 'th'">{{'executive'| langTh}}</span>
+                                <span *ngIf="serviceProviderService.lang == 'en'">{{'executive'| langEn}}</span>
+                            </div>
+                            <div class="row" style="padding: 20px 0 0 40px;" *ngFor="let i of executive; let idx = index">
+                                <a href="{{i.link}}" style="text-decoration:none; color: black;">{{i.title}}</a>
+                            </div>
+                        </div>
+                        <div class="row" style="padding: 20px 0">
+                            <div class="kanit_l font-w600" style="color: #216DA6">
+                                <span *ngIf="serviceProviderService.lang == 'th'">{{'contactus'| langTh}}</span>
+                                <span *ngIf="serviceProviderService.lang == 'en'">{{'contactus'| langEn}}</span>
+                            </div>
+                            <div class="row" style="padding: 20px 0 0 40px;" *ngFor="let i of contactus; let idx = index">
+                                <a href="{{i.link}}" style="text-decoration:none; color: black;">{{i.title}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-1"></div>
+</div>
+<app-d-t1-footer></app-d-t1-footer>

@@ -1,0 +1,59 @@
+.boxxqr {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.bshadow {
+    height: 300px;
+    width: 300px;
+}
+
+.pay-success {
+    font-size: 100px;
+    color: #4BB543;
+    margin-bottom: 50px;
+}.boxxqr {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .bshadow {
+    height: 300px;
+    width: 300px;
+  }
+  
+  .content {
+    height: 100%;
+    font-family: 'Helvetica Neue';
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+  }
+  
+  .symbol {
+    font-size: 150px;
+    color: #5cb85c;
+  }
+  
+  .title {
+    font-weight: bold;
+  }
+  
+  
+  .text {
+    margin-top: 15px;
+    font-size: 25px;
+    text-align: center;
+    font-family: 'avenir';
+    font-weight: lighter;
+  }
+  

@@ -1,0 +1,199 @@
+<!-- <div class="fixed-hd"> -->
+<!-- Desktop -->
+<div class="col-md-12 m-0 p-0 d-none d-lg-block">
+    <!-- header 1 -->
+    <div class="col-md-12" style="background-color: #F7F7F7;  padding: 15px 0px!important;">
+        <div class="col-md-2">
+            <a class="pointer txt-de-none c-70 fh1" href="{{oldWeb}}">
+                <span *ngIf="serviceProviderService.lang == 'th'">{{'oldweb'| langTh}}</span>
+                <span *ngIf="serviceProviderService.lang == 'en'">{{'oldweb'| langEn}}</span>
+            </a>
+        </div>
+
+        <div class="col-md-10 m-0 p-0" style="display: flex;justify-content: space-between;">
+            <a class="pointer txt-de-none c-70 fh1" href="{{path}}center">
+                <span *ngIf="serviceProviderService.lang == 'th'">{{'vet'| langTh}}</span>
+                <span *ngIf="serviceProviderService.lang == 'en'">{{'vet'| langEn}}</span>
+            </a>
+
+            <a class="pointer txt-de-none c-70 fh1" href="{{path}}news">
+                <span *ngIf="serviceProviderService.lang == 'th'">{{'news'| langTh}}</span>
+                <span *ngIf="serviceProviderService.lang == 'en'">{{'news'| langEn}}</span>
+            </a>
+            <a class="pointer txt-de-none c-70 fh1" href="{{path}}eventcalendar">
+                <span *ngIf="serviceProviderService.lang == 'th'">{{'event'| langTh}}</span>
+                <span *ngIf="serviceProviderService.lang == 'en'">{{'event'| langEn}}</span>
+            </a>
+            <a class="pointer txt-de-none c-70 fh1" href="{{path}}knowledge">
+                <span *ngIf="serviceProviderService.lang == 'th'">{{'knowledge'| langTh}}</span>
+                <span *ngIf="serviceProviderService.lang == 'en'">{{'knowledge'| langEn}}</span>
+            </a>
+            <a class="pointer txt-de-none c-70 fh1" href="{{path}}law">
+                <span *ngIf="serviceProviderService.lang == 'th'">{{'law'| langTh}}</span>
+                <span *ngIf="serviceProviderService.lang == 'en'">{{'law'| langEn}}</span>
+            </a>
+            <a class="pointer txt-de-none c-70 fh1" href="{{path}}contact-us">
+                <span *ngIf="serviceProviderService.lang == 'th'">{{'contactus'| langTh}}</span>
+                <span *ngIf="serviceProviderService.lang == 'en'">{{'contactus'| langEn}}</span>
+            </a>
+            <a class="pointer txt-de-none c-70 fh1" href="{{path}}personnel">
+                <span *ngIf="serviceProviderService.lang == 'th'">{{'executive'| langTh}}</span>
+                <span *ngIf="serviceProviderService.lang == 'en'">{{'executive'| langEn}}</span>
+            </a>
+            <!-- <span class="pointer">
+                    <span *ngIf="serviceProviderService.lang == 'th'" (click)="setLang('th')"><img
+                            src="./assets/img/thailand.png" width="25px" height="25px" alt=""></span>
+                    <span *ngIf="serviceProviderService.lang == 'en'" (click)="setLang('th')"><img class="language-opacity"
+                            src="./assets/img/thailand.png" width="25px" height="25px" alt=""></span>
+                </span> -->
+            <span class="pointer" style="padding-right: 10px;">
+                <!-- TH -->
+                <span style="padding-right: 10px;" *ngIf="serviceProviderService.lang == 'th'"
+                    (click)="setLang('th')"><img src="./assets/img/thailand.png" width="25px" height="25px"
+                        alt=""></span>
+            <span style="padding-right: 10px;" *ngIf="serviceProviderService.lang == 'en'" (click)="setLang('th')"><img class="language-opacity" src="./assets/img/thailand.png" width="25px"
+                        height="25px" alt=""></span>
+            <!-- END -->
+            <span *ngIf="serviceProviderService.lang == 'th'" (click)="setLang('en')"><img class="language-opacity"
+                        src="./assets/img/english.png" width="25px" height="25px" alt=""></span>
+            <span *ngIf="serviceProviderService.lang == 'en'" (click)="setLang('en')"><img
+                        src="./assets/img/english.png" width="25px" height="25px" alt=""></span>
+            </span>
+            <!-- <span *ngIf="userData.profileCode != ''" class="pointer fh1" style="padding-right: 0px;"
+                    (click)="goToProfile()">{{userData.username}}</span> -->
+            <span *ngIf="userData.profileCode != ''" style="margin-right: 10px;" [class]="isMousePrice ? 'select-with-status select-with-status--hover' : 'select-with-status'" (mouseenter)="chkMousePriceIn()" (mouseleave)="chkMousePriceOut()">
+                <span>
+                    <div (click)="goToProfile('1')" class="fh1 pointer" style="padding-right: 0px;">
+                        {{userData.first_name}}
+                        {{userData.last_name}}
+                    </div>
+                    <span class="select-with-status__dropdown bg-70" style="border-radius: 10px;">
+                        <a class="txt-de-none" href="{{path}}register/?code={{profileCode}}&type=1">
+                            <div class="dropdown-profile">แก้ไข้ข้อมูล</div>
+                        </a>
+                        <!-- <a class="txt-de-none" href="{{path}}register/?code={{profileCode}}&type=2">
+                            <div class="dropdown-profile">แก้ไขข้อมูล(รออนุมัติ)</div>
+                        </a> -->
+                        <a class="txt-de-none" href="{{path}}important">
+                            <div class="dropdown-profile">ข้อมูลสำคัญ</div>
+                        </a>
+                        <a class="txt-de-none" (click)="logout();">
+                            <div class="dropdown-profile">ออกจากระบบ</div>
+                        </a>
+                    </span>
+            </span>
+            </span>
+        </div>
+        <!-- <div class="col-md-1"></div> -->
+    </div>
+
+
+    <!-- header 2 -->
+    <div class="col-md-12" style="background-color: #ffffff; padding: 25px 0px!important;display: grid;grid-template-columns: 320px 1fr;">
+        <div (click)="nav('')" style="text-align: center;">
+            <div>
+                <img src="./assets/img/icon.png" width="65" height="65">
+                <span *ngIf="serviceProviderService.lang == 'th'" class="pointer fh2">{{'logo'| langTh}}</span>
+                <span *ngIf="serviceProviderService.lang == 'en'" class="pointer fh2">{{'logo'| langEn}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Mobile -->
+<div class="col-xs-12 m-0 p-0 d-block d-lg-none">
+    <!-- header 2 -->
+    <div class="col-xs-12" style="background-color: #F7F7F7;padding: 30px 15px 5px 15px;display: flex;align-items: center;">
+        <div class="col-xs-9 p-0" (click)="nav('')" style="display: flex;">
+            <img src="./assets/img/Logo2_vet.png" width="35" height="45">
+            <div style="width: 10px;"></div>
+            <div *ngIf="serviceProviderService.lang == 'th'" class="pointer fhm2" style="display: flex;align-items: center;padding: 0;">{{'vet'| langTh}}</div>
+            <div *ngIf="serviceProviderService.lang == 'en'" class="pointer fhm2" style="display: flex;align-items: center;padding: 0;">{{'vet'| langEn}}</div>
+        </div>
+        <div class="col-xs-3 p-0" style="text-align: end;">
+            <img *ngIf="showSearch == false" src="./assets/img/changeShowSearch.png" (click)="changeShowSearch()" style="padding: 5px;" width="30">
+            <img *ngIf="showMenu == false" src="./assets/img/showmenu.png" (click)="changeShowMenu()" style="padding: 5px;" height="30">
+            <img *ngIf="showMenu == true" src="./assets/img/closemenu.png" (click)="changeShowMenu()" style="padding: 5px;" height="30">
+        </div>
+    </div>
+    <!-- showSearch -->
+    <div *ngIf="showSearch == true" class="col-xs-12" style="background-color: #F7F7F7; padding: 0 0 10px 0; display: flex; align-items: center;">
+        <div class="col-xs-3 pd0" (click)="changeShowSearch()"></div>
+        <div class="col-xs-6 pd0" style="height: 30px;">
+            <div class="input-group" style="height: 100%;">
+                <input type="text" class="form-control" style="height: 100%;font-size: 2vh;
+                font-family: 'kanit', sans-serif;background-color: #E4E4E4;opacity: 1;border-color: #E4E4E4;padding: 2%; border-top-left-radius: 50pt;
+        border-bottom-left-radius: 50pt;" placeholder="ค้นหาใน สัตวแพทยสภา" [(ngModel)]="keysearch" (keydown.enter)="nav('search-content')">
+                <button type="button" class="btn btn-primary" style="width: 20%; border-top-right-radius: 50pt; border-bottom-right-radius: 50pt;" (click)="nav('search-content')">
+                    <span class="glyphicon glyphicon-search fa-lg"></span>
+                </button>
+            </div>
+        </div>
+        <div class="col-xs-3 pd0" (click)="changeShowSearch()"></div>
+    </div>
+    <!-- showMenu -->
+    <div *ngIf="showMenu == true" class="col-xs-12" style="background-color: #F7F7F7; padding: 30px 0 20px 0; display: flex; flex-direction: column;">
+        <div class="col-xs-12 title-show-menu-dropdown">
+            <span class="pointer" (click)="nav('oldweb')">
+                <span *ngIf="serviceProviderService.lang == 'th'">{{'oldweb'| langTh}}</span>
+            <span *ngIf="serviceProviderService.lang == 'en'">{{'oldweb'| langEn}}</span>
+            </span>
+        </div>
+        <div class="col-xs-12 title-show-menu-dropdown">
+            <span class="pointer" (click)="nav('center')">
+                <span *ngIf="serviceProviderService.lang == 'th'">{{'vet'| langTh}}</span>
+            <span *ngIf="serviceProviderService.lang == 'en'">{{'vet'| langEn}}</span>
+            </span>
+        </div>
+        <div class="col-xs-12 title-show-menu-dropdown">
+            <span class="pointer" (click)="nav('news')">
+                <span *ngIf="serviceProviderService.lang == 'th'">{{'news'| langTh}}</span>
+            <span *ngIf="serviceProviderService.lang == 'en'">{{'news'| langEn}}</span>
+            </span>
+        </div>
+        <div class="col-xs-12 title-show-menu-dropdown">
+            <span class="pointer" (click)="nav('eventcalendar')">
+                <span *ngIf="serviceProviderService.lang == 'th'">{{'event'| langTh}}</span>
+            <span *ngIf="serviceProviderService.lang == 'en'">{{'event'| langEn}}</span>
+            </span>
+        </div>
+        <div class="col-xs-12 title-show-menu-dropdown">
+            <span class="pointer" (click)="nav('knowledge')">
+                <span *ngIf="serviceProviderService.lang == 'th'">{{'knowledge'| langTh}}</span>
+            <span *ngIf="serviceProviderService.lang == 'en'">{{'knowledge'| langEn}}</span>
+            </span>
+        </div>
+        <div class="col-xs-12 title-show-menu-dropdown">
+            <span class="pointer" (click)="nav('law')">
+                <span *ngIf="serviceProviderService.lang == 'th'">{{'law'| langTh}}</span>
+            <span *ngIf="serviceProviderService.lang == 'en'">{{'law'| langEn}}</span>
+            </span>
+        </div>
+        <div class="col-xs-12 title-show-menu-dropdown">
+            <span class="pointer" (click)="nav('contact-us')">
+                <span *ngIf="serviceProviderService.lang == 'th'">{{'contactus'| langTh}}</span>
+            <span *ngIf="serviceProviderService.lang == 'en'">{{'contactus'| langEn}}</span>
+            </span>
+        </div>
+        <div class="col-xs-12 title-show-menu-dropdown">
+            <span class="pointer" (click)="nav('personnel')">
+                <span *ngIf="serviceProviderService.lang == 'th'">{{'executive'| langTh}}</span>
+            <span *ngIf="serviceProviderService.lang == 'en'">{{'executive'| langEn}}</span>
+            </span>
+        </div>
+        <div class="col-xs-12 title-show-menu-dropdown">
+            <span class="pointer" style="margin: 0 10px;">
+                <span *ngIf="serviceProviderService.lang == 'th'" (click)="setLang('th')"><img
+                        src="./assets/img/thailand.png" width="25px" height="25px" alt=""></span>
+            <span *ngIf="serviceProviderService.lang == 'en'" (click)="setLang('th')"><img class="language-opacity"
+                        src="./assets/img/thailand.png" width="25px" height="25px" alt=""></span>
+            </span>
+            <span class="pointer" style="margin: 0 10px;">
+                <span *ngIf="serviceProviderService.lang == 'th'" (click)="setLang('en')"><img class="language-opacity"
+                        src="./assets/img/english.png" width="25px" height="25px" alt=""></span>
+            <span *ngIf="serviceProviderService.lang == 'en'" (click)="setLang('en')"><img
+                        src="./assets/img/english.png" width="25px" height="25px" alt=""></span>
+            </span>
+        </div>
+    </div>
+</div>

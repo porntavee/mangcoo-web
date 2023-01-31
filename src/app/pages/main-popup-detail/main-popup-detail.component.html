@@ -1,0 +1,70 @@
+<!-- component header -->
+<app-d-t1-header></app-d-t1-header>
+<!-- content dektops -->
+<div class="col-md-12 m-0 d-none d-lg-block" style="padding: 0% 10%;">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 pd0">
+        <div class="df" style="justify-content: center;margin-bottom: 20px;">
+            <a class="div-imageUrl-news-home" href="{{modelDetail.imageUrl}}" target="_blank">
+                <img height="100%" width="100%" style="border-radius: 15px;object-fit: contain;" src="{{modelDetail.imageUrl}}">
+            </a>
+        </div>
+        <div class="col-md-12 pd0">
+            <div class="div-title-detail-news">{{modelDetail.title}}</div>
+            <!-- <div *ngIf="serviceProviderService.lang == 'en'" class="div-title-detail-news">{{modelDetail.titleEN}}</div> -->
+        </div>
+        <div class="col-md-12 pd0 mb70">
+            <div class="line-c5c5c5"></div>
+            <div class="div-box_date">
+                <div class="mainbox">
+                    <div style="font-size: 2rem;color: #707070;">Date {{modelDetail.createDate | dateFormat}}</div>
+                    <div style="width: 20px;"></div>
+                    <input type="checkbox" id="check">
+                    <label *ngIf="serviceProviderService.lang == 'th'" for="check" class="kanit_s c-white pointer news-share">แชร์</label>
+                    <label *ngIf="serviceProviderService.lang == 'en'" for="check" class="kanit_s c-white pointer news-share">share</label>
+                    <div class="media-icons pointer">
+                        <a (click)="shareWithFB()"> <i class="fab fa-facebook"></i></a>
+                        <a (click)="shareWithLine()"><i class="fab fa-line"></i></a>
+                        <a (click)="copyMessage('This goes to Clipboard')"><i class="fas fa-copy"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 pd0">
+                <div class="color_grey70" [innerHtml]="modelDetail.description | safeHtml"></div>
+                <!-- <div *ngIf="serviceProviderService.lang == 'en'" class="color_grey70" [innerHtml]="model.descriptionEN | safeHtml"></div> -->
+            </div>
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+<!-- content mobile -->
+<div class="col-xs-12 m-0 p-0 d-block d-lg-none">
+    <div class="col-xs-12">
+        <div class="col-xs-12 p-0">
+            <div class="div-imageUrl-detail">
+                <img class="img-contain" class="image_border" src="{{modelDetail.imageUrl}}" alt="" height="200px" width="100%">
+            </div>
+            <div class="div-title-detail">{{modelDetail.title}}</div>
+            <div class="col-xs-12 pd0">
+                <div class="div-box-date">{{modelDetail.createDate | dateFormat}}</div>
+            </div>
+            <div class="col-xs-12 pd0">
+                <div class="div-description-detail" [innerHtml]="modelDetail.description | safeHtml"></div>
+                <!-- <div *ngIf="serviceProviderService.lang == 'en'" class="div-description-detail" [innerHtml]="modelDetail.descriptionEN | safeHtml"></div> -->
+            </div>
+            <div class="pointer col-xs-12 div-socialnetwork-m">
+                <div (click)="shareWithFB()">
+                    <img class="img-socialnetwork-m" src="./assets/img/Facebook@2x.png">
+                </div>
+                <div (click)="shareWithLine()">
+                    <img class="img-socialnetwork-m" src="./assets/img/Line@2x.png">
+                </div>
+                <div (click)="copyMessage('This goes to Clipboard')">
+                    <img class="img-socialnetwork-m" src="./assets/img/Copy@3x.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- component footer -->
+<app-d-t1-footer></app-d-t1-footer>

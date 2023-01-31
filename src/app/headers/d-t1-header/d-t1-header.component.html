@@ -1,0 +1,27 @@
+<!-- <div class="fixed-hd"> -->
+<!-- Desktop -->
+<div class="col-md-12 m-0 p-0 d-none d-lg-block">
+    <!-- header 2 -->
+    <div class="col-md-12" style="background-color: #f7f7f7cf; padding: 25px 0px!important; display: grid;grid-template-columns: 320px 1fr;">
+        <div (click)="nav('')" style="text-align: center;">
+            <div>
+                <img src="./assets/img/icon2.png" width="65">
+                <span *ngIf="serviceProviderService.lang == 'th'" class="pointer fh2">{{'logo'| langTh}}</span>
+                <span *ngIf="serviceProviderService.lang == 'en'" class="pointer fh2">{{'logo'| langEn}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Mobile -->
+<div class="col-xs-12 m-0 p-0 d-block d-lg-none">
+    <!-- header 2 -->
+    <div class="col-xs-12" style="background-color: #F7F7F7;padding: 30px 15px 5px 15px;display: flex;align-items: center;">
+        <div class="col-xs-9 p-0" (click)="nav('')" style="display: flex;">
+            <img src="./assets/img/icon2.png" width="45">
+            <div style="width: 10px;"></div>
+            <div *ngIf="serviceProviderService.lang == 'th'" class="pointer fhm2" style="display: flex;align-items: center;padding: 0;">{{'logo'| langTh}}</div>
+            <div *ngIf="serviceProviderService.lang == 'en'" class="pointer fhm2" style="display: flex;align-items: center;padding: 0;">{{'logo'| langEn}}</div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,79 @@
+<!-- component header type 1 -->
+<app-d-t1-header></app-d-t1-header>
+<!--  -->
+
+<div class="container _1QwuCJ mt125">
+  <app-d-user [menuActive]="'address'"></app-d-user>
+
+  <div class="_3D9BVC">
+    <div class="h4QDlo" role="main">
+      <div class="my-address-tab">
+        <div></div>
+        <div></div>
+        <div class="my-account-section">
+          <div class="my-account-section__header">
+            <div class="my-account-section__header-left">
+              <div class="my-account-section__header-title">ที่อยู่ของฉัน</div>
+              <div class="my-account-section__header-subtitle"></div>
+            </div>
+            <div class="my-account-section__header-button">
+              <button class="shopee-button-solid shopee-button-solid--primary shopee-button-solid--address-tab"
+                (click)="setShowModal(true)">
+                <div class="button-with-icon">
+                  <div class="button-with-icon__icon"><svg enable-background="new 0 0 10 10" viewBox="0 0 10 10" x="0"
+                      y="0" class="shopee-svg-icon icon-plus-sign">
+                      <polygon
+                        points="10 4.5 5.5 4.5 5.5 0 4.5 0 4.5 4.5 0 4.5 0 5.5 4.5 5.5 4.5 10 5.5 10 5.5 5.5 10 5.5">
+                      </polygon>
+                    </svg>
+                  </div>
+                  <div>เพิ่มที่อยู่</div>
+                </div>
+              </button></div>
+          </div>
+          <div *ngFor="let i of model; let idxShop = index">
+            <div class="address-card">
+              <div></div>
+              <div class="address-display__left">
+                <div class="address-display__field-container address-display__field-container--name">
+                  <div class="address-display__field-label">ชื่อ-นามสกุล</div>
+                  <div class="address-display__field-content">
+                    <span class="address-display__name-text">{{i.title}}</span>
+                    <div *ngIf="i.isDefault" class="bacc-default-badge">ค่าเริ่มต้น</div>
+                    <div *ngIf="i.isDefault" class="address-display__label_pickup">การนัดรับสินค้า</div>
+                    <div *ngIf="i.isDefault" class="address-display__label_pickup">ที่อยู่ในการรับสินค้าคืน</div>
+                  </div>
+                </div>
+                <div class="address-display__field-container">
+                  <div class="address-display__field-label">โทรศัพท์</div>
+                  <div class="address-display__field-content">(+66) {{i.phone}}</div>
+                </div>
+                <div class="address-display__field-container address-display__field-container__address">
+                  <div class="address-display__field-label">ที่อยู่</div>
+                  <div class="address-display__field-content"><span>{{i.address}}
+                      {{i.subDistrictTitle}}<br>{{i.districtTitle}}<br>{{i.provinceTitle}}<br>{{i.postalCode}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="address-card__buttons">
+                <div class="address-card__button-group">
+                  <div class="address-card__button-group">
+                    <button class="bacc-secondary-action-btn" (click)="edit(i)">แก้ไข</button>
+                    <button class="bacc-secondary-action-btn" (click)="delete(i.code)">ลบ</button>
+                  </div>
+                </div>
+                <div class="address-card__button-group">
+                  <button type="button"
+                    class="btn btn-light btn--s btn--inline btn-light--disabled address-card__button"
+                    aria-disabled="true" (click)="setIsDefault(i.code)">ตั้งเป็นค่าตั้งต้น</button>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <modal-address *ngIf="showModal" [model]="modelSelected" (callback)="fromModal($event)"></modal-address>
+</div>

@@ -1,0 +1,184 @@
+<!-- component header type 1 -->
+<app-d-t1-header></app-d-t1-header>
+
+
+<!-- content -->
+<div class="col-md-12 m-0 p-0 d-none d-lg-block minDiv">
+    <div class="col-md-1">
+
+    </div>
+    <div class="col-md-10 pd0" *ngIf="serviceProviderService.lang == 'th'">
+        <div class="col-md-12" style="color: #1B6CA8;font-size: 40px;font-weight: bold;">
+            ผลค้นหารายชื่อผู้ประกอบวิชาชีพการสัตวแพทย์
+        </div>
+        <div class="col-md-12 fs2 mt30">
+            "{{this.code}}"&nbsp;&nbsp;พบจำนวน&nbsp;&nbsp;{{this.total}}&nbsp;&nbsp;คน
+        </div>
+        <div class="col-md-12 mt40 mb70">
+            <span class="fs2" style="color: #1B6CA8;">ผู้ประกอบวิชาชีพการสัตวแพทย์ชั้น 1 พบจำนวน {{this.total1}}
+                คน</span>
+            <div class="df" style="justify-content: center;">
+                <div style="width: 1652px;">
+                    <div class="df" style="margin-top: 20px;flex-wrap: wrap;">
+                        <div *ngFor="let item of model1;"
+                            style="width: 32%;height: 500px;border-radius: 10px;margin: 15px 1% 0 0;background-color: #CFDAE3;text-align: center;">
+                            <div style="border-radius: 260px;margin-top: 30px;">
+                                <img src="{{item.imageUrl}}" height="320px" width="320px" alt=""
+                                    style="border-radius: 260px;">
+                            </div>
+                            <div class="dfc mt30" style="
+                        padding: 10px;">
+                                <div style="font-size: 15px;font-weight: bold;">
+                                    {{item.prefixName}}&nbsp;{{item.firstName}}&nbsp;{{item.lastName}}</div>
+                                <div style="font-size: 15px;font-weight: bold;">
+                                    {{item.prefixNameEN}}&nbsp;{{item.firstNameEN}}&nbsp;{{item.lastNameEN}}</div>
+                                <div style="color: #707070;font-size: 15px;margin-top: 10px;">{{item.description}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 mt40 mb70">
+            <span class="fs2" style="color: #1B6CA8;">ผู้ประกอบวิชาชีพการสัตวแพทย์ชั้น 2 พบจำนวน {{this.total2}}
+                คน</span>
+            <div class="df" style="justify-content: center;">
+                <div style="width: 1652px;">
+                    <div class="df" style="margin-top: 20px;flex-wrap: wrap;">
+                        <div *ngFor="let item of model2;"
+                            style="width: 32%;height: 500px;border-radius: 10px;margin: 15px 1% 0 0;background-color: #CFDAE3;text-align: center;">
+                            <div style="border-radius: 260px;margin-top: 30px;">
+                                <img src="{{item.imageUrl}}" height="320px" width="320px" alt=""
+                                    style="border-radius: 260px;">
+                            </div>
+                            <div class="dfc mt30" style="
+                        padding: 10px;">
+                                <div style="font-size: 15px;font-weight: bold;">
+                                    {{item.prefixName}}&nbsp;{{item.firstName}}&nbsp;{{item.lastName}}</div>
+                                <div style="font-size: 15px;font-weight: bold;">
+                                    {{item.prefixNameEN}}&nbsp;{{item.firstNameEN}}&nbsp;{{item.lastNameEN}}</div>
+                                <div style="color: #707070;font-size: 15px;margin-top: 10px;">{{item.description}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-10 pd0" *ngIf="serviceProviderService.lang == 'en'">
+        <div class="col-md-12" style="color: #1B6CA8;font-size: 40px;font-weight: bold;">
+            Search results for a list of veterinary practitioners
+        </div>
+        <div class="col-md-12 fs2 mt30">
+            "{{this.code}}"&nbsp;&nbsp;number found&nbsp;&nbsp;{{this.total}}&nbsp;&nbsp;person
+        </div>
+        <div class="col-md-12 mt40 mb70">
+            <span class="fs2" style="color: #1B6CA8;">Class veterinary practitioner 1 number found {{this.total1}}
+                person</span>
+            <div class="df" style="justify-content: center;">
+                <div style="width: 1652px;">
+                    <div class="df" style="margin-top: 20px;flex-wrap: wrap;">
+                        <div *ngFor="let item of model1;"
+                            style="width: 32%;height: 500px;border-radius: 10px;margin: 15px 1% 0 0;background-color: #CFDAE3;text-align: center;">
+                            <div style="border-radius: 260px;margin-top: 30px;">
+                                <img src="{{item.imageUrl}}" height="320px" width="320px" alt=""
+                                    style="border-radius: 260px;">
+                            </div>
+                            <div class="dfc mt30" style="
+                        padding: 10px;">
+                                <div style="font-size: 15px;font-weight: bold;">
+                                    {{item.prefixName}}&nbsp;{{item.firstName}}&nbsp;{{item.lastName}}</div>
+                                <div style="font-size: 15px;font-weight: bold;">
+                                    {{item.prefixNameEN}}&nbsp;{{item.firstNameEN}}&nbsp;{{item.lastNameEN}}</div>
+                                <div style="color: #707070;font-size: 15px;margin-top: 10px;">{{item.description}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 mt40 mb70">
+            <span class="fs2" style="color: #1B6CA8;">Class veterinary practitioner 2 number found {{this.total2}}
+                person</span>
+            <div class="df" style="justify-content: center;">
+                <div style="width: 1652px;">
+                    <div class="df" style="margin-top: 20px;flex-wrap: wrap;">
+                        <div *ngFor="let item of model2;"
+                            style="width: 32%;height: 500px;border-radius: 10px;margin: 15px 1% 0 0;background-color: #CFDAE3;text-align: center;">
+                            <div style="border-radius: 260px;margin-top: 30px;">
+                                <img src="{{item.imageUrl}}" height="320px" width="320px" alt=""
+                                    style="border-radius: 260px;">
+                            </div>
+                            <div class="dfc mt30" style="
+                        padding: 10px;">
+                                <div style="font-size: 15px;font-weight: bold;">
+                                    {{item.prefixName}}&nbsp;{{item.firstName}}&nbsp;{{item.lastName}}</div>
+                                <div style="font-size: 15px;font-weight: bold;">
+                                    {{item.prefixNameEN}}&nbsp;{{item.firstNameEN}}&nbsp;{{item.lastNameEN}}</div>
+                                <div style="color: #707070;font-size: 15px;margin-top: 10px;">{{item.description}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+
+<div class="col-xs-12 m-0 d-block d-lg-none" style="padding: 0 2vw;">
+    <div class="col-md-12 p-0 m-0 kanit_l c-blue-deep mt-4" *ngIf="serviceProviderService.lang == 'th'">
+        ผลค้นหารายชื่อผู้ประกอบวิชาชีพการสัตวแพทย์
+    </div>
+    <div class="col-md-12 p-0 m-0 mt30 kanit_m" *ngIf="serviceProviderService.lang == 'th'">
+        "{{this.code}}"&nbsp;&nbsp;พบจำนวน&nbsp;&nbsp;{{this.total}}&nbsp;&nbsp;คน
+    </div>
+    <div class="col-md-12 p-0 m-0 kanit_l c-blue-deep mt-4" *ngIf="serviceProviderService.lang == 'en'">
+        Search results for a list of veterinary practitioners
+    </div>
+    <div class="col-md-12 p-0 m-0 mt30 kanit_m" *ngIf="serviceProviderService.lang == 'en'">
+        "{{this.code}}"&nbsp;&nbsp;number found&nbsp;&nbsp;{{this.total}}&nbsp;&nbsp;person
+    </div>
+    <div class="col-md-12 p-0 m-0 mt-5 mb-5">
+        <span *ngIf="serviceProviderService.lang == 'th'" class="fs2" style="color: #1B6CA8;">ผู้ประกอบวิชาชีพการสัตวแพทย์ชั้น 1 พบจำนวน {{this.total1}}
+            คน</span>
+        <span *ngIf="serviceProviderService.lang == 'en'" class="fs2" style="color: #1B6CA8;">Class veterinary practitioner 1 number found {{this.total1}}
+            person</span>
+        <div class="df" style="flex-wrap: wrap;column-gap: 2vw;row-gap: 2vw;justify-content: center;">
+            <div *ngFor="let item of model1;"
+                style="border-radius: 2vw;width: 47vw;background-color: #CFDAE3;text-align: center;">
+                <img src="{{item.imageUrl}}" width="100%" alt=""
+                    style="height: 47vw;border-radius: 26.5vw;object-fit: cover;">
+                <div class="dfc mt-2" style="padding: 10px;">
+                    <div class="kanit_m" style="font-size: 10px;font-weight: bold;">
+                        {{item.prefixName}}&nbsp;{{item.firstName}}&nbsp;{{item.lastName}}</div>
+                    <div class="kanit_sm c-70" style="font-size: 10px;font-weight: bold;">
+                        {{item.prefixNameEN}}&nbsp;{{item.firstNameEN}}&nbsp;{{item.lastNameEN}}</div>
+                    <div class="kanit_sm c-70 mt-2" style="color: #707070;font-size: 10px;margin-top: 10px;">
+                        {{item.description}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 p-0 m-0 mt-5 mb-5">
+        <span *ngIf="serviceProviderService.lang == 'th'" class="fs2" style="color: #1B6CA8;">ผู้ประกอบวิชาชีพการสัตวแพทย์ชั้น 2 พบจำนวน {{this.total2}}
+            คน</span>
+        <span *ngIf="serviceProviderService.lang == 'en'" class="fs2" style="color: #1B6CA8;">Class veterinary practitioner 2 number found {{this.total2}}
+            person</span>
+        <div class="df" style="flex-wrap: wrap;column-gap: 2vw;row-gap: 2vw;justify-content: center;">
+            <div *ngFor="let item of model2;"
+                style="border-radius: 2vw;width: 47vw;background-color: #CFDAE3;text-align: center;">
+                <img src="{{item.imageUrl}}" width="100%" alt=""
+                    style="height: 47vw;border-radius: 26.5vw;object-fit: cover;">
+                <div class="dfc mt-2" style="padding: 10px;">
+                    <div class="kanit_m" style="font-size: 10px;font-weight: bold;">
+                        {{item.prefixName}}&nbsp;{{item.firstName}}&nbsp;{{item.lastName}}</div>
+                    <div class="kanit_sm c-70" style="font-size: 10px;font-weight: bold;">
+                        {{item.prefixNameEN}}&nbsp;{{item.firstNameEN}}&nbsp;{{item.lastNameEN}}</div>
+                    <div class="kanit_sm c-70 mt-2" style="color: #707070;font-size: 10px;margin-top: 10px;">
+                        {{item.description}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

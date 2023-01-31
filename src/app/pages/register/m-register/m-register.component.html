@@ -1,0 +1,71 @@
+<div>
+    <nav class="nav-login">
+      <div class="nav-in">
+        <div class="nav-r1">
+          <a href="/">
+            <div class="logo-primary" style="height: 50px;width: 100px;"></div>
+            <!-- <img src="./assets/img/we_mart_b.png" style="height: 50;"> -->
+          </a>
+          <div style="margin-left: 10px;">สมัครใหม่</div>
+        </div>
+        <a href="" target="_blank" rel="noopener noreferrer" class="login-help c-primary-light">ต้องการความช่วยเหลือ?</a>
+      </div>
+    </nav>
+    <div class="login-content bg-primary-light">
+      <form class="r2">
+        <div class="mbf"><span>สมัครใหม่</span></div>
+        <div class="mbf box-border">
+          <input class="input" type="text" [(ngModel)]="model.username" (ngModelChange)="model.username = $event" placeholder="หมายเลขโทรศัพท์" autocomplete="on"
+            name="loginKey" maxlength="128" value="">
+        </div>
+        <div class="mbf box-border">
+          <input class="input" type="text" [(ngModel)]="model.name" (ngModelChange)="model.name = $event" placeholder="ชื่อ-สกุล" autocomplete="on"
+            name="loginKey" maxlength="128" value="">
+        </div>
+        <div class="mbf box-border">
+          <input class="input" type="password" [(ngModel)]="model.password" (ngModelChange)="model.password = $event" placeholder="รหัสผ่าน" autocomplete="on" name="loginPassword" maxlength="128"
+            value="">
+        </div>
+        <button class="mbf login-confirm bg-primary-light" (click)="create()">ตกลง</button>
+        <div class="mbf sc-box">
+          <div class="sc-line"></div>
+          <span class="sc-line-txt">หรือ</span>
+          <div class="sc-line"></div>
+        </div>
+        <div class="mbf sc-box" style="margin-left: -10px;">
+          <button class="sc-btn bgf">
+              <div>
+                  <img src="./assets/img/facebook_circle.png" style="height:15px; width:15px;"/>
+              </div>
+              <div class="sc-txt">Facebook</div>
+          </button>
+          <button class="sc-btn bgg">
+              <div>
+                  <img src="./assets/img/google_circle.png" style="height:15px; width:15px;"/>
+              </div>
+              <div class="sc-txt">Google</div>
+          </button>
+          <button class="sc-btn bgl">
+              <div>
+                  <img src="./assets/img/line_circle.png" style="height:15px; width:15px;"/>
+              </div>
+              <div class="sc-txt">Line</div>
+          </button>
+          <button class="sc-btn bga">
+              <div class="BnBJFp">
+                  <div class="_30SGUu social-white-background social-white-fb-png"></div>
+              </div>
+              <div class="sc-txt">Apple</div>
+          </button>
+        </div>
+        <div style="display: flex; justify-content: center;">
+            <p style="color: grey; font-size: 14px;">หากมีบัญชีผู้ใช้แล้ว คุณสามารถ </p>
+            <p style="color: red; font-size: 14px;cursor: pointer;" (click)="goToLogin()">เข้าสู่ระบบ</p>
+        </div>
+      </form>
+    </div>
+    <footer>
+  
+    </footer>
+  </div>
+  

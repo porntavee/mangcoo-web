@@ -1,0 +1,19 @@
+<!-- component header type 1 -->
+<app-d-t1-header></app-d-t1-header>
+<div class="col-md-1"></div>
+<div class="col-md-10">
+        <div style="color: #216DA6;font-size: 24px;margin: 80px 0 20px 0;">สำนักงานสัตวแพทยสภา</div>
+        <div class="df">
+            <div *ngFor="let category of categoryList">
+                <div *ngIf="category.code != ''" class="menu-office pointer" [class.menu-office-active]="category.code === categorySelected.code" (click)="selectedCategory(category.code)">{{category.code}}</div>
+                <div *ngIf="category.code == ''" class="menu-office pointer" [class.menu-office-active]="category.code === categorySelected.code" (click)="selectedCategory(category.code)"><span class="glyphicon glyphicon-menu-hamburger pay-success"></span></div>
+            </div>
+        </div>
+        <div class="line-c5c5c5"></div>
+        <div style="color: #216DA6;margin: 40px 0;font-size: 24px;">{{categorySelected.code}}</div>
+        <div>
+            <p>{{categorySelected.title}}</p>
+        </div>
+</div>
+<div class="col-md-1"></div>
+<app-d-t1-footer></app-d-t1-footer>

@@ -1,0 +1,69 @@
+<!-- header 1 -->
+<div>
+  <div class="box-he bg-twotone">
+    <span style="margin-left: 10px;color: white;" class="glyphicon glyphicon-chevron-left fs2"
+      (click)="backClicked()"></span>
+    รถเข็น
+  </div>
+</div>
+
+<div style="overflow-x: scroll;padding-bottom: 60px;">
+  <div *ngFor="let i of model; let idxShop = index">
+    <div class="box-sh bg-white">
+      <div style="margin-right: 10px;">
+        <input type="checkbox" [(ngModel)]="i.isSelected" [ngModelOptions]="{standalone: true}"
+          (click)="checkUncheckShop(idxShop)" />
+      </div>
+      <div>{{i.shopName}}</div>
+    </div>
+    <div *ngFor="let j of i.items; let idxItem = index">
+      <div class="box-pr bg-white">
+        <div style="margin-right: 15px; margin-top: 35px;">
+          <input type="" [(ngModel)]="j.isSelected" [ngModelOptions]="{standalone: true}"
+            (click)="checkUncheckItem(idxShop,idxItem)" />
+        </div>
+        <img src="{{j.imageUrl}}" height="80px" width="80px" alt="" style="margin:10px 0">
+        <div class="pr-text-detail">
+          <span class="text">{{j.goodsTitle}}</span>
+          <div class="s5"></div>
+          <span class="text pointer">ตัวเลือกสินค้า: {{j.title}}</span>
+          <div class="s5"></div>
+          <div style="display: flex;">
+            <span *ngIf="j.disCountUnit != ''" class="text-price-f pointer">{{formatPrice(j.price)}}</span>
+            <span class="text-price-s pointer">{{formatPrice(j.netPrice)}}</span>
+          </div>
+          <div class="s5"></div>
+          <div style="display: flex;">
+            <div class="pointer box-qty" (click)="updateQty(0,idxShop,idxItem)">-</div>
+            <div class="pointer text-qty">{{j.qty}}</div>
+            <div class="pointer box-qty" (click)="updateQty(1,idxShop,idxItem)">+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="emptycart" *ngIf="model.length <= 0">
+  <h3>ยังไม่มีสินค้าในตระกร้า</h3>
+  <div class="pointer detail-sum" style="color: #ffffff"
+    (click)="goTo('')">
+    ช็อปเลย
+  </div>
+</div>
+</div>
+<div class="box-sum">
+  <div style="display: flex;align-items: center;">
+    <input type="checkbox" [(ngModel)]="itemSelected" [ngModelOptions]="{standalone: true}"
+      (click)="checkUncheckAll()" />
+    &nbsp;&nbsp;&nbsp;เลือกทั้งหมด ({{totalQty}})&nbsp;&nbsp;&nbsp;
+    <span class="pointer" (click)="removeSelected()">ลบ</span>
+  </div>
+  <div style="display: flex;align-items: center;">
+    <span>รวม&nbsp;:&nbsp;&nbsp;</span>
+    <span style="color:#ED5643;font-size: 18px;">{{formatPrice(totalPrice)}}&nbsp;&nbsp;</span>
+    <div class="pointer detail-sum" [ngStyle]="{'background-color:': (totalPrice > 0) ? '#ED5643' : '#707070'}"
+      (click)="confirm()">
+      สั่งสินค้า
+    </div>
+  </div>
+</div>

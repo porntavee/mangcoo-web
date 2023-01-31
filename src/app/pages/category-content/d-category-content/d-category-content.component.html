@@ -1,0 +1,1009 @@
+<app-d-t1-header></app-d-t1-header>
+<!-- banner download -->
+<!-- banner -->
+<div class="col-md-12 pt-5 minDiv mt125">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 p-0 zidx1">
+      <carousel *ngIf="isBannerAvailable" [images]="images" [height]="320" [cellWidth]="'100%'" [dots]="true"
+        [arrows]="false" [autoplay]="true" [loop]="true"></carousel>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>
+
+<!-- SUKSAPAN Mall -->
+<div class="col-md-12 p-4 minDiv">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 pt-2 bg-white">
+      <div class="row pt5">
+        <h3 class="col-md-6">&nbsp;&nbsp;&nbsp;&nbsp;SSP Mall</h3>
+        <h3 class="col-md-6 pointer" (click)="navTo('all/shop')" align='right'>ดูทั้งหมด</h3>
+      </div>
+      <div class="row scrollmenubottom">
+        <table class="w100p">
+          <tr>
+            <td class="pointer td2 w10p" *ngFor="let item of r_product_Model;" (click)="selectedMall(item.code)">
+              <img class="rcorners1" style="background-color: #ffffff;" [src]="item.imageUrl" width="135" height="135">
+              <div class="p-3"></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>
+
+<!-- TOP PICKS OF 2020 -->
+<div class="col-md-12 p-4 minDiv">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 pt-2 bg-white">
+      <div class="row pt5">
+        <h3 class="col-md-6">&nbsp;&nbsp;&nbsp;&nbsp;TOP PICKS OF 2020</h3>
+        <!-- <h3 class="col-md-6" align='right'>ดูทั้งหมด</h3> -->
+      </div>
+      <div class="row scrollmenubottom">
+        <table class="w100p">
+          <tr>
+            <td class="pointer td2 w10p" *ngFor="let item of products_Model;" (click)="selectedCategory(item.code)">
+              <img class="rcorners1" [src]="item.imageUrl" width="135" height="135">
+              <div class="p-3"></div>
+            </td>
+            <!-- <td class="pointer td2 w10p" *ngFor="let item of top_picks_Model;" (click)="selectedCategory(item.code)">
+              <img class="rcorners1" [src]="item.imageUrl" width="135" height="135">
+              <div class="p-3"></div>
+            </td> -->
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>
+
+<!-- TOP TRENDING OF 2020 -->
+<!-- <div class="col-md-12 p-4 minDiv">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10 pt-2 bg-white">
+            <div class="row pt5">
+                <h3 class="col-md-6">&nbsp;&nbsp;&nbsp;&nbsp;TOP TRENDING OF 2020</h3>
+                <h3 class="col-md-6" align='right'>ดูทั้งหมด</h3>
+            </div>
+            <div class="row scrollmenubottom">
+                <table class="w100p">
+                    <tr>
+                        <td class="pointer td2 w10p " *ngFor="let item of top_trending_Model;" (click)="selectedCategory(item.code)">
+                            <img class="rcorners1" [src]="item.imageUrl" width="135" height="135">
+                            <div class="p-3"></div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div> -->
+
+<div class="col-md-12 p0 minDiv">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 p-4 ">
+      <div class="row">
+        <div class="col-md-2">
+          <!-- หมวดหมู่ทั้งหมด -->
+          <div class="col-md-12 p0" style="margin-bottom: 10px;">
+            <a class="category-list__header" style="font-size: 1.6rem;">
+              <svg viewBox="0 0 12 10" class="svg-icon category-list__header-icon icon-all-cate">
+                <g fill-rule="evenodd" stroke="none" stroke-width="1">
+                  <g transform="translate(-373 -208)">
+                    <g transform="translate(155 191)">
+                      <g transform="translate(218 17)">
+                        <path d="m0 2h2v-2h-2zm4 0h7.1519633v-2h-7.1519633z"></path>
+                        <path d="m0 6h2v-2h-2zm4 0h7.1519633v-2h-7.1519633z"></path>
+                        <path d="m0 10h2v-2h-2zm4 0h7.1519633v-2h-7.1519633z"></path>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </svg> หมวดหมู่ทั้งหมด
+            </a>
+            <div class="col-md-10 p0">
+              <div class="row">
+                <span class="pointer" *ngFor="let item of category_all_Model;" (click)="categoryCheckIsActive(item)"
+                  [ngClass]="{'c-secondary': item.isActive === true}" style="font-size: 1.4rem;margin: 10px 0 0 0">
+                  <svg style="width: 5%;" viewBox="0 0 4 7"
+                    class="svg-icon category-list__sub-category__caret icon-down-arrow-right-filled">
+                    <polygon *ngIf="item.isActive" points="4 3.5 0 0 0 7"></polygon>
+                  </svg>
+                  {{item.title}}
+                </span>
+              </div>
+            </div>
+          </div>
+          <!-- ค้นหาแบบละเอียด -->
+          <div class="col-md-12 p0" style="margin-top: 15px;">
+            <div class="search-filter-status _3rumdU" style="font-size: 16px;">
+              <svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0" y="0" class="svg-icon ">
+                <g>
+                  <polyline fill="none" points="5.5 13.2 5.5 5.8 1.5 1.2 13.5 1.2 9.5 5.8 9.5 10.2"
+                    stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10">
+                  </polyline>
+                  <polyline id="filter__ticked" points="9.2 11.3 10.3 12.1 11.8 10.4"
+                    style="fill: none; stroke: rgb(255, 255, 255); stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 10; stroke-width: 0.5;">
+                  </polyline>
+                  <circle cx="10.5" cy="11.2" r="2.5" stroke="none"></circle>
+                  <use xlink:href="#filter__ticked"></use>
+                </g>
+              </svg>
+              <div class="search-filter-status__text">
+                ค้นหาแบบละเอียด
+              </div>
+            </div>
+            <div class="col-md-10">
+              <div class="row filter-group">
+                <div class="filter checkbox-filter">
+                  ส่งจาก
+                  <div class="checkbox" *ngFor="let item of detailed_search_Model;">
+                    <label class="checkbox__control">
+                      <input type="checkbox" [checked]="item.isActive" (change)="onSelectionChanged(item)">
+                      <div class="checkbox__box"><i> </i></div><span class="checkbox__label">{{item.title}}</span>
+                    </label>
+                  </div>
+                  <div (click)="category_more('detailed_search_Model')" *ngIf="detailed_search_Model.length <= 4"
+                    class="filter-group__toggle-btn">
+                    เพิ่มเติม<svg enable-background="new 0 0 11 11" viewBox="0 0 11 11" x="0" y="0"
+                      class="svg-icon icon-arrow-down">
+                      <g>
+                        <path
+                          d="m11 2.5c0 .1 0 .2-.1.3l-5 6c-.1.1-.3.2-.4.2s-.3-.1-.4-.2l-5-6c-.2-.2-.1-.5.1-.7s.5-.1.7.1l4.6 5.5 4.6-5.5c.2-.2.5-.2.7-.1.1.1.2.3.2.4z">
+                        </path>
+                      </g>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ยี่ห้อ -->
+          <div class="col-md-12 p0">
+            <div class="filter-group">
+              <div class="filter-group__header">ยี่ห้อ</div>
+              <div>
+                <div class="filter checkbox-filter">
+                  <div class="checkbox" *ngFor="let item of brand_Model;">
+                    <label class="checkbox__control">
+                      <input type="checkbox" [checked]="item.isActive" (change)="onSelectionChanged(item)">
+                      <div class="checkbox__box"><i> </i></div><span class="checkbox__label">{{item.title}}</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ช่วงราคา -->
+          <div class="col-md-12 p0">
+            <div class="filter-group price-range-filter price-range-filter--th">
+              <div class="filter-group__header price-range-filter__header">
+                ช่วงราคา
+              </div>
+              <div class="filter-group__body price-range-filter__edit">
+                <div class="price-range-filter__inputs">
+                  <input type="text" maxlength="13" class="price-range-filter__input" placeholder="฿ ใส่ราคาต่ำสุด"
+                    value="">
+                  <div class="price-range-filter__range-line">
+
+                  </div>
+                  <input type="text" maxlength="13" class="price-range-filter__input" placeholder="฿ ใส่ราคาสูงสุด"
+                    value="">
+                </div>
+              </div>
+              <button class="button-solid button-solid--primary _1-VOCH" style="background-color: rgb(238, 77, 45);">
+                ตกลง
+              </button>
+            </div>
+          </div>
+
+          <!-- คะแนน -->
+          <div class="col-md-12 p0">
+            <div class="filter-group _1OOUMW">
+              <div class="filter-group__header">คะแนน </div>
+              <div class="folding-items filter-group__body folding-items--folded">
+                <div [class]="start1 ? '_1LYq_U NvQodS' : '_1LYq_U'" (click)="checkstart(1)">
+                  <div class="rating-stars__container"><svg viewBox="0 0 9.5 8"
+                      class="svg-icon rating-stars__star icon-rating-colored">
+                      <defs>
+                        <linearGradient id="ratingStarGradient" x1="50%" x2="50%" y1="0%" y2="100%">
+                          <stop offset="0" stop-color="#ffca11"></stop>
+                          <stop offset="1" stop-color="#ffad27"></stop>
+                        </linearGradient>
+                        <polygon id="ratingStar"
+                          points="14.910357 6.35294118 12.4209136 7.66171903 12.896355 4.88968305 10.8823529 2.92651626 13.6656353 2.52208166 14.910357 0 16.1550787 2.52208166 18.9383611 2.92651626 16.924359 4.88968305 17.3998004 7.66171903">
+                        </polygon>
+                      </defs>
+                      <g fill="url(#ratingStarGradient)" fill-rule="evenodd" stroke="none" stroke-width="1">
+                        <g transform="translate(-876 -1270)">
+                          <g transform="translate(155 992)">
+                            <g transform="translate(600 29)">
+                              <g transform="translate(10 239)">
+                                <g transform="translate(101 10)">
+                                  <use stroke="#ffa727" stroke-width=".5" xlink:href="#ratingStar"></use>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </g>
+                      </g>
+                    </svg>
+                    <svg viewBox="0 0 9.5 8" class="svg-icon rating-stars__star icon-rating-colored">
+                      <defs>
+                        <linearGradient id="ratingStarGradient" x1="50%" x2="50%" y1="0%" y2="100%">
+                          <stop offset="0" stop-color="#ffca11"></stop>
+                          <stop offset="1" stop-color="#ffad27"></stop>
+                        </linearGradient>
+                        <polygon id="ratingStar"
+                          points="14.910357 6.35294118 12.4209136 7.66171903 12.896355 4.88968305 10.8823529 2.92651626 13.6656353 2.52208166 14.910357 0 16.1550787 2.52208166 18.9383611 2.92651626 16.924359 4.88968305 17.3998004 7.66171903">
+                        </polygon>
+                      </defs>
+                      <g fill="url(#ratingStarGradient)" fill-rule="evenodd" stroke="none" stroke-width="1">
+                        <g transform="translate(-876 -1270)">
+                          <g transform="translate(155 992)">
+                            <g transform="translate(600 29)">
+                              <g transform="translate(10 239)">
+                                <g transform="translate(101 10)">
+                                  <use stroke="#ffa727" stroke-width=".5" xlink:href="#ratingStar"></use>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </g>
+                      </g>
+                    </svg>
+                    <svg viewBox="0 0 9.5 8" class="svg-icon rating-stars__star icon-rating-colored">
+                      <defs>
+                        <linearGradient id="ratingStarGradient" x1="50%" x2="50%" y1="0%" y2="100%">
+                          <stop offset="0" stop-color="#ffca11"></stop>
+                          <stop offset="1" stop-color="#ffad27"></stop>
+                        </linearGradient>
+                        <polygon id="ratingStar"
+                          points="14.910357 6.35294118 12.4209136 7.66171903 12.896355 4.88968305 10.8823529 2.92651626 13.6656353 2.52208166 14.910357 0 16.1550787 2.52208166 18.9383611 2.92651626 16.924359 4.88968305 17.3998004 7.66171903">
+                        </polygon>
+                      </defs>
+                      <g fill="url(#ratingStarGradient)" fill-rule="evenodd" stroke="none" stroke-width="1">
+                        <g transform="translate(-876 -1270)">
+                          <g transform="translate(155 992)">
+                            <g transform="translate(600 29)">
+                              <g transform="translate(10 239)">
+                                <g transform="translate(101 10)">
+                                  <use stroke="#ffa727" stroke-width=".5" xlink:href="#ratingStar"></use>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </g>
+                      </g>
+                    </svg>
+                    <svg viewBox="0 0 9.5 8" class="svg-icon rating-stars__star icon-rating-colored">
+                      <defs>
+                        <linearGradient id="ratingStarGradient" x1="50%" x2="50%" y1="0%" y2="100%">
+                          <stop offset="0" stop-color="#ffca11"></stop>
+                          <stop offset="1" stop-color="#ffad27"></stop>
+                        </linearGradient>
+                        <polygon id="ratingStar"
+                          points="14.910357 6.35294118 12.4209136 7.66171903 12.896355 4.88968305 10.8823529 2.92651626 13.6656353 2.52208166 14.910357 0 16.1550787 2.52208166 18.9383611 2.92651626 16.924359 4.88968305 17.3998004 7.66171903">
+                        </polygon>
+                      </defs>
+                      <g fill="url(#ratingStarGradient)" fill-rule="evenodd" stroke="none" stroke-width="1">
+                        <g transform="translate(-876 -1270)">
+                          <g transform="translate(155 992)">
+                            <g transform="translate(600 29)">
+                              <g transform="translate(10 239)">
+                                <g transform="translate(101 10)">
+                                  <use stroke="#ffa727" stroke-width=".5" xlink:href="#ratingStar"></use>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </g>
+                      </g>
+                    </svg>
+                    <svg viewBox="0 0 9.5 8" class="svg-icon rating-stars__star icon-rating-colored">
+                      <defs>
+                        <linearGradient id="ratingStarGradient" x1="50%" x2="50%" y1="0%" y2="100%">
+                          <stop offset="0" stop-color="#ffca11"></stop>
+                          <stop offset="1" stop-color="#ffad27"></stop>
+                        </linearGradient>
+                        <polygon id="ratingStar"
+                          points="14.910357 6.35294118 12.4209136 7.66171903 12.896355 4.88968305 10.8823529 2.92651626 13.6656353 2.52208166 14.910357 0 16.1550787 2.52208166 18.9383611 2.92651626 16.924359 4.88968305 17.3998004 7.66171903">
+                        </polygon>
+                      </defs>
+                      <g fill="url(#ratingStarGradient)" fill-rule="evenodd" stroke="none" stroke-width="1">
+                        <g transform="translate(-876 -1270)">
+                          <g transform="translate(155 992)">
+                            <g transform="translate(600 29)">
+                              <g transform="translate(10 239)">
+                                <g transform="translate(101 10)">
+                                  <use stroke="#ffa727" stroke-width=".5" xlink:href="#ratingStar"></use>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </g>
+                      </g>
+                    </svg>
+                  </div>
+                </div>
+                <div [class]="start2 ? '_1LYq_U NvQodS' : '_1LYq_U'" (click)="checkstart(2)">
+                  <div class="rating-stars__container">
+                    <svg viewBox="0 0 9.5 8" class="svg-icon rating-stars__star icon-rating-colored">
+                      <defs>
+                        <linearGradient id="ratingStarGradient" x1="50%" x2="50%" y1="0%" y2="100%">
+                          <stop offset="0" stop-color="#ffca11"></stop>
+                          <stop offset="1" stop-color="#ffad27"></stop>
+                        </linearGradient>
+                        <polygon id="ratingStar"
+                          points="14.910357 6.35294118 12.4209136 7.66171903 12.896355 4.88968305 10.8823529 2.92651626 13.6656353 2.52208166 14.910357 0 16.1550787 2.52208166 18.9383611 2.92651626 16.924359 4.88968305 17.3998004 7.66171903">
+                        </polygon>
+                      </defs>
+                      <g fill="url(#ratingStarGradient)" fill-rule="evenodd" stroke="none" stroke-width="1">
+                        <g transform="translate(-876 -1270)">
+                          <g transform="translate(155 992)">
+                            <g transform="translate(600 29)">
+                              <g transform="translate(10 239)">
+                                <g transform="translate(101 10)">
+                                  <use stroke="#ffa727" stroke-width=".5" xlink:href="#ratingStar"></use>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </g>
+                      </g>
+                    </svg>
+                    <svg viewBox="0 0 9.5 8" class="svg-icon rating-stars__star icon-rating-colored">
+                      <defs>
+                        <linearGradient id="ratingStarGradient" x1="50%" x2="50%" y1="0%" y2="100%">
+                          <stop offset="0" stop-color="#ffca11"></stop>
+                          <stop offset="1" stop-color="#ffad27"></stop>
+                        </linearGradient>
+                        <polygon id="ratingStar"
+                          points="14.910357 6.35294118 12.4209136 7.66171903 12.896355 4.88968305 10.8823529 2.92651626 13.6656353 2.52208166 14.910357 0 16.1550787 2.52208166 18.9383611 2.92651626 16.924359 4.88968305 17.3998004 7.66171903">
+                        </polygon>
+                      </defs>
+                      <g fill="url(#ratingStarGradient)" fill-rule="evenodd" stroke="none" stroke-width="1">
+                        <g transform="translate(-876 -1270)">
+                          <g transform="translate(155 992)">
+                            <g transform="translate(600 29)">
+                              <g transform="translate(10 239)">
+                                <g transform="translate(101 10)">
+                                  <use stroke="#ffa727" stroke-width=".5" xlink:href="#ratingStar"></use>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </g>
+                      </g>
+                    </svg>
+                    <svg viewBox="0 0 9.5 8" class="svg-icon rating-stars__star icon-rating-colored">
+                      <defs>
+                        <linearGradient id="ratingStarGradient" x1="50%" x2="50%" y1="0%" y2="100%">
+                          <stop offset="0" stop-color="#ffca11"></stop>
+                          <stop offset="1" stop-color="#ffad27"></stop>
+                        </linearGradient>
+                        <polygon id="ratingStar"
+                          points="14.910357 6.35294118 12.4209136 7.66171903 12.896355 4.88968305 10.8823529 2.92651626 13.6656353 2.52208166 14.910357 0 16.1550787 2.52208166 18.9383611 2.92651626 16.924359 4.88968305 17.3998004 7.66171903">
+                        </polygon>
+                      </defs>
+                      <g fill="url(#ratingStarGradient)" fill-rule="evenodd" stroke="none" stroke-width="1">
+                        <g transform="translate(-876 -1270)">
+                          <g transform="translate(155 992)">
+                            <g transform="translate(600 29)">
+                              <g transform="translate(10 239)">
+                                <g transform="translate(101 10)">
+                                  <use stroke="#ffa727" stroke-width=".5" xlink:href="#ratingStar"></use>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </g>
+                      </g>
+                    </svg>
+                    <svg viewBox="0 0 9.5 8" class="svg-icon rating-stars__star icon-rating-colored">
+                      <defs>
+                        <linearGradient id="ratingStarGradient" x1="50%" x2="50%" y1="0%" y2="100%">
+                          <stop offset="0" stop-color="#ffca11"></stop>
+                          <stop offset="1" stop-color="#ffad27"></stop>
+                        </linearGradient>
+                        <polygon id="ratingStar"
+                          points="14.910357 6.35294118 12.4209136 7.66171903 12.896355 4.88968305 10.8823529 2.92651626 13.6656353 2.52208166 14.910357 0 16.1550787 2.52208166 18.9383611 2.92651626 16.924359 4.88968305 17.3998004 7.66171903">
+                        </polygon>
+                      </defs>
+                      <g fill="url(#ratingStarGradient)" fill-rule="evenodd" stroke="none" stroke-width="1">
+                        <g transform="translate(-876 -1270)">
+                          <g transform="translate(155 992)">
+                            <g transform="translate(600 29)">
+                              <g transform="translate(10 239)">
+                                <g transform="translate(101 10)">
+                                  <use stroke="#ffa727" stroke-width=".5" xlink:href="#ratingStar"></use>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </g>
+                      </g>
+                    </svg>
+                    <div class="rating-stars__star _2Jb05n" style="width: 14px; height: 14px;">
+                      <svg viewBox="0 0 30 30" class="_3c6iA8">
+                        <defs>
+                          <linearGradient id="star__hollow" x1="50%" x2="50%" y1="0%" y2="99.0177926%">
+                            <stop offset="0%" stop-color="#FFD211"></stop>
+                            <stop offset="100%" stop-color="#FFAD27"></stop>
+                          </linearGradient>
+                        </defs>
+                        <path fill="none" fill-rule="evenodd" stroke="url(#star__hollow)" stroke-width="2"
+                          d="M23.226809 28.390899l-1.543364-9.5505903 6.600997-6.8291523-9.116272-1.4059447-4.01304-8.63019038-4.013041 8.63019038-9.116271 1.4059447 6.600997 6.8291523-1.543364 9.5505903 8.071679-4.5038874 8.071679 4.5038874z">
+                        </path>
+                      </svg>
+                      <svg viewBox="0 0 30 30" class="_3c6iA8" style="width: 0%;">
+                        <defs>
+                          <linearGradient id="star__solid" x1="50%" x2="50%" y1="0%" y2="100%">
+                            <stop offset="0%" stop-color="#FFCA11"></stop>
+                            <stop offset="100%" stop-color="#FFAD27"></stop>
+                          </linearGradient>
+                        </defs>
+                        <path fill="url(#star__solid)" fill-rule="evenodd"
+                          d="M14.9988798 25.032153l-8.522024 4.7551739c-.4785069.2670004-.7939037.0347448-.7072938-.5012115l1.6339124-10.1109185-6.8944622-7.1327607c-.3871203-.4005006-.2499178-.7947292.2865507-.8774654l9.5090982-1.46652789L14.5740199.51703028c.2346436-.50460972.6146928-.50543408.8497197 0l4.2693588 9.18141263 9.5090986 1.46652789c.545377.0841102.680337.4700675.28655.8774654l-6.894462 7.1327607 1.633912 10.1109185c.08788.5438118-.232337.7662309-.707293.5012115l-8.5220242-4.7551739z">
+                        </path>
+                      </svg>
+                    </div>
+                  </div> ขึ้นไป
+                </div>
+                <div [class]="start3 ? '_1LYq_U NvQodS' : '_1LYq_U'" (click)="checkstart(3)">
+                  <div class="rating-stars__container"><svg viewBox="0 0 9.5 8"
+                      class="svg-icon rating-stars__star icon-rating-colored">
+                      <defs>
+                        <linearGradient id="ratingStarGradient" x1="50%" x2="50%" y1="0%" y2="100%">
+                          <stop offset="0" stop-color="#ffca11"></stop>
+                          <stop offset="1" stop-color="#ffad27"></stop>
+                        </linearGradient>
+                        <polygon id="ratingStar"
+                          points="14.910357 6.35294118 12.4209136 7.66171903 12.896355 4.88968305 10.8823529 2.92651626 13.6656353 2.52208166 14.910357 0 16.1550787 2.52208166 18.9383611 2.92651626 16.924359 4.88968305 17.3998004 7.66171903">
+                        </polygon>
+                      </defs>
+                      <g fill="url(#ratingStarGradient)" fill-rule="evenodd" stroke="none" stroke-width="1">
+                        <g transform="translate(-876 -1270)">
+                          <g transform="translate(155 992)">
+                            <g transform="translate(600 29)">
+                              <g transform="translate(10 239)">
+                                <g transform="translate(101 10)">
+                                  <use stroke="#ffa727" stroke-width=".5" xlink:href="#ratingStar"></use>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </g>
+                      </g>
+                    </svg>
+                    <svg viewBox="0 0 9.5 8" class="svg-icon rating-stars__star icon-rating-colored">
+                      <defs>
+                        <linearGradient id="ratingStarGradient" x1="50%" x2="50%" y1="0%" y2="100%">
+                          <stop offset="0" stop-color="#ffca11"></stop>
+                          <stop offset="1" stop-color="#ffad27"></stop>
+                        </linearGradient>
+                        <polygon id="ratingStar"
+                          points="14.910357 6.35294118 12.4209136 7.66171903 12.896355 4.88968305 10.8823529 2.92651626 13.6656353 2.52208166 14.910357 0 16.1550787 2.52208166 18.9383611 2.92651626 16.924359 4.88968305 17.3998004 7.66171903">
+                        </polygon>
+                      </defs>
+                      <g fill="url(#ratingStarGradient)" fill-rule="evenodd" stroke="none" stroke-width="1">
+                        <g transform="translate(-876 -1270)">
+                          <g transform="translate(155 992)">
+                            <g transform="translate(600 29)">
+                              <g transform="translate(10 239)">
+                                <g transform="translate(101 10)">
+                                  <use stroke="#ffa727" stroke-width=".5" xlink:href="#ratingStar"></use>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </g>
+                      </g>
+                    </svg>
+                    <svg viewBox="0 0 9.5 8" class="svg-icon rating-stars__star icon-rating-colored">
+                      <defs>
+                        <linearGradient id="ratingStarGradient" x1="50%" x2="50%" y1="0%" y2="100%">
+                          <stop offset="0" stop-color="#ffca11"></stop>
+                          <stop offset="1" stop-color="#ffad27"></stop>
+                        </linearGradient>
+                        <polygon id="ratingStar"
+                          points="14.910357 6.35294118 12.4209136 7.66171903 12.896355 4.88968305 10.8823529 2.92651626 13.6656353 2.52208166 14.910357 0 16.1550787 2.52208166 18.9383611 2.92651626 16.924359 4.88968305 17.3998004 7.66171903">
+                        </polygon>
+                      </defs>
+                      <g fill="url(#ratingStarGradient)" fill-rule="evenodd" stroke="none" stroke-width="1">
+                        <g transform="translate(-876 -1270)">
+                          <g transform="translate(155 992)">
+                            <g transform="translate(600 29)">
+                              <g transform="translate(10 239)">
+                                <g transform="translate(101 10)">
+                                  <use stroke="#ffa727" stroke-width=".5" xlink:href="#ratingStar"></use>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </g>
+                      </g>
+                    </svg>
+                    <div class="rating-stars__star _2Jb05n" style="width: 14px; height: 14px;">
+                      <svg viewBox="0 0 30 30" class="_3c6iA8">
+                        <defs>
+                          <linearGradient id="star__hollow" x1="50%" x2="50%" y1="0%" y2="99.0177926%">
+                            <stop offset="0%" stop-color="#FFD211"></stop>
+                            <stop offset="100%" stop-color="#FFAD27"></stop>
+                          </linearGradient>
+                        </defs>
+                        <path fill="none" fill-rule="evenodd" stroke="url(#star__hollow)" stroke-width="2"
+                          d="M23.226809 28.390899l-1.543364-9.5505903 6.600997-6.8291523-9.116272-1.4059447-4.01304-8.63019038-4.013041 8.63019038-9.116271 1.4059447 6.600997 6.8291523-1.543364 9.5505903 8.071679-4.5038874 8.071679 4.5038874z">
+                        </path>
+                      </svg>
+                      <svg viewBox="0 0 30 30" class="_3c6iA8" style="width: 0%;">
+                        <defs>
+                          <linearGradient id="star__solid" x1="50%" x2="50%" y1="0%" y2="100%">
+                            <stop offset="0%" stop-color="#FFCA11"></stop>
+                            <stop offset="100%" stop-color="#FFAD27"></stop>
+                          </linearGradient>
+                        </defs>
+                        <path fill="url(#star__solid)" fill-rule="evenodd"
+                          d="M14.9988798 25.032153l-8.522024 4.7551739c-.4785069.2670004-.7939037.0347448-.7072938-.5012115l1.6339124-10.1109185-6.8944622-7.1327607c-.3871203-.4005006-.2499178-.7947292.2865507-.8774654l9.5090982-1.46652789L14.5740199.51703028c.2346436-.50460972.6146928-.50543408.8497197 0l4.2693588 9.18141263 9.5090986 1.46652789c.545377.0841102.680337.4700675.28655.8774654l-6.894462 7.1327607 1.633912 10.1109185c.08788.5438118-.232337.7662309-.707293.5012115l-8.5220242-4.7551739z">
+                        </path>
+                      </svg>
+                    </div>
+                    <div class="rating-stars__star _2Jb05n" style="width: 14px; height: 14px;">
+                      <svg viewBox="0 0 30 30" class="_3c6iA8">
+                        <defs>
+                          <linearGradient id="star__hollow" x1="50%" x2="50%" y1="0%" y2="99.0177926%">
+                            <stop offset="0%" stop-color="#FFD211"></stop>
+                            <stop offset="100%" stop-color="#FFAD27"></stop>
+                          </linearGradient>
+                        </defs>
+                        <path fill="none" fill-rule="evenodd" stroke="url(#star__hollow)" stroke-width="2"
+                          d="M23.226809 28.390899l-1.543364-9.5505903 6.600997-6.8291523-9.116272-1.4059447-4.01304-8.63019038-4.013041 8.63019038-9.116271 1.4059447 6.600997 6.8291523-1.543364 9.5505903 8.071679-4.5038874 8.071679 4.5038874z">
+                        </path>
+                      </svg>
+                      <svg viewBox="0 0 30 30" class="_3c6iA8" style="width: 0%;">
+                        <defs>
+                          <linearGradient id="star__solid" x1="50%" x2="50%" y1="0%" y2="100%">
+                            <stop offset="0%" stop-color="#FFCA11"></stop>
+                            <stop offset="100%" stop-color="#FFAD27"></stop>
+                          </linearGradient>
+                        </defs>
+                        <path fill="url(#star__solid)" fill-rule="evenodd"
+                          d="M14.9988798 25.032153l-8.522024 4.7551739c-.4785069.2670004-.7939037.0347448-.7072938-.5012115l1.6339124-10.1109185-6.8944622-7.1327607c-.3871203-.4005006-.2499178-.7947292.2865507-.8774654l9.5090982-1.46652789L14.5740199.51703028c.2346436-.50460972.6146928-.50543408.8497197 0l4.2693588 9.18141263 9.5090986 1.46652789c.545377.0841102.680337.4700675.28655.8774654l-6.894462 7.1327607 1.633912 10.1109185c.08788.5438118-.232337.7662309-.707293.5012115l-8.5220242-4.7551739z">
+                        </path>
+                      </svg>
+                    </div>
+                  </div> ขึ้นไป
+                </div>
+                <div [class]="start4 ? '_1LYq_U NvQodS' : '_1LYq_U'" (click)="checkstart(4)">
+                  <div class="rating-stars__container">
+                    <svg viewBox="0 0 9.5 8" class="svg-icon rating-stars__star icon-rating-colored">
+                      <defs>
+                        <linearGradient id="ratingStarGradient" x1="50%" x2="50%" y1="0%" y2="100%">
+                          <stop offset="0" stop-color="#ffca11"></stop>
+                          <stop offset="1" stop-color="#ffad27"></stop>
+                        </linearGradient>
+                        <polygon id="ratingStar"
+                          points="14.910357 6.35294118 12.4209136 7.66171903 12.896355 4.88968305 10.8823529 2.92651626 13.6656353 2.52208166 14.910357 0 16.1550787 2.52208166 18.9383611 2.92651626 16.924359 4.88968305 17.3998004 7.66171903">
+                        </polygon>
+                      </defs>
+                      <g fill="url(#ratingStarGradient)" fill-rule="evenodd" stroke="none" stroke-width="1">
+                        <g transform="translate(-876 -1270)">
+                          <g transform="translate(155 992)">
+                            <g transform="translate(600 29)">
+                              <g transform="translate(10 239)">
+                                <g transform="translate(101 10)">
+                                  <use stroke="#ffa727" stroke-width=".5" xlink:href="#ratingStar"></use>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </g>
+                      </g>
+                    </svg>
+                    <svg viewBox="0 0 9.5 8" class="svg-icon rating-stars__star icon-rating-colored">
+                      <defs>
+                        <linearGradient id="ratingStarGradient" x1="50%" x2="50%" y1="0%" y2="100%">
+                          <stop offset="0" stop-color="#ffca11"></stop>
+                          <stop offset="1" stop-color="#ffad27"></stop>
+                        </linearGradient>
+                        <polygon id="ratingStar"
+                          points="14.910357 6.35294118 12.4209136 7.66171903 12.896355 4.88968305 10.8823529 2.92651626 13.6656353 2.52208166 14.910357 0 16.1550787 2.52208166 18.9383611 2.92651626 16.924359 4.88968305 17.3998004 7.66171903">
+                        </polygon>
+                      </defs>
+                      <g fill="url(#ratingStarGradient)" fill-rule="evenodd" stroke="none" stroke-width="1">
+                        <g transform="translate(-876 -1270)">
+                          <g transform="translate(155 992)">
+                            <g transform="translate(600 29)">
+                              <g transform="translate(10 239)">
+                                <g transform="translate(101 10)">
+                                  <use stroke="#ffa727" stroke-width=".5" xlink:href="#ratingStar"></use>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </g>
+                      </g>
+                    </svg>
+                    <div class="rating-stars__star _2Jb05n" style="width: 14px; height: 14px;">
+                      <svg viewBox="0 0 30 30" class="_3c6iA8">
+                        <defs>
+                          <linearGradient id="star__hollow" x1="50%" x2="50%" y1="0%" y2="99.0177926%">
+                            <stop offset="0%" stop-color="#FFD211"></stop>
+                            <stop offset="100%" stop-color="#FFAD27"></stop>
+                          </linearGradient>
+                        </defs>
+                        <path fill="none" fill-rule="evenodd" stroke="url(#star__hollow)" stroke-width="2"
+                          d="M23.226809 28.390899l-1.543364-9.5505903 6.600997-6.8291523-9.116272-1.4059447-4.01304-8.63019038-4.013041 8.63019038-9.116271 1.4059447 6.600997 6.8291523-1.543364 9.5505903 8.071679-4.5038874 8.071679 4.5038874z">
+                        </path>
+                      </svg>
+                      <svg viewBox="0 0 30 30" class="_3c6iA8" style="width: 0%;">
+                        <defs>
+                          <linearGradient id="star__solid" x1="50%" x2="50%" y1="0%" y2="100%">
+                            <stop offset="0%" stop-color="#FFCA11"></stop>
+                            <stop offset="100%" stop-color="#FFAD27"></stop>
+                          </linearGradient>
+                        </defs>
+                        <path fill="url(#star__solid)" fill-rule="evenodd"
+                          d="M14.9988798 25.032153l-8.522024 4.7551739c-.4785069.2670004-.7939037.0347448-.7072938-.5012115l1.6339124-10.1109185-6.8944622-7.1327607c-.3871203-.4005006-.2499178-.7947292.2865507-.8774654l9.5090982-1.46652789L14.5740199.51703028c.2346436-.50460972.6146928-.50543408.8497197 0l4.2693588 9.18141263 9.5090986 1.46652789c.545377.0841102.680337.4700675.28655.8774654l-6.894462 7.1327607 1.633912 10.1109185c.08788.5438118-.232337.7662309-.707293.5012115l-8.5220242-4.7551739z">
+                        </path>
+                      </svg>
+                    </div>
+                    <div class="rating-stars__star _2Jb05n" style="width: 14px; height: 14px;">
+                      <svg viewBox="0 0 30 30" class="_3c6iA8">
+                        <defs>
+                          <linearGradient id="star__hollow" x1="50%" x2="50%" y1="0%" y2="99.0177926%">
+                            <stop offset="0%" stop-color="#FFD211"></stop>
+                            <stop offset="100%" stop-color="#FFAD27"></stop>
+                          </linearGradient>
+                        </defs>
+                        <path fill="none" fill-rule="evenodd" stroke="url(#star__hollow)" stroke-width="2"
+                          d="M23.226809 28.390899l-1.543364-9.5505903 6.600997-6.8291523-9.116272-1.4059447-4.01304-8.63019038-4.013041 8.63019038-9.116271 1.4059447 6.600997 6.8291523-1.543364 9.5505903 8.071679-4.5038874 8.071679 4.5038874z">
+                        </path>
+                      </svg>
+                      <svg viewBox="0 0 30 30" class="_3c6iA8" style="width: 0%;">
+                        <defs>
+                          <linearGradient id="star__solid" x1="50%" x2="50%" y1="0%" y2="100%">
+                            <stop offset="0%" stop-color="#FFCA11"></stop>
+                            <stop offset="100%" stop-color="#FFAD27"></stop>
+                          </linearGradient>
+                        </defs>
+                        <path fill="url(#star__solid)" fill-rule="evenodd"
+                          d="M14.9988798 25.032153l-8.522024 4.7551739c-.4785069.2670004-.7939037.0347448-.7072938-.5012115l1.6339124-10.1109185-6.8944622-7.1327607c-.3871203-.4005006-.2499178-.7947292.2865507-.8774654l9.5090982-1.46652789L14.5740199.51703028c.2346436-.50460972.6146928-.50543408.8497197 0l4.2693588 9.18141263 9.5090986 1.46652789c.545377.0841102.680337.4700675.28655.8774654l-6.894462 7.1327607 1.633912 10.1109185c.08788.5438118-.232337.7662309-.707293.5012115l-8.5220242-4.7551739z">
+                        </path>
+                      </svg>
+                    </div>
+                    <div class="rating-stars__star _2Jb05n" style="width: 14px; height: 14px;">
+                      <svg viewBox="0 0 30 30" class="_3c6iA8">
+                        <defs>
+                          <linearGradient id="star__hollow" x1="50%" x2="50%" y1="0%" y2="99.0177926%">
+                            <stop offset="0%" stop-color="#FFD211"></stop>
+                            <stop offset="100%" stop-color="#FFAD27"></stop>
+                          </linearGradient>
+                        </defs>
+                        <path fill="none" fill-rule="evenodd" stroke="url(#star__hollow)" stroke-width="2"
+                          d="M23.226809 28.390899l-1.543364-9.5505903 6.600997-6.8291523-9.116272-1.4059447-4.01304-8.63019038-4.013041 8.63019038-9.116271 1.4059447 6.600997 6.8291523-1.543364 9.5505903 8.071679-4.5038874 8.071679 4.5038874z">
+                        </path>
+                      </svg>
+                      <svg viewBox="0 0 30 30" class="_3c6iA8" style="width: 0%;">
+                        <defs>
+                          <linearGradient id="star__solid" x1="50%" x2="50%" y1="0%" y2="100%">
+                            <stop offset="0%" stop-color="#FFCA11"></stop>
+                            <stop offset="100%" stop-color="#FFAD27"></stop>
+                          </linearGradient>
+                        </defs>
+                        <path fill="url(#star__solid)" fill-rule="evenodd"
+                          d="M14.9988798 25.032153l-8.522024 4.7551739c-.4785069.2670004-.7939037.0347448-.7072938-.5012115l1.6339124-10.1109185-6.8944622-7.1327607c-.3871203-.4005006-.2499178-.7947292.2865507-.8774654l9.5090982-1.46652789L14.5740199.51703028c.2346436-.50460972.6146928-.50543408.8497197 0l4.2693588 9.18141263 9.5090986 1.46652789c.545377.0841102.680337.4700675.28655.8774654l-6.894462 7.1327607 1.633912 10.1109185c.08788.5438118-.232337.7662309-.707293.5012115l-8.5220242-4.7551739z">
+                        </path>
+                      </svg>
+                    </div>
+                  </div> ขึ้นไป
+                </div>
+                <div [class]="start5 ? '_1LYq_U NvQodS' : '_1LYq_U'" (click)="checkstart(5)">
+                  <div class="rating-stars__container">
+                    <svg viewBox="0 0 9.5 8" class="svg-icon rating-stars__star icon-rating-colored">
+                      <defs>
+                        <linearGradient id="ratingStarGradient" x1="50%" x2="50%" y1="0%" y2="100%">
+                          <stop offset="0" stop-color="#ffca11"></stop>
+                          <stop offset="1" stop-color="#ffad27"></stop>
+                        </linearGradient>
+                        <polygon id="ratingStar"
+                          points="14.910357 6.35294118 12.4209136 7.66171903 12.896355 4.88968305 10.8823529 2.92651626 13.6656353 2.52208166 14.910357 0 16.1550787 2.52208166 18.9383611 2.92651626 16.924359 4.88968305 17.3998004 7.66171903">
+                        </polygon>
+                      </defs>
+                      <g fill="url(#ratingStarGradient)" fill-rule="evenodd" stroke="none" stroke-width="1">
+                        <g transform="translate(-876 -1270)">
+                          <g transform="translate(155 992)">
+                            <g transform="translate(600 29)">
+                              <g transform="translate(10 239)">
+                                <g transform="translate(101 10)">
+                                  <use stroke="#ffa727" stroke-width=".5" xlink:href="#ratingStar"></use>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </g>
+                      </g>
+                    </svg>
+                    <div class="rating-stars__star _2Jb05n" style="width: 14px; height: 14px;">
+                      <svg viewBox="0 0 30 30" class="_3c6iA8">
+                        <defs>
+                          <linearGradient id="star__hollow" x1="50%" x2="50%" y1="0%" y2="99.0177926%">
+                            <stop offset="0%" stop-color="#FFD211"></stop>
+                            <stop offset="100%" stop-color="#FFAD27"></stop>
+                          </linearGradient>
+                        </defs>
+                        <path fill="none" fill-rule="evenodd" stroke="url(#star__hollow)" stroke-width="2"
+                          d="M23.226809 28.390899l-1.543364-9.5505903 6.600997-6.8291523-9.116272-1.4059447-4.01304-8.63019038-4.013041 8.63019038-9.116271 1.4059447 6.600997 6.8291523-1.543364 9.5505903 8.071679-4.5038874 8.071679 4.5038874z">
+                        </path>
+                      </svg>
+                      <svg viewBox="0 0 30 30" class="_3c6iA8" style="width: 0%;">
+                        <defs>
+                          <linearGradient id="star__solid" x1="50%" x2="50%" y1="0%" y2="100%">
+                            <stop offset="0%" stop-color="#FFCA11"></stop>
+                            <stop offset="100%" stop-color="#FFAD27"></stop>
+                          </linearGradient>
+                        </defs>
+                        <path fill="url(#star__solid)" fill-rule="evenodd"
+                          d="M14.9988798 25.032153l-8.522024 4.7551739c-.4785069.2670004-.7939037.0347448-.7072938-.5012115l1.6339124-10.1109185-6.8944622-7.1327607c-.3871203-.4005006-.2499178-.7947292.2865507-.8774654l9.5090982-1.46652789L14.5740199.51703028c.2346436-.50460972.6146928-.50543408.8497197 0l4.2693588 9.18141263 9.5090986 1.46652789c.545377.0841102.680337.4700675.28655.8774654l-6.894462 7.1327607 1.633912 10.1109185c.08788.5438118-.232337.7662309-.707293.5012115l-8.5220242-4.7551739z">
+                        </path>
+                      </svg>
+                    </div>
+                    <div class="rating-stars__star _2Jb05n" style="width: 14px; height: 14px;">
+                      <svg viewBox="0 0 30 30" class="_3c6iA8">
+                        <defs>
+                          <linearGradient id="star__hollow" x1="50%" x2="50%" y1="0%" y2="99.0177926%">
+                            <stop offset="0%" stop-color="#FFD211"></stop>
+                            <stop offset="100%" stop-color="#FFAD27"></stop>
+                          </linearGradient>
+                        </defs>
+                        <path fill="none" fill-rule="evenodd" stroke="url(#star__hollow)" stroke-width="2"
+                          d="M23.226809 28.390899l-1.543364-9.5505903 6.600997-6.8291523-9.116272-1.4059447-4.01304-8.63019038-4.013041 8.63019038-9.116271 1.4059447 6.600997 6.8291523-1.543364 9.5505903 8.071679-4.5038874 8.071679 4.5038874z">
+                        </path>
+                      </svg>
+                      <svg viewBox="0 0 30 30" class="_3c6iA8" style="width: 0%;">
+                        <defs>
+                          <linearGradient id="star__solid" x1="50%" x2="50%" y1="0%" y2="100%">
+                            <stop offset="0%" stop-color="#FFCA11"></stop>
+                            <stop offset="100%" stop-color="#FFAD27"></stop>
+                          </linearGradient>
+                        </defs>
+                        <path fill="url(#star__solid)" fill-rule="evenodd"
+                          d="M14.9988798 25.032153l-8.522024 4.7551739c-.4785069.2670004-.7939037.0347448-.7072938-.5012115l1.6339124-10.1109185-6.8944622-7.1327607c-.3871203-.4005006-.2499178-.7947292.2865507-.8774654l9.5090982-1.46652789L14.5740199.51703028c.2346436-.50460972.6146928-.50543408.8497197 0l4.2693588 9.18141263 9.5090986 1.46652789c.545377.0841102.680337.4700675.28655.8774654l-6.894462 7.1327607 1.633912 10.1109185c.08788.5438118-.232337.7662309-.707293.5012115l-8.5220242-4.7551739z">
+                        </path>
+                      </svg>
+                    </div>
+                    <div class="rating-stars__star _2Jb05n" style="width: 14px; height: 14px;">
+                      <svg viewBox="0 0 30 30" class="_3c6iA8">
+                        <defs>
+                          <linearGradient id="star__hollow" x1="50%" x2="50%" y1="0%" y2="99.0177926%">
+                            <stop offset="0%" stop-color="#FFD211"></stop>
+                            <stop offset="100%" stop-color="#FFAD27"></stop>
+                          </linearGradient>
+                        </defs>
+                        <path fill="none" fill-rule="evenodd" stroke="url(#star__hollow)" stroke-width="2"
+                          d="M23.226809 28.390899l-1.543364-9.5505903 6.600997-6.8291523-9.116272-1.4059447-4.01304-8.63019038-4.013041 8.63019038-9.116271 1.4059447 6.600997 6.8291523-1.543364 9.5505903 8.071679-4.5038874 8.071679 4.5038874z">
+                        </path>
+                      </svg>
+                      <svg viewBox="0 0 30 30" class="_3c6iA8" style="width: 0%;">
+                        <defs>
+                          <linearGradient id="star__solid" x1="50%" x2="50%" y1="0%" y2="100%">
+                            <stop offset="0%" stop-color="#FFCA11"></stop>
+                            <stop offset="100%" stop-color="#FFAD27"></stop>
+                          </linearGradient>
+                        </defs>
+                        <path fill="url(#star__solid)" fill-rule="evenodd"
+                          d="M14.9988798 25.032153l-8.522024 4.7551739c-.4785069.2670004-.7939037.0347448-.7072938-.5012115l1.6339124-10.1109185-6.8944622-7.1327607c-.3871203-.4005006-.2499178-.7947292.2865507-.8774654l9.5090982-1.46652789L14.5740199.51703028c.2346436-.50460972.6146928-.50543408.8497197 0l4.2693588 9.18141263 9.5090986 1.46652789c.545377.0841102.680337.4700675.28655.8774654l-6.894462 7.1327607 1.633912 10.1109185c.08788.5438118-.232337.7662309-.707293.5012115l-8.5220242-4.7551739z">
+                        </path>
+                      </svg>
+                    </div>
+                    <div class="rating-stars__star _2Jb05n" style="width: 14px; height: 14px;">
+                      <svg viewBox="0 0 30 30" class="_3c6iA8">
+                        <defs>
+                          <linearGradient id="star__hollow" x1="50%" x2="50%" y1="0%" y2="99.0177926%">
+                            <stop offset="0%" stop-color="#FFD211"></stop>
+                            <stop offset="100%" stop-color="#FFAD27"></stop>
+                          </linearGradient>
+                        </defs>
+                        <path fill="none" fill-rule="evenodd" stroke="url(#star__hollow)" stroke-width="2"
+                          d="M23.226809 28.390899l-1.543364-9.5505903 6.600997-6.8291523-9.116272-1.4059447-4.01304-8.63019038-4.013041 8.63019038-9.116271 1.4059447 6.600997 6.8291523-1.543364 9.5505903 8.071679-4.5038874 8.071679 4.5038874z">
+                        </path>
+                      </svg>
+                      <svg viewBox="0 0 30 30" class="_3c6iA8" style="width: 0%;">
+                        <defs>
+                          <linearGradient id="star__solid" x1="50%" x2="50%" y1="0%" y2="100%">
+                            <stop offset="0%" stop-color="#FFCA11"></stop>
+                            <stop offset="100%" stop-color="#FFAD27"></stop>
+                          </linearGradient>
+                        </defs>
+                        <path fill="url(#star__solid)" fill-rule="evenodd"
+                          d="M14.9988798 25.032153l-8.522024 4.7551739c-.4785069.2670004-.7939037.0347448-.7072938-.5012115l1.6339124-10.1109185-6.8944622-7.1327607c-.3871203-.4005006-.2499178-.7947292.2865507-.8774654l9.5090982-1.46652789L14.5740199.51703028c.2346436-.50460972.6146928-.50543408.8497197 0l4.2693588 9.18141263 9.5090986 1.46652789c.545377.0841102.680337.4700675.28655.8774654l-6.894462 7.1327607 1.633912 10.1109185c.08788.5438118-.232337.7662309-.707293.5012115l-8.5220242-4.7551739z">
+                        </path>
+                      </svg></div>
+                  </div> ขึ้นไป
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ประเภทร้าน -->
+          <div class="col-md-12 p0">
+            <div class="filter-group">
+              <div class="filter-group__header">ประเภทร้าน</div>
+              <div>
+                <div class="filter checkbox-filter">
+                  <div class="checkbox" *ngFor="let item of type_all_Model;">
+                    <label class="checkbox__control">
+                      <input type="checkbox" [checked]="item.isActive" (change)="onSelectionChanged(item)">
+                      <div class="checkbox__box"><i> </i></div><span class="checkbox__label">{{item.title}}</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- สภาพสินค้า -->
+          <div class="col-md-12 p0">
+            <div class="filter-group">
+              <div class="filter-group__header">สภาพสินค้า</div>
+              <div>
+                <div class="filter checkbox-filter">
+                  <div class="checkbox" *ngFor="let item of condition_product_Model;">
+                    <label class="checkbox__control">
+                      <input type="checkbox" [checked]="item.isActive" (change)="onSelectionChanged(item)">
+                      <div class="checkbox__box"><i> </i></div><span class="checkbox__label">{{item.title}}</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ช่องทางการชำระเงิน -->
+          <div class="col-md-12 p0">
+            <div class="filter-group">
+              <div class="filter-group__header">ช่องทางการชำระเงิน</div>
+              <div class="filter checkbox-filter">
+                <div class="checkbox" *ngFor="let item of payment_method_Model">
+                  <label class="checkbox__control">
+                    <input type="checkbox" [checked]="item.isActive" (change)="onSelectionChanged(item)">{{item.title}}
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- บริการและโปรโมชัน -->
+          <div class="col-md-12 p0">
+            <div class="filter-group">
+              <div class="filter-group__header">บริการและโปรโมชัน</div>
+              <div>
+                <div class="filter checkbox-filter">
+                  <div class="checkbox" *ngFor="let item of promotion_Model;">
+                    <label class="checkbox__control">
+                      <input type="checkbox" (change)="onSelectionChanged(item)" [checked]="item.isActive">
+                      <div class="checkbox__box"><i> </i></div><span class="checkbox__label">{{item.title}}</span>
+                    </label>
+                  </div>
+                  <div (click)="category_more('promotion_Model')" *ngIf="promotion_Model.length <= 4"
+                    class="filter-group__toggle-btn">
+                    เพิ่มเติม<svg enable-background="new 0 0 11 11" viewBox="0 0 11 11" x="0" y="0"
+                      class="svg-icon icon-arrow-down">
+                      <g>
+                        <path
+                          d="m11 2.5c0 .1 0 .2-.1.3l-5 6c-.1.1-.3.2-.4.2s-.3-.1-.4-.2l-5-6c-.2-.2-.1-.5.1-.7s.5-.1.7.1l4.6 5.5 4.6-5.5c.2-.2.5-.2.7-.1.1.1.2.3.2.4z">
+                        </path>
+                      </g>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ลบทั้งหมด -->
+          <button class="button-solid button-solid--primary fAQIgA" style="background-color: rgb(238, 77, 45);"
+            (click)="category_delete_isactive()">
+            ลบทั้งหมด
+          </button>
+        </div>
+        <div class="col-md-10">
+          <!-- bar ด้านบน -->
+          <div class="sort-bar">
+            <span class="sort-bar__label">
+              เรียงโดย
+            </span>
+            <div class="sort-by-options">
+              <div class="sort-by-options__option sort-by-options__option--selected" style="background-color: #1EB7D7;">
+                ยอดนิยม
+              </div>
+              <div class="sort-by-options__option">
+                ล่าสุด
+              </div>
+              <div class="sort-by-options__option">
+                สินค้าขายดี
+              </div>
+              <div>
+                <div [class]="isMousePrice ? 'select-with-status select-with-status--hover' : 'select-with-status'"
+                  (mouseenter)="chkMousePriceIn()" (mouseleave)="chkMousePriceOut()">
+                  <div class="select-with-status__holder select-with-status__box-shadow">
+                    <span class="select-with-status__placeholder">
+                      ราคา
+                    </span>
+                    <span>
+                      <svg viewBox="0 0 10 6" class="svg-icon icon-arrow-down-small">
+                        <path
+                          d="M9.7503478 1.37413402L5.3649665 5.78112957c-.1947815.19574157-.511363.19651982-.7071046.00173827a.50153763.50153763 0 0 1-.0008702-.00086807L.2050664 1.33007451l.0007126-.00071253C.077901 1.18820749 0 1.0009341 0 .79546595 0 .35614224.3561422 0 .7954659 0c.2054682 0 .3927416.07790103.5338961.20577896l.0006632-.00066318.0226101.02261012a.80128317.80128317 0 0 1 .0105706.0105706l3.3619016 3.36190165c.1562097.15620972.4094757.15620972.5656855 0a.42598723.42598723 0 0 0 .0006944-.00069616L8.6678481.20650022l.0009529.0009482C8.8101657.07857935 8.9981733 0 9.2045341 0 9.6438578 0 10 .35614224 10 .79546595c0 .20495443-.077512.39180497-.2048207.53283641l.0003896.00038772-.0096728.00972053a.80044712.80044712 0 0 1-.0355483.03572341z"
+                          fill-rule="nonzero">
+                        </path>
+                      </svg>
+                    </span>
+                    <div>
+                      <div class="select-with-status__dropdown modal__transition-enter-done">
+                        <div class="select-with-status__dropdown-item select-with-status__dropdown-item--with-tick">
+                          ราคา: จากน้อยไปมาก</div>
+                        <div class="select-with-status__dropdown-item select-with-status__dropdown-item--with-tick">
+                          ราคา: จากมากไปน้อย</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mini-page-controller">
+              <div class="mini-page-controller__state">
+                <span class="mini-page-controller__current">
+                  {{page_prev}}
+                </span> /
+                <span class="mini-page-controller__total">
+                  {{page_next}}
+                </span>
+              </div>
+              <button class="button-outline mini-page-controller__prev-btn" (click)="btn_prev()">
+                <svg viewBox="0 0 7 11" class="svg-icon icon-arrow-left-small">
+                  <path
+                    d="M4.694078 9.8185598L.2870824 5.4331785c-.1957415-.1947815-.1965198-.511363-.0017382-.7071046a.50867033.50867033 0 0 1 .000868-.0008702L4.7381375.2732784 4.73885.273991c.1411545-.127878.3284279-.205779.5338961-.205779.4393237 0 .7954659.3561422.7954659.7954659 0 .2054682-.077901.3927416-.205779.5338961l.0006632.0006632-.0226101.0226101a.80174653.80174653 0 0 1-.0105706.0105706L2.4680138 4.7933195c-.1562097.1562097-.1562097.4094757 0 .5656855a.45579485.45579485 0 0 0 .0006962.0006944l3.3930018 3.3763607-.0009482.0009529c.128869.1413647.2074484.3293723.2074484.5357331 0 .4393237-.3561422.7954659-.7954659.7954659-.2049545 0-.391805-.077512-.5328365-.2048207l-.0003877.0003896-.0097205-.0096728a.80042023.80042023 0 0 1-.0357234-.0355483z"
+                    fill-rule="nonzero">
+                  </path>
+                </svg>
+              </button>
+              <button class="button-outline mini-page-controller__next-btn" (click)="btn_next()">
+                <svg viewBox="0 0 7 11" class="svg-icon icon-arrow-right-small">
+                  <path
+                    d="M2.305922 9.81856l4.4069956-4.385381c.1957415-.194782.1965198-.511364.0017382-.707105a.26384055.26384055 0 0 0-.000868-.00087L2.2618625.273278 2.26115.273991C2.1199955.146113 1.9327221.068212 1.7272539.068212c-.4393237 0-.7954659.356142-.7954659.795466 0 .205468.077901.392741.205779.533896l-.0006632.000663.0226101.02261c.0034906.003557.0070143.00708.0105706.010571L4.5319862 4.79332c.1562097.156209.1562097.409475 0 .565685-.0002318.000232-.0004639.000463-.0006962.000694L1.1382882 8.73606l.0009482.000953c-.128869.141365-.2074484.329372-.2074484.535733 0 .439324.3561422.795466.7954659.795466.2049545 0 .391805-.077512.5328365-.204821l.0003877.00039.0097205-.009673c.012278-.011471.0241922-.023327.0357234-.035548z"
+                    fill-rule="nonzero">
+                  </path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="row search-item-result__items" style="justify-content: center;">
+            <div class="row" infinite-scroll [infiniteScrollDistance]="5" [infiniteScrollThrottle]="500"
+              (scrolled)="onScrollDown()">
+              <product-card class="col-xs-2-4 mgb10 p0" *ngFor="let item of products_Model" [model]="item">
+              </product-card>
+              <div class="dfc notD" *ngIf="products_Model.length == 0">
+                <div style="font-size:1.6rem;">ไม่พบสินค้า</div>
+              </div>
+            </div>
+            <!-- <product-card class="col-xs-2 p-0" *ngFor="let item of products_Model" [model]="item"></product-card> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>

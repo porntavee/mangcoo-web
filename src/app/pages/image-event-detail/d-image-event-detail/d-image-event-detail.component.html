@@ -1,0 +1,320 @@
+<!-- component header type 1 -->
+<app-d-t1-header></app-d-t1-header>
+
+<div class="col-md-12 m-0 d-none d-lg-block" style="padding: 0% 10%;">
+    <div class="col-md-1 m-0 p-0"></div>
+    <div class="col-md-10 m-0 p-0">
+        <div class="df" style="justify-content: center;margin-bottom: 20px;">
+            <a class="div-imageUrl-news-home" href="{{model.imageUrl}}" target="_blank">
+                <img height="100%" width="100%" style="border-radius: 15px;object-fit: contain;"
+                    src="{{model.imageUrl}}">
+            </a>
+        </div>
+        <div class="col-md-12 pd0">
+            <div *ngIf="serviceProviderService.lang == 'th'" class="div-title-detail-news">{{model.title}}</div>
+            <div *ngIf="serviceProviderService.lang == 'en'" class="div-title-detail-news">{{model.titleEN}}</div>
+        </div>
+        <div class="col-md-12 pd0">
+            <div class="div-box_date">
+                <span *ngIf="serviceProviderService.lang == 'th'">ยอดอ่าน&nbsp;&nbsp;{{model.view}}</span>
+                <span *ngIf="serviceProviderService.lang == 'en'">View&nbsp;&nbsp;{{model.view}}</span>
+
+                <div class="mainbox">
+                    <input type="checkbox" id="check">
+                    <label *ngIf="serviceProviderService.lang == 'th'" for="check"
+                        class="kanit_s c-white pointer news-share">แชร์</label>
+                    <label *ngIf="serviceProviderService.lang == 'en'" for="check"
+                        class="kanit_s c-white pointer news-share">share</label>
+                    <div class="media-icons pointer">
+                        <a (click)="shareWithFB()"> <i class="fab fa-facebook"></i></a>
+                        <a (click)="shareWithLine()"><i class="fab fa-line"></i></a>
+                        <a (click)="copyMessage('This goes to Clipboard')"><i class="fas fa-copy"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 pd0">
+            <div *ngIf="serviceProviderService.lang == 'th'" class="color_grey70"
+                [innerHtml]="model.description | safeHtml"></div>
+            <div *ngIf="serviceProviderService.lang == 'en'" class="color_grey70"
+                [innerHtml]="model.descriptionEN | safeHtml"></div>
+        </div>
+        <div class="col-md-12 pd0 mt20" *ngIf="modelFile.length > 0">
+            <div *ngIf="serviceProviderService.lang == 'th'" class="kanit_l color_grey70">ไฟล์</div>
+            <div *ngIf="serviceProviderService.lang == 'en'" class="kanit_l color_grey70">File</div>
+            <div class="color_grey70 kanit_s" *ngFor="let m of modelFile">
+                <div class="df pd0 mt5">
+                    <span class="pointer"><a class="font-des-footer-ra" href="{{m.imageUrl}}"
+                            target="_blank">{{m.title}}
+                            <span *ngIf="m.size == undefined">(30 MB)</span>
+                            <span *ngIf="m.size != undefined && m.size != ''">({{(m.size / 1048567).toFixed(2)}}
+                                MB)</span>
+                        </a>
+                    </span>
+                    <div style="width: 10px;"></div>
+                    <div class="btn-action background-active pointer" (click)="downloadPDF(m.imageUrl)">
+                        <span *ngIf="serviceProviderService.lang == 'th'">ดาวน์โหลด</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">Download</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 pd0 mt20" *ngIf="modelExcel.length > 0">
+            <div *ngIf="serviceProviderService.lang == 'th'" class="kanit_l color_grey70">เอกซ์เซล</div>
+            <div *ngIf="serviceProviderService.lang == 'en'" class="kanit_l color_grey70">Excel</div>
+            <div class="color_grey70 kanit_s" *ngFor="let m of modelExcel">
+                <div class="df pd0 mt5">
+                    <span class="pointer"><a class="font-des-footer-ra" href="{{m.imageUrl}}"
+                            target="_blank">{{m.title}}
+                            <span *ngIf="m.size == undefined">(30 MB)</span>
+                            <span *ngIf="m.size != undefined && m.size != ''">({{(m.size / 1048567).toFixed(2)}}
+                                MB)</span>
+                        </a>
+                    </span>
+                    <div style="width: 10px;"></div>
+                    <div class="btn-action background-active pointer" (click)="downloadPDF(m.imageUrl)">
+                        <span *ngIf="serviceProviderService.lang == 'th'">ดาวน์โหลด</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">Download</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 pd0 mt20" *ngIf="modelWord.length > 0">
+            <div *ngIf="serviceProviderService.lang == 'th'" class="kanit_l color_grey70">เวิร์ด</div>
+            <div *ngIf="serviceProviderService.lang == 'en'" class="kanit_l color_grey70">Word</div>
+            <div class="color_grey70 kanit_s" *ngFor="let m of modelWord">
+                <div class="df pd0 mt5">
+                    <span class="pointer"><a class="font-des-footer-ra" href="{{m.imageUrl}}"
+                            target="_blank">{{m.title}}
+                            <span *ngIf="m.size == undefined">(30 MB)</span>
+                            <span *ngIf="m.size != undefined && m.size != ''">({{(m.size / 1048567).toFixed(2)}}
+                                MB)</span>
+                        </a>
+                    </span>
+                    <div style="width: 10px;"></div>
+                    <div class="btn-action background-active pointer" (click)="downloadPDF(m.imageUrl)">
+                        <span *ngIf="serviceProviderService.lang == 'th'">ดาวน์โหลด</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">Download</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 pd0 mt20" *ngIf="modelVdo.length > 0">
+            <div *ngIf="serviceProviderService.lang == 'th'" class="kanit_l color_grey70">วีดีโอ</div>
+            <div *ngIf="serviceProviderService.lang == 'en'" class="kanit_l color_grey70">Vdo</div>
+            <div class="color_grey70 kanit_s" *ngFor="let m of modelVdo">
+                <div class="df pd0 mt5">
+                    <span (click)="openModal(m.imageUrl)" class="pointer"><a class="font-des-footer-ra"
+                            target="_blank">{{m.title}}</a></span>
+                    <div style="width: 10px;"></div>
+                    <div class="btn-action background-active pointer" (click)="openModal(m.imageUrl)"> <img
+                            src="./assets/img/play.png" width="20px" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 pd0">
+            <div class="mt40 fs2" style=" display: flex; justify-content: center">
+                <button style=" display: flex;
+                    height: 100%;
+                    align-items: center;border-radius: 15px;background-color: #E19B24;border-color: #E19B24;
+                    justify-content: center;width: 17%;padding: 10px;"
+                    *ngIf="model.linkUrl != '' && model.textButton != ''" (click)="openRef()">
+                    <div style="color: #fff;">
+                        <p [innerHtml]="model.textButton"> </p>
+                    </div>
+                </button>
+                <div style="width: 15px;"></div>
+                <!-- <button style=" display: flex;
+            height: 100%;
+            align-items: center;border-radius: 15px;background-color: #E19B24;border-color: #E19B24;
+            justify-content: center;width: 17%;padding: 10px;" *ngIf="model.fileUrl != ''" (click)="downloadPDF()">
+                        <div style="color: #fff;">
+                            <p>ดาวโหลดเอกสาร</p>
+                        </div>
+                    </button> -->
+            </div>
+        </div>
+        <span
+            *ngIf="serviceProviderService.lang == 'th'">สร้างโดย&nbsp;&nbsp;{{model.createBy}}&nbsp;&nbsp;&nbsp;&nbsp;{{model.createDate
+            | datetimeFormat}}&nbsp;&nbsp;
+            <br>
+            แก้ไขโดย&nbsp;&nbsp;{{model.updateBy}}&nbsp;&nbsp;&nbsp;&nbsp;{{model.updateDate | datetimeFormat}}</span>
+        <span *ngIf="serviceProviderService.lang == 'en'">Created
+            by&nbsp;&nbsp;{{model.createBy}}&nbsp;&nbsp;&nbsp;&nbsp;{{model.createDate | datetimeFormat}}&nbsp;&nbsp;
+            <br>
+            Edited
+            by&nbsp;&nbsp;{{model.updateBy}}&nbsp;&nbsp;&nbsp;&nbsp;{{model.updateDate | datetimeFormat}}</span>
+        <div class="kanit_l mt40" *ngIf="galleryImages.length != 0">
+            <p class="p-f40" *ngIf="serviceProviderService.lang == 'th'">รูปภาพกิจกรรม</p>
+            <p class="p-f40" *ngIf="serviceProviderService.lang == 'en'">Activity Pictures</p>
+        </div>
+        <div class="df mb70" style="justify-content: center;" *ngIf="galleryImages.length != 0">
+            <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+        </div>
+    </div>
+    <div class="col-md-1 m-0 p-0"></div>
+    <div class="Div3 pointer">
+        <div (click)="shareWithFB()">
+            <img style="width:5vw; height: 5vw; border-radius: 50%;" src="./assets/img/Facebook@2x.png">
+        </div>
+        <div (click)="shareWithLine()">
+            <img style="width:5vw; height: 5vw; border-radius: 50%" src="./assets/img/Line@2x.png">
+        </div>
+    </div>
+    <modal-video *ngIf="showModal" [model]="modelSelected" (callback)="fromModal($event)"></modal-video>
+</div>
+
+<div class="col-xs-12 pd0 d-block d-lg-none">
+    <div class="col-xs-12">
+        <div class="col-xs-12 p-0">
+            <div class="div-imageUrl-detail">
+                <img class="image_border" src="{{model.imageUrl}}" alt="" height="200px" width="100%">
+            </div>
+            <div class="div-title-detail" *ngIf="serviceProviderService.lang == 'th'">{{model.title}}</div>
+            <div class="div-title-detail" *ngIf="serviceProviderService.lang == 'en'">{{model.titleEN}}</div>
+            <!-- <div class="col-xs-12 pd0">
+                <div class="div-box-date">{{model.updateDate | dateFormat}}
+                </div>
+            </div> -->
+            <div class="col-xs-12 pd0 mt10">
+                <span *ngIf="serviceProviderService.lang == 'th'">ยอดอ่าน&nbsp;&nbsp;{{model.view}}</span>
+                <span *ngIf="serviceProviderService.lang == 'en'">View&nbsp;&nbsp;{{model.view}}</span>
+            </div>
+
+            <div class="col-xs-12 pd0">
+                <div *ngIf="serviceProviderService.lang == 'th'" class="div-description-detail"
+                    [innerHtml]="model.description | safeHtml"></div>
+                <div *ngIf="serviceProviderService.lang == 'en'" class="div-description-detail"
+                    [innerHtml]="model.descriptionEN | safeHtml"></div>
+            </div>
+            <div class="col-xs-12 pd0 mt20" *ngIf="modelFile.length > 0">
+                <div *ngIf="serviceProviderService.lang == 'th'" class="div-title-detail">ไฟล์</div>
+                <div *ngIf="serviceProviderService.lang == 'en'" class="div-title-detail">File</div>
+                <div class="color_grey70 kanit_s" *ngFor="let m of modelFile">
+                    <div class="df pd0 mt5">
+                        <span class="pointer"><a class="font-des-footer-ra" href="{{m.imageUrl}}"
+                                target="_blank">{{m.title}}
+                                <span *ngIf="m.size == undefined">(30 MB)</span>
+                                <span *ngIf="m.size != undefined && m.size != ''">({{(m.size / 1048567).toFixed(2)}}
+                                    MB)</span>
+                            </a>
+                        </span>
+                        <div style="width: 10px;"></div>
+                        <div class="btn-action background-active pointer" (click)="downloadPDF(m.imageUrl)">
+                            <span *ngIf="serviceProviderService.lang == 'th'">ดาวน์โหลด</span>
+                            <span *ngIf="serviceProviderService.lang == 'en'">Download</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 pd0 mt20" *ngIf="modelExcel.length > 0">
+                <div *ngIf="serviceProviderService.lang == 'th'" class="div-title-detail">เอกซ์เซล</div>
+                <div *ngIf="serviceProviderService.lang == 'en'" class="div-title-detail">Excel</div>
+                <div class="color_grey70 kanit_s" *ngFor="let m of modelExcel">
+                    <div class="df pd0 mt5">
+                        <span class="pointer"><a class="font-des-footer-ra" href="{{m.imageUrl}}"
+                                target="_blank">{{m.title}}
+                                <span *ngIf="m.size == undefined">(30 MB)</span>
+                                <span *ngIf="m.size != undefined && m.size != ''">({{(m.size / 1048567).toFixed(2)}}
+                                    MB)</span>
+                            </a>
+                        </span>
+                        <div style="width: 10px;"></div>
+                        <div class="btn-action background-active pointer" (click)="downloadPDF(m.imageUrl)">
+                            <span *ngIf="serviceProviderService.lang == 'th'">ดาวน์โหลด</span>
+                            <span *ngIf="serviceProviderService.lang == 'en'">Download</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 pd0 mt20" *ngIf="modelWord.length > 0">
+                <div *ngIf="serviceProviderService.lang == 'th'" class="div-title-detail">เวิร์ด</div>
+                <div *ngIf="serviceProviderService.lang == 'en'" class="div-title-detail">Word</div>
+                <div class="color_grey70 kanit_s" *ngFor="let m of modelWord">
+                    <div class="df pd0 mt5">
+                        <span class="pointer"><a class="font-des-footer-ra" href="{{m.imageUrl}}"
+                                target="_blank">{{m.title}}
+                                <span *ngIf="m.size == undefined">(30 MB)</span>
+                                <span *ngIf="m.size != undefined && m.size != ''">({{(m.size / 1048567).toFixed(2)}}
+                                    MB)</span>
+                            </a>
+                        </span>
+                        <div style="width: 10px;"></div>
+                        <div class="btn-action background-active pointer" (click)="downloadPDF(m.imageUrl)">
+                            <span *ngIf="serviceProviderService.lang == 'th'">ดาวน์โหลด</span>
+                            <span *ngIf="serviceProviderService.lang == 'en'">Download</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 pd0 mt20" *ngIf="modelVdo.length > 0">
+                <div *ngIf="serviceProviderService.lang == 'th'" class="div-title-detail">วีดีโอ</div>
+                <div *ngIf="serviceProviderService.lang == 'en'" class="div-title-detail">Vdo</div>
+                <div class="color_grey70 kanit_s" style="text-align: center;" *ngFor="let m of modelVdo">
+                    <div class="df pd0 mt5">
+                        <div class="video" style="width: 100%;">
+                            <video controls #videoPlayer style="width: 50%;">
+                                <source src="{{m.imageUrl}}" type="video/mp4" />
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 pd0">
+                <div class="div-textButton-detail">
+                    <button class="button-textButton-detail" *ngIf="model.linkUrl != '' && model.textButton != ''"
+                        (click)="openRef()">
+                        <div style="color: #fff;">
+                            <p [innerHtml]="model.textButton"> </p>
+                        </div>
+                    </button>
+                    <button class="button-textButton-detail" *ngIf="model.fileUrl != ''" (click)="downloadPDF()">
+                        <div style="color: #fff;">
+                            <p *ngIf="serviceProviderService.lang == 'th'">ดาวโหลดเอกสาร</p>
+                            <p *ngIf="serviceProviderService.lang == 'en'">Document download</p>
+                        </div>
+                    </button>
+                </div>
+            </div>
+            <div class="col-xs-12 pd0" *ngIf="serviceProviderService.lang == 'th'">
+                <div class="div-box-date">สร้างโดย {{model.createBy}} &nbsp;&nbsp;&nbsp;&nbsp;
+                    {{model.createDate | datetimeFormat}}</div>
+                <div class="div-box-date">แก้ไขโดย {{model.updateBy}} &nbsp;&nbsp;&nbsp;&nbsp;
+                    {{model.updateDate | datetimeFormat}}</div>
+            </div>
+            <div class="col-xs-12 pd0" *ngIf="serviceProviderService.lang == 'en'">
+                <div class="div-box-date">Created by {{model.createBy}} &nbsp;&nbsp;&nbsp;&nbsp;
+                    {{model.createDate | datetimeFormat}}</div>
+                <div class="div-box-date">Edited by {{model.updateBy}} &nbsp;&nbsp;&nbsp;&nbsp;
+                    {{model.updateDate | datetimeFormat}}
+                </div>
+            </div>
+            <div class="col-xs-12 pd0">
+                <div class="div-galleryImages-title-detail" *ngIf="galleryImages.length != 0">
+                    <span *ngIf="serviceProviderService.lang == 'th'">รูปภาพกิจกรรม</span>
+                    <span *ngIf="serviceProviderService.lang == 'en'">Activity Pictures</span>
+                </div>
+                <div class="div-galleryImages-detail" *ngIf="galleryImages.length != 0">
+                    <div class="div-gallery">
+                        <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+                    </div>
+                </div>
+            </div>
+            <div class="pointer col-xs-12 div-socialnetwork-m">
+                <div (click)="shareWithFB()">
+                    <img class="img-socialnetwork-m" src="./assets/img/Facebook@2x.png">
+                </div>
+                <div (click)="shareWithLine()">
+                    <img class="img-socialnetwork-m" src="./assets/img/Line@2x.png">
+                </div>
+                <div (click)="copyMessage('This goes to Clipboard')">
+                    <img class="img-socialnetwork-m" src="./assets/img/Copy@3x.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- footer -->
+<app-d-t1-footer></app-d-t1-footer>

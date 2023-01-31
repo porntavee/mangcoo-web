@@ -1,0 +1,41 @@
+<!-- component header type 1 -->
+<app-d-t1-header></app-d-t1-header>
+<div class="col-md-12" style="background-color: #F7F7F7 !important;min-width: 1280px;">
+    <div class="col-md-1"></div>
+    <div class="col-md-10" style="margin: 30px 0;">
+        <div class="df" style="color:#1B6CA8;font-size: 3rem;height: 30px;justify-content: center;">
+            ดาวโหลดเอกสาร
+        </div>
+        <div class="line-c5c5c5"></div>
+        <div class="df" style="margin: 10px 20px">
+            <div *ngFor="let category of categoryList" style="flex-wrap: wrap;">
+                <div class="menu-knowledge pointer"
+                    [class.menu-knowledge-active]="category.code === categorySelected.code"
+                    (click)="selectedCategory(category.code)">{{category.title}}</div>
+            </div>
+        </div>
+        <div>
+            <div class="row" style="margin: 20px 0;">
+                <div class="col-md-10 knowledge-all-left pointer" style="color:#1B6CA8;font-size: 3rem;height: 20px;">แบบฟอร์ม</div>
+                <!-- <div class="df  col-md-2 right" style="justify-content: end">
+                    <div class="knowledge-all-right pointer">
+                        ทั้งหมด
+                    </div>
+                </div> -->
+            </div>
+            <div class="df" style="justify-content: center;">
+                <div class="col-md-12 pd0">
+                    <div class="df">
+                        <div *ngFor="let item of model;let i=index" class="col-md-3 pd0"
+                            style="padding-left: 10px;margin:0 0 10px 0 !important;min-width: 280px;min-height: 450px;">
+                            <img class="pointer" (click)="selectedItem(item.code)" *ngIf="i<4" src="{{item.imageUrl}}"
+                                sizes="(min-width: 300px) 80vw, 100vw" style="object-fit: cover;border-radius: 10px;"
+                                width="100%" height="450px" alt="">
+                            <div *ngIf="i<4" style="color: #707070;padding: 10px 0;text-align: center;">{{item.title}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <app-d-t1-footer></app-d-t1-footer>

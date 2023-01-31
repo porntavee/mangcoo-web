@@ -1,0 +1,136 @@
+<!-- header 1 -->
+<div class="box-he bg-twotone box-hd">
+    <div class="circle-tb">
+        <span style="
+          color: white;" class="glyphicon glyphicon-chevron-left fs2" (click)="backClicked()"></span>
+    </div>
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="12.12 Non-Stop SUKSAPAN PayDay | ส่งฟรี* ขั้นต่ำ 0.-">
+        <button type="button" class="btn btn-primary">
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+    </button>
+    </div>
+    <!-- <div>
+        <span (click)="navigateToPageCart()" style="margin-left: 10px;color: white;" class="glyphicon glyp
+      hicon-shopping-cart fs2">
+    </span>
+    </div> -->
+    <div class="cart-drawer flex v-center" *ngIf="cartNumber == 0" (click)="navigateToPageCart()">
+        <span class="glyphicon glyphicon-shopping-cart fs2"></span>
+    </div>
+    <div class="cart-drawer flex v-center" *ngIf="cartNumber > 0" (click)="navigateToPageCart()">
+        <span class="glyphicon glyphicon-shopping-cart fs2"></span>
+        <span class="webuild-cart-number-badge">{{cartNumber}}</span>
+    </div>
+    <!-- <span style="margin-left: 10px;color: white;" class="glyphicon glyphicon-option-vertical fs2"
+      (click)="backClicked()"></span> -->
+</div>
+<!-- <div class="box-img" #myIdentifier> -->
+<div class="box-img">
+    <img class="imgm bg-white" style="margin-top: 35px;" src="{{model.imageUrl}}" height="{{width}}" width="{{width}}" alt="">
+    <!-- <div class="box-hd">
+    <div class="circle-tb">
+      <span style="
+            color: white;" class="glyphicon glyphicon-chevron-left fs2" (click)="backClicked()"></span>
+    </div>
+    <div>
+      <span (click)="navigateToPageCart()" style="margin-left: 10px;color: white;" class="glyphicon glyphicon-shopping-cart fs2"></span>
+      <span style="margin-left: 10px;color: white;" class="glyphicon glyphicon-option-vertical fs2"
+        (click)="backClicked()"></span>
+    </div>
+  </div> -->
+</div>
+
+<div class=" bg-white">
+    <div class="title">
+        <div>
+            <span class="text-2">{{model.title}}</span>
+        </div>
+        <!-- <div style="background-color: yellow;width: 50px;height: 50px;"></div> -->
+    </div>
+    <div class="title">
+        <span class="text-price-f">{{formatPrice(model.price)}}</span>
+        <span class="text-price-s">{{formatPrice(model.netPrice)}} บาท</span>
+    </div>
+</div>
+<!-- {{modelGoodsShop | json}} -->
+
+<div class="box-shop bg-white mt5" (click)="navTo(modelShop[0].code)">
+    <img src="{{modelShop[0].imageUrl}}" height="70" width="70" style="border-radius: 50%;border:1px solid #c5c5c5" alt="">
+    <div class="ml15 dfc">
+        <span class="tb1d2">{{modelShop[0].title}}</span>
+        <span class="tg1">active เมื่อ 4 นาที ที่ผ่านมา</span>
+        <span class="tg1">กรุงเทพมหานคร</span>
+    </div>
+</div>
+
+<div class="mt5">
+    <div class="p10 bg-white">สินค้าขายดีประจำวัน</div>
+    <div class="bg-white scroll df p10">
+        <div class="pointer boxbs cardimg" *ngFor="let item of modelGoodsShop | slice:0:8;">
+            <div>
+                <div class="imgp" style="background-image: url(&quot;{{item.imageUrl}}&quot;);" (click)="navTo(item.code)">
+                </div>
+                <span class="text-1">{{item.title}}</span>
+                <span class="text-1 c-highlight">{{item.netPrice}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt5 bg-white dfc p10">
+    <div class="mt5">รายละเอียดสินค้า</div>
+    <div class="mt5" [innerHTML]="model.description | safeHtml"></div>
+</div>
+
+<div ng class="pofib df bg-white" style="height: 45px;justify-content: stretch;">
+    <div class="btn-a-cart dfc">
+        <span class="glyphicon glyphicon-shopping-cart fs2"></span>
+        <span style="font-size: 1rem;" (click)="addCart()">เพิ่มไปยังรถเข็น</span>
+    </div>
+    <div class="btn-buy" (click)="buy()">ซื้อสินค้า</div>
+</div>
+<!-- <div class="showItem">
+  <div></div>
+</div> -->
+
+<div style="height: 50px;width: 100%;"></div>
+<div *ngIf="showModal" class="selected-product">
+    <div class="selected-product-bg">
+        <div class="selected-product-box">
+            <!-- top -->
+            <div class="df selected-product-box-top">
+                <img class="borderR3" src="{{itemOption.imageUrl}}" alt="" height="120" width="120">
+                <div class="selected-product-box-top-detail" style="padding: 0 0 0 10px;">
+                    <div class="df">
+                        <div class="text-price-f" *ngIf="itemOption.disCountUnit != ''">{{formatPrice(itemOption.price)}}</div>
+                        <div class="c-secondary" style="margin-left: 10px;">{{formatPrice(itemOption.netPrice)}}</div>
+                    </div>
+                    <div>จำนวน {{itemOption.qty}}</div>
+                </div>
+                <span class="glyphicon glyphicon-remove fs2 selected-product-top-close" (click)="closeModal()"></span>
+            </div>
+            <!-- center -->
+            <div class="dfc selected-product-box-center" style="overflow: scroll;">
+                <div class="df" style="flex-wrap: wrap;">
+                    <div class="df selected-product-box-center-option" *ngFor="let item of modelInventory;" [class.active]="item.code === itemOption.code" (click)="selectedOption(item)">
+                        <img src="{{item.imageUrl}}" alt="" height="30" width="30">
+                        <div class="selected-product-box-center-option-text">{{item.title}}</div>
+                    </div>
+                </div>
+            </div>
+            <!-- bottom -->
+            <div class="selected-product-bottom dfc">
+                <div class="df selected-product-box-center-qty">
+                    <div class="c-black">จำนวน</div>
+                    <div class="df" style="height: 25px;align-items: center;">
+                        <div class="df borderQty mpqty c-black" (click)="itemMinus()">-</div>
+                        <div class="df borderQty sumqty c-black">{{qty}}</div>
+                        <div class="df borderQty mpqty c-black" (click)="itemPlus()">+</div>
+                    </div>
+                </div>
+                <div class="selected-product-button" (click)="confirmModal()">{{textButton}}</div>
+            </div>
+        </div>
+    </div>
+</div>

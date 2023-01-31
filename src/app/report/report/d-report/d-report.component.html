@@ -1,0 +1,227 @@
+<!-- component header type 1 -->
+<app-d-t1-header id="header"></app-d-t1-header>
+<!-- banner -->
+<div class="row">
+    <div id="download" class="col-md-12 pt-5 bg-white mt125">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-7 p-0 zidx1">
+                <carousel *ngIf="isBannerAvailable" [images]="images" [height]="240" [cellWidth]="'100%'" [dots]="true"
+                    [arrows]="false" [autoplay]="true" [loop]="true"></carousel>
+            </div>
+            <div class="col-md-3 p-0 pd2">
+                <div>
+                    <button class="sc-btn bgf" (click)=openPDF();>
+                        <div class="sc-txt">Open PDF</div>
+                    </button>
+                </div>
+                <div class="pt-1">
+                    <button class="sc-btn bgf" (click)=downloadPDF();>
+                        <div class="sc-txt">Download PDF</div>
+                    </button>
+                </div>
+                <div class="pt-1">
+                    <button class="sc-btn bgf" (click)=downloadAndOpenPDF();>
+                        <div class="sc-txt">Download and Open PDF</div>
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+
+    <!-- <app-m-report #contentToConvert id="contentToConvert"></app-m-report> -->
+
+    <div id="contentToConvert">
+        <div *ngFor="let h of header;" class="print" style="background-color: white;font-size:20px;">
+            <div style="height: 100%;">
+                <div class="row pageprint" style="height:12%">
+                    <div class="col-md-2 p-0">
+                        <img src="./assets/img/shopee.jpeg" width="90%" height="100%">
+                    </div>
+                    <div class="col-md-2 p-0">
+                        <img src="./assets/img/j&texpress.png" width="90%" height="100%">
+                    </div>
+                    <div class="col-md-2 p-0">
+                        <img src="./assets/img/dropoff.png" width="100%" height="90%">
+                    </div>
+                    <div class="col-md-6 p-0" align="right">
+                        <ngx-barcode [bc-value]="h.barcodetop" [bc-display-value]="true" [bc-width]="3"
+                            [bc-height]="80">
+                        </ngx-barcode>
+                    </div>
+                </div>
+                <div class="row pageprint" style="height: 25%;">
+                    <div class="col-md-12 p-0 ">
+                        <table style="padding: 3px; width: 100%;height: 100%;">
+                            <tr>
+                                <td rowspan="2" style="padding: 5px;height: 35%;">
+                                    <span style=" font-size: 12;font-weight:bold">ผู้ส่ง(FROM) {{h.nameFrom}}</span><br>
+                                    <span style=" font-size: 10;font-weight:bold;text-align: left;">
+                                        {{h.addFrom}}
+                                    </span>
+                                </td>
+                                <td style="padding: 10px;text-align: center;">
+                                    <span style=" font-size: 16;font-weight:bold">Home</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center">
+                                    <span style=" font-size: 16;font-weight:bold">Phone <br> {{h.phone}}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px;height: 35;">
+                                    <span style=" font-size: 12;font-weight:bold">ผู้รับ(TO) {{h.nameTo}}</span><br>
+                                    <span style=" font-size: 10;text-align: left;">
+                                        {{h.addTo}}
+                                    </span>
+                                </td>
+                                <td align="center">
+                                    <span style=" font-size: 20;font-weight:bold"> COD (บาท) <br> {{h.charges}} </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height: 30%;">
+                                    <div class="col-md-6" style="text-align: center;">
+                                        <div>
+                                            <ngx-barcode [bc-value]="h.barcodeTable" [bc-display-value]="false"
+                                                [bc-width]="1" [bc-height]="80"></ngx-barcode>
+                                        </div>
+                                        <div>
+                                            <span style="font-weight:bold">Suksapan Order No.
+                                            </span><span>{{h.orderNo}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" style="font-weight:bold">
+                                        <span style=" font-size: 14;">PICKUP DATE </span> <span
+                                            style="font-weight:100;padding-left: 10px;font-size: 12;">{{h.pickdate}}</span><br>
+                                        <span style=" font-size: 14;">SHIP BY DATE </span> <span
+                                            style="font-weight:100;padding-left: 10px;font-size: 12;">
+                                            {{h.shipbydate}}</span><br>
+                                        <span style=" font-size: 14;">NOTE </span> <span
+                                            style="font-weight:100;padding-left: 10px;font-size: 12;">
+                                            {{h.note}}</span><br>
+                                    </div>
+                                </td>
+                                <td style="padding: 10px;">
+                                    <span style=" font-size: 16; text-align: center;font-weight:bold"> Delivery Attempts
+                                    </span><br>
+                                    <span style=" font-size: 16; text-align: left;">{{h.delivery1}} </span><br>
+                                    <span style=" font-size: 16; text-align: left;">{{h.delivery2}} </span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="row pageprint" style="height: 8%;">
+                    <div class="col-md-12 p-0" style="margin-top:30px;">
+                        <table style="padding: 0px;width: 100%;border:0px;">
+                            <tr style="border: 0px;">
+                                <td style="text-align: center;padding: 0px;width: 10%;height: 10%;border: 0px; ">
+                                    <span
+                                        style="padding: 15px;background-color: Gray;font-size: xxx-large;color: white;">TH</span>
+                                </td>
+                                <td style="text-align: center;font-weight:bold;padding: 0px;border: 0px; ">
+                                    <div style="padding-bottom: 20px;">
+                                        <span style="font-size: 20px;">{{h.district}}</span>
+                                    </div>
+                                    <div>
+                                        <span style="font-size: 40px;">{{h.districten}}</span>
+                                    </div>
+                                </td>
+                                <td rowspan="2" style="text-align: center;padding: 0px;border: 0px; ">
+                                    <ngx-qrcode [elementType]="elementType" [margin]="0"
+                                        [errorCorrectionLevel]="correctionLevel" [value]="h.qrcode" cssClass="bshadow">
+                                    </ngx-qrcode>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="border: 0px;">
+                                    <span style="font-size: 10px; color: blue;">หากได้รับสินค้าแล้ว กรุณากด
+                                        "ฉันได้ตรวจสอบและยอมรับสินค้า"
+                                        และให้คะแนนสินค้า</span><br>
+                                    <span style="font-size: 10px;color: blue;">หากต้องการคืนสินค้า กรุณากด
+                                        "คืนเงิน/คืนสินค้า"
+                                        ในหน้ารายละเอียดคำสั่งซื้อหรือดูขั้นตอนได้ที่
+                                        https://ssp.we-builds.com/#/</span>
+                                </td>
+                                <td style="border: 0px;"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <table style="padding: 0px;width: 100%;border:0px;">
+                        <tr>
+                            <td style="border: 0px;width: 20px;">
+                                <span style="padding: 0px;">&#9986;</span>
+                            </td>
+                            <td style="border: 0px;">
+                                <div class="scissors"></div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="row pageprint" style="height: 55%;">
+                    <div class="col-md-12 p-0" style="margin-top: 50px;">
+                        <table style="padding: 5px;height: 100%; width: 100%;border:0px;">
+                            <thead>
+                                <tr style="height: 5%;">
+                                    <td style="text-align: center; width: 5%;border-right: 0px;font-size: 23px;">
+                                        <span>#</span>
+                                    </td>
+                                    <td
+                                        style="text-align: start;font-weight:bold; width: 50%;border-left: 0px;border-right: 0px;">
+                                        <span>ชื่อสินค้า</span>
+                                    </td>
+                                    <td
+                                        style="text-align: center;font-weight:bold;width: 30%;border-left: 0px;border-right: 0px;">
+                                        <span>ตัวเลือกสินค้า</span>
+                                    </td>
+                                    <td style="text-align: center;font-weight:bold;width: 15%;border-left: 0px;">
+                                        <span>จำนวน</span>
+                                    </td>
+                                </tr>
+                                <tr *ngFor="let i of h.items;let itemindex = index;"
+                                    style="border-top: 0px;border-bottom: 0px;vertical-align:top;font-size: 20px;">
+                                    <td
+                                        style="height: min-content; text-align: center; width: 5%;border-right: 0px;border-top: 0px;border-bottom:0px;">
+                                        <span>{{itemindex +1}}</span>
+                                    </td>
+                                    <td
+                                        style="text-align: start; width: 50%;border-left: 0px;border-right: 0px;border-top: 0px;border-bottom:0px;">
+                                        <span>{{i.name}}</span>
+                                    </td>
+                                    <td
+                                        style="text-align: center;width: 30%;border-left: 0px;border-right: 0px;border-top: 0px;border-bottom:0px;">
+                                        <span>{{i.des}}</span>
+                                    </td>
+                                    <td
+                                        style="text-align: center;width: 15%;border-left: 0px;border-top: 0px;border-bottom:0px;">
+                                        <span>{{i.number}}</span>
+                                    </td>
+                                </tr>
+                                <tr style="height: 77%;">
+                                    <td colspan="4" style="border-top: 0px;">
+
+                                    </td>
+                                </tr>
+                                <tr style="height: 8%;">
+                                    <td colspan="2"
+                                        style="text-align: start; width: 50%;border-left:0px;border-right: 0px;border-bottom: 0px;">
+                                        <span><b>Suksapan Order No. </b> 210720DEA2P8PF</span>
+                                    </td>
+                                    <td style="text-align: center;width: 30%;">
+                                        <span><b>จำนวนรวม</b></span>
+                                    </td>
+                                    <td style="text-align: center;width: 15%;">
+                                        <span><b>1</b></span>
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<!-- header 1 -->
+<div class="col-md-12 p-3 bg-twotone">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+        </div>
+        <div class="col-md-5 text-right">
+            <span class="pointer" (click)="goTo('notification')"><span
+            class="glyphicon glyphicon-bell"></span>&nbsp;การแจ้งเตือน</span> &nbsp;&nbsp;&nbsp;
+            <span class="pointer" (click)="goTo('contactHelp')"><span
+            class="glyphicon glyphicon-question-sign"></span>&nbsp;ช่วยเหลือ</span>
+            &nbsp;&nbsp;&nbsp;
+            <span class="pointer" (click)="goTo('register')">สมัครใหม่</span> &nbsp;&nbsp;|&nbsp;&nbsp;
+            <span class="pointer" (click)="goTo('login')">เข้าสู่ระบบ</span>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+
+<div class="bodyGrey">
+    <div class="boxContentPs">
+        <img src="./assets/img/circle_status_success.png" height="60px" width="60px" alt="">
+        <h2 class="txtH3GMt">การชำระเงินเสร็จสมบูรณ์</h2>
+        <h4 style="text-align: center;">ขอบคุณที่เลือกใช้บริการ SUKSAPAN เชิญเลือกสินค้าเพิ่มเติมต่อได้เลยค่ะ</h4>
+        <div class="boxBtn">
+            <div class="pointer btnPsO">
+                <p class="txtPW" (click)="goTo('mypurchase')">ดูรายการสั่งซื้อ</p>
+            </div>
+            <div class="pointer btnPsM">
+                <p class="txtPW" (click)="goTo('main')">กลับหน้าหลัก</p>
+            </div>
+        </div>
+    </div>
+</div>

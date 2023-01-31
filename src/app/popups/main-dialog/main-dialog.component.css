@@ -1,0 +1,48 @@
+.popup_style {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    overflow: visible;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.icon_close {
+  position: absolute;
+  left: 70%;
+  top: 21%;
+  cursor: pointer;
+  font-size: 15px;
+  background-color: #5a5a5a;
+  box-sizing: border-box;
+  height: 30px;
+  width: 30px;
+  color: white;
+  border-radius: 30px;
+  border: 3px solid;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon_close_m {
+    position: absolute;
+    left: 85%;
+    top: 36%;
+    cursor: pointer;
+    font-size: 15px;
+    background-color: #5a5a5a;
+    box-sizing: border-box;
+    height: 30px;
+    width: 30px;
+    color: white;
+    border-radius: 30px;
+    border: 3px solid;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+  }

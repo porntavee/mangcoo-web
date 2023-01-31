@@ -1,0 +1,70 @@
+<div>
+    <nav class="nav-login">
+        <div class="nav-in">
+            <div class="nav-r1">
+                <a href="/">
+                    <div class="logo-primary" style="height: 50px;width: 100px;"></div>
+                </a>
+                <div style="margin-left: 10px;">เข้าสู่ระบบ</div>
+            </div>
+            <a href="" target="_blank" rel="noopener noreferrer" class="login-help c-primary-light">ต้องการความช่วยเหลือ?</a>
+        </div>
+    </nav>
+    <div class="login-content bg-primary-light">
+        <form class="r2">
+            <div class="mbf"><span>เข้าสู่ระบบ</span></div>
+            <div class="mbf box-border">
+                <input class="input" type="text" [(ngModel)]="username" (ngModelChange)="username = $event" placeholder="ชื่อผู้ใช้" autocomplete="on" name="loginKey" maxlength="128" value="">
+            </div>
+            <div class="mbf box-border">
+                <input class="input" type="password" [(ngModel)]="password" (ngModelChange)="password = $event" placeholder="รหัสผ่าน" autocomplete="on" name="loginPassword" maxlength="128" value="">
+            </div>
+            <button class="mbf login-confirm bg-primary-light" (click)="login()">เข้าสู่ระบบ</button>
+            <div style="
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: flex-end;">
+                <p style="text-decoration: underline;color: blue; cursor: pointer;" (click)="clickTest()">ลืมรหัสผ่าน</p>
+            </div>
+            <div class="mbf sc-box">
+                <div class="sc-line"></div>
+                <span class="sc-line-txt">หรือ</span>
+                <div class="sc-line"></div>
+            </div>
+            <div class="mbf sc-box" style="margin-left: -10px;">
+                <button class="sc-btn bgf" (click)="signInFacebook()">
+            <div>
+              <img src="./../../../../assets/img/facebook_circle.png" style="height:15px; width:15px;" />
+            </div>
+            <div class="sc-txt">Facebook</div>
+          </button>
+                <button class="sc-btn bgg" #loginRef (click)="signInGoogle()">
+            <div>
+              <img src="./../../../../assets/img/google_circle.png" style="height:15px; width:15px;" />
+            </div>
+            <div class="sc-txt">Google</div>
+          </button>
+                <button class="sc-btn bgl">
+            <div>
+              <img src="./../../../../assets/img/line_circle.png" style="height:15px; width:15px;" />
+            </div>
+            <div class="sc-txt">Line</div>
+          </button>
+                <button class="sc-btn bga">
+            <div class="BnBJFp">
+              <div class="_30SGUu social-white-background social-white-fb-png"></div>
+            </div>
+            <div class="sc-txt">Apple</div>
+          </button>
+            </div>
+            <div style="display: flex; justify-content: center;">
+                <p style="color: grey; font-size: 14px;">เพิ่งเคยเข้ามาใน SUKSAPAN ใช่หรือไม่ </p>
+                <p style="color: red; font-size: 14px;cursor: pointer;" (click)="goToRegister()">สมัครใหม่</p>
+            </div>
+        </form>
+    </div>
+    <footer>
+
+    </footer>
+</div>

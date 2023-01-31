@@ -1,0 +1,99 @@
+<!-- component header type 1 -->
+<app-m-t1-header></app-m-t1-header>
+
+<div class="col-xs-12">
+    <div class="col-xs-12 p-0">
+        <div class="div-imageUrl-detail">
+            <img class="image_border" src="{{model.imageUrl}}" alt="" height="200px" width="100%">
+        </div>
+        <div class="div-title-detail">{{model.title}}</div>
+        <div class="col-xs-12 pd0">
+            <div class="div-box-date">{{model.updateDate | dateFormat}}
+                <div class="mainbox">
+                    <input type="checkbox" id="check">
+                    <label *ngIf="serviceProviderService.lang == 'th'" for="check" class="label-share pointer">แชร์</label>
+                    <label *ngIf="serviceProviderService.lang == 'en'" for="check" class="label-share pointer">share</label>
+                    <div class="div-media-icons pointer">
+                        <a (click)="shareWithFB()"> <i class="fab fa-facebook"></i></a>
+                        <a (click)="shareWithLine()"><i class="fab fa-line"></i></a>
+                        <a (click)="copyMessage('This goes to Clipboard')"><i class="fas fa-copy"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 pd0">
+            <div class="div-box-date">{{model.updateBy}} &nbsp;&nbsp;&nbsp;&nbsp; {{model.updateDate | datetimeFormat}}</div>
+        </div>
+        <div class="col-xs-12 pd0">
+            <div *ngIf="serviceProviderService.lang == 'th'" class="div-description-detail" [innerHtml]="model.description | safeHtml"></div>
+            <div *ngIf="serviceProviderService.lang == 'en'" class="div-description-detail" [innerHtml]="model.descriptionEN | safeHtml"></div>
+        </div>
+        <div class="col-xs-12 pd0">
+            <div class="div-textButton-detail">
+                <button class="button-textButton-detail" *ngIf="model.linkUrl != '' && model.textButton != ''" (click)="openRef()">
+                    <div style="color: #fff;">
+                        <p [innerHtml]="model.textButton"> </p>
+                    </div>
+                </button>
+                <button class="button-textButton-detail" *ngIf="model.fileUrl != ''&& isPdf == true" (click)="downloadPDF()">
+                    <div style="color: #fff;">
+                        <p>ดาวโหลดเอกสาร</p>
+                    </div>
+                </button>
+                <button class="button-textButton-detail" *ngIf="model.fileUrl != '' && isMp4 == true" (click)="openModal()">
+                    <div style="color: #fff;">
+                        <!-- <p>ดูวีดีโอ</p> -->
+                        <img src="./assets/img/play.png" width="40px" alt="">
+                    </div>
+                </button>
+            </div>
+        </div>
+        <div class="col-xs-12 pd0">
+            <div class="div-galleryImages-title-detail" *ngIf="galleryImages.length != 0">
+                รูปข่าวประชาสัมพันธ์
+            </div>
+            <div class="div-galleryImages-detail" *ngIf="galleryImages.length != 0">
+                <div class="div-gallery">
+                    <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+                </div>
+            </div>
+        </div>
+        <div class="pointer col-xs-12 div-socialnetwork-m">
+            <div (click)="shareWithFB()">
+                <img class="img-socialnetwork-m" src="./assets/img/Facebook@2x.png">
+            </div>
+            <div (click)="shareWithLine()">
+                <img class="img-socialnetwork-m" src="./assets/img/Line@2x.png">
+            </div>
+        </div>
+        <!-- ข่าวที่เกี่ยวข้อง -->
+        <div class="col-xs-12 pd0">
+            <div class="implicated-detail-top">
+                <div class="box">
+                    <div class="left">ข่าวที่เกี่ยวข้อง</div>
+                </div>
+            </div>
+            <div class="div-box-other-group">
+                <div class="div-card-detail pointer" *ngFor="let item of modelOther | slice:0:6;" (click)="navToDetail(item.code)">
+                    <img src="{{item.imageUrl}}" height="90px" width="100%" alt="" style="border-radius: 10px;">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="implicated-detail-content">
+                        <div class="div-center-card-detail" *ngIf="item.center != ''">จาก {{item.center}}</div>
+                        <div class="div-title-card-detail">{{item.title}}</div>
+                        <div class="div-dateFormat-card-detail">{{item.createDate | dateFormat}}</div>
+                    </div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="implicated-detail-content">
+                        <div class="div-center-card-detail" *ngIf="item.center != ''">จาก {{item.center}}</div>
+                        <div class="div-title-card-detail">{{item.titleEN}}</div>
+                        <div class="div-dateFormat-card-detail">{{item.createDate | dateFormat}}</div>
+                    </div>
+                </div>
+            </div>
+            <div style="height: 5em;"></div>
+        </div>
+    </div>
+</div>
+<div class="col-xs-12">
+    <modal-video *ngIf="showModal" [model]="modelSelected" (callback)="fromModal($event)"></modal-video>
+</div>
+<!-- footer -->
+<app-m-t1-footer></app-m-t1-footer>

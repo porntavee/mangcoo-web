@@ -1,0 +1,292 @@
+<!-- WEB TH -->
+<div class="col-md-12 m-0 p-0 d-none d-lg-block" style="min-width: 1170px !important;"
+    *ngIf="serviceProviderService.lang == 'th'">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+        <div style="height: 2em;"></div>
+        <div class="df"
+            style="flex-wrap: wrap;column-gap: 10px;row-gap: 5px;margin-bottom: 20px;margin-top: 10px;width: 100%;">
+            <div *ngFor="let category2 of categoryList2;let idx = index">
+                <div (mouseover)="mouseOvered1=idx">
+                    <div class="menu-personnel pointer kanit_l"
+                        [class.menu-personnel-active]="category2.code === categorySelected2.code"
+                        (click)="changeCategory(category2)">
+                        {{category2.title}}
+                    </div>
+                    <div *ngIf="category2.items.length > 0" class="col-md-12 col-xs-12 pd0 df">
+                        <div *ngIf="mouseOvered1 == idx || category2.code === categorySelected2.code" class="df"
+                            style="line-height: 4rem;cursor: pointer;">
+                            <div class="df" style="height: auto;">
+                                <div class="df pointer" *ngFor="let i of category2.items;">
+                                    <div class="university">
+                                        <div class="menu-personnel pointer kanit_l"
+                                            [class.menu-personnel-active]="i.code === categorySelectedItem.code"
+                                            (click)="changeCategoryItem(category2,i)">
+                                            {{i.title}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span *ngIf="categoryList.length >0" class="kanit_m mb-4" style="width: 100%;">{{'term'|
+            langTh}}</span>
+        <div class="df"
+            style="flex-wrap: wrap;column-gap: 10px;row-gap: 5px;margin-bottom: 20px;margin-top: 10px;width: 100%;">
+            <div *ngFor="let category of categoryList" class="menu-personnel pointer kanit_l"
+                [class.menu-personnel-active]="category.code === categorySelected.code" (click)="changeYear(category)">
+                {{category.title}}</div>
+        </div>
+        <div style="height: 2px; background-color: #707070;width: 100%;margin: 20px 0;opacity: 0.36;"></div>
+        <div class="df kanit_xl" style="justify-content: center;color: #3B7BA2;font-weight: 600;margin: 50px 0;"
+            *ngIf="categoryList.length > 0">
+            {{categorySelected2.title}} พ.ศ. {{categorySelected.title}}</div>
+        <div class="df kanit_xl" style="justify-content: center;color: #3B7BA2;font-weight: 600;margin: 50px 0;"
+            *ngIf="categoryList.length == 0">
+            {{categorySelected2.title}}</div>
+    </div>
+    <div class="col-md-1"></div>
+    <div *ngFor="let p of personnelStructureList;let i = index;">
+        <div class="dfc"
+            style="width: 100%;justify-content: center;background-color: {{checkColor(i)}};padding-bottom: 30px;">
+            <div class="box-header-position-personnel" *ngIf="p.position != ''">
+                <div class="header-position-personnel">{{p.position}}</div>
+            </div>
+            <div class="row" *ngFor="let r of p.personnelRow">
+                <div class="box-personnel-card" style="max-width: 1980%;min-width: 1170px;justify-content: center;">
+                    <div class="personnel-card dfc" *ngFor="let person of r.model;">
+                        <img src="{{person.imageUrl}}" height="150px" width="150px"
+                            style="object-fit: fill;border-radius: 50%;" alt="{{person.title}}">
+                        <div style="height: 2em;"></div>
+                        <div style="font-size: 1.3rem;font-weight: 500;text-align: center;"
+                            (click)="copyMessage(person)">
+                            {{person.firstName}} {{person.lastName}}
+                        </div>
+                        <div style="height: 1em;"></div>
+                        <div style="color: #707070;font-size: 1.2rem;text-align: center;">{{person.description}}</div>
+                    </div>
+                </div>
+                <div style="height: 4em;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- WEB EN -->
+<div class="col-md-12 m-0 p-0 d-none d-lg-block" style="min-width: 1170px !important;"
+    *ngIf="serviceProviderService.lang == 'en'">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+        <div style="height: 2em;"></div>
+        <div class="df"
+            style="flex-wrap: wrap;column-gap: 10px;row-gap: 5px;margin-bottom: 20px;margin-top: 10px;width: 100%;">
+            <div *ngFor="let category2 of categoryList2;let idx = index">
+                <div (mouseover)="mouseOvered1=idx">
+                    <div class="menu-personnel pointer kanit_l"
+                        [class.menu-personnel-active]="category2.code === categorySelected2.code"
+                        (click)="changeCategory(category2)">
+                        {{category2.titleEN}}
+                    </div>
+                    <div *ngIf="category2.items.length > 0" class="col-md-12 col-xs-12 pd0 df">
+                        <div *ngIf="mouseOvered1 == idx || category2.code === categorySelected2.code" class="df"
+                            style="line-height: 4rem;cursor: pointer;">
+                            <div class="df" style="height: auto;">
+                                <div class="df pointer" *ngFor="let i of category2.items;">
+                                    <div class="university">
+                                        <div class="menu-personnel pointer kanit_l"
+                                            [class.menu-personnel-active]="i.code === categorySelectedItem.code"
+                                            (click)="changeCategoryItem(category2,i)">
+                                            {{i.titleEN}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span *ngIf="categoryList.length >0" class="kanit_m mb-4" style="width: 100%;">{{'term'|
+            langEn}}</span>
+        <div class="df"
+            style="flex-wrap: wrap;column-gap: 10px;row-gap: 5px;margin-bottom: 20px;margin-top: 10px;width: 100%;">
+            <div *ngFor="let category of categoryList" class="menu-personnel pointer kanit_l"
+                [class.menu-personnel-active]="category.code === categorySelected.code" (click)="changeYear(category)">
+                {{category.title}}</div>
+        </div>
+        <div style="height: 2px; background-color: #707070;width: 100%;margin: 20px 0;opacity: 0.36;"></div>
+        <div class="df kanit_xl" style="justify-content: center;color: #3B7BA2;font-weight: 600;margin: 50px 0;">
+            {{categorySelected2.titleEN}} {{categorySelected.title}}</div>
+    </div>
+    <div class="col-md-1"></div>
+    <div *ngFor="let p of personnelStructureListEN;let i = index;">
+        <div class="dfc"
+            style="width: 100%;justify-content: center;background-color: {{checkColor(i)}};padding-bottom: 30px;">
+            <div class="box-header-position-personnel" *ngIf="p.positionEN != ''">
+                <div class="header-position-personnel">{{p.positionEN}}</div>
+            </div>
+            <div class="row" *ngFor="let r of p.personnelRowEN">
+                <div class="box-personnel-card" style="max-width: 1980%;min-width: 1170px;justify-content: center;">
+                    <div class="personnel-card dfc" *ngFor="let person of r.model;">
+                        <img src="{{person.imageUrl}}" height="150px" width="150px"
+                            style="object-fit: fill;border-radius: 50%;" alt="{{person.title}}">
+                        <div style="height: 2em;"></div>
+                        <div style="font-size: 1.3rem;font-weight: 500;text-align: center;"
+                            (click)="copyMessageEN(person)">
+                            {{person.firstNameEN}} {{person.lastNameEN}}
+                        </div>
+                        <div style="height: 1em;"></div>
+                        <div style="color: #707070;font-size: 1.2rem;text-align: center;">{{person.descriptionEN}}</div>
+                    </div>
+                </div>
+                <div style="height: 4em;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-xs-12 m-0 p-0 d-block d-lg-none" *ngIf="serviceProviderService.lang == 'th'">
+    <div style="height: 2em;"></div>
+    <div style="display: flex;justify-content: start;width: 100%;">
+        <div class="div-dropdown" #droppedCenter (click)="showHamburger('center')">
+            <div class="div-dropdown-content" [ngStyle]="{'display': showCenter ? 'flex' : 'none'}"
+                style="padding: 10px;">
+                <div class="div-dropdown-item" *ngFor="let category2 of categoryList2">
+                    <div class="div-menu-knowledge pointer kanit_m"
+                        [class.div-menu-knowledge-active]="category2.code === categorySelected2.code"
+                        (click)="changeCategory(category2)">{{category2.title}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="div-category-knowledge pointer kanit_m" [class.div-category-knowledge-active]="true"
+            style="margin-left: 20px;max-width: 70vw;">{{categorySelected2.title}}</div>
+    </div>
+    <div *ngIf="categoryListItem.length >0" style="display: flex;justify-content: start;width: 100%;margin: 15px 0px;">
+        <div class="div-dropdown" #droppedCenter (click)="showHamburger('categoryItem')">
+            <div class="div-dropdown-content" [ngStyle]="{'display': showCategoryItem ? 'flex' : 'none'}"
+                style="padding: 10px;">
+                <div class="div-dropdown-item" *ngFor="let item of categoryListItem">
+                    <div class="div-menu-knowledge pointer kanit_m"
+                        [class.div-menu-knowledge-active]="item.code === categorySelectedItem.code"
+                        (click)="changeCategoryItem(categorySelected2,item)">{{item.title}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="div-category-knowledge pointer kanit_m" [class.div-category-knowledge-active]="true"
+            style="margin-left: 20px;max-width: 70vw;">{{changeNameitem(categorySelectedItem.title)}}</div>
+    </div>
+    <span *ngIf="categoryList.length > 0" class="kanit_m mb-4" style="width: 100%;">{{'term'|
+        langTh}}</span>
+    <div *ngIf="categoryList.length > 0" style="display: flex;justify-content: start;width: 100%;">
+        <div class="div-dropdown-year" #droppedYear (click)="showHamburger('year')">
+            <div class="div-dropdown-content-year" [ngStyle]="{'display': showYear ? 'flex' : 'none'}"
+                style="padding: 10px;">
+                <div class="div-dropdown-item-year" *ngFor="let category of categoryList">
+                    <div class="div-menu-knowledge pointer kanit_m"
+                        [class.div-menu-knowledge-active]="category.code === categorySelected.code"
+                        (click)="changeYear(category)">{{category.title}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="div-category-knowledge pointer kanit_m" [class.div-category-knowledge-active]="true"
+            style="margin-left: 20px;max-width: 70vw;">{{categorySelected.title}}</div>
+    </div>
+    <div style="height: 2px; background-color: #707070;width: 100%;margin: 5vw 0;opacity: 0.36;"></div>
+    <div class="df kanit_l" style="justify-content: center;color: #3B7BA2;font-weight: 600;margin: 30px 0 50px 0;"
+        *ngIf="categoryList.length > 0">
+        {{categorySelected2.title}} พ.ศ. {{categorySelected.title}}</div>
+    <div class="df kanit_l" style="justify-content: center;color: #3B7BA2;font-weight: 600;margin: 30px 0 50px 0;"
+        *ngIf="categoryList.length == 0">
+        {{categorySelected2.title}}</div>
+    <div *ngFor="let p of personnelStructureList;let i = index;">
+        <div class="dfc" style="justify-content: center;background-color: {{checkColor(i)}};padding-bottom: 30px;">
+            <div class="box-header-position-personnel" *ngIf="p.position != ''">
+                <div class="header-position-personnel">{{p.position}}</div>
+            </div>
+            <div class="box-personnel-card-m" *ngFor="let r of p.personnelRow">
+                <div class="personnel-card-m dfc" *ngFor="let person of r.model">
+                    <img src="{{person.imageUrl}}" alt="{{person.firstName}} {{person.lastName}}">
+                    <div style="height: 2em;"></div>
+                    <div style="font-size: 1.3rem; font-weight: 500; text-align: center;" (click)="copyMessage(person)">
+                        {{person.firstName}} {{person.lastName}}
+                    </div>
+                    <div style="height: 2em;"></div>
+                    <div style="color: #707070; font-size: 1.2rem; text-align: center;">{{person.description}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- </div> -->
+</div>
+
+<div class="col-xs-12 m-0 p-0 d-block d-lg-none" *ngIf="serviceProviderService.lang == 'en'">
+    <div style="height: 2em;"></div>
+    <div style="display: flex;justify-content: start;width: 100%;">
+        <div class="div-dropdown" #droppedCenter (click)="showHamburger('center')">
+            <div class="div-dropdown-content" [ngStyle]="{'display': showCenter ? 'flex' : 'none'}"
+                style="padding: 10px;">
+                <div class="div-dropdown-item" *ngFor="let category2 of categoryList2">
+                    <div class="div-menu-knowledge pointer kanit_m"
+                        [class.div-menu-knowledge-active]="category2.code === categorySelected2.code"
+                        (click)="changeCategory(category2)">{{category2.titleEN}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="div-category-knowledge pointer kanit_m" [class.div-category-knowledge-active]="true"
+            style="margin-left: 20px;max-width: 70vw;">{{categorySelected2.titleEN}}</div>
+    </div>
+    <div *ngIf="categoryListItem.length >0" style="display: flex;justify-content: start;width: 100%;margin: 15px 0px;">
+        <div class="div-dropdown" #droppedCenter (click)="showHamburger('categoryItem')">
+            <div class="div-dropdown-content" [ngStyle]="{'display': showCategoryItem ? 'flex' : 'none'}"
+                style="padding: 10px;">
+                <div class="div-dropdown-item" *ngFor="let item of categoryListItem">
+                    <div class="div-menu-knowledge pointer kanit_m"
+                        [class.div-menu-knowledge-active]="item.code === categorySelectedItem.code"
+                        (click)="changeCategoryItem(categorySelected2,item)">{{item.title}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="div-category-knowledge pointer kanit_m" [class.div-category-knowledge-active]="true"
+            style="margin-left: 20px;max-width: 70vw;">{{changeNameitem(categorySelectedItem.title)}}</div>
+    </div>
+    <span *ngIf="categoryList.length > 0" class="kanit_m mb-4" style="width: 100%;">{{'term'|
+        langEn}}</span>
+    <div *ngIf="categoryList.length > 0" style="display: flex;justify-content: start;width: 100%;">
+        <div class="div-dropdown-year" #droppedYear (click)="showHamburger('year')">
+            <div class="div-dropdown-content-year" [ngStyle]="{'display': showYear ? 'flex' : 'none'}"
+                style="padding: 10px;">
+                <div class="div-dropdown-item-year" *ngFor="let category of categoryList">
+                    <div class="div-menu-knowledge pointer kanit_m"
+                        [class.div-menu-knowledge-active]="category.code === categorySelected.code"
+                        (click)="changeYear(category)">{{category.titleEN}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="div-category-knowledge pointer kanit_m" [class.div-category-knowledge-active]="true"
+            style="margin-left: 20px;max-width: 70vw;">{{categorySelected.titleEN}}</div>
+    </div>
+    <div style="height: 2px; background-color: #707070;width: 100%;margin: 5vw 0;opacity: 0.36;"></div>
+    <div class="df kanit_l" style="justify-content: center;color: #3B7BA2;font-weight: 600;margin: 30px 0 50px 0;">
+        {{categorySelected2.titleEN}} {{categorySelected.title}}</div>
+    <div *ngFor="let p of personnelStructureListEN;let i = index;">
+        <div class="dfc" style="justify-content: center;background-color: {{checkColor(i)}};padding-bottom: 30px;">
+            <div class="box-header-position-personnel" *ngIf="p.positionEN != ''">
+                <div class="header-position-personnel">{{p.positionEN}}</div>
+            </div>
+            <div class="box-personnel-card-m" *ngFor="let r of p.personnelRowEN">
+                <div class="personnel-card-m dfc" *ngFor="let person of r.model">
+                    <img src="{{person.imageUrl}}" alt="{{person.firstNameEN}} {{person.lastNameEN}}">
+                    <div style="height: 2em;"></div>
+                    <div style="font-size: 1.3rem; font-weight: 500; text-align: center;"
+                        (click)="copyMessageEN(person)">{{person.firstNameEN}} {{person.lastNameEN}}
+                    </div>
+                    <div style="height: 2em;"></div>
+                    <div style="color: #707070; font-size: 1.2rem; text-align: center;">{{person.descriptionEN}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- </div> -->
+</div>

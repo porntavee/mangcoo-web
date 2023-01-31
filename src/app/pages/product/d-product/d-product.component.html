@@ -1,0 +1,1066 @@
+<app-d-t1-header [cartNumber]="cartNumber"></app-d-t1-header>
+<div class="col-md-12 mt125 minDiv">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10 pt-4">
+            <a href="./">We
+                Mart</a>&nbsp;&nbsp;>&nbsp;&nbsp;{{model.titleLv1Shop}}&nbsp;&nbsp;>&nbsp;&nbsp;{{model.titleLv2Shop}}&nbsp;&nbsp;>&nbsp;&nbsp;{{model.titleLv3Shop}}&nbsp;&nbsp;>&nbsp;&nbsp;{{model.title}}
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+
+<div class="col-md-12 p-4 minDiv">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10 p-4 bg-white">
+            <div class="row">
+                <div class="col-md-5" *ngIf="goodsInventoryCode == menuActive">
+                    <img src="{{getImageUrl()}}" width="450" height="450" style="object-fit:contain;" (click)="resetGallery()">
+                </div>
+                <div class="col-md-5" *ngIf="goodsInventoryCode != menuActive && galleryImages == null">
+                    <img src="{{model.imageUrl}}" width="450" height="450" style="object-fit:contain;" (click)="resetGallery()">
+                </div>
+                <div class="col-md-5" *ngIf="goodsInventoryCode != menuActive && galleryImages != null">
+                    <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"></ngx-gallery>
+                </div>
+                <div class="col-md-7">
+                    <div class="col-md-12">
+                        <span class="bugget-orange">[ร้านแนะนำ]</span><span>&nbsp;&nbsp;&nbsp;{{model.title}}</span>
+                    </div>
+                    <div *ngIf="ratingStar == '0star'" class="col-md-12 pt-3">
+                        <!-- 0 ดาว -->
+                        <i class="fa fa-star unrated checked"></i>
+                        <i class="fa fa-star unrated checked"></i>
+                        <i class="fa fa-star unrated checked"></i>
+                        <i class="fa fa-star unrated checked"></i>
+                        <i class="fa fa-star enlang unrated checked"></i>
+                        <span class="checked">{{model.rating}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <b>{{ratingLength}}</b>&nbsp;
+                        <span class="span-textcolor-707070">Ratings</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <b>{{sellOrderTotal}}</b>&nbsp;
+                        <span class="span-textcolor-707070">ขายแล้ว</span>&nbsp;
+                    </div>
+                    <div *ngIf="ratingStar == '0.5star'" class="col-md-12 pt-3">
+                        <!-- 0.5 ดาว -->
+                        <i class="fa fa-star-half-o checked"></i>
+                        <i class="fa fa-star unrated checked"></i>
+                        <i class="fa fa-star unrated checked"></i>
+                        <i class="fa fa-star unrated checked"></i>
+                        <i class="fa fa-star enlang unrated checked"></i>
+                        <span class="checked">{{model.rating}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <b>{{ratingLength}}</b>&nbsp;
+                        <span class="span-textcolor-707070">Ratings</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <b>{{sellOrderTotal}}</b>&nbsp;
+                        <span class="span-textcolor-707070">ขายแล้ว</span>&nbsp;
+                    </div>
+                    <div *ngIf="ratingStar == '1star'" class="col-md-12 pt-3">
+                        <!-- 1 ดาว -->
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star unrated checked"></i>
+                        <i class="fa fa-star unrated checked"></i>
+                        <i class="fa fa-star unrated checked"></i>
+                        <i class="fa fa-star enlang unrated checked"></i>
+                        <span class="checked">{{model.rating}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <b>{{ratingLength}}</b>&nbsp;
+                        <span class="span-textcolor-707070">Ratings</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <b>{{sellOrderTotal}}</b>&nbsp;
+                        <span class="span-textcolor-707070">ขายแล้ว</span>&nbsp;
+                    </div>
+                    <div *ngIf="ratingStar == '1.5star'" class="col-md-12 pt-3">
+                        <!-- 1.5 ดาว -->
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star-half-o checked"></i>
+                        <i class="fa fa-star unrated checked"></i>
+                        <i class="fa fa-star unrated checked"></i>
+                        <i class="fa fa-star enlang unrated checked"></i>
+                        <span class="checked">{{model.rating}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <b>{{ratingLength}}</b>&nbsp;
+                        <span class="span-textcolor-707070">Ratings</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <b>{{sellOrderTotal}}</b>&nbsp;
+                        <span class="span-textcolor-707070">ขายแล้ว</span>&nbsp;
+                    </div>
+                    <div *ngIf="ratingStar == '2star'" class="col-md-12 pt-3">
+                        <!-- 2 ดาว -->
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star unrated checked"></i>
+                        <i class="fa fa-star unrated checked"></i>
+                        <i class="fa fa-star enlang unrated checked"></i>
+                        <span class="checked">{{model.rating}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <b>{{ratingLength}}</b>&nbsp;
+                        <span class="span-textcolor-707070">Ratings</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <b>{{sellOrderTotal}}</b>&nbsp;
+                        <span class="span-textcolor-707070">ขายแล้ว</span>&nbsp;
+                    </div>
+                    <div *ngIf="ratingStar == '2.5star'" class="col-md-12 pt-3">
+                        <!-- 2.5 ดาว -->
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star-half-o checked"></i>
+                        <i class="fa fa-star unrated checked"></i>
+                        <i class="fa fa-star enlang unrated checked"></i>
+                        <span class="checked">{{model.rating}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <b>{{ratingLength}}</b>&nbsp;
+                        <span class="span-textcolor-707070">Ratings</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <b>{{sellOrderTotal}}</b>&nbsp;
+                        <span class="span-textcolor-707070">ขายแล้ว</span>&nbsp;
+                    </div>
+                    <div *ngIf="ratingStar == '3star'" class="col-md-12 pt-3">
+                        <!-- 3 ดาว -->
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star unrated checked"></i>
+                        <i class="fa fa-star enlang unrated checked"></i>
+                        <span class="checked">{{model.rating}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <b>{{ratingLength}}</b>&nbsp;
+                        <span class="span-textcolor-707070">Ratings</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <b>{{sellOrderTotal}}</b>&nbsp;
+                        <span class="span-textcolor-707070">ขายแล้ว</span>&nbsp;
+                    </div>
+                    <div *ngIf="ratingStar == '3.5star'" class="col-md-12 pt-3">
+                        <!-- 3.5 ดาว -->
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star-half-o checked"></i>
+                        <i class="fa fa-star enlang unrated checked"></i>
+                        <span class="checked">{{model.rating}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <b>{{ratingLength}}</b>&nbsp;
+                        <span class="span-textcolor-707070">Ratings</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <b>{{sellOrderTotal}}</b>&nbsp;
+                        <span class="span-textcolor-707070">ขายแล้ว</span>&nbsp;
+                    </div>
+                    <div *ngIf="ratingStar == '4star'" class="col-md-12 pt-3">
+                        <!-- 4 ดาว -->
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star enlang unrated checked"></i>
+                        <span class="checked">{{model.rating}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <b>{{ratingLength}}</b>&nbsp;
+                        <span class="span-textcolor-707070">Ratings</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <b>{{sellOrderTotal}}</b>&nbsp;
+                        <span class="span-textcolor-707070">ขายแล้ว</span>&nbsp;
+                    </div>
+                    <div *ngIf="ratingStar == '4.5star'" class="col-md-12 pt-3">
+                        <!-- 4.5 ดาว -->
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star-half-o checked"></i>
+                        <span class="checked">{{model.rating}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <b>{{ratingLength}}</b>&nbsp;
+                        <span class="span-textcolor-707070">Ratings</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <b>{{sellOrderTotal}}</b>&nbsp;
+                        <span class="span-textcolor-707070">ขายแล้ว</span>&nbsp;
+                    </div>
+                    <div *ngIf="ratingStar == '5star'" class="col-md-12 pt-3">
+                        <!-- 5 ดาว -->
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star checked"></i>
+                        <i class="fa fa-star checked"></i>
+                        <span class="checked">{{model.rating}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <b>{{ratingLength}}</b>&nbsp;
+                        <span class="span-textcolor-707070">Ratings</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <b>{{sellOrderTotal}}</b>&nbsp;
+                        <span class="span-textcolor-707070">ขายแล้ว</span>&nbsp;
+                    </div>
+
+                    <div class="col-md-12 pt-3">
+                        <div class="col-md-12 p-3" style="background-color: #F5F5F5;">
+                            <!-- มีส่วนลด -->
+                            <span *ngIf="goodsInventoryCode != menuActive && model.discount != 0" class="f-line-through">{{model.minPrice}} -
+                                {{model.maxPrice}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <span *ngIf="goodsInventoryCode != menuActive && model.discount != 0" class="fs2 f-orange">{{model.minPriceWithDisCount}} -
+                                {{model.maxPriceWithDisCount}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <span *ngIf="goodsInventoryCode == menuActive && model.discount != 0" class="f-line-through">{{getPrice()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <span *ngIf="goodsInventoryCode == menuActive && model.discount != 0" class="fs2 f-orange">{{getNetPrice()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <span *ngIf="model.disCountUnit != 0" class="bugget-orange">{{model.discount}}
+                                {{getDisCountUnit()}}</span>
+                            <!-- ไม่มีส่วนลด -->
+                            <span *ngIf="goodsInventoryCode != menuActive && model.discount == 0" class="fs2 f-orange">{{model.minPriceWithDisCount}} -
+                                {{model.maxPriceWithDisCount}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <span *ngIf="goodsInventoryCode == menuActive && model.discount == 0" class="fs2 f-orange">{{getNetPrice()}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        </div>
+                    </div>
+                    <!-- <div class="col-md-12 pt-3 pr-3">
+                        <div class="col-md-3">
+                            <span>โค้ดส่วนลดจากร้านค้า </span>
+                        </div>
+                        <div class="col-md-9">
+                            <span class="bugget-gray">ลด 999</span>
+                        </div>
+                    </div> -->
+                    <div class="col-md-12 pt-3">
+                        <div class="col-md-3">
+                            <span>การจัดส่ง</span>
+                        </div>
+                        <div class="col-md-9">
+                            <span>ฟรีค่าจัดส่ง</span>
+                        </div>
+                    </div>
+                    <div class="col-md-12 pt-3">
+                        <div class="col-md-3">
+                            <span>ลักษณะ</span>
+                        </div>
+                        <!-- <div class="col-md-9" >
+                            <button type="button mr-1" class="btn btn-outline-secondary" 
+                            *ngFor="let mi of modelInventory; let idx = index" (click)="itemGoodsInventory(mi.code)">
+                                &nbsp;&nbsp;&nbsp;&nbsp;{{mi.title}}&nbsp;&nbsp;&nbsp;&nbsp;
+                            </button>
+                        </div> -->
+                        <div class="col-md-9 scroll">
+                            <mat-button-toggle-group [value]="selectedState" (change)="onChange($event)">
+                                <mat-button-toggle *ngFor="let mi of modelInventory; let idx = index" class="mr-5" buttonToggleGroup="toggleButtonGroup" (click)="itemGoodsInventory(mi.code)" value="{{mi.code}}">{{mi.title}}
+                                </mat-button-toggle>
+                            </mat-button-toggle-group>
+                        </div>
+                    </div>
+                    <div class="col-md-12 pt-3">
+                        <div class="col-md-3">
+                            <span>จำนวน </span>
+                        </div>
+                        <div class="col-md-9">
+                            <button type="button" class="btn btn-qty" (click)="itemMinus()">-
+                            </button>
+                            <button type="button" class="btn btn-qty-num">{{qty}}
+                            </button>
+                            <!-- <input value="{{qty}}" type="number" min="1" class="btn-qty-num"
+                                onkeypress="return event.charCode >= 48 && event.charCode <= 57"> -->
+                            <button type="button" class="btn btn-qty" (click)="itemPlus()">+
+                            </button>
+                            <span *ngIf="goodsInventoryCode == menuActive" class="num-qty">มีสินค้าทั้งหมด
+                                {{getRemaining()}} ชิ้น</span>
+                            <span *ngIf="goodsInventoryCode != menuActive" class="num-qty">มีสินค้าทั้งหมด
+                                {{remainingTotal}} ชิ้น</span>
+                        </div>
+                    </div>
+                    <div class="col-md-12 pt-3">
+                        <div class="col-md-3 m-3">
+                            <button type="button" class="btn btn-add-cart" (click)="createCart()">&nbsp;<img
+                                    src="./assets/img/cart@2x.png"
+                                    style="height: 20px; width: 20px;">&nbsp;&nbsp;เพิ่มไปยังรถเข็น
+                            </button>
+                        </div>
+                        <div class="col-md-3 m-3">
+                            <button type="button" class="btn btn-buy-product" (click)="createBuy()">ซื้อสินค้า
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-12 pt-2">
+                        <hr>
+                    </div>
+                    <div class="col-md-12">
+                        <span><b>การันตีจาก SUKSAPAN</b></span>&nbsp;&nbsp;
+                        <span class="span-textcolor-707070">รับประกันสินค้าคืนเงิน หากไม่ได้รับสินค้า</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+
+<div class="col-md-12 p-4 minDiv">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10 p-4 bg-white">
+            <div class="row">
+                <div class="col-md-1">
+                    <a href="/shop/{{model.referenceShopCode}}">
+                        <img src="{{model.referenceShopImageUrl}}" width="80" height="80" class="border-radius-50">
+                    </a>
+                </div>
+                <div class="col-md-3">
+                    <div class="col-md-12">
+                        <a href="/shop/{{model.referenceShopCode}}">
+                            <span>{{model.referenceShopName}}</span>
+                        </a>
+                    </div>
+                    <div class="col-md-12">
+                        <span class="span-textcolor-707070">Active 0 min</span>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-chat-now">
+                            &nbsp;<img src="./assets/img/Group6910@2x.png"
+                                style="height: 20px; width: 20px;">&nbsp;แชทเลย&nbsp;
+                        </button>
+                        <button type="button" class="btn btn-show-shop" (click)="navTo(model.referenceShopCode)">
+                            &nbsp;<img src="./assets/img/Group6910@2x.png"
+                                style="height: 20px; width: 20px;">&nbsp;ดูร้านค้า&nbsp;
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="vertical-line"></div>
+                </div>
+                <div class="col-md-2 align-items-baseline">
+                    <div class="row-md-12">
+                        <span class="span-textcolor-707070">คะแนน&nbsp;</span>
+                        <span class="span-textcolor-1EB7D7" *ngIf="ratingCheck == 1000">{{ratingTotal}}&nbsp;พัน</span>
+                        <span class="span-textcolor-1EB7D7" *ngIf="ratingCheck == 0">{{ratingTotal}}</span>
+                    </div>
+                    <div class="row-md-12 pt-4">
+                        <span class="span-textcolor-707070">รายการสินค้า&nbsp;</span>
+                        <span class="span-textcolor-1EB7D7" *ngIf="ratingCheck == 1000">{{goodsShopLength}}&nbsp;พัน</span>
+                        <span class="span-textcolor-1EB7D7" *ngIf="ratingCheck == 0">{{goodsShopLength}}</span>
+                    </div>
+                </div>
+                <div class="col-md-3 align-items-baseline">
+                    <div class="row-md-12">
+                        <span class="span-textcolor-707070">เวลาในการตอบกลับ&nbsp;</span>
+                        <span class="span-textcolor-1EB7D7">ภายในไม่กี่ชั่วโมง</span>
+                    </div>
+                    <div class="row-md-12 pt-4">
+                        <span class="span-textcolor-707070">อัตราการตอบกลับ&nbsp;</span>
+                        <span class="span-textcolor-1EB7D7">0%</span>
+                    </div>
+                </div>
+                <div class="col-md-2 align-items-baseline">
+                    <div class="row-md-12">
+                        <span class="span-textcolor-707070">เข้าร่วมเมื่อ&nbsp;</span>
+                        <span class="span-textcolor-1EB7D7">{{modelShop.createDate | datetimeFormat}}</span>
+                    </div>
+                    <div class="row-md-12 pt-4">
+                        <span class="span-textcolor-707070">ผู้ติดตาม&nbsp;</span>
+                        <span class="span-textcolor-1EB7D7">0&nbsp;พัน</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+
+<div class="col-md-12 p-4 minDiv">
+    <div class="row">
+        <div class="col-md-1 p-4"></div>
+        <div class="col-md-7 p-4 bg-white">
+            <div class="row mx-3">
+                <div class="row-md-12 p-4 bg-div-E4E4E4">
+                    <div>
+                        <span>ข้อมูลจำเพาะของสินค้า</span>
+                    </div>
+                </div>
+                <div class="row-md-12 p-4 bg-white">
+                    <div class="col-md-3 span-textcolor-707070 p-4">
+                        <span>หมวดหมู่</span>
+                    </div>
+                    <div class="col-md-9 p-4">
+                        <span>{{model.titleLv1Shop}}&nbsp;&nbsp;>&nbsp;&nbsp;{{model.titleLv2Shop}}&nbsp;&nbsp;>&nbsp;&nbsp;{{model.titleLv3Shop}}&nbsp;&nbsp;>&nbsp;&nbsp;{{model.title}}</span>
+                    </div>
+
+                    <div class="col-md-3 span-textcolor-707070 p-4">
+                        <span>ประเทศต้นกำเนิดสินค้า</span>
+                    </div>
+                    <div class="col-md-9 p-4">
+                        <span>ไทย</span>
+                    </div>
+
+                    <!-- <div class="col-md-3 span-textcolor-707070 p-4">
+                        <span>วัสดุ</span>
+                    </div>
+                    <div class="col-md-9 p-4">
+                        <span>ฝ้าย</span>
+                    </div> -->
+
+                    <!-- <div class="col-md-3 span-textcolor-707070 p-4">
+                        <span>ประเภทของสินค้า</span>
+                    </div>
+                    <div class="col-md-9 p-4">
+                        <span>ไทย</span>
+                    </div> -->
+
+                    <!-- <div class="col-md-3 span-textcolor-707070 p-4">
+                        <span>ลวดลาย</span>
+                    </div>
+                    <div class="col-md-9 p-4">
+                        <span>ไทย</span>
+                    </div> -->
+
+                    <div class="col-md-3 span-textcolor-707070 p-4">
+                        <span>จำนวนสินค้า</span>
+                    </div>
+                    <div class="col-md-9 p-4">
+                        <span>{{remainingTotal}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mx-3">
+                <div class="row-md-12 p-4 bg-div-E4E4E4">
+                    <div>
+                        <span>รายละเอียดสินค้า</span>
+                    </div>
+                </div>
+                <div class="row-md-12 p-4 bg-white">
+                    <div class="col-md-12 p-4">
+                        <p class="font-italic" [innerHtml]="model.description | safeHtml"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mx-3">
+                <div class="row-md-12 p-4 mb-4 bg-div-E4E4E4">
+                    <span>คะแนนของสินค้า</span>
+                </div>
+            </div>
+
+            <div class="row mx-3 align-items-center">
+                <div class="row-md-12 align-items-center p-4 mb-4 bg-div-F0FDFF">
+                    <div class="col-md-2">
+                        <div class="row-md-12">
+                            <span class="span-textcolor-1794D2 font-size-30px">{{model.rating}}</span>
+                            <span class="span-textcolor-1794D2">&nbsp;เต็ม 5</span>
+                        </div>
+                        <div class="row">
+                            <div *ngIf="ratingStar == '0star'" class="col-md-12">
+                                <!-- 0 ดาว -->
+                                <i class="fa fa-star unrated checked"></i>
+                                <i class="fa fa-star unrated checked"></i>
+                                <i class="fa fa-star unrated checked"></i>
+                                <i class="fa fa-star unrated checked"></i>
+                                <i class="fa fa-star enlang unrated checked"></i>
+                            </div>
+                            <div *ngIf="ratingStar == '0.5star'" class="col-md-12">
+                                <!-- 0.5 ดาว -->
+                                <i class="fa fa-star-half-o checked"></i>
+                                <i class="fa fa-star unrated checked"></i>
+                                <i class="fa fa-star unrated checked"></i>
+                                <i class="fa fa-star unrated checked"></i>
+                                <i class="fa fa-star enlang unrated checked"></i>
+                            </div>
+                            <div *ngIf="ratingStar == '1star'" class="col-md-12">
+                                <!-- 1 ดาว -->
+                                <i class="fa fa-star checked"></i>
+                                <i class="fa fa-star unrated checked"></i>
+                                <i class="fa fa-star unrated checked"></i>
+                                <i class="fa fa-star unrated checked"></i>
+                                <i class="fa fa-star enlang unrated checked"></i>
+                            </div>
+                            <div *ngIf="ratingStar == '1.5star'" class="col-md-12">
+                                <!-- 1.5 ดาว -->
+                                <i class="fa fa-star checked"></i>
+                                <i class="fa fa-star-half-o checked"></i>
+                                <i class="fa fa-star unrated checked"></i>
+                                <i class="fa fa-star unrated checked"></i>
+                                <i class="fa fa-star enlang unrated checked"></i>
+                            </div>
+                            <div *ngIf="ratingStar == '2star'" class="col-md-12">
+                                <!-- 2 ดาว -->
+                                <i class="fa fa-star checked"></i>
+                                <i class="fa fa-star checked"></i>
+                                <i class="fa fa-star unrated checked"></i>
+                                <i class="fa fa-star unrated checked"></i>
+                                <i class="fa fa-star enlang unrated checked"></i>
+                            </div>
+                            <div *ngIf="ratingStar == '2.5star'" class="col-md-12">
+                                <!-- 2.5 ดาว -->
+                                <i class="fa fa-star checked"></i>
+                                <i class="fa fa-star checked"></i>
+                                <i class="fa fa-star-half-o checked"></i>
+                                <i class="fa fa-star unrated checked"></i>
+                                <i class="fa fa-star enlang unrated checked"></i>
+                            </div>
+                            <div *ngIf="ratingStar == '3star'" class="col-md-12">
+                                <!-- 3 ดาว -->
+                                <i class="fa fa-star checked"></i>
+                                <i class="fa fa-star checked"></i>
+                                <i class="fa fa-star checked"></i>
+                                <i class="fa fa-star unrated checked"></i>
+                                <i class="fa fa-star enlang unrated checked"></i>
+                            </div>
+                            <div *ngIf="ratingStar == '3.5star'" class="col-md-12">
+                                <!-- 3.5 ดาว -->
+                                <i class="fa fa-star checked"></i>
+                                <i class="fa fa-star checked"></i>
+                                <i class="fa fa-star checked"></i>
+                                <i class="fa fa-star-half-o checked"></i>
+                                <i class="fa fa-star enlang unrated checked"></i>
+                            </div>
+                            <div *ngIf="ratingStar == '4star'" class="col-md-12">
+                                <!-- 4 ดาว -->
+                                <i class="fa fa-star checked"></i>
+                                <i class="fa fa-star checked"></i>
+                                <i class="fa fa-star checked"></i>
+                                <i class="fa fa-star checked"></i>
+                                <i class="fa fa-star enlang unrated checked"></i>
+                            </div>
+                            <div *ngIf="ratingStar == '4.5star'" class="col-md-12">
+                                <!-- 4.5 ดาว -->
+                                <i class="fa fa-star checked"></i>
+                                <i class="fa fa-star checked"></i>
+                                <i class="fa fa-star checked"></i>
+                                <i class="fa fa-star checked"></i>
+                                <i class="fa fa-star-half-o checked"></i>
+                            </div>
+                            <div *ngIf="ratingStar == '5star'" class="col-md-12">
+                                <!-- 5 ดาว -->
+                                <i class="fa fa-star checked"></i>
+                                <i class="fa fa-star checked"></i>
+                                <i class="fa fa-star checked"></i>
+                                <i class="fa fa-star checked"></i>
+                                <i class="fa fa-star checked"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="row-md-12">
+                            <button type="button" class="btn btn-score-shop" (click)="goToall()" [ngClass]="{'active': menuSubActive === 'all'}">ดูทั้งหมด</button>
+                            <button type="button" class="btn btn-score-shop" (click)="goToRatingStar5()" [ngClass]="{'active': menuSubActive === 'ratingstar5'}">5 ดาว ({{modelCommentGoodsRating5Length}})</button>
+                            <button type="button" class="btn btn-score-shop" (click)="goToRatingStar4()" [ngClass]="{'active': menuSubActive === 'ratingstar4'}">4 ดาว ({{modelCommentGoodsRating4Length}})</button>
+                            <button type="button" class="btn btn-score-shop" (click)="goToRatingStar3()" [ngClass]="{'active': menuSubActive === 'ratingstar3'}">3 ดาว ({{modelCommentGoodsRating3Length}})</button>
+                            <button type="button" class="btn btn-score-shop" (click)="goToRatingStar2()" [ngClass]="{'active': menuSubActive === 'ratingstar2'}">2 ดาว ({{modelCommentGoodsRating2Length}})</button>
+                            <button type="button" class="btn btn-score-shop" (click)="goToRatingStar1()" [ngClass]="{'active': menuSubActive === 'ratingstar1'}">1 ดาว ({{modelCommentGoodsRating1Length}})</button>
+                        </div>
+                        <!-- <div class="row-md-12">
+                            <button type="button" class="btn btn-score-shop">ความคิดเห็น (10)</button>
+                        </div> -->
+                    </div>
+                </div>
+
+                <div *ngIf="menuSubActive == 'all'">
+                    <div class="row p-5 align-items-center" *ngIf="modelCommentGoods.length == 0">
+                        <div class="col p-5 text-center">
+                            ยังไม่มีคะแนน
+                        </div>
+                    </div>
+                    <div class="row p-4 border-bottom" *ngFor="let mcg of modelCommentGoods; let idx = index">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <img src="{{mcg.imageUrl}}" width="40" height="40" class="border-radius-50">
+                            </div>
+                            <div class="col-md-11">
+                                <div class="row pb-2">
+                                    <div class="col-md-12"><span>{{mcg.createBy}}</span></div>
+                                </div>
+                                <div class="row pb-2">
+                                    <div *ngIf="mcg.rating == 0" class="col-md-12">
+                                        <!-- 0 ดาว -->
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star enlang unrated checked font-size-15px"></i>
+                                    </div>
+                                    <div *ngIf="mcg.rating == 1" class="col-md-12">
+                                        <!-- 1 ดาว -->
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star enlang unrated checked font-size-15px"></i>
+                                    </div>
+                                    <div *ngIf="mcg.rating == 2" class="col-md-12">
+                                        <!-- 2 ดาว -->
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star enlang unrated checked font-size-15px"></i>
+                                    </div>
+                                    <div *ngIf="mcg.rating == 3" class="col-md-12">
+                                        <!-- 3 ดาว -->
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star enlang unrated checked font-size-15px"></i>
+                                    </div>
+                                    <div *ngIf="mcg.rating == 4" class="col-md-12">
+                                        <!-- 4 ดาว -->
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star enlang unrated checked font-size-15px"></i>
+                                    </div>
+                                    <div *ngIf="mcg.rating == 5" class="col-md-12">
+                                        <!-- 5 ดาว -->
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12"><span class="span-textcolor-707070">ลักษณะสินค้า : {{mcg.titleGoodsInventory}}</span></div>
+                                </div>
+                                <div class="row py-4">
+                                    <div class="col-md-12">
+                                        <p class="font-italic" [innerHtml]="mcg.description | safeHtml"></p>
+                                    </div>
+                                </div>
+                                <div class="row py-2">
+                                    <div class="col-md-12">
+                                        <span>{{mcg.createDate | datetimeFormat}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="menuSubActive == 'ratingstar5'">
+                    <div class="row p-5 align-items-center" *ngIf="modelCommentGoodsRating5.length == 0">
+                        <div class="col p-5 text-center">
+                            ยังไม่มีคะแนน
+                        </div>
+                    </div>
+                    <div class="row p-4 border-bottom" *ngFor="let mcg of modelCommentGoodsRating5; let idx = index">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <img src="{{mcg.imageUrl}}" width="40" height="40" class="border-radius-50">
+                            </div>
+                            <div class="col-md-11">
+                                <div class="row pb-2">
+                                    <div class="col-md-12"><span>{{mcg.createBy}}</span></div>
+                                </div>
+                                <div class="row pb-2">
+                                    <div *ngIf="mcg.rating == 0" class="col-md-12">
+                                        <!-- 0 ดาว -->
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star enlang unrated checked font-size-15px"></i>
+                                    </div>
+                                    <div *ngIf="mcg.rating == 1" class="col-md-12">
+                                        <!-- 1 ดาว -->
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star enlang unrated checked font-size-15px"></i>
+                                    </div>
+                                    <div *ngIf="mcg.rating == 2" class="col-md-12">
+                                        <!-- 2 ดาว -->
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star enlang unrated checked font-size-15px"></i>
+                                    </div>
+                                    <div *ngIf="mcg.rating == 3" class="col-md-12">
+                                        <!-- 3 ดาว -->
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star enlang unrated checked font-size-15px"></i>
+                                    </div>
+                                    <div *ngIf="mcg.rating == 4" class="col-md-12">
+                                        <!-- 4 ดาว -->
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star enlang unrated checked font-size-15px"></i>
+                                    </div>
+                                    <div *ngIf="mcg.rating == 5" class="col-md-12">
+                                        <!-- 5 ดาว -->
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12"><span class="span-textcolor-707070">ลักษณะสินค้า : {{mcg.titleGoodsInventory}}</span></div>
+                                </div>
+                                <div class="row py-4">
+                                    <div class="col-md-12">
+                                        <p class="font-italic" [innerHtml]="mcg.description | safeHtml"></p>
+                                    </div>
+                                </div>
+                                <div class="row py-2">
+                                    <div class="col-md-12">
+                                        <span>{{mcg.createDate | datetimeFormat}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="menuSubActive == 'ratingstar4'">
+                    <div class="row p-5 align-items-center" *ngIf="modelCommentGoodsRating4.length == 0">
+                        <div class="col p-5 text-center">
+                            ยังไม่มีคะแนน
+                        </div>
+                    </div>
+                    <div class="row p-4 border-bottom" *ngFor="let mcg of modelCommentGoodsRating4; let idx = index">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <img src="{{mcg.imageUrl}}" width="40" height="40" class="border-radius-50">
+                            </div>
+                            <div class="col-md-11">
+                                <div class="row pb-2">
+                                    <div class="col-md-12"><span>{{mcg.createBy}}</span></div>
+                                </div>
+                                <div class="row pb-2">
+                                    <div *ngIf="mcg.rating == 0" class="col-md-12">
+                                        <!-- 0 ดาว -->
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star enlang unrated checked font-size-15px"></i>
+                                    </div>
+                                    <div *ngIf="mcg.rating == 1" class="col-md-12">
+                                        <!-- 1 ดาว -->
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star enlang unrated checked font-size-15px"></i>
+                                    </div>
+                                    <div *ngIf="mcg.rating == 2" class="col-md-12">
+                                        <!-- 2 ดาว -->
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star enlang unrated checked font-size-15px"></i>
+                                    </div>
+                                    <div *ngIf="mcg.rating == 3" class="col-md-12">
+                                        <!-- 3 ดาว -->
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star enlang unrated checked font-size-15px"></i>
+                                    </div>
+                                    <div *ngIf="mcg.rating == 4" class="col-md-12">
+                                        <!-- 4 ดาว -->
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star enlang unrated checked font-size-15px"></i>
+                                    </div>
+                                    <div *ngIf="mcg.rating == 5" class="col-md-12">
+                                        <!-- 5 ดาว -->
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12"><span class="span-textcolor-707070">ลักษณะสินค้า : {{mcg.titleGoodsInventory}}</span></div>
+                                </div>
+                                <div class="row py-4">
+                                    <div class="col-md-12">
+                                        <p class="font-italic" [innerHtml]="mcg.description | safeHtml"></p>
+                                    </div>
+                                </div>
+                                <div class="row py-2">
+                                    <div class="col-md-12">
+                                        <span>{{mcg.createDate | datetimeFormat}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="menuSubActive == 'ratingstar3'">
+                    <div class="row p-5 align-items-center" *ngIf="modelCommentGoodsRating3.length == 0">
+                        <div class="col p-5 text-center">
+                            ยังไม่มีคะแนน
+                        </div>
+                    </div>
+                    <div class="row p-4 border-bottom" *ngFor="let mcg of modelCommentGoodsRating3; let idx = index">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <img src="{{mcg.imageUrl}}" width="40" height="40" class="border-radius-50">
+                            </div>
+                            <div class="col-md-11">
+                                <div class="row pb-2">
+                                    <div class="col-md-12"><span>{{mcg.createBy}}</span></div>
+                                </div>
+                                <div class="row pb-2">
+                                    <div *ngIf="mcg.rating == 0" class="col-md-12">
+                                        <!-- 0 ดาว -->
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star enlang unrated checked font-size-15px"></i>
+                                    </div>
+                                    <div *ngIf="mcg.rating == 1" class="col-md-12">
+                                        <!-- 1 ดาว -->
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star enlang unrated checked font-size-15px"></i>
+                                    </div>
+                                    <div *ngIf="mcg.rating == 2" class="col-md-12">
+                                        <!-- 2 ดาว -->
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star enlang unrated checked font-size-15px"></i>
+                                    </div>
+                                    <div *ngIf="mcg.rating == 3" class="col-md-12">
+                                        <!-- 3 ดาว -->
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star enlang unrated checked font-size-15px"></i>
+                                    </div>
+                                    <div *ngIf="mcg.rating == 4" class="col-md-12">
+                                        <!-- 4 ดาว -->
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star enlang unrated checked font-size-15px"></i>
+                                    </div>
+                                    <div *ngIf="mcg.rating == 5" class="col-md-12">
+                                        <!-- 5 ดาว -->
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12"><span class="span-textcolor-707070">ลักษณะสินค้า : {{mcg.titleGoodsInventory}}</span></div>
+                                </div>
+                                <div class="row py-4">
+                                    <div class="col-md-12">
+                                        <p class="font-italic" [innerHtml]="mcg.description | safeHtml"></p>
+                                    </div>
+                                </div>
+                                <div class="row py-2">
+                                    <div class="col-md-12">
+                                        <span>{{mcg.createDate | datetimeFormat}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="menuSubActive == 'ratingstar2'">
+                    <div class="row p-5 align-items-center" *ngIf="modelCommentGoodsRating2.length == 0">
+                        <div class="col p-5 text-center">
+                            ยังไม่มีคะแนน
+                        </div>
+                    </div>
+                    <div class="row p-4 border-bottom" *ngFor="let mcg of modelCommentGoodsRating2; let idx = index">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <img src="{{mcg.imageUrl}}" width="40" height="40" class="border-radius-50">
+                            </div>
+                            <div class="col-md-11">
+                                <div class="row pb-2">
+                                    <div class="col-md-12"><span>{{mcg.createBy}}</span></div>
+                                </div>
+                                <div class="row pb-2">
+                                    <div *ngIf="mcg.rating == 0" class="col-md-12">
+                                        <!-- 0 ดาว -->
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star enlang unrated checked font-size-15px"></i>
+                                    </div>
+                                    <div *ngIf="mcg.rating == 1" class="col-md-12">
+                                        <!-- 1 ดาว -->
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star enlang unrated checked font-size-15px"></i>
+                                    </div>
+                                    <div *ngIf="mcg.rating == 2" class="col-md-12">
+                                        <!-- 2 ดาว -->
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star enlang unrated checked font-size-15px"></i>
+                                    </div>
+                                    <div *ngIf="mcg.rating == 3" class="col-md-12">
+                                        <!-- 3 ดาว -->
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star enlang unrated checked font-size-15px"></i>
+                                    </div>
+                                    <div *ngIf="mcg.rating == 4" class="col-md-12">
+                                        <!-- 4 ดาว -->
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star enlang unrated checked font-size-15px"></i>
+                                    </div>
+                                    <div *ngIf="mcg.rating == 5" class="col-md-12">
+                                        <!-- 5 ดาว -->
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12"><span class="span-textcolor-707070">ลักษณะสินค้า : {{mcg.titleGoodsInventory}}</span></div>
+                                </div>
+                                <div class="row py-4">
+                                    <div class="col-md-12">
+                                        <p class="font-italic" [innerHtml]="mcg.description | safeHtml"></p>
+                                    </div>
+                                </div>
+                                <div class="row py-2">
+                                    <div class="col-md-12">
+                                        <span>{{mcg.createDate | datetimeFormat}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="menuSubActive == 'ratingstar1'">
+                    <div class="row p-5 align-items-center" *ngIf="modelCommentGoodsRating1.length == 0">
+                        <div class="col p-5 text-center">
+                            ยังไม่มีคะแนน
+                        </div>
+                    </div>
+                    <div class="row p-4 border-bottom" *ngFor="let mcg of modelCommentGoodsRating1; let idx = index">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <img src="{{mcg.imageUrl}}" width="40" height="40" class="border-radius-50">
+                            </div>
+                            <div class="col-md-11">
+                                <div class="row pb-2">
+                                    <div class="col-md-12"><span>{{mcg.createBy}}</span></div>
+                                </div>
+                                <div class="row pb-2">
+                                    <div *ngIf="mcg.rating == 0" class="col-md-12">
+                                        <!-- 0 ดาว -->
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star enlang unrated checked font-size-15px"></i>
+                                    </div>
+                                    <div *ngIf="mcg.rating == 1" class="col-md-12">
+                                        <!-- 1 ดาว -->
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star enlang unrated checked font-size-15px"></i>
+                                    </div>
+                                    <div *ngIf="mcg.rating == 2" class="col-md-12">
+                                        <!-- 2 ดาว -->
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star enlang unrated checked font-size-15px"></i>
+                                    </div>
+                                    <div *ngIf="mcg.rating == 3" class="col-md-12">
+                                        <!-- 3 ดาว -->
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star unrated checked font-size-15px"></i>
+                                        <i class="fa fa-star enlang unrated checked font-size-15px"></i>
+                                    </div>
+                                    <div *ngIf="mcg.rating == 4" class="col-md-12">
+                                        <!-- 4 ดาว -->
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star enlang unrated checked font-size-15px"></i>
+                                    </div>
+                                    <div *ngIf="mcg.rating == 5" class="col-md-12">
+                                        <!-- 5 ดาว -->
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                        <i class="fa fa-star checked font-size-15px"></i>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12"><span class="span-textcolor-707070">ลักษณะสินค้า : {{mcg.titleGoodsInventory}}</span></div>
+                                </div>
+                                <div class="row py-4">
+                                    <div class="col-md-12">
+                                        <p class="font-italic" [innerHtml]="mcg.description | safeHtml"></p>
+                                    </div>
+                                </div>
+                                <div class="row py-2">
+                                    <div class="col-md-12">
+                                        <span>{{mcg.createDate | datetimeFormat}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="col-md-1 p-4">
+        </div>
+        <div class="col-md-2">
+            <div class="bg-div">
+                <div class="mb-2 p-3 bg-white">
+                    <span class="span-textcolor-707070">สินค้าขายดี</span>
+                </div>
+                <goodssellgood-card *ngFor="let item of modelGoodsSellGood" [model]="item" (callback)="fromModal($event)"></goodssellgood-card>
+            </div>
+
+        </div>
+        <div class="col-md-1 p-4"></div>
+    </div>
+</div>
+
+
+<div class="col-md-12 p-4 minDiv">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <span class="span-textcolor-707070">จากร้านเดียวกัน</span>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+
+<div class="col-md-12 p-4 pt-2 minDiv">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10" style="padding: 0px;">
+            <div class="search-results" infinite-scroll [infiniteScrollDistance]="5" [infiniteScrollThrottle]="500" (scrolled)="onScrollDown()">
+                <goodsshop-card class="col-xs-2 p-0" *ngFor="let item of modelGoodsShop" [model]="item" (callback)="fromModal($event)"></goodsshop-card>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>

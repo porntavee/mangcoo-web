@@ -1,0 +1,310 @@
+<ngx-spinner></ngx-spinner>
+<!-- component header type 1 -->
+<app-m-t1-header></app-m-t1-header>
+<!-- banner -->
+<div class="col-xs-12 pd0">
+    <div style="height: 180px;width: 100%;">
+        <div data-ride="carousel" id="myCarousel" style="text-align: center!important;">
+            <div class="carousel-item pointer" *ngFor="let i of bannerModel;  let idx = index;" [class.active]="selectedIndex == idx">
+                <a *ngIf="i.linkUrl != ''" href="{{i.linkUrl}}">
+                    <img class="img-slide animate__animated animate__fadeInLeft" *ngIf="i.imageUrl != ''" src="{{i.imageUrl}}" height="180px" width="100%" />
+                </a>
+                <a *ngIf="i.linkUrl == ''" (click)="navToBannerDetail(i.code)">
+                    <img class="img-slide animate__animated animate__fadeInLeft" *ngIf="i.imageUrl != ''" src="{{i.imageUrl}}" height="180px" width="100%" />
+                </a>
+            </div>
+            <ol class="carousel-indicators" style="margin-bottom: 2.5%;">
+                <li *ngFor="let i of bannerModel;  let idx = index;" [class.active]="selectedIndex == idx" data-target="'#myCarousel' + idx" data-slide-to="idx" (click)="setIndex('',idx)"></li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!-- content -->
+<div class="kanit col-xs-12 news-box-content df" style="align-items: center;">
+    <div class="text-center" style="margin: 20px 0 0 0;">
+        <span class="kanit_xxl" style="font-size: 20px;" *ngIf="serviceProviderService.lang == 'th'">{{'news'| langTh}}</span>
+        <span class="kanit_xxl" *ngIf="serviceProviderService.lang == 'en'">{{'news'| langEn}}</span>
+    </div>
+    <div style="display: flex;justify-content: center;width: 100%;">
+        <div class="line-c5c5c5" style="width: 80%;margin: 20px;"></div>
+    </div>
+    <div class="df" style="flex-wrap: wrap;column-gap: 10px;row-gap: 5px;margin-bottom: 20px;">
+        <div *ngFor="let category of categoryList">
+            <div *ngIf="serviceProviderService.lang == 'th'" class="menu-news pointer kanit_l" [class.menu-news-active]="category.code === categorySelected.code" (click)="selectedCategory(category)">{{category.titleShort}}</div>
+            <div *ngIf="serviceProviderService.lang == 'en'" class="menu-news pointer kanit_l" [class.menu-news-active]="category.code === categorySelected.code" (click)="selectedCategory(category)">{{category.titleShort}}</div>
+        </div>
+    </div>
+    <!-- <div *ngIf="serviceProviderService.lang == 'th'" class="kanit_xl" style="color: #216DA6;margin: 40px 0;">{{categorySelected.title}}</div>
+    <div *ngIf="serviceProviderService.lang == 'en'" class="kanit_xl" style="color: #216DA6;margin: 40px 0;">{{categorySelected.titleEN}}</div> -->
+    <div *ngIf="model.length > 0" class="col-xs-12 p-0 m-0">
+        <div class="col-xs-12 p-0" (click)="navToDetail(model[0].code)">
+            <img src="{{model[0].imageUrl}}" class="top" width="100%" height="195px" style="border-radius: 3px;" />
+            <div *ngIf="serviceProviderService.lang == 'th'" class="dfc news-card-content">
+                <div class="df">
+                    <div class="kanit_sm news-create-by-box" *ngIf="model[0].center != ''" style="font-size:13px">จาก {{model[0].center}}</div>
+                </div>
+                <div class="mt5 color_grey70 head f-over font-w500" style="font-size:24px">{{model[0].title}}</div>
+                <div class="mt5 color_grey70 kanit_m f-over f-over" style="font-size:15px">{{convertToPlain(model[0].description)}}</div>
+                <div class="mt5 color_grey70 kanit_m" style="font-size:13px">{{model[0].createDate | dateFormat}}</div>
+            </div>
+            <div *ngIf="serviceProviderService.lang == 'en'" class="dfc news-card-content">
+                <div class="df">
+                    <div class="kanit_sm news-create-by-box" *ngIf="model[0].center != ''" style="font-size:13px">จาก {{model[0].centerEN}}</div>
+                </div>
+                <div class="mt5 color_grey70 head f-over font-w500" style="font-size:24px">{{model[0].titleEN}}</div>
+                <div class="mt5 color_grey70 kanit_m f-over" style="font-size:15px">{{convertToPlain(model[0].descriptionEN)}}</div>
+                <div class="mt5 color_grey70 kanit_m" style="font-size:13px">{{model[0].createDate | dateFormat}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 p-0">
+        <div style="margin-top: 20px;flex-wrap: wrap;row-gap: 2em;column-gap: 2%;display: flex;justify-content: space-between;">
+            <div *ngFor="let item of model | slice:1:5;" style="width:49%;height: max-content;border-radius: 10px;" (click)="navToDetail(item.code)">
+                <div class="col-xs-12 pointer p-0">
+                    <img style="width:100%;height: 90px;border-radius: 15px;" src="{{item.imageUrl}}">
+                </div>
+                <div class="col-xs-12 pointer p-0">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="mt5 color_grey70 kanit_m f-over" style="font-size: 15px;">{{item.title}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="mt5 color_grey70 kanit_m f-over" style="font-size: 15px;">{{item.titleEN}}</div>
+                    <!-- <div class="mt5 color_grey70 kanit_sm f-over">{{convertToPlain(item.descriptionEN)}}</div> -->
+                    <div class="mt5 color_grey70 kanit_sm" style="font-size: 13px;">{{item.createDate | dateFormat}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="model.length > 0" class="col-xs-12 dfc" style="justify-content: center; width: 100%;">
+    <div *ngIf="categorySelected.code == ''">
+        <!-- ข่าวCCE-VET -->
+        <div *ngIf="model001.length > 0">
+            <div class="news-all-top">
+                <div class="df box">
+                    <div class="left" style="font-size: 20px;">{{titleCategory('001')}}</div>
+                    <div class="right pointer" style="font-size: 15px;" (click)="selectedCategory(categoryList[1])">ข่าวก่อนหน้านี้</div>
+                </div>
+            </div>
+            <div class="df box-other-group">
+                <div class="news-card pointer" *ngFor="let item of model001 | slice:0:6;" style="width:49%;height: max-content;border-radius: 10px;" (click)="navToDetail(item.code)">
+                    <img src="{{item.imageUrl}}" height="90px" width="100%" alt="" style="border-radius: 10px;">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="dfc news-card-content">
+                        <div class="df">
+                            <div class="kanit_sm news-create-by-box" *ngIf="item.center != ''">จาก {{item.center}}</div>
+                        </div>
+                        <div class="mt5 color_grey70 kanit_m f-over font-w500" style="font-size: 18px;">{{item.title}}</div>
+                        <!-- <div class="mt5 color_grey70 kanit_sm f-over">{{convertToPlain(item.description)}}</div> -->
+                        <div class="mt5 color_grey70 kanit_sm">{{item.createDate | dateFormat}}</div>
+                    </div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="dfc news-card-content">
+                        <div class="df">
+                            <div class="kanit_sm news-create-by-box" *ngIf="item.center != ''">จาก {{item.center}}</div>
+                        </div>
+                        <div class="mt5 color_grey70 kanit_m f-over" style="font-size: 18px;">{{item.titleEN}}</div>
+                        <!-- <div class="mt5 color_grey70 kanit_sm f-over">{{convertToPlain(item.descriptionEN)}}</div> -->
+                        <div class="mt5 color_grey70 kanit_sm" style="font-size: 11px;">{{item.createDate | dateFormat}}</div>
+                    </div>
+                </div>
+            </div>
+            <div style="height: 5em;"></div>
+        </div>
+
+        <div *ngIf="model002.length > 0">
+            <div class="news-all-top">
+                <div class="df box">
+                    <div class="left" style="font-size: 20px;">{{titleCategory('002')}}</div>
+                    <div class="right pointer" style="font-size: 15px;" (click)="selectedCategory(categoryList[1])">ข่าวก่อนหน้านี้</div>
+                </div>
+            </div>
+            <div class="df box-other-group">
+                <div class="news-card pointer" *ngFor="let item of model002 | slice:0:6;" style="width:49%;height: max-content;border-radius: 10px;" (click)="navToDetail(item.code)">
+                    <img src="{{item.imageUrl}}" height="90px" width="100%" alt="" style="border-radius: 10px;">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="dfc news-card-content">
+                        <div class="df">
+                            <div class="kanit_sm news-create-by-box" *ngIf="item.center != ''">จาก {{item.center}}</div>
+                        </div>
+                        <div class="mt5 color_grey70 kanit_m f-over font-w500" style="font-size: 18px;">{{item.title}}</div>
+                        <!-- <div class="mt5 color_grey70 kanit_sm f-over">{{convertToPlain(item.description)}}</div> -->
+                        <div class="mt5 color_grey70 kanit_sm">{{item.createDate | dateFormat}}</div>
+                    </div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="dfc news-card-content">
+                        <div class="df">
+                            <div class="kanit_sm news-create-by-box" *ngIf="item.center != ''">จาก {{item.center}}</div>
+                        </div>
+                        <div class="mt5 color_grey70 kanit_m f-over" style="font-size: 18px;">{{item.titleEN}}</div>
+                        <!-- <div class="mt5 color_grey70 kanit_sm f-over">{{convertToPlain(item.descriptionEN)}}</div> -->
+                        <div class="mt5 color_grey70 kanit_sm" style="font-size: 11px;">{{item.createDate | dateFormat}}</div>
+                    </div>
+                </div>
+            </div>
+            <div style="height: 5em;"></div>
+        </div>
+
+        <div *ngIf="model003.length > 0">
+            <div class="news-all-top">
+                <div class="df box">
+                    <div class="left" style="font-size: 20px;">{{titleCategory('003')}}</div>
+                    <div class="right pointer" style="font-size: 15px;" (click)="selectedCategory(categoryList[1])">ข่าวก่อนหน้านี้</div>
+                </div>
+            </div>
+            <div class="df box-other-group">
+                <div class="news-card pointer" *ngFor="let item of model003 | slice:0:6;" style="width:49%;height: max-content;border-radius: 10px;" (click)="navToDetail(item.code)">
+                    <img src="{{item.imageUrl}}" height="90px" width="100%" alt="" style="border-radius: 10px;">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="dfc news-card-content">
+                        <div class="df">
+                            <div class="kanit_sm news-create-by-box" *ngIf="item.center != ''">จาก {{item.center}}</div>
+                        </div>
+                        <div class="mt5 color_grey70 kanit_m f-over font-w500" style="font-size: 18px;">{{item.title}}</div>
+                        <!-- <div class="mt5 color_grey70 kanit_sm f-over">{{convertToPlain(item.description)}}</div> -->
+                        <div class="mt5 color_grey70 kanit_sm">{{item.createDate | dateFormat}}</div>
+                    </div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="dfc news-card-content">
+                        <div class="df">
+                            <div class="kanit_sm news-create-by-box" *ngIf="item.center != ''">จาก {{item.center}}</div>
+                        </div>
+                        <div class="mt5 color_grey70 kanit_m f-over" style="font-size: 18px;">{{item.titleEN}}</div>
+                        <!-- <div class="mt5 color_grey70 kanit_sm f-over">{{convertToPlain(item.descriptionEN)}}</div> -->
+                        <div class="mt5 color_grey70 kanit_sm" style="font-size: 11px;">{{item.createDate | dateFormat}}</div>
+                    </div>
+                </div>
+            </div>
+            <div style="height: 5em;"></div>
+        </div>
+
+        <div *ngIf="model004.length > 0">
+            <div class="news-all-top">
+                <div class="df box">
+                    <div class="left" style="font-size: 20px;">{{titleCategory('004')}}</div>
+                    <div class="right pointer" style="font-size: 15px;" (click)="selectedCategory(categoryList[1])">ข่าวก่อนหน้านี้</div>
+                </div>
+            </div>
+            <div class="df box-other-group">
+                <div class="news-card pointer" *ngFor="let item of model004 | slice:0:6;" style="width:49%;height: max-content;border-radius: 10px;" (click)="navToDetail(item.code)">
+                    <img src="{{item.imageUrl}}" height="90px" width="100%" alt="" style="border-radius: 10px;">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="dfc news-card-content">
+                        <div class="df">
+                            <div class="kanit_sm news-create-by-box" *ngIf="item.center != ''">จาก {{item.center}}</div>
+                        </div>
+                        <div class="mt5 color_grey70 kanit_m f-over font-w500" style="font-size: 18px;">{{item.title}}</div>
+                        <!-- <div class="mt5 color_grey70 kanit_sm f-over">{{convertToPlain(item.description)}}</div> -->
+                        <div class="mt5 color_grey70 kanit_sm">{{item.createDate | dateFormat}}</div>
+                    </div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="dfc news-card-content">
+                        <div class="df">
+                            <div class="kanit_sm news-create-by-box" *ngIf="item.center != ''">จาก {{item.center}}</div>
+                        </div>
+                        <div class="mt5 color_grey70 kanit_m f-over" style="font-size: 18px;">{{item.titleEN}}</div>
+                        <!-- <div class="mt5 color_grey70 kanit_sm f-over">{{convertToPlain(item.descriptionEN)}}</div> -->
+                        <div class="mt5 color_grey70 kanit_sm" style="font-size: 11px;">{{item.createDate | dateFormat}}</div>
+                    </div>
+                </div>
+            </div>
+            <div style="height: 5em;"></div>
+        </div>
+
+        <div *ngIf="model005.length > 0">
+            <div class="news-all-top">
+                <div class="df box">
+                    <div class="left" style="font-size: 20px;">{{titleCategory('005')}}</div>
+                    <div class="right pointer" style="font-size: 15px;" (click)="selectedCategory(categoryList[1])">ข่าวก่อนหน้านี้</div>
+                </div>
+            </div>
+            <div class="df box-other-group">
+                <div class="news-card pointer" *ngFor="let item of model005 | slice:0:6;" style="width:49%;height: max-content;border-radius: 10px;" (click)="navToDetail(item.code)">
+                    <img src="{{item.imageUrl}}" height="90px" width="100%" alt="" style="border-radius: 10px;">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="dfc news-card-content">
+                        <div class="df">
+                            <div class="kanit_sm news-create-by-box" *ngIf="item.center != ''">จาก {{item.center}}</div>
+                        </div>
+                        <div class="mt5 color_grey70 kanit_m f-over font-w500" style="font-size: 18px;">{{item.title}}</div>
+                        <!-- <div class="mt5 color_grey70 kanit_sm f-over">{{convertToPlain(item.description)}}</div> -->
+                        <div class="mt5 color_grey70 kanit_sm">{{item.createDate | dateFormat}}</div>
+                    </div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="dfc news-card-content">
+                        <div class="df">
+                            <div class="kanit_sm news-create-by-box" *ngIf="item.center != ''">จาก {{item.center}}</div>
+                        </div>
+                        <div class="mt5 color_grey70 kanit_m f-over" style="font-size: 18px;">{{item.titleEN}}</div>
+                        <!-- <div class="mt5 color_grey70 kanit_sm f-over">{{convertToPlain(item.descriptionEN)}}</div> -->
+                        <div class="mt5 color_grey70 kanit_sm" style="font-size: 11px;">{{item.createDate | dateFormat}}</div>
+                    </div>
+                </div>
+            </div>
+            <div style="height: 5em;"></div>
+        </div>
+
+        <div *ngIf="model006.length > 0">
+            <div class="news-all-top">
+                <div class="df box">
+                    <div class="left" style="font-size: 20px;">{{titleCategory('006')}}</div>
+                    <div class="right pointer" style="font-size: 15px;" (click)="selectedCategory(categoryList[1])">ข่าวก่อนหน้านี้</div>
+                </div>
+            </div>
+            <div class="df box-other-group">
+                <div class="news-card pointer" *ngFor="let item of model006 | slice:0:6;" style="width:49%;height: max-content;border-radius: 10px;" (click)="navToDetail(item.code)">
+                    <img src="{{item.imageUrl}}" height="90px" width="100%" alt="" style="border-radius: 10px;">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="dfc news-card-content">
+                        <div class="df">
+                            <div class="kanit_sm news-create-by-box" *ngIf="item.center != ''">จาก {{item.center}}</div>
+                        </div>
+                        <div class="mt5 color_grey70 kanit_m f-over font-w500" style="font-size: 18px;">{{item.title}}</div>
+                        <!-- <div class="mt5 color_grey70 kanit_sm f-over">{{convertToPlain(item.description)}}</div> -->
+                        <div class="mt5 color_grey70 kanit_sm">{{item.createDate | dateFormat}}</div>
+                    </div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="dfc news-card-content">
+                        <div class="df">
+                            <div class="kanit_sm news-create-by-box" *ngIf="item.center != ''">จาก {{item.center}}</div>
+                        </div>
+                        <div class="mt5 color_grey70 kanit_m f-over" style="font-size: 18px;">{{item.titleEN}}</div>
+                        <!-- <div class="mt5 color_grey70 kanit_sm f-over">{{convertToPlain(item.descriptionEN)}}</div> -->
+                        <div class="mt5 color_grey70 kanit_sm" style="font-size: 11px;">{{item.createDate | dateFormat}}</div>
+                    </div>
+                </div>
+            </div>
+            <div style="height: 5em;"></div>
+        </div>
+
+    </div>
+
+    <!-- ข่าวล่าสุด -->
+    <div class="news-all-top" style="margin: 1px 0;">
+        <div class="df box">
+            <div class="left">ข่าวล่าสุด</div>
+            <!-- <div class="right pointer"></div> -->
+        </div>
+    </div>
+    <div class="df box-other-group">
+        <div class="news-card pointer" *ngFor="let item of model | slice:0:6;" style="width:49%;height: max-content;border-radius: 10px;" (click)="navToDetail(item.code)">
+            <img src="{{item.imageUrl}}" height="90px" width="100%" alt="" style="border-radius: 10px;">
+            <div *ngIf="serviceProviderService.lang == 'th'" class="dfc news-card-content">
+                <div class="df">
+                    <div class="kanit_sm news-create-by-box" *ngIf="item.center != ''">จาก {{item.center}}</div>
+                </div>
+                <div class="mt5 color_grey70 kanit_m f-over font-w500" style="font-size: 18px;">{{item.title}}</div>
+                <!-- <div class="mt5 color_grey70 kanit_sm f-over">{{convertToPlain(item.description)}}</div> -->
+                <div class="mt5 color_grey70 kanit_sm">{{item.createDate | dateFormat}}</div>
+            </div>
+            <div *ngIf="serviceProviderService.lang == 'en'" class="dfc news-card-content">
+                <div class="df">
+                    <div class="kanit_sm news-create-by-box" *ngIf="item.center != ''">จาก {{item.center}}</div>
+                </div>
+                <div class="mt5 color_grey70 kanit_m f-over" style="font-size: 18px;">{{item.titleEN}}</div>
+                <!-- <div class="mt5 color_grey70 kanit_sm f-over">{{convertToPlain(item.descriptionEN)}}</div> -->
+                <div class="mt5 color_grey70 kanit_sm" style="font-size: 11px;">{{item.createDate | dateFormat}}</div>
+            </div>
+        </div>
+    </div>
+    <div style="height: 5em;"></div>
+
+    <!-- partner -->
+    <app-partner></app-partner>
+</div>
+
+<div *ngIf="model.length == 0" class="kanit_xxl col-xs-12" style="display:flex;justify-content: center;align-items: center;height: 500px;">
+    ไม่พบข้อมูล
+</div>
+
+<button (click)="topFunction()" id="go-top" title="Go to top"><img src="./assets/img/UP.png" width="50px" height="50px" alt=""></button>
+
+<!-- footer -->
+<app-m-t1-footer></app-m-t1-footer>

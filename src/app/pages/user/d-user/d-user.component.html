@@ -1,0 +1,116 @@
+<div class="_36cLcR">
+  <div class="_1_68zU">
+    <a class="_2BuJEf">
+      <div class="shopee-avatar">
+        <div class="shopee-avatar__placeholder">
+          <svg enable-background="new 0 0 15 15" viewBox="0 0 15 15" x="0" y="0"
+            class="shopee-svg-icon icon-headshot">
+            <g>
+              <circle cx="7.5" cy="4.5" fill="none" r="3.8" stroke-miterlimit="10"></circle>
+              <path d="m1.5 14.2c0-3.3 2.7-6 6-6s6 2.7 6 6" fill="none" stroke-linecap="round" stroke-miterlimit="10">
+              </path>
+            </g>
+          </svg>
+        </div>
+        <img class="shopee-avatar__img" src="{{userData.imageUrl}}">
+      </div>
+    </a>
+    <div class="_2uLDqN">
+      <div class="_2lG70n">{{userData.first_name}}&nbsp;{{userData.last_name}}</div>
+      <div class="_27BCO5 pointer" (click)="navTo('profile')">แก้ไขข้อมูลส่วนตัว</div>
+    </div>
+  </div>
+  <div class="_1ZnP-m">
+    <div class="stardust-dropdown" style="margin-bottom: 5px;">
+      <div class="stardust-dropdown__item-header">
+        <a class="_3aAm2h" style="align-items: start !important;">
+          <div class="_21F-bS"><img src="../../../../assets/img/Group6910@2x.png">
+          </div>
+          <div class="_2i7380">
+            <span class="_3CHLlN" (click)="navTo('profile')">บัญชีของฉัน</span>
+          </div>
+        </a>
+      </div>
+      <div *ngIf="checkThisAccount()" class="dropdown" [class.open]="menuActive == 'profile'" style="opacity: 1;">
+        <div class="_3aiYwk">
+          <a class="_3SsG4j _3SzYTH">
+            <span class="_2PrdXX" [ngClass]="{'active': menuActive === 'profile'}"
+              (click)="navTo('profile')">ประวัติ</span>
+          </a>
+          <a class="_3SsG4j _3SzYTH">
+            <span class="_2PrdXX" [ngClass]="{'active': menuActive === 'payment'}"
+              (click)="navTo('payment')">บัญชีธนาคาร&amp;บัตร</span>
+          </a>
+          <a class="_3SsG4j _3SzYTH">
+            <span class="_2PrdXX" [ngClass]="{'active': menuActive === 'address'}"
+              (click)="navTo('address')">ที่อยู่</span>
+          </a> <a class="_3SsG4j _3SzYTH">
+            <span class="_2PrdXX" [ngClass]="{'active': menuActive === 'password'}"
+              (click)="navTo('password')">เปลี่ยนรหัสผ่าน</span>
+          </a> </div>
+      </div>
+    </div>
+    <div class="stardust-dropdown">
+      <div class="stardust-dropdown__item-header">
+        <a class="_3aAm2h">
+          <div class="_21F-bS"><img src="../../../../assets/img/Group6910@2x.png">
+          </div>
+          <div class="_2i7380">
+            <span class="_3CHLlN" [ngClass]="{'active': menuActive === 'mypurchase'}"
+              (click)="navTo('mypurchase')">การซื้อของฉัน</span>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div *ngIf="isShop" class="stardust-dropdown">
+      <div class="stardust-dropdown__item-header">
+        <a class="_3aAm2h">
+          <div class="_21F-bS"><img src="../../../../assets/img/Group6910@2x.png">
+          </div>
+          <div class="_2i7380">
+            <span class="_3CHLlN" [ngClass]="{'active': menuActive === 'mySell'}"
+              (click)="navTo('mySell')">การขายของฉัน</span>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="stardust-dropdown">
+      <div class="stardust-dropdown__item-header">
+        <a class="_3aAm2h">
+          <div class="_21F-bS"><img src="../../../../assets/img/Group6910@2x.png">
+          </div>
+          <div class="_2i7380">
+            <span class="_3CHLlN" [ngClass]="{'active': menuActive === 'notification'}" (click)="navTo('notification')">การแจ้งเตือน</span>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="stardust-dropdown">
+      <div class="stardust-dropdown__item-header">
+        <a class="_3aAm2h">
+          <div class="_21F-bS"><img src="../../../../assets/img/Group6910@2x.png">
+          </div>
+          <div class="_2i7380"><span class="_3CHLlN">โค้ดส่วนลดของฉัน</span></div>
+        </a>
+      </div>
+    </div>
+    <div class="stardust-dropdown">
+      <div class="stardust-dropdown__item-header">
+        <a class="_3aAm2h">
+          <div class="_21F-bS"><img src="../../../../assets/img/Group6910@2x.png">
+          </div>
+          <div class="_2i7380"><span class="_3CHLlN">We Coins ของฉัน</span></div>
+        </a>
+      </div>
+    </div>
+    <!-- <div class="stardust-dropdown">
+      <div class="stardust-dropdown__item-header">
+        <a class="_3aAm2h">
+          <div class="_21F-bS"><img src="../../../../assets/img/Group6910@2x.png">
+          </div>
+          <div class="_2i7380"><span class="_3CHLlN" (click)="downloadPDF()">ดาวโหลดเอกสาร</span></div>
+        </a>
+      </div>
+    </div> -->
+  </div>
+</div>

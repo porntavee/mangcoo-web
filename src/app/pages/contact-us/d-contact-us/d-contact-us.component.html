@@ -1,0 +1,258 @@
+<!-- component header type 1 -->
+<app-d-t1-header></app-d-t1-header>
+<div class="col-md-12 m-0 p-0 d-none d-lg-block minDiv" style="background-color: #F7F7F7 !important;width: 100%;padding-bottom: 80px;">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+        <div style="display: flex;width: 100%;justify-content: center;">
+            <div style="max-width: 1980px;width: 100%;">
+                <div class="kanit_xxl font-w600" style="color: #216DA6;margin: 20px 0 0 0;">
+                    <span *ngIf="serviceProviderService.lang == 'th'">{{'contactus'| langTh}}</span>
+                    <span *ngIf="serviceProviderService.lang == 'en'">{{'contactus'| langEn}}</span>
+                </div>
+                <div class="line-c5c5c5" style="margin-bottom: 20px;"></div>
+                <div class="df" style="width: 100%;">
+                    <!--                     
+<div class="myDIV">Hover over me.</div>
+<div class="hide">I am shown when someone hovers over the div above.</div> -->
+                    <div class="dfc" style="flex:1;background-color: white;padding: 20px;border-radius: 5px;min-height: 400px;">
+                        <div style="line-height: 7rem;font-size: 36px;">
+                            <span *ngIf="serviceProviderService.lang == 'th'">{{'contact'| langTh}}</span>
+                            <span *ngIf="serviceProviderService.lang == 'en'">{{'contact'| langEn}}</span>
+                        </div>
+                        <div class="df" style="align-items:center;height:40px">
+                            <div class="df" style="display:flex;align-items:center;width: 40px;"><img src="./assets/img/location_circle_border_black.png" height="20px" width="20px" alt=""></div>
+                            <div *ngIf="serviceProviderService.lang == 'th'" class="kanit_s font-w400">{{aboutUs.address}}</div>
+                            <div *ngIf="serviceProviderService.lang == 'en'" class="kanit_s font-w400">{{aboutUs.addressEN}}</div>
+                        </div>
+                        <div class="df" style="align-items:center;height:40px">
+                            <div class="df" style="display:flex;align-items:center;width: 40px;"><img src="./assets/img/phone_circle_border_black.png" height="20px" width="20px" alt="">
+                            </div>
+                            <div class="kanit_s font-w400">{{aboutUs.telephone}}</div>
+                        </div>
+                        <div class="df" style="align-items:center;height:40px">
+                            <div class="df" style="display:flex;align-items:center;width: 40px;"><img src="./assets/img/letter_circle_border_black.png" height="20px" width="20px" alt="">
+                            </div>
+                            <div class="kanit_s font-w400">{{aboutUs.email}}</div>
+                        </div>
+                        <div class="df" style="align-items:center;height:40px">
+                            <div class="df" style="display:flex;align-items:center;width: 40px;"><img src="./assets/img/youtube_circle_border_black.png" height="20px" width="20px" alt=""></div>
+                            <a href="{{aboutUs.youtube}}" target="_blank" style="text-decoration: none;color: black;">
+                                <div class="kanit_s font-w400">Veterinary Council of Thailand</div>
+                            </a>
+                        </div>
+                        <div class="df" style="align-items:center;height:40px">
+                            <div class="df" style="display:flex;align-items:center;width: 40px;"><img src="./assets/img/facebook_circle_border_black.png" height="20px" width="20px" alt=""></div>
+                            <a href="{{aboutUs.facebook}}" target="_blank" style="text-decoration: none;color: black;">
+                                <div class="kanit_s font-w400">สัตวแพทยสภา ประเทศไทย</div>
+                            </a>
+                        </div>
+                        <div class="df" style="align-items:center;height:40px">
+                            <div class="df" style="display:flex;align-items:center;width: 40px;"><img src="./assets/img/line_circle_border_black.png" height="20px" width="20px" alt="">
+                            </div>
+                            <a href="{{aboutUs.lineOfficial}}" target="_blank" style="text-decoration: none;color: black;">
+                                <div class="kanit_s font-w400">@vetcce</div>
+                            </a>
+                        </div>
+                        <!-- <div style="background-color: #CFDAE3;align-items: center;justify-content: center;width: 80px;
+                        height: 30px;display: flex;border-radius: 3px;color: white;font-size: 16px;margin: 20px 0 0 40px;">
+                            แชร์</div> -->
+                    </div>
+                    <div style="width: 10px;"></div>
+                    <div class="dfc" style="flex:1;background-color: white;padding: 20px;border-radius: 5px;min-height: 400px;">
+                        <div style="line-height: 7rem;font-size: 36px;">
+                            <span *ngIf="serviceProviderService.lang == 'th'">{{'agency'| langTh}}</span>
+                            <span *ngIf="serviceProviderService.lang == 'en'">{{'agency'| langEn}}</span>
+                        </div>
+                        <div *ngFor="let item of modelRelateAgency;let idx = index">
+                            <div (mouseover)="mouseOvered1=idx">
+                                <div *ngIf="!item.linkUrl" class="col-md-12 col-xs-12 pd0 mt15 df ">
+                                    <div class="df" style="display:flex;align-items:center;color:#000;font-size:16px;" class="glyphicon glyphicon-chevron-right"></div>
+                                    <div *ngIf="mouseOvered1 == idx" class="df" style="display:flex;align-items:center;color:#000;font-size:16px;" class="glyphicon glyphicon-chevron-right"></div>
+                                    <span class="pointer" style="margin-left:10px" id="AAA{{idx}}"><a
+                                            class="font-des-footer" >
+                                            <span *ngIf="serviceProviderService.lang == 'th'">{{item.title}}</span>
+                                    <span *ngIf="serviceProviderService.lang == 'en'">{{item.titleEN}}</span></a>
+                                    </span>
+                                </div>
+                                <div *ngIf="item.linkUrl" class="col-md-12 col-xs-12 pd0 mt15 df ">
+                                    <div class="df" style="display:flex;align-items:center;color:#000;font-size:16px;" class="glyphicon glyphicon-chevron-right"></div>
+                                    <div *ngIf="mouseOvered1 == idx" class="df" style="display:flex;align-items:center;color:#000;font-size:16px;" class="glyphicon glyphicon-chevron-right"></div>
+                                    <span class="pointer" style="margin-left:10px" id="AAA{{idx}}"><a
+                                            class="font-des-footer" href="{{item.linkUrl}}" target="_blank">
+                                            <span *ngIf="serviceProviderService.lang == 'th'">{{item.title}}</span>
+                                    <span *ngIf="serviceProviderService.lang == 'en'">{{item.titleEN}}</span></a>
+                                    </span>
+                                </div>
+                                <div *ngIf="item.relateagencyitems.length > 0" class="col-md-12 col-xs-12  pd0 df">
+                                    <div *ngIf="mouseOvered1 == idx" class="df" style="line-height: 4rem;cursor: pointer;">
+                                        <div style="height: auto;">
+                                            <div class="df box-uni mt15" style="height: auto">
+                                                <div class="df pointer" *ngFor="let i of item.relateagencyitems;">
+                                                    <div class="university">
+                                                        <a href="{{i.linkUrl}}" target="_blank" style="color:#000;text-decoration: none;line-height: initial;">
+                                                            <span *ngIf="serviceProviderService.lang == 'th'">{{i.title}}</span>
+                                                            <span *ngIf="serviceProviderService.lang == 'en'">{{i.titleEN}}</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="height: 47px;"></div>
+                <div class="dfc" style="flex:1;background-color: white;padding: 20px;border-radius: 5px;min-height: 400px;">
+                    <div style="line-height: 7rem;font-size: 36px;">
+                        <span *ngIf="serviceProviderService.lang == 'th'">{{'askmore'| langTh}}</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">{{'askmore'| langEn}}</span>
+                    </div>
+                    <div class="df" style="line-height: 3rem;">
+                        <input type="text" [(ngModel)]="model.firstName" placeholder="Your Name" style="flex:1;border: none;background-color: #f7f7f7;height: 40px;padding: 0 10px;">
+                        <div style="width: 10px;"></div>
+                        <input type="text" [(ngModel)]="model.lastName" placeholder="Your Email" style="flex:1;border: none;background-color: #f7f7f7;height: 40px;padding: 0 10px;">
+                    </div>
+                    <div style="height: 10px;"></div>
+                    <div style="line-height: 3rem;">
+                        <input type="text" [(ngModel)]="model.title" placeholder="Subject" style="width:100%;border: none;background-color: #f7f7f7;height: 40px;padding: 0 10px;">
+                    </div>
+                    <div style="height: 10px;"></div>
+                    <textarea name="" id="" cols="30" [(ngModel)]="model.description" placeholder="Message" rows="10" style="border: none;background-color: #F7F7F7;padding: 0 10px;height: 250px;"></textarea>
+                    <div style="height: 20px;"></div>
+                    <div class="send-btn pointer" (click)="create()">Sent Massge</div>
+                </div>
+            </div>
+        </div>
+        <div style="width: 100%;padding: 50px;background-color: #E4E4E4;margin-top: 40px;">
+            <iframe width="100%" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15496.788016574323!2d100.483888!3d13.8272059!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf8d46aa06e0a978d!2z4Liq4Lix4LiV4Lin4LmB4Lie4LiX4Lii4Liq4Lig4Liy!5e0!3m2!1sth!2sth!4v1640251557421!5m2!1sth!2sth"
+                height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+
+<!-- Mobile -->
+<div class="col-xs-12 m-0 p-0 d-block d-lg-none">
+    <div class="col-md-12 p-0 m-0">
+        <div style="display: flex;width: 100%;justify-content: center;">
+            <div style="width: 100%;">
+                <div class="dfc" style="flex:1;background-color: white;padding: 14px;border-radius: 5px;min-height: 400px;">
+                    <div style="line-height: 7rem;font-size: 36px;">
+                        <span *ngIf="serviceProviderService.lang == 'th'">{{'contactus'| langTh}}</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">{{'contactus'| langEn}}</span>
+                    </div>
+                    <div class="df" style="align-items:center;height:50px">
+                        <div class="df" style="display:flex;align-items:center;width: 50px;"><img src="./assets/img/location_circle_border_black.png" style="width: 5vw;height: 5vw;max-width: 38px;max-height: 38px;min-width: 29px;min-height:29px;max-width: 38px;max-height: 38px;" alt=""></div>
+                        <div class="kanit_m font-w400">
+                            <div *ngIf="serviceProviderService.lang == 'th'" class="kanit_s font-w400">{{aboutUs.address}}</div>
+                            <div *ngIf="serviceProviderService.lang == 'en'" class="kanit_s font-w400">{{aboutUs.addressEN}}</div>
+                        </div>
+                    </div>
+                    <div class="df" style="align-items:center;height:50px">
+                        <div class="df" style="display:flex;align-items:center;width: 50px;"><img src="./assets/img/phone_circle_border_black.png" style="width: 5vw;height: 5vw;max-width: 38px;max-height: 38px;min-width: 29px;min-height:29px;max-width: 38px;max-height: 38px;" alt="">
+                        </div>
+                        <div class="kanit_m font-w400">{{aboutUs.telephone}}</div>
+                    </div>
+                    <div class="df" style="align-items:center;height:50px">
+                        <div class="df" style="display:flex;align-items:center;width: 50px;"><img src="./assets/img/letter_circle_border_black.png" style="width: 5vw;height: 5vw;max-width: 38px;max-height: 38px;min-width: 29px;min-height:29px;max-width: 38px;max-height: 38px;" alt="">
+                        </div>
+                        <div class="kanit_m font-w400">{{aboutUs.email}}</div>
+                    </div>
+                    <div class="df" style="align-items:center;height:50px">
+                        <div class="df" style="display:flex;align-items:center;width: 50px;"><img src="./assets/img/youtube_circle_border_black.png" style="width: 5vw;height: 5vw;max-width: 38px;max-height: 38px;min-width: 29px;min-height:29px;max-width: 38px;max-height: 38px;" alt=""></div>
+                        <a href="{{aboutUs.youtube}}" target="_blank" style="text-decoration: none;color: black;">
+                            <div class="kanit_m font-w400">youtube</div>
+                        </a>
+                    </div>
+                    <div class="df" style="align-items:center;height:50px">
+                        <div class="df" style="display:flex;align-items:center;width: 50px;"><img src="./assets/img/facebook_circle_border_black.png" style="width: 5vw;height: 5vw;max-width: 38px;max-height: 38px;min-width: 29px;min-height:29px;max-width: 38px;max-height: 38px;" alt=""></div>
+                        <a href="{{aboutUs.facebook}}" target="_blank" style="text-decoration: none;color: black;">
+                            <div class="kanit_m font-w400">vetcouncil</div>
+                        </a>
+                    </div>
+                    <div class="df" style="align-items:center;height:50px">
+                        <div class="df" style="display:flex;align-items:center;width: 50px;"><img src="./assets/img/line_circle_border_black.png" style="width: 5vw;height: 5vw;max-width: 38px;max-height: 38px;min-width: 29px;min-height:29px;max-width: 38px;max-height: 38px;" alt="">
+                        </div>
+                        <a href="{{aboutUs.lineOfficial}}" target="_blank" style="text-decoration: none;color: black;">
+                            <div class="kanit_m font-w400">{{aboutUs.lineOfficial}}</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="df" style="width: 100%;height: 10px;background-color: #E4E4E4;">
+                </div>
+                <div class="dfc" style="flex:1;background-color: white;padding: 14px;border-radius: 5px;min-height: 400px;">
+                    <div style="line-height: 7rem;font-size: 36px;">
+                        <span *ngIf="serviceProviderService.lang == 'th'">{{'agency'| langTh}}</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">{{'agency'| langEn}}</span>
+                    </div>
+                    <div *ngFor="let item of modelRelateAgency;let idx = index">
+                        <div (mouseover)="mouseOvered1=idx">
+                            <div *ngIf="!item.linkUrl" class="col-md-12 col-xs-12 pd0 mt15 df ">
+                                <div class="df" style="display:flex;align-items:center;color:#000;font-size:16px;" class="glyphicon glyphicon-chevron-right"></div>
+                                <div *ngIf="mouseOvered1 == idx" class="df" style="display:flex;align-items:center;color:#000;font-size:16px;" class="glyphicon glyphicon-chevron-right"></div>
+                                <span class="pointer" style="margin-left:10px" id="AAA{{idx}}"><a
+                                        class="font-des-footer" >
+                                        <span *ngIf="serviceProviderService.lang == 'th'">{{item.title}}</span>
+                                <span *ngIf="serviceProviderService.lang == 'en'">{{item.titleEN}}</span></a>
+                                </span>
+                            </div>
+                            <div *ngIf="item.linkUrl" class="col-md-12 col-xs-12 pd0 mt15 df ">
+                                <div class="df" style="display:flex;align-items:center;color:#000;font-size:16px;" class="glyphicon glyphicon-chevron-right"></div>
+                                <div *ngIf="mouseOvered1 == idx" class="df" style="display:flex;align-items:center;color:#000;font-size:16px;" class="glyphicon glyphicon-chevron-right"></div>
+                                <span class="pointer" style="margin-left:10px" id="AAA{{idx}}"><a
+                                        class="font-des-footer" href="{{item.linkUrl}}" target="_blank">
+                                        <span *ngIf="serviceProviderService.lang == 'th'">{{item.title}}</span>
+                                <span *ngIf="serviceProviderService.lang == 'en'">{{item.titleEN}}</span></a>
+                                </span>
+                            </div>
+                            <div *ngIf="item.relateagencyitems.length > 0" class="col-md-12 col-xs-12  pd0 df">
+                                <div *ngIf="mouseOvered1 == idx" class="df" style="line-height: 4rem;cursor: pointer;">
+                                    <div style="height: auto;">
+                                        <div class="df box-uni mt15" style="height: auto">
+                                            <div class="df pointer" *ngFor="let i of item.relateagencyitems;">
+                                                <div class="university">
+                                                    <a href="{{i.linkUrl}}" target="_blank" style="color:#000;text-decoration: none;line-height: initial;">
+                                                        <span *ngIf="serviceProviderService.lang == 'th'">{{i.title}}</span>
+                                                        <span *ngIf="serviceProviderService.lang == 'en'">{{i.titleEN}}</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="df" style="width: 100%;height: 10px;background-color: #E4E4E4;">
+                </div>
+                <div class="dfc" style="flex:1;background-color: white;padding: 14px;border-radius: 5px;min-height: 400px;">
+                    <div style="line-height: 7rem;font-size: 36px;">
+                        <span *ngIf="serviceProviderService.lang == 'th'">{{'askmore'| langTh}}</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">{{'askmore'| langEn}}</span>
+                    </div>
+                    <div class="df" style="line-height: 3rem;">
+                        <input type="text" [(ngModel)]="model.firstName" placeholder="Your Name" style="flex:1;border: none;background-color: #f7f7f7;height: 40px;padding: 0 10px;">
+                        <div style="width: 10px;"></div>
+                        <input type="text" [(ngModel)]="model.lastName" placeholder="Your Email" style="flex:1;border: none;background-color: #f7f7f7;height: 40px;padding: 0 10px;">
+                    </div>
+                    <div style="height: 10px;"></div>
+                    <div style="line-height: 3rem;">
+                        <input type="text" [(ngModel)]="model.title" placeholder="Subject" style="width:100%;border: none;background-color: #f7f7f7;height: 40px;padding: 0 10px;">
+                    </div>
+                    <div style="height: 10px;"></div>
+                    <textarea name="" id="" cols="30" [(ngModel)]="model.description" placeholder="Message" rows="10" style="border: none;background-color: #F7F7F7;padding: 0 10px;height: 250px;"></textarea>
+                    <div style="height: 20px;"></div>
+                    <div class="send-btn pointer" (click)="create()">Sent Massge</div>
+                </div>
+            </div>
+        </div>
+        <div style="width: 100%;padding: 14px;background-color: #E4E4E4;margin-top: 40px;">
+            <iframe width="100%" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15496.788016574323!2d100.483888!3d13.8272059!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf8d46aa06e0a978d!2z4Liq4Lix4LiV4Lin4LmB4Lie4LiX4Lii4Liq4Lig4Liy!5e0!3m2!1sth!2sth!4v1640251557421!5m2!1sth!2sth"
+                style="border:0;height: 55vw;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+</div>
+<app-d-t1-footer></app-d-t1-footer>

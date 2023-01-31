@@ -1,0 +1,189 @@
+<!-- component header type 1 -->
+<app-d-t1-header></app-d-t1-header>
+
+
+
+<!-- content -->
+<div class="kanit col-md-12 pd0 d-none d-lg-block">
+    <div class="col-md-12 col-xs-12 pd0 mt30 pb-5">
+        <div class="col-md-6 col-xs-6 pd0">
+            <div class="col-md-12 pd0">
+                <img class="img-login" src="./assets/img/img-register.png">
+            </div>
+
+        </div>
+        <div class="col-md-6 col-xs-6 mt55" style="padding: 0% 4%;">
+            <div class="col-md-12" style="font-size: 4rem;font-weight: bold;  line-height: 1.3;width: 700px;
+          ">
+                <span *ngIf="serviceProviderService.lang == 'th'">ยินดีต้อนรับเข้าสู่สัตวแพทยสภา</span>
+                <span *ngIf="serviceProviderService.lang == 'en'">Welcome to the Veterinary Council</span>
+
+            </div>
+            <div class="col-md-12 mt15" style="font-size: 2.5rem;  line-height: 1.3;
+          ">
+                <span *ngIf="serviceProviderService.lang == 'th'">กรุณาเลือกเมนูที่ต้องการ</span>
+                <span *ngIf="serviceProviderService.lang == 'en'">Please select the desired menu.</span>
+            </div>
+            <div class="col-md-12 mt55">
+                <a target="_blank" href="http://209.15.98.88/vet_member/index.php?b=login" style="text-decoration: none;">
+                    <button type="button" class="form-control kanit" style="width: 520px;height: 100px;border-radius: 20px;font-size: 30px;color: #fff;text-align: center; background-color:#1B6CA8;border-color: 3px solid #1B6CA8;">
+                        <span
+                            *ngIf="serviceProviderService.lang == 'th'">ตรวจสอบหน่วยกิตผู้ประกอบวิชาชีพการสัตวแพทย์ชั้นหนึ่ง</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">Examine the first-class veterinary
+                            practitioner unit</span>
+                    </button>
+                </a>
+            </div>
+            <div class="col-md-12 mt15">
+                <a target="_blank" href="http://209.15.98.88/elearning/" style="text-decoration: none;">
+                    <button type="button" class="form-control kanit" style="width: 520px;height: 70px;border-radius: 20px;font-size: 30px;color: #fff;text-align: center; background-color:#128986;border-color: 3px solid #128986;">
+                        <span *ngIf="serviceProviderService.lang == 'th'">E-Learning</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">E-Learning</span>
+                    </button>
+                </a>
+            </div>
+            <div class="col-md-12  mt15">
+                <a target="_blank" (click)="goToCMS()" style="text-decoration: none;">
+                    <button type="button" class="form-control kanit" style="width: 520px;height: 70px;border-radius: 20px;font-size: 30px;color: #fff;text-align: center; background-color:#128986;border-color: 3px solid #128986;">
+                        <span
+                            *ngIf="serviceProviderService.lang == 'th'">เข้าสู่ระบบการจัดการเนื้อหาของเว็บไซต์</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">Login CMS</span>
+                    </button>
+                </a>
+            </div>
+            <div class="col-md-12  mt15">
+                <a target="_blank" href="http://209.15.98.88/vet_member/index.php?b=login2" style="text-decoration: none;">
+                    <button type="button" class="form-control kanit" style="width: 520px;height: 100px;border-radius: 20px;font-size: 30px;color: #fff;text-align: center; background-color:#99722F;border-color: 3px solid #99722F;">
+                        <span
+                            *ngIf="serviceProviderService.lang == 'th'">ตรวจสอบคะแนนผู้ประกอบวิชาชีพการสัตวแพทย์ชั้นสอง</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">Check the veterinary practitioner scores
+                            second class</span>
+                    </button>
+                </a>
+            </div>
+            <div *ngIf="userData.profileCode == ''" class="col-md-12 mt15">
+                <button type="button" class="form-control kanit" (click)="goToLogin('login-e-learning')" style="width: 520px;height: 70px;border-radius: 20px;font-size: 30px;color: #fff;text-align: center; background-color:#E19B24;border-color: #E19B24;">
+                    <span *ngIf="serviceProviderService.lang == 'th'">เข้าสู่ระบบเว็บไซต์</span>
+                    <span *ngIf="serviceProviderService.lang == 'en'">Login Website</span>
+                </button>
+            </div>
+
+            <div class="col-md-12" style="margin-top:10%;width: 530px">
+                <h2>
+                    <span class="kanit font-w400" *ngIf="serviceProviderService.lang == 'th'">หรือท่านต้องการ</span>
+                    <span class="kanit font-w400" *ngIf="serviceProviderService.lang == 'en'">or you want</span>
+                </h2>
+            </div>
+            <div class="col-md-12" style="padding: 20px;width: 530px;display: flex;justify-content: center;">
+                <div class="col-md-6 pd0">
+                    <button type="button" class="form-control kanit" (click)="goToRegister()" style="height: 70px;border-radius: 20px;font-size: 20px;color: #1B6CA8;text-align: center;border:2px solid #1B6CA8;">
+                        <span *ngIf="serviceProviderService.lang == 'th'">สมัครสมาชิกสัตวแพทยสภา</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">Subscribe to the Veterinary Council</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-12" style="padding: 20px;width: 530px">
+                <div class="col-md-6 col-xs-6" style="padding-left: 0%;">
+                    <button *ngIf="serviceProviderService.lang == 'th'" (click)="goToAdmin()" type="button" class="form-control kanit" style="height: 70px;border-radius: 20px;font-size: 20px;color: #707070;text-align: cente;border:2px solid#707070;">
+                        <span>สำหรับ<br />เจ้าหน้าที่สัตวแพทยสภา</span>
+                    </button>
+                    <button *ngIf="serviceProviderService.lang == 'en'" (click)="goToAdmin()" type="button" class="form-control kanit" style="height: 130px;border-radius: 20px;font-size: 20px;color: #707070;text-align: cente;border:2px solid#707070;">
+                        <span>for<br />Veterinary Council Officer</span>
+                    </button>
+                </div>
+                <div class="col-md-6 col-xs-6" style="padding-right: 0%;">
+                    <button *ngIf="serviceProviderService.lang == 'th'" type="button" class="form-control kanit" (click)="goToMainIns()" style="height: 70px;border-radius: 20px;font-size: 20px;color: #707070;text-align: center;border:2px solid#707070;">
+                        <span>สำหรับ<br />สถาบันหลัก/สถาบันสมทบ</span>
+
+                    </button>
+                    <button *ngIf="serviceProviderService.lang == 'en'" type="button" class="form-control kanit" (click)="goToMainIns()" style="height: 130px;border-radius: 20px;font-size: 20px;color: #707070;text-align: center;border:2px solid#707070;">
+                        <span>for<br />Main Institution/Associate
+                            Institution</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="kanit col-xs-12 pd0 d-block d-lg-none">
+    <div class="col-xs-12 pd0 mt30 pb-5">
+        <div class="col-xs-12 mt55" style="padding: 0% 4%;">
+            <div class="col-md-12" style="font-size: 6vw;font-weight: bold;  line-height: 1.3;">
+                <span *ngIf="serviceProviderService.lang == 'th'">ยินดีต้อนรับเข้าสู่สัตวแพทยสภา</span>
+                <span *ngIf="serviceProviderService.lang == 'en'">Welcome to the Veterinary Council</span>
+            </div>
+            <div class="col-md-12 mt15" style="font-size: 4vw;  line-height: 1.3;">
+                <span *ngIf="serviceProviderService.lang == 'th'">กรุณาเลือกเมนูที่ต้องการ</span>
+                <span *ngIf="serviceProviderService.lang == 'en'">Please select the desired menu.</span>
+            </div>
+            <div class="col-md-12 mt55">
+                <a target="_blank" href="http://209.15.98.88/vet_member/index.php?b=login" style="text-decoration: none;">
+                    <button type="button" class="form-control kanit" style="height: 19vw;border-radius: 5vw;font-size: 6vw;color: #fff;text-align: center; background-color:#1B6CA8;border-color: 3px solid #1B6CA8;">
+                        <span
+                            *ngIf="serviceProviderService.lang == 'th'">ตรวจสอบหน่วยกิตผู้ประกอบวิชาชีพการสัตวแพทย์ชั้นหนึ่ง</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">Examine the first-class veterinary
+                            practitioner unit</span>
+                    </button>
+                </a>
+            </div>
+
+            <div class="col-md-12 mt15">
+                <a target="_blank" href="http://209.15.98.88/elearning/" style="text-decoration: none;">
+                    <button type="button" class="form-control kanit" style="height: 11vw;border-radius: 5vw;font-size: 6vw;color: #fff;text-align: center; background-color:#128986;border-color: 3px solid #128986;">
+                        <span *ngIf="serviceProviderService.lang == 'th'">E-Learning</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">E-Learning</span>
+                    </button>
+                </a>
+            </div>
+            <div class="col-md-12 mt15">
+                <a target="_blank" href="http://209.15.98.88/vet_member/index.php?b=login2" style="text-decoration: none;">
+                    <button type="button" class="form-control kanit" style="height: 19vw;border-radius: 5vw;font-size: 6vw;color: #fff;text-align: center; background-color:#99722F;border-color: 3px solid #99722F;">
+                        <span
+                            *ngIf="serviceProviderService.lang == 'th'">ตรวจสอบคะแนนผู้ประกอบวิชาชีพการสัตวแพทย์ชั้นสอง</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">Check the veterinary practitioner scores
+                            second class</span>
+                    </button>
+                </a>
+            </div>
+            <div class="col-md-12 mt15">
+                <button *ngIf="userData.profileCode == ''" type="button" class="form-control kanit" (click)="goToLogin('login-e-learning')" style="height: 11vw;border-radius: 5vw;font-size: 6vw;color: #fff;text-align: center; background-color:#E19B24;border-color: #E19B24;">
+                    <span *ngIf="serviceProviderService.lang == 'th'">เข้าสู่ระบบเว็บไซต์</span>
+                    <span *ngIf="serviceProviderService.lang == 'en'">login website</span>
+                </button>
+            </div>
+            <div class="col-md-12" style="margin-top:10%;">
+                <h2>
+                    <span class="kanit font-w400" *ngIf="serviceProviderService.lang == 'th'">หรือท่านต้องการ</span>
+                    <span class="kanit font-w400" *ngIf="serviceProviderService.lang == 'en'">or you want</span>
+                </h2>
+            </div>
+            <div class="col-md-12" style="padding: 20px;display: flex;justify-content: center;">
+                <div class="col-md-6 pd0">
+                    <button type="button" class="form-control kanit" (click)="goToRegister()" style="height: 12vw;border-radius: 3vw;font-size: 3vw;color: #1B6CA8;text-align: center;border:2px solid #1B6CA8;">
+                        <span *ngIf="serviceProviderService.lang == 'th'">สมัครสมาชิกสัตวแพทยสภา</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">Subscribe to the Veterinary Council</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-12" style="padding: 20px;">
+                <div class="col-xs-6" style="padding-left: 0%;">
+                    <button *ngIf="serviceProviderService.lang == 'th'" (click)="goToAdmin()" type="button" class="form-control kanit" style="height: 12vw;border-radius: 3vw;font-size: 3vw;color: #707070;text-align: cente;border:2px solid#707070;">
+                        สำหรับ<br />เจ้าหน้าที่สัตวแพทยสภา</button>
+                    <button *ngIf="serviceProviderService.lang == 'en'" (click)="goToAdmin()" type="button" class="form-control kanit" style="height: 21vw;border-radius: 3vw;font-size: 3vw;color: #707070;text-align: cente;border:2px solid#707070;">
+                        for<br />Veterinary Council Officer</button>
+                </div>
+                <div class="col-xs-6" style="padding-right: 0%;">
+                    <button *ngIf="serviceProviderService.lang == 'th'" type="button" class="form-control kanit" (click)="goToRegister()" style="height: 12vw;border-radius: 3vw;font-size: 3vw;color: #707070;text-align: center;border:2px solid#707070;">
+                        สำหรับ<br />สถาบันหลัก/สถาบันสมทบ</button>
+                    <button *ngIf="serviceProviderService.lang == 'en'" type="button" class="form-control kanit" (click)="goToRegister()" style="height: 21vw;border-radius: 3vw;font-size: 3vw;color: #707070;text-align: center;border:2px solid#707070;">
+                        for<br />Main Institution/Associate
+                        Institution</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- component header type 1 -->
+<app-d-t1-footer></app-d-t1-footer>

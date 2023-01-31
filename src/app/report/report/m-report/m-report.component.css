@@ -1,0 +1,77 @@
+div.scroll
+{
+overflow-x:scroll;
+overflow-y: hidden;
+white-space: nowrap;
+}
+
+#scrolly{
+    width: 1000px;
+    height: 190px;
+    overflow: auto;
+    overflow-y: hidden;
+    margin: 0 auto;
+    white-space: nowrap
+}
+
+.toverflow {
+    width: 100px;
+    text-overflow: ellipsis;
+    overflow:hidden;
+}
+
+.ttex {
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 2; /* number of lines to show */
+   -webkit-box-orient: vertical;
+}
+
+.tssug {
+    height: 40px;
+    align-items: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+._36CEnF._36CEnF {
+    overflow-wrap: break-word;
+    overflow: hidden;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.text1 {
+    overflow-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+
+.wid100 {
+    width: 100px;
+}
+
+._1POlWt {
+    flex-grow: 1;
+    min-height: 35px;
+    font-size: 0.75rem;
+    line-height:F 0.875rem;
+}
+.yQmmFK {
+    display: inline;
+    line-height: 14px;
+    font-size: 11px;
+}
+
+.mb5 {
+    margin-bottom: 5px;
+}
+
+.fs1d2 {
+    font-size: 1.2rem;
+}

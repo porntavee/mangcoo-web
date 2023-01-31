@@ -1,0 +1,2732 @@
+<!-- component header type 1 -->
+<app-d-t1-header></app-d-t1-header>
+
+
+<!-- content -->
+<div class="col-md-12 m-0 p-0 d-none d-lg-block kanit">
+    <div class="col-xs-12 pd0">
+        <div class="col-md-3 col-xs-3 pd0">
+            <div class="col-md-12 pd0">
+                <img style="width:100%;height: 960px;" src="./assets/img/img-register.png">
+            </div>
+
+        </div>
+        <div class="col-md-8 col-xs-8" style="padding: 0% 4%;">
+            <form [formGroup]="registerForm">
+                <div *ngIf="code != ''" class="col-md-12"
+                    style="padding: 10px 0px;font-size: 22px;font-weight: bold;color: #1B6CA8;">
+                    <div class="col-md-3">
+                        <a class="pointer txt-de-none c-70 fh1" href="{{path}}register/?code={{code}}&type=1">
+                            <span style="color: {{checkColor(isRead)}}" *ngIf="serviceProviderService.lang == 'th'">{{'editInformation'| langTh}}</span>
+                            <span *ngIf="serviceProviderService.lang == 'en'">{{'editInformation'| langEn}}</span>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="pointer txt-de-none c-70 fh1" href="{{path}}register/?code={{code}}&type=2">
+                            <span style="color: {{checkColor(isEdit)}}" *ngIf="serviceProviderService.lang == 'th'">{{'editInformationPA'| langTh}}</span>
+                            <span *ngIf="serviceProviderService.lang == 'en'">{{'editInformationPA'| langEn}}</span>
+                        </a>
+                    </div>
+                </div>
+                <div *ngIf="code != ''" style="display: flex;justify-content: center;width: 100%;">
+                    <div class="line-c5c5c5" style="width: 100%;margin: 10px 0px;"></div>
+                </div>
+                <div *ngIf="serviceProviderService.lang == 'th' && code == ''" class="col-md-12"
+                    style="font-size: 22px;font-weight: bold;color: #1B6CA8;">{{'register'| langTh}}</div>
+                <div *ngIf="serviceProviderService.lang == 'en' && code == ''" class="col-md-12"
+                    style="font-size: 22px;font-weight: bold;color: #1B6CA8;">{{'register'| langEn}}</div>
+                <div *ngIf="serviceProviderService.lang == 'th' && code != ''" class="col-md-12"
+                    style="font-size: 22px;font-weight: bold;color: #1B6CA8;">{{'personalInformation'| langTh}}</div>
+                <div *ngIf="serviceProviderService.lang == 'en' && code != ''" class="col-md-12"
+                    style="font-size: 22px;font-weight: bold;color: #1B6CA8;">{{'personalInformation'| langEn}}</div>
+                <div *ngIf="serviceProviderService.lang == 'th'" class="col-md-12"
+                    style="font-size: 17px; line-height: 1.3;opacity: 0.55;padding: 10px 0px">
+                    {{'applyRegisterVet'| langTh}} </div>
+                <div *ngIf="serviceProviderService.lang == 'en'" class="col-md-12"
+                    style="font-size: 17px; line-height: 1.3;opacity: 0.55;">{{'applyRegisterVet'| langEn}} </div>
+                <div class="col-xs-12 pd0"
+                    style="background-color: {{checkColorback(!isRead && !isEdit ? false : true)}}">
+                    <div class="col-xs-6 pd0" style="padding: 10px 0px;">
+                        <div class="col-md-12 col-xs-12 pd0 registxt">
+                            <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12"><span
+                                    style="color: red;">*&nbsp;</span> {{'pleaseEnter' | langTh}}
+                                {{'IDNumber' | langTh}}
+                            </div>
+                            <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12"><span
+                                    style="color: red;">*&nbsp;</span> {{'pleaseEnter' | langEn}}
+                                {{'IDNumber' | langTh}}
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <input type="text" class="form-control kanit regisbt" placeholder="_ ____ _____ __ _"
+                                [ngClass]="{ 'is-invalid': submitted && f.idcard.errors }" autocomplete="idcard"
+                                formControlName="idcard" [readonly]="(!isRead && !isEdit ? false : true)">
+                            <div class="validate"></div>
+                            <div *ngIf="submitted && f.idcard.errors" class="invalid-feedback">
+                                <div *ngIf="f.idcard.errors.pattern && serviceProviderService.lang == 'th'">
+                                    {{'IDNumber' | langTh}} {{'notValid' | langTh}}.</div>
+                                <div *ngIf="f.idcard.errors.pattern && serviceProviderService.lang == 'en'">
+                                    {{'IDNumber' | langTh}} {{'notValid' | langEn}}.</div>
+                                <div *ngIf="f.idcard.errors.required && serviceProviderService.lang == 'th'">
+                                    {{'pleaseEnter' | langTh}} {{'IDNumber' | langTh}}</div>
+                                <div *ngIf="f.idcard.errors.required && serviceProviderService.lang == 'en'">
+                                    {{'pleaseEnter' | langEn}} {{'IDNumber' | langTh}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 pd0" style="padding: 10px 0px;" Î>
+                        <div class=" col-md-12 col-xs-12 pd0 registxt">
+                            <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt"><span
+                                    style="color: red;">*&nbsp;</span>{{'pleaseEnter' | langTh}} Password </div>
+                            <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt"><span
+                                    style="color: red;">*&nbsp;</span>{{'pleaseEnter' | langEn}} eassword </div>
+                            <div class="col-xs-12">
+                                <input type="password" class="form-control kanit regisbt" placeholder="Password"
+                                    [ngClass]="{ 'is-invalid': submitted && f.password.errors }" autocomplete="password"
+                                    formControlName="password" [readonly]="(!isRead && !isEdit ? false : true)">
+                                <div class="validate"></div>
+                                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                    <div *ngIf="f.password.errors.pattern && serviceProviderService.lang == 'th'">
+                                        Password
+                                        {{'notValid' | langTh}}.</div>
+                                    <div *ngIf="f.password.errors.pattern && serviceProviderService.lang == 'en'">
+                                        Password
+                                        {{'notValid' | langEn}}.</div>
+                                    <div *ngIf="f.password.errors.required && serviceProviderService.lang == 'th'">
+                                        {{'pleaseEnter' | langTh}} password</div>
+                                    <div *ngIf="f.password.errors.required && serviceProviderService.lang == 'en'">
+                                        {{'pleaseEnter' | langEn}} password</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12" style="padding: 20px 0px;">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-md-6 col-xs-6 pd0 fs3">
+                        {{'personalInformation' | langTh}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-md-6 col-xs-6 pd0 fs3">
+                        {{'personalInformation' | langEn}}</div>
+                </div>
+                <div class="col-xs-12 pd0" style="padding: 10px 0px;background-color: {{checkColorback(isEdit)}}">
+                    <div class="col-md-6 col-xs-6 pd0 registxt">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12">
+                            {{'pleaseEnter' | langTh}}&nbsp;Email</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12">
+                            {{'pleaseEnter' | langEn}}&nbsp;Email</div>
+                        <div class="col-xs-12">
+                            <input type="text" class="form-control kanit regisbt" placeholder="Email"
+                                [ngClass]="{ 'is-invalid': submitted && f.email.errors }" autocomplete="email"
+                                formControlName="email" [readonly]="isEdit">
+                            <div class="validate"></div>
+                            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                <div *ngIf="f.email.errors.required && serviceProviderService.lang == 'th'">
+                                    {{'pleaseEnter' | langTh}} Email</div>
+                                <div *ngIf="f.email.errors.required && serviceProviderService.lang == 'en'">
+                                    {{'pleaseEnter' | langEn}} Email</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 pd0" style="padding: 15px 0px;background-color: {{checkColorback(isEdit)}}">
+                    <div class="col-md-6 col-xs-6 pd0">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt">
+                            {{'phoneNumber' | langTh}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt">
+                            {{'phoneNumber' | langEn}}</div>
+                        <div class="col-xs-12 ">
+                            <div class="col-xs-12 pd0 ">
+                                <input type="number" class="form-control kanit regisbt" placeholder="0__ - ___ - _____"
+                                    [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" autocomplete="phone"
+                                    formControlName="phone" [readonly]="isEdit">
+                                <div class="validate"></div>
+                                <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                                    <div *ngIf="f.phone.errors.required && serviceProviderService.lang == 'th'">
+                                        {{'pleaseEnter' | langTh}} {{'phoneNumber' | langTh}}</div>
+                                    <div *ngIf="f.phone.errors.required && serviceProviderService.lang == 'en'">
+                                        {{'pleaseEnter' | langEn}} {{'phoneNumber' | langEn}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-6 pd0">
+                        <div class="col-xs-12 registxt">
+                            Line ID</div>
+                        <div class="col-xs-12">
+                            <input type="text" class="form-control kanit regisbt" placeholder="Line ID"
+                                formControlName="lineID" autocomplete="lineID"
+                                [ngClass]="{ 'is-invalid': submitted && f.lineID.errors }" [readonly]="isEdit">
+                            <div class="validate"></div>
+                            <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                                <div *ngIf="f.phone.errors.required && serviceProviderService.lang == 'th'">
+                                    {{'pleaseEnter' | langTh}} lineID</div>
+                                <div *ngIf="f.phone.errors.required && serviceProviderService.lang == 'en'">
+                                    {{'pleaseEnter' | langEn}} lineID</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 pd0"
+                    style="padding: 15px 0px;background-color: {{checkColorback(!isRead && !isEdit ? false : true)}};">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt"><span
+                            style="color: red;">*&nbsp;</span>{{'pleaseEnter' | langTh}} {{'nameSurname' | langTh }}
+                    </div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt"><span
+                            style="color: red;">*&nbsp;</span>{{'pleaseEnter' | langEn}} {{'nameSurname' | langEn }}
+                    </div>
+                    <div class="col-xs-12 ">
+                        <div class="col-md-6 col-xs-6 pd0 ">
+                            <div class="col-md-3 col-xs-3 pd0 ">
+                                <input *ngIf="serviceProviderService.lang == 'th'" type="text"
+                                    class="form-control kanit regisbt aCenter" placeholder="{{'rank' | langTh}}"
+                                    autocomplete="position" formControlName="position" [readonly]="isRead">
+                                <input *ngIf="serviceProviderService.lang == 'en'" type="text"
+                                    class="form-control kanit regisbt aCenter" placeholder="{{'rank' | langEn}}"
+                                    autocomplete="position" formControlName="position" [readonly]="isRead">
+                            </div>
+                            <div class="col-md-4 col-xs-3 pd0 ">
+                                <select formControlName="prefixName" [attr.disabled]="(!isRead && !isEdit ? null : '')"
+                                    class="form-control kanit regisbt aCenter select"
+                                    [ngClass]="{ 'is-invalid': submitted && f.prefixName.errors }">
+                                    <option>คำนำหน้า</option>
+                                    <option *ngFor="let option of options">{{option}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 " style="padding-bottom: 10px;">
+                        <div class="col-md-4 col-xs-4 pd0 ">
+                            <input type="text" class="form-control kanit regisbt" placeholder="*ชื่อ"
+                                [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" autocomplete="firstName"
+                                formControlName="firstName" [readonly]="(!isRead && !isEdit ? false : true)">
+                            <div class="validate"></div>
+                            <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                                <div *ngIf="f.firstName.errors.required">กรุณากรอก ชื่อ</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xs-4 pd0 ">
+                            <input type="text" class="form-control kanit regisbt" placeholder="*นามสกุล"
+                                [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" autocomplete="lastName"
+                                formControlName="lastName" [readonly]="(!isRead && !isEdit ? false : true)">
+                            <div class="validate"></div>
+                            <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                                <div *ngIf="f.lastName.errors.required">กรุณากรอก นามสกุล</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 " style="background-color: {{checkColorback(isEdit)}};padding-bottom: 10px;">
+                        <div class="col-md-4 col-xs-4 pd0 ">
+                            <input type="text" class="form-control kanit regisbt" placeholder="Name"
+                                [ngClass]="{ 'is-invalid': submitted && f.firstNameEN.errors }"
+                                autocomplete="firstNameEN" formControlName="firstNameEN" [readonly]="isEdit">
+                            <div class="validate"></div>
+                            <div *ngIf="submitted && f.firstNameEN.errors" class="invalid-feedback">
+                                <div *ngIf="f.firstNameEN.errors.required">กรุณากรอก ชื่อ ภาษาอังกฤษ</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xs-4 pd0 ">
+                            <input type="text" class="form-control kanit regisbt" placeholder="Family Name"
+                                [ngClass]="{ 'is-invalid': submitted && f.lastNameEN.errors }" autocomplete="lastNameEN"
+                                formControlName="lastNameEN" [readonly]="isEdit">
+                            <div class="validate"></div>
+                            <div *ngIf="submitted && f.lastNameEN.errors" class="invalid-feedback">
+                                <div *ngIf="f.lastNameEN.errors.required">กรุณากรอก นามสกุล ภาษาอังกฤษ</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 pd0" style="padding: 10px 0px;background-color: {{checkColorback(isEdit)}}">
+                    <div class="col-xs-12 pd0 ">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt">
+                            {{'oldNameSurname' | langTh }}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt">
+                            {{'oldNameSurname' | langEn }}</div>
+                        <div class="col-xs-12 ">
+                            <div class="col-md-6 col-xs-6 pd0 ">
+                                <div class="col-md-3 col-xs-3 pd0 ">
+                                    <input *ngIf="serviceProviderService.lang == 'th'" type="text"
+                                        class="form-control kanit regisbt aCenter" placeholder="{{'rank' | langTh}}"
+                                        autocomplete="oldPosition" formControlName="oldPosition"
+                                        [ngClass]="{ 'is-invalid': submitted && f.oldPosition.errors }"
+                                        [readonly]="isEdit">
+                                    <input *ngIf="serviceProviderService.lang == 'en'" type="text"
+                                        class="form-control kanit regisbt aCenter" placeholder="{{'rank' | langEn}}"
+                                        autocomplete="oldPosition" formControlName="oldPosition"
+                                        [ngClass]="{ 'is-invalid': submitted && f.oldPosition.errors }"
+                                        [readonly]="isEdit">
+                                </div>
+                                <div class="col-md-4 col-xs-3 pd0 ">
+                                    <select formControlName="oldPrefixName" [attr.disabled]="isEdit ? '' : null"
+                                        class="form-control kanit regisbt aCenter select">
+                                        <option>คำนำหน้า</option>
+                                        <option *ngFor="let option of options">{{option}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 ">
+                            <div class="col-md-4 col-xs-4 pd0 ">
+                                <input type="text" class="form-control kanit regisbt" placeholder="ชื่อ"
+                                    autocomplete="firstName" formControlName="oldFirstName" [readonly]="isEdit">
+                            </div>
+                            <div class="col-md-4 col-xs-4 pd0 ">
+                                <input type="text" class="form-control kanit regisbt" placeholder="นามสกุล"
+                                    autocomplete="lastName" formControlName="oldLastName" [readonly]="isEdit">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 ">
+                            <div class="col-md-4 col-xs-4 pd0 ">
+                                <input type="text" class="form-control kanit regisbt" placeholder="Old Name"
+                                    autocomplete="firstNameEN" formControlName="oldFirstNameEN" [readonly]="isEdit">
+                            </div>
+                            <div class="col-md-4 col-xs-4 pd0 ">
+                                <input type="text" class="form-control kanit regisbt" placeholder="Old Name"
+                                    autocomplete="lastNameEN" formControlName="oldLastNameEN" [readonly]="isEdit">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=" col-xs-12 pd0" style="background-color: {{checkColorback(isRead)}}">
+                    <div class="col-md-6 col-xs-6 pd0 "
+                        style="padding: 10px 0px;background-color: {{checkColorback(isRead)}}">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt">
+                            {{'pleaseEnter' | langTh}}&nbsp;{{'dateOfBirth' | langTh}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt">
+                            {{'pleaseEnter' | langEn}}&nbsp;{{'dateOfBirth' | langEn}}</div>
+                        <div class="col-xs-12 ">
+                            <div class="col-md-3 col-xs-3 pd0 ">
+                                <select formControlName="dayOfBirth" class="form-control kanit regisbt"
+                                    [attr.disabled]="isRead ? '' : null"
+                                    [ngClass]="{ 'is-invalid': submitted && f.dayOfBirth.errors }">
+                                    <option *ngIf="serviceProviderService.lang == 'th'">{{'day' | langTh}}</option>
+                                    <option *ngIf="serviceProviderService.lang == 'en'">{{'day' | langEn}}</option>
+                                    <option *ngFor="let item of dayList">{{item}}</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 col-xs-3 pd0 ">
+                                <select formControlName="monthOfBirth" class="form-control kanit regisbt"
+                                    [attr.disabled]="isRead ? '' : null"
+                                    [ngClass]="{ 'is-invalid': submitted && f.monthOfBirth.errors }"
+                                    (change)="checkDay()">
+                                    <option *ngIf="serviceProviderService.lang == 'th'">{{'month' | langTh}}</option>
+                                    <option *ngIf="serviceProviderService.lang == 'en'">{{'month' | langEn}}</option>
+                                    <option *ngFor="let item of monthList">{{item}}</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 col-xs-3 pd0 ">
+                                <select formControlName="yearOfBirth" class="form-control kanit regisbt"
+                                    [attr.disabled]="isRead ? '' : null"
+                                    [ngClass]="{ 'is-invalid': submitted && f.yearOfBirth.errors }"
+                                    (change)="checkDay()">
+                                    <option *ngIf="serviceProviderService.lang == 'th'">{{'year' | langTh}}</option>
+                                    <option *ngIf="serviceProviderService.lang == 'en'">{{'year' | langEn}}</option>
+                                    <option *ngFor="let item of yearList">{{item}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-6 pd0"
+                        style="padding: 10px 0px;background-color: {{checkColorback(!isRead && !isEdit ? false : true)}}">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt"> {{'age' | langTh}}
+                        </div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt"> {{'age' | langEn}}
+                        </div>
+                        <div class="col-xs-12">
+                            <input type="number" class="form-control kanit regisbt" placeholder="อายุ"
+                                [ngClass]="{ 'is-invalid': submitted && f.age.errors }" name="age" id="age"
+                                formControlName="age" [readonly]="(!isRead && !isEdit ? false : true)">
+                            <div class="validate"></div>
+                            <div *ngIf="submitted && f.age.errors" class="invalid-feedback">
+                                <div *ngIf="f.age.errors.required && serviceProviderService.lang == 'th'">
+                                    {{'pleaseEnter' | langTh}} {{'age' | langTh}}</div>
+                                <div *ngIf="f.age.errors.required && serviceProviderService.lang == 'en'">
+                                    {{'pleaseEnter' | langEn}} {{'age' | langEn}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=" col-xs-12 pd0"
+                    style="padding: 15px 0px;background-color: {{checkColorback(!isRead && !isEdit ? false : true)}};">
+                    <div class="col-md-6 col-xs-6 pd0 ">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt">
+                            {{'nationality' | langTh}} </div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt">
+                            {{'nationality' | langEn}} </div>
+                        <div class="col-xs-12 ">
+                            <div class="col-xs-12 pd0">
+                                <input type="text" class="form-control kanit regisbt" placeholder="สัญชาติ"
+                                    [ngClass]="{ 'is-invalid': submitted && f.nationality.errors }" name="nationality"
+                                    id="nationality" formControlName="nationality"
+                                    [readonly]="(!isRead && !isEdit ? false : true)">
+                                <div class="validate"></div>
+                                <div *ngIf="submitted && f.nationality.errors" class="invalid-feedback">
+                                    <div *ngIf="f.nationality.errors.required && serviceProviderService.lang == 'th'">
+                                        {{'pleaseEnter' | langTh}} {{'nationality' | langTh}}</div>
+                                    <div *ngIf="f.nationality.errors.required && serviceProviderService.lang == 'en'">
+                                        {{'pleaseEnter' | langEn}} {{'nationality' | langEn}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-6 pd0">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt"> {{'race' | langTh}}
+                        </div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt"> {{'race' | langEn}}
+                        </div>
+                        <div class="col-xs-12">
+                            <input type="text" class="form-control kanit regisbt" placeholder="เชื้อสัญชาติ"
+                                [ngClass]="{ 'is-invalid': submitted && f.race.errors }" name="race" id="race"
+                                formControlName="race" [readonly]="(!isRead && !isEdit ? false : true)">
+                            <div class="validate"></div>
+                            <div *ngIf="submitted && f.race.errors" class="invalid-feedback">
+                                <div *ngIf="f.race.errors.required && serviceProviderService.lang == 'th'">
+                                    {{'pleaseEnter' | langTh}} {{'race' | langTh}}</div>
+                                <div *ngIf="f.race.errors.required && serviceProviderService.lang == 'en'">
+                                    {{'pleaseEnter' | langEn}} {{'race' | langEn}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=" col-xs-12 pd0"
+                    style="padding: 15px 0px;background-color: {{checkColorback(!isRead && !isEdit ? false : true)}};">
+                    <div class="col-md-6 col-xs-6 pd0 ">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt">
+                            {{'religion' | langTh}} </div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt">
+                            {{'religion' | langEn}} </div>
+                        <div class="col-xs-12 ">
+                            <div class="col-xs-12 pd0 ">
+                                <input type="text" class="form-control kanit regisbt" placeholder="ศาสนา"
+                                    [ngClass]="{ 'is-invalid': submitted && f.religion.errors }" name="religion"
+                                    id="religion" formControlName="religion"
+                                    [readonly]="(!isRead && !isEdit ? false : true)">
+                                <div class="validate"></div>
+                                <div *ngIf="submitted && f.religion.errors" class="invalid-feedback">
+                                    <div *ngIf="f.religion.errors.required && serviceProviderService.lang == 'th'">
+                                        {{'pleaseEnter' | langTh}} {{'religion' | langTh}}</div>
+                                    <div *ngIf="f.religion.errors.required && serviceProviderService.lang == 'en'">
+                                        {{'pleaseEnter' | langEn}} {{'religion' | langEn}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-xs-12" style="padding: 15px 0px;">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-md-6 col-xs-6 pd0 fs3">
+                        {{'homeAddress' | langTh}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-md-6 col-xs-6 pd0 fs3">
+                        {{'homeAddress' | langEn}}</div>
+                </div>
+                <div class=" col-xs-12 pd0" style="padding: 15px 0px;background-color: {{checkColorback(isRead)}}">
+                    <div class="col-md-6 col-xs-6 pd0 ">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt">
+                            {{'phoneNumber' | langTh}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt">
+                            {{'phoneNumber' | langEn}}</div>
+                        <div class="col-xs-12 ">
+                            <div class="col-xs-12 pd0 ">
+                                <input type="number" class="form-control kanit regisbt" placeholder="02_ - ___ - _____"
+                                    [ngClass]="{ 'is-invalid': submitted && f.telephone.errors }" name="telephone"
+                                    id="telephone" formControlName="telephone" [readonly]="isRead">
+                                <div class="validate"></div>
+                                <div *ngIf="submitted && f.telephone.errors" class="invalid-feedback">
+                                    <div *ngIf="f.telephone.errors.required && serviceProviderService.lang == 'th'">
+                                        {{'pleaseEnter' | langTh}} {{'phoneNumber' | langTh}}</div>
+                                    <div *ngIf="f.telephone.errors.required && serviceProviderService.lang == 'en'">
+                                        {{'pleaseEnter' | langEn}} {{'phoneNumber' | langEn}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=" col-xs-12 pd0" style="padding: 15px 0px;background-color: {{checkColorback(isRead)}}">
+                    <div class="col-md-6 col-xs-6 pd0 ">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt">
+                            {{'addressHouse' | langTh}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt">
+                            {{'addressHouse' | langEn}}</div>
+                        <div class="col-xs-12 ">
+                            <div class="col-md-5 col-xs-5 pd0 ">
+                                <input type="text" class="form-control kanit regisbt aCenter" placeholder="*เลขที่"
+                                    [ngClass]="{ 'is-invalid': submitted && f.address.errors }" name="address"
+                                    id="address" formControlName="address" [readonly]="isRead">
+                                <div class="validate"></div>
+                                <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                                    <div *ngIf="f.address.errors.required && serviceProviderService.lang == 'th'">
+                                        {{'pleaseEnter' | langTh}} {{'addressHouse' | langTh}}</div>
+                                    <div *ngIf="f.address.errors.required && serviceProviderService.lang == 'en'">
+                                        {{'pleaseEnter' | langEn}} {{'addressHouse' | langEn}}</div>
+                                </div>
+                            </div>
+                            <div class="col-md-5 col-xs-5 pd0 ">
+                                <input type="text" class="form-control kanit regisbt aCenter" placeholder="หมู่ที่"
+                                    formControlName="moo" [readonly]="isRead">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-6 pd0">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt">
+                            {{'villageBuilding' | langTh}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt">
+                            {{'villageBuilding' | langEn}}</div>
+                        <div class="col-xs-12">
+                            <input type="text" class="form-control kanit regisbt"
+                                placeholder="{{'villageBuilding' | langTh}}"
+                                [ngClass]="{ 'is-invalid': submitted && f.address2.errors }" name="address2"
+                                id="address2" formControlName="address2" [readonly]="isRead">
+                            <div class="validate"></div>
+                            <div *ngIf="submitted && f.address2.errors" class="invalid-feedback">
+                                <div *ngIf="f.address2.errors.required && serviceProviderService.lang == 'th'">
+                                    {{'pleaseEnter' | langTh}} {{'villageBuilding' | langTh}}</div>
+                                <div *ngIf="f.address2.errors.required && serviceProviderService.lang == 'en'">
+                                    {{'pleaseEnter' | langEn}} {{'villageBuilding' | langEn}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=" col-xs-12 pd0" style="padding: 15px 0px;background-color: {{checkColorback(isRead)}}">
+                    <div class="col-md-6 col-xs-6 pd0 ">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt"> {{'lane' | langTh}}
+                        </div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt"> {{'lane' | langEn}}
+                        </div>
+                        <div class="col-xs-12 ">
+                            <div class="col-xs-12 pd0 ">
+                                <input type="text" class="form-control kanit regisbt" placeholder="ซอย"
+                                    formControlName="soi" [ngClass]="{ 'is-invalid': submitted && f.soi.errors }"
+                                    [readonly]="isRead">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-6 pd0">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt"> {{'road' | langTh}}
+                        </div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt"> {{'road' | langEn}}
+                        </div>
+                        <div class="col-xs-12">
+                            <input type="text" class="form-control kanit regisbt" placeholder="ถนน"
+                                formControlName="road" [ngClass]="{ 'is-invalid': submitted && f.road.errors }"
+                                [readonly]="isRead">
+                        </div>
+                    </div>
+                </div>
+
+                <div class=" col-xs-12 pd0" style="padding: 15px 0px;background-color: {{checkColorback(isRead)}}">
+                    <div class="col-md-6 col-xs-6 pd0 ">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt">
+                            {{'subDistrictSubArea' | langTh}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt">
+                            {{'subDistrictSubArea' | langEn}}</div>
+                        <div class="col-xs-12 ">
+                            <div class="col-xs-12 pd0 ">
+                                <input type="text" class="form-control kanit regisbt" placeholder="แขวง / ตำบล"
+                                    [ngClass]="{ 'is-invalid': submitted && f.tambon.errors }" name="tambon" id="tambon"
+                                    formControlName="tambon" [readonly]="isRead">
+                                <div class="validate"></div>
+                                <div *ngIf="submitted && f.tambon.errors" class="invalid-feedback">
+                                    <div *ngIf="f.tambon.errors.required && serviceProviderService.lang == 'th'">
+                                        {{'pleaseEnter' | langTh}} {{'subDistrictSubArea' | langTh}}</div>
+                                    <div *ngIf="f.tambon.errors.required && serviceProviderService.lang == 'en'">
+                                        {{'pleaseEnter' | langEn}} {{'subDistrictSubArea' | langEn}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-6 pd0">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt">
+                            {{'districtArea' | langTh}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt">
+                            {{'districtArea' | langEn}}</div>
+                        <div class="col-xs-12">
+                            <input type="text" class="form-control kanit regisbt" placeholder="เขต / อำเภอ"
+                                [ngClass]="{ 'is-invalid': submitted && f.amphoe.errors }" name="amphoe" id="amphoe"
+                                formControlName="amphoe" [readonly]="isRead">
+                            <div class="validate"></div>
+                            <div *ngIf="submitted && f.amphoe.errors" class="invalid-feedback">
+                                <div *ngIf="f.tambon.errors.required && serviceProviderService.lang == 'th'">
+                                    {{'pleaseEnter' | langTh}} {{'districtArea' | langTh}}</div>
+                                <div *ngIf="f.tambon.errors.required && serviceProviderService.lang == 'en'">
+                                    {{'pleaseEnter' | langEn}} {{'districtArea' | langEn}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=" col-xs-12 pd0" style="padding: 15px 0px;background-color: {{checkColorback(isRead)}}">
+                    <div class="col-md-6 col-xs-6 pd0 ">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt">
+                            {{'province' | langTh}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt">
+                            {{'province' | langEn}}</div>
+                        <div class="col-xs-12 ">
+                            <div class="col-xs-12 pd0 ">
+                                <select formControlName="province" class="form-control kanit regisbt select"
+                                    [attr.disabled]="isRead ? '' : null"
+                                    [ngClass]="{ 'is-invalid': submitted && f.province.errors }">
+                                    <option>จังหวัด</option>
+                                    <option *ngFor="let province of provinces">{{province.title}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-6 pd0">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt">
+                            {{'postalCode' | langTh}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt">
+                            {{'postalCode' | langEn}}</div>
+                        <div class="col-xs-12">
+                            <input type="text" class="form-control kanit regisbt" placeholder="รหัสไปรษณีย์"
+                                [ngClass]="{ 'is-invalid': submitted && f.postno.errors }" name="postno" id="postno"
+                                formControlName="postno" [readonly]="isRead">
+                            <div class="validate"></div>
+                            <div *ngIf="submitted && f.postno.errors" class="invalid-feedback">
+                                <div *ngIf="f.postno.errors.required && serviceProviderService.lang == 'th'">
+                                    {{'pleaseEnter' | langTh}} {{'postalCode' | langTh}}</div>
+                                <div *ngIf="f.postno.errors.required && serviceProviderService.lang == 'en'">
+                                    {{'pleaseEnter' | langEn}} {{'postalCode' | langEn}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 mt20" style="margin-bottom: 15px;">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-md-6 col-xs-6 pd0 fs3">
+                        {{'workAddress' | langTh}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-md-6 col-xs-6 pd0 fs3">
+                        {{'workAddress' | langEn}}</div>
+                </div>
+                <div class=" col-xs-12 pd0"
+                    style="padding: 10px 0px 40px 0px;background-color: {{checkColorback(isEdit)}}">
+                    <div class="col-md-6 col-xs-6 pd0 ">
+                        <label class="custom-checkbox" style="margin: 0px;">
+                            <input type="checkbox" value="checkbox1" [(ngModel)]="model.isWorkSameHome"
+                                (ngModelChange)="setAddress($event,'home')" [ngModelOptions]="{standalone: true}"
+                                [attr.disabled]="isEdit ? '' : null">
+                            <span *ngIf="serviceProviderService.lang == 'th'" style="float: right; position: absolute;padding: 1.5% 10%;  font-size: 17px;  opacity: 1;color: #6C6C6C;font-weight: normal;
+              ">{{'sameHomeAddress' | langTh}}</span>
+                            <span *ngIf="serviceProviderService.lang == 'en'" style="float: right; position: absolute;padding: 1.5% 10%;  font-size: 17px;  opacity: 1;color: #6C6C6C;font-weight: normal;
+            ">{{'sameHomeAddress' | langEn}}</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-xs-12 pd0" style="padding: 15px 15px;background-color: {{checkColorback(isEdit)}}">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-md-6 col-xs-6 pd0 registxt">
+                        {{'careers' | langTh}}
+                    </div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-md-6 col-xs-6 pd0 registxt">
+                        {{'careers' | langEn}}
+                    </div>
+                </div>
+                <div *ngIf="code == ''" class=" col-xs-12 pd0" ng-controller="workType">
+                    <div class="col-md-2 col-xs-2 pd0 ">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" [(ngModel)]="workType1" (click)="checkWorkType($event,1)"
+                                [ngModelOptions]="{standalone: true}">
+                            <span *ngIf="serviceProviderService.lang == 'th'" style="float: right; position: absolute;padding-left:30%;padding-top: 4%;font-size: 17px;  opacity: 1;color: #6C6C6C;font-weight: normal;
+              ">{{'careers' | langTh}}</span>
+                            <span *ngIf="serviceProviderService.lang == 'en'" style="float: right; position: absolute;padding-left:30%;padding-top: 4%;font-size: 17px;  opacity: 1;color: #6C6C6C;font-weight: normal;
+            ">{{'careers' | langEn}}</span>
+                        </label>
+                    </div>
+                    <div class="col-md-2 col-xs-2 pd0 ">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" [(ngModel)]="workType2" (click)="checkWorkType($event,2)"
+                                [ngModelOptions]="{standalone: true}">
+                            <span *ngIf="serviceProviderService.lang == 'th'" style="float: right; position: absolute;padding-left:30%;padding-top: 4%;font-size: 17px;  opacity: 1;color: #6C6C6C;font-weight: normal;
+              ">{{'civilServant' | langTh}}</span>
+                            <span *ngIf="serviceProviderService.lang == 'en'" style="float: right; position: absolute;padding-left:30%;padding-top: 4%;font-size: 17px;  opacity: 1;color: #6C6C6C;font-weight: normal;
+            ">{{'civilServant' | langEn}}</span>
+                        </label>
+                    </div>
+                    <div class="col-md-4 col-xs-4 pd0 ">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" [(ngModel)]="workType3" (click)="checkWorkType($event,3)"
+                                [ngModelOptions]="{standalone: true}">
+                            <span *ngIf="serviceProviderService.lang == 'th'"
+                                style="float: right; position: absolute;padding-left:15%;padding-top: 2%;font-size: 17px;  opacity: 1;color: #6C6C6C;font-weight: normal;">{{'clinicVeterinary' | langTh}}</span>
+                            <span *ngIf="serviceProviderService.lang == 'en'"
+                                style="float: right; position: absolute;padding-left:15%;padding-top: 2%;font-size: 17px;  opacity: 1;color: #6C6C6C;font-weight: normal;">{{'clinicVeterinary' | langEn}}</span>
+                        </label>
+                    </div>
+                    <div class="col-md-4 col-xs-4 pd0 ">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" [(ngModel)]="workType4" (click)="checkWorkType($event,4)"
+                                [ngModelOptions]="{standalone: true}">
+                            <span *ngIf="serviceProviderService.lang == 'th'"
+                                style="float: right; position: absolute;padding-left:15%;padding-top: 2%;font-size: 17px;  opacity: 1;color: #6C6C6C;font-weight: normal;">{{'farm' | langTh}}</span>
+                            <span *ngIf="serviceProviderService.lang == 'en'"
+                                style="float: right; position: absolute;padding-left:15%;padding-top: 2%;font-size: 17px;  opacity: 1;color: #6C6C6C;font-weight: normal;">{{'farm' | langEn}}</span>
+                        </label>
+                    </div>
+                </div>
+                <div *ngIf="code == ''" class=" col-xs-12  mt55 pd0">
+                    <div class="col-md-6 col-xs-6 pd0 mt15">
+                        <div class="col-xs-12 pd0">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" [(ngModel)]="workType5" (click)="checkWorkType($event,5)"
+                                    [ngModelOptions]="{standalone: true}">
+                                <span *ngIf="serviceProviderService.lang == 'th'"
+                                    style="float: right; position: absolute;padding-left:15%;padding-top: 2%;font-size: 17px;  opacity: 1;color: #6C6C6C;font-weight: normal;">{{'professor' | langTh}}</span>
+                                <span *ngIf="serviceProviderService.lang == 'en'"
+                                    style="float: right; position: absolute;padding-left:15%;padding-top: 2%;font-size: 17px;  opacity: 1;color: #6C6C6C;font-weight: normal;">{{'professor' | langEn}}</span>
+                            </label>
+                        </div>
+                        <div class="col-xs-12 mt40">
+                            <input type="text" class="form-control kanit regisbt" placeholder="อาจารย์"
+                                [(ngModel)]="workType5Description" [ngModelOptions]="{standalone: true}">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-6 pd0 mt15">
+                        <div class="col-xs-12 pd0">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" [(ngModel)]="workType6" (click)="checkWorkType($event,6)"
+                                    [ngModelOptions]="{standalone: true}">
+                                <span *ngIf="serviceProviderService.lang == 'th'"
+                                    style="float: right; position: absolute;padding-left:15%;padding-top: 2%;font-size: 17px;  opacity: 1;color: #6C6C6C;font-weight: normal;">{{'other' | langTh}}</span>
+                                <span *ngIf="serviceProviderService.lang == 'en'"
+                                    style="float: right; position: absolute;padding-left:15%;padding-top: 2%;font-size: 17px;  opacity: 1;color: #6C6C6C;font-weight: normal;">{{'other' | langEn}}</span>
+                            </label>
+                        </div>
+                        <div class="col-xs-12 mt40">
+                            <input type="text" class="form-control kanit regisbt" placeholder="อื่นๆ"
+                                [(ngModel)]="workType6Description" [ngModelOptions]="{standalone: true}">
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="code != ''" class=" col-xs-12 pd0" style="background-color: {{checkColorback(isEdit)}}">
+                    <div class="col-md-6 col-xs-6 pd0">
+                        <div class="col-xs-12 mt0">
+                            <input type="text" class="form-control kanit regisbt" placeholder="ประเภทหน่วยงาน"
+                                [(ngModel)]="model.workType" [ngModelOptions]="{standalone: true}" [readonly]="isEdit">
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="!model.isWorkSameHome" class=" col-xs-12 pd0"
+                    style="padding: 15px 0px;background-color: {{checkColorback(isEdit)}}">
+                    <div class="col-md-6 col-xs-6 pd0 ">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt">
+                            {{'phoneNumber' | langTh}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt">
+                            {{'phoneNumber' | langEn}}</div>
+                        <div class="col-xs-12 ">
+                            <div class="col-xs-12 pd0 ">
+                                <input type="number" class="form-control kanit regisbt" placeholder="02_ - ___ - _____"
+                                    [ngClass]="{ 'is-invalid': submitted && f.workPhone.errors }" name="workPhone"
+                                    id="workPhone" formControlName="workPhone" [readonly]="isEdit">
+                                <div class="validate"></div>
+                                <div *ngIf="submitted && f.workPhone.errors" class="invalid-feedback">
+                                    <div *ngIf="f.workPhone.errors.required && serviceProviderService.lang == 'th'">
+                                        {{'pleaseEnter' | langTh}} {{'phoneNumber' | langTh}}</div>
+                                    <div *ngIf="f.workPhone.errors.required && serviceProviderService.lang == 'en'">
+                                        {{'pleaseEnter' | langEn}} {{'phoneNumber' | langEn}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="!model.isWorkSameHome" class=" col-xs-12 pd0"
+                    style="padding: 15px 0px;background-color: {{checkColorback(isEdit)}}">
+                    <div class="col-md-6 col-xs-6 pd0 ">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt">
+                            {{'addressHouse' | langTh}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt">
+                            {{'addressHouse' | langEn}}</div>
+                        <div class="col-xs-12 ">
+                            <div class="col-md-5 col-xs-5 pd0 ">
+                                <input type="text" class="form-control kanit regisbt aCenter" placeholder="เลขที่"
+                                    [ngClass]="{ 'is-invalid': submitted && f.workAddress.errors }" name="workAddress"
+                                    id="workAddress" formControlName="workAddress" [readonly]="isEdit">
+                                <div class="validate"></div>
+                                <div *ngIf="submitted && f.workAddress.errors" class="invalid-feedback">
+                                    <div *ngIf="f.workAddress.errors.required && serviceProviderService.lang == 'th'">
+                                        {{'pleaseEnter' | langTh}} {{'houseNumber' | langTh}}</div>
+                                    <div *ngIf="f.workAddress.errors.required && serviceProviderService.lang == 'en'">
+                                        {{'pleaseEnter' | langEn}} {{'houseNumber' | langEn}}</div>
+                                </div>
+                            </div>
+                            <div class="col-md-5 col-xs-5 pd0 ">
+                                <input type="text" class="form-control kanit regisbt aCenter" placeholder="หมู่ที่"
+                                    formControlName="workMoo"
+                                    [ngClass]="{ 'is-invalid': submitted && f.workMoo.errors }" [readonly]="isEdit">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-6 pd0">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt">
+                            {{'villageBuilding' | langTh}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt">
+                            {{'villageBuilding' | langEn}}</div>
+                        <div class="col-xs-12">
+                            <input type="text" class="form-control kanit regisbt" placeholder="อาคาร / หมู่บ้าน"
+                                [ngClass]="{ 'is-invalid': submitted && f.workAddress2.errors }" name="workAddress2"
+                                id="workAddress2" formControlName="workAddress2" [readonly]="isEdit">
+                            <div class="validate"></div>
+                            <div *ngIf="submitted && f.workAddress2.errors" class="invalid-feedback">
+                                <div *ngIf="f.workAddress2.errors.required && serviceProviderService.lang == 'th'">
+                                    {{'pleaseEnter' | langTh}} {{'villageBuilding' | langTh}}</div>
+                                <div *ngIf="f.workAddress2.errors.required && serviceProviderService.lang == 'en'">
+                                    {{'pleaseEnter' | langEn}} {{'villageBuilding' | langEn}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="!model.isWorkSameHome" class=" col-xs-12 pd0"
+                    style="padding: 15px 0px;background-color: {{checkColorback(isEdit)}}">
+                    <div class="col-md-6 col-xs-6 pd0 ">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt"><span
+                                style="color: red;"></span>{{'lane' | langTh}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt"><span
+                                style="color: red;"></span>{{'lane' | langEn}}</div>
+                        <div class="col-xs-12 ">
+                            <div class="col-xs-12 pd0 ">
+                                <input type="text" class="form-control kanit regisbt" placeholder="ซอย"
+                                    formControlName="workSoi"
+                                    [ngClass]="{ 'is-invalid': submitted && f.workSoi.errors }" [readonly]="isEdit">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-6 pd0">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt"><span
+                                style="color: red;"></span>{{'road' | langTh}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt"><span
+                                style="color: red;"></span>{{'road' | langEn}}</div>
+                        <div class="col-xs-12">
+                            <input type="text" class="form-control kanit regisbt" placeholder="ถนน"
+                                formControlName="workRoad" [ngClass]="{ 'is-invalid': submitted && f.workRoad.errors }"
+                                [readonly]="isEdit">
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="!model.isWorkSameHome" class=" col-xs-12 pd0"
+                    style="padding: 15px 0px;background-color: {{checkColorback(isEdit)}}">
+                    <div class="col-md-6 col-xs-6 pd0 ">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt">
+                            {{'subDistrictSubArea' | langTh}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt">
+                            {{'subDistrictSubArea' | langEn}}</div>
+                        <div class="col-xs-12 ">
+                            <div class="col-xs-12 pd0 ">
+                                <input type="text" class="form-control kanit regisbt" placeholder="แขวง / ตำบล"
+                                    [ngClass]="{ 'is-invalid': submitted && f.workTambon.errors }" name="workTambon"
+                                    id="workTambon" formControlName="workTambon" [readonly]="isEdit">
+                                <div class="validate"></div>
+                                <div *ngIf="submitted && f.workTambon.errors" class="invalid-feedback">
+                                    <div *ngIf="f.workTambon.errors.required && serviceProviderService.lang == 'th'">
+                                        {{'pleaseEnter' | langTh}} {{'subDistrictSubArea' | langTh}}</div>
+                                    <div *ngIf="f.workTambon.errors.required && serviceProviderService.lang == 'en'">
+                                        {{'pleaseEnter' | langEn}} {{'subDistrictSubArea' | langEn}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-6 pd0">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt">
+                            {{'districtArea' | langTh}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt">
+                            {{'districtArea' | langEn}}</div>
+                        <div class="col-xs-12">
+                            <input type="text" class="form-control kanit regisbt" placeholder="เขต / อำเภอ"
+                                [ngClass]="{ 'is-invalid': submitted && f.workAmphoe.errors }" name="workAmphoe"
+                                id="workAmphoe" formControlName="workAmphoe" [readonly]="isEdit">
+                            <div class="validate"></div>
+                            <div *ngIf="submitted && f.workAmphoe.errors" class="invalid-feedback">
+                                <div *ngIf="f.workAmphoe.errors.required && serviceProviderService.lang == 'th'">
+                                    {{'pleaseEnter' | langTh}} {{'districtArea' | langTh}}</div>
+                                <div *ngIf="f.workAmphoe.errors.required && serviceProviderService.lang == 'en'">
+                                    {{'pleaseEnter' | langEn}} {{'districtArea' | langEn}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="!model.isWorkSameHome" class=" col-xs-12 pd0"
+                    style="padding: 15px 0px;background-color: {{checkColorback(isEdit)}}">
+                    <div class="col-md-6 col-xs-6 pd0 ">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt">
+                            {{'province' | langTh}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt">
+                            {{'province' | langEn}}</div>
+                        <div class="col-xs-12 ">
+                            <div class="col-xs-12 pd0 ">
+                                <select formControlName="workProvince" class="form-control kanit regisbt select"
+                                    [ngClass]="{ 'is-invalid': submitted && f.workProvince.errors }"
+                                    [attr.disabled]="isEdit ? '' : null">
+                                    <option>จังหวัด</option>
+                                    <option *ngFor="let province of provinces">{{province.title}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-6 pd0">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt">
+                            {{'postalCode' | langTh}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt">
+                            {{'postalCode' | langEn}}</div>
+                        <div class="col-xs-12">
+                            <input type="number" class="form-control kanit regisbt" placeholder="รหัสไปรษณีย์"
+                                [ngClass]="{ 'is-invalid': submitted && f.workPostno.errors }" name="workPostno"
+                                id="workPostno" formControlName="workPostno" [readonly]="isEdit">
+                            <div class="validate"></div>
+                            <div *ngIf="submitted && f.workPostno.errors" class="invalid-feedback">
+                                <div *ngIf="f.workPostno.errors.required && serviceProviderService.lang == 'th'">
+                                    {{'pleaseEnter' | langTh}} {{'postalCode' | langTh}}</div>
+                                <div *ngIf="f.workPostno.errors.required && serviceProviderService.lang == 'en'">
+                                    {{'pleaseEnter' | langEn}} {{'postalCode' | langEn}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 mt20" style="margin-bottom: 15px;">
+                    <div class="col-md-6 col-xs-6 pd0 fs3">
+                        {{'mailingAddress' | langTh}}
+                    </div>
+                </div>
+                <div class=" col-xs-12 pd0"
+                    style="padding: 10px 0px 40px 0px;background-color: {{checkColorback(isEdit)}}">
+                    <div class="col-md-6 col-xs-6 pd0 ">
+                        <label class="custom-checkbox" style="margin: 0px;">
+                            <input type="checkbox" value="checkbox1" [(ngModel)]="model.isCurrentSameHome"
+                                (ngModelChange)="setAddress($event,'currentSameHome')"
+                                [ngModelOptions]="{standalone: true}" [attr.disabled]="isEdit ? '' : null">
+                            <span *ngIf="serviceProviderService.lang == 'th'"
+                                style="float: right; position: absolute;padding: 1.5% 10%;  font-size: 17px;  opacity: 1;color: #6C6C6C;font-weight: normal;">{{'sameHomeAddress' | langTh}}</span>
+                            <span *ngIf="serviceProviderService.lang == 'en'"
+                                style="float: right; position: absolute;padding: 1.5% 10%;  font-size: 17px;  opacity: 1;color: #6C6C6C;font-weight: normal;">{{'sameHomeAddress' | langEn}}</span>
+                        </label>
+                    </div>
+                </div>
+                <div class=" col-xs-12 pd0"
+                    style="padding: 10px 0px 40px 0px;background-color: {{checkColorback(isEdit)}}">
+                    <div class="col-md-6 col-xs-6 pd0 ">
+                        <label class="custom-checkbox" style="margin: 0px;">
+                            <input type="checkbox" value="checkbox1" [(ngModel)]="model.isCurrentSameWork"
+                                (ngModelChange)="setAddress($event,'currentSameWork')"
+                                [ngModelOptions]="{standalone: true}" [attr.disabled]="isEdit ? '' : null">
+                            <span *ngIf="serviceProviderService.lang == 'th'"
+                                style="float: right; position: absolute;padding: 1.5% 10%;  font-size: 17px;  opacity: 1;color: #6C6C6C;font-weight: normal;">{{'sameWorkAddress' | langTh}}</span>
+                            <span *ngIf="serviceProviderService.lang == 'en'"
+                                style="float: right; position: absolute;padding: 1.5% 10%;  font-size: 17px;  opacity: 1;color: #6C6C6C;font-weight: normal;">{{'sameWorkAddress' | langEn}}</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div *ngIf="!(model.isCurrentSameHome || model.isCurrentSameWork)" class=" col-xs-12 pd0"
+                    style="padding: 15px 0px;background-color: {{checkColorback(isEdit)}}">
+                    <div class="col-md-6 col-xs-6 pd0 ">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt">
+                            {{'phoneNumber' | langTh}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt">
+                            {{'phoneNumber' | langEn}}</div>
+                        <div class="col-xs-12 ">
+                            <div class="col-xs-12 pd0 ">
+                                <input type="number" class="form-control kanit regisbt" placeholder="02_ - ___ - _____"
+                                    [ngClass]="{ 'is-invalid': submitted && f.currentPhone.errors }" name="currentPhone"
+                                    id="currentPhone" formControlName="currentPhone" [readonly]="isEdit">
+                                <div class="validate"></div>
+                                <div *ngIf="submitted && f.currentPhone.errors" class="invalid-feedback">
+                                    <div *ngIf="f.currentPhone.errors.required && serviceProviderService.lang == 'th'">
+                                        {{'pleaseEnter' | langTh}} {{'phoneNumber' | langTh}}</div>
+                                    <div *ngIf="f.currentPhone.errors.required && serviceProviderService.lang == 'en'">
+                                        {{'pleaseEnter' | langEn}} {{'phoneNumber' | langEn}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="!(model.isCurrentSameHome || model.isCurrentSameWork)" class=" col-xs-12 pd0"
+                    style="padding: 15px 0px;background-color: {{checkColorback(isEdit)}}">
+                    <div class="col-md-6 col-xs-6 pd0 ">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt">
+                            {{'addressHouse' | langTh}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt">
+                            {{'addressHouse' | langEn}}</div>
+                        <div class="col-xs-12 ">
+                            <div class="col-md-5 col-xs-5 pd0 ">
+                                <input type="text" class="form-control kanit regisbt aCenter" placeholder="เลขที่"
+                                    [ngClass]="{ 'is-invalid': submitted && f.currentAddress.errors }"
+                                    name="currentAddress" id="currentAddress" formControlName="currentAddress"
+                                    [readonly]="isEdit">
+                                <div class="validate"></div>
+                                <div *ngIf="submitted && f.currentAddress.errors" class="invalid-feedback">
+                                    <div
+                                        *ngIf="f.currentAddress.errors.required && serviceProviderService.lang == 'th'">
+                                        {{'pleaseEnter' | langTh}} {{'addressHouse' | langTh}}</div>
+                                    <div
+                                        *ngIf="f.currentAddress.errors.required && serviceProviderService.lang == 'en'">
+                                        {{'pleaseEnter' | langEn}} {{'addressHouse' | langEn}}</div>
+                                </div>
+                            </div>
+                            <div class="col-md-5 col-xs-5 pd0 ">
+                                <input type="text" class="form-control kanit regisbt aCenter" placeholder="หมู่ที่"
+                                    formControlName="currentMoo"
+                                    [ngClass]="{ 'is-invalid': submitted && f.currentMoo.errors }" [readonly]="isEdit">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-6 pd0">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt">
+                            {{'villageBuilding' | langTh}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt">
+                            {{'villageBuilding' | langEn}}</div>
+                        <div class="col-xs-12">
+                            <input type="text" class="form-control kanit regisbt" placeholder="อาคาร / หมู่บ้าน"
+                                [ngClass]="{ 'is-invalid': submitted && f.currentAddress2.errors }"
+                                name="currentAddress2" id="currentAddress2" formControlName="currentAddress2"
+                                [readonly]="isEdit">
+                            <div class="validate"></div>
+                            <div *ngIf="submitted && f.currentAddress2.errors" class="invalid-feedback">
+                                <div *ngIf="f.currentAddress2.errors.required && serviceProviderService.lang == 'th'">
+                                    {{'pleaseEnter' | langTh}} {{'villageBuilding' | langTh}}</div>
+                                <div *ngIf="f.currentAddress2.errors.required && serviceProviderService.lang == 'en'">
+                                    {{'pleaseEnter' | langEn}} {{'villageBuilding' | langEn}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="!(model.isCurrentSameHome || model.isCurrentSameWork)" class=" col-xs-12 pd0"
+                    style="padding: 15px 0px;background-color: {{checkColorback(isEdit)}}">
+                    <div class="col-md-6 col-xs-6 pd0 ">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt"><span
+                                style="color: red;"></span>{{'lane' | langTh}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt"><span
+                                style="color: red;"></span>{{'lane' | langEn}}</div>
+                        <div class="col-xs-12 ">
+                            <div class="col-xs-12 pd0 ">
+                                <input type="text" class="form-control kanit regisbt" placeholder="ซอย"
+                                    formControlName="currentSoi"
+                                    [ngClass]="{ 'is-invalid': submitted && f.currentSoi.errors }" [readonly]="isEdit">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-6 pd0">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt"><span
+                                style="color: red;"></span>{{'road' | langTh}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt"><span
+                                style="color: red;"></span>{{'road' | langEn}}</div>
+                        <div class="col-xs-12">
+                            <input type="text" class="form-control kanit regisbt" placeholder="ถนน"
+                                formControlName="currentRoad"
+                                [ngClass]="{ 'is-invalid': submitted && f.currentRoad.errors }" [readonly]="isEdit">
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="!(model.isCurrentSameHome || model.isCurrentSameWork)" class=" col-xs-12 pd0"
+                    style="padding: 15px 0px;background-color: {{checkColorback(isEdit)}}">
+                    <div class="col-md-6 col-xs-6 pd0 ">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt">
+                            {{'subDistrictSubArea' | langTh}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt">
+                            {{'subDistrictSubArea' | langEn}}</div>
+                        <div class="col-xs-12 ">
+                            <div class="col-xs-12 pd0 ">
+                                <input type="text" class="form-control kanit regisbt" placeholder="แขวง / ตำบล"
+                                    [ngClass]="{ 'is-invalid': submitted && f.currentTambon.errors }"
+                                    name="currentTambon" id="currentTambon" formControlName="currentTambon"
+                                    [readonly]="isEdit">
+                                <div class="validate"></div>
+                                <div *ngIf="submitted && f.currentTambon.errors" class="invalid-feedback">
+                                    <div *ngIf="f.currentTambon.errors.required && serviceProviderService.lang == 'th'">
+                                        {{'pleaseEnter' | langTh}} {{'subDistrictSubArea' | langTh}}</div>
+                                    <div *ngIf="f.currentTambon.errors.required && serviceProviderService.lang == 'en'">
+                                        {{'pleaseEnter' | langEn}} {{'subDistrictSubArea' | langEn}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-6 pd0">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt">
+                            {{'districtArea' | langTh}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt">
+                            {{'districtArea' | langEn}}</div>
+                        <div class="col-xs-12">
+                            <input type="text" class="form-control kanit regisbt" placeholder="เขต / อำเภอ"
+                                [ngClass]="{ 'is-invalid': submitted && f.currentAmphoe.errors }" name="currentAmphoe"
+                                id="currentAmphoe" formControlName="currentAmphoe" [readonly]="isEdit">
+                            <div class="validate"></div>
+                            <div *ngIf="submitted && f.currentAmphoe.errors" class="invalid-feedback">
+                                <div *ngIf="f.currentAmphoe.errors.required && serviceProviderService.lang == 'th'">
+                                    {{'pleaseEnter' | langTh}} {{'districtArea' | langTh}}</div>
+                                <div *ngIf="f.currentAmphoe.errors.required && serviceProviderService.lang == 'en'">
+                                    {{'pleaseEnter' | langEn}} {{'districtArea' | langEn}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="!(model.isCurrentSameHome || model.isCurrentSameWork)" class=" col-xs-12 pd0"
+                    style="padding: 15px 0px;background-color: {{checkColorback(isEdit)}}">
+                    <div class="col-md-6 col-xs-6 pd0 ">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt">
+                            {{'province' | langTh}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt">
+                            {{'province' | langEn}}</div>
+                        <div class="col-xs-12 ">
+                            <div class="col-xs-12 pd0 ">
+                                <select formControlName="currentProvince" class="form-control kanit regisbt select"
+                                    [ngClass]="{ 'is-invalid': submitted && f.currentProvince.errors }"
+                                    [attr.disabled]="isEdit ? '' : null">
+                                    <option>จังหวัด</option>
+                                    <option *ngFor="let province of provinces">{{province.title}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-6 pd0">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt">
+                            {{'postalCode' | langTh}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt">
+                            {{'postalCode' | langEn}}</div>
+                        <div class="col-xs-12">
+                            <input type="number" class="form-control kanit regisbt" placeholder="รหัสไปรษณีย์"
+                                [ngClass]="{ 'is-invalid': submitted && f.currentPostno.errors }" name="currentPostno"
+                                id="currentPostno" formControlName="currentPostno" [readonly]="isEdit">
+                            <div class="validate"></div>
+                            <div *ngIf="submitted && f.currentPostno.errors" class="invalid-feedback">
+                                <div *ngIf="f.currentPostno.errors.required && serviceProviderService.lang == 'th'">
+                                    {{'pleaseEnter' | langTh}} {{'postalCode' | langTh}}</div>
+                                <div *ngIf="f.currentPostno.errors.required && serviceProviderService.lang == 'en'">
+                                    {{'pleaseEnter' | langEn}} {{'postalCode' | langEn}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-xs-12 mt20" style="margin-bottom: 10px;">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-md-6 col-xs-6 pd0 fs3">
+                        {{'education' | langTh}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-md-6 col-xs-6 pd0 fs3">
+                        {{'education' | langEn}}</div>
+                </div>
+                <div class=" col-xs-12 pd0" style="padding: 15px 0px;background-color: {{checkColorback(isRead)}}">
+                    <div class="col-md-6 col-xs-6 pd0 ">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt">
+                            {{'highestEducation' | langTh}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt">
+                            {{'highestEducation' | langEn}}</div>
+                        <div class="col-xs-12 ">
+                            <div class="col-xs-12 pd0">
+                                <input type="text" class="form-control kanit regisbt" placeholder="การศึกษาสูงสุด"
+                                    [ngClass]="{ 'is-invalid': submitted && f.educationDegree.errors }"
+                                    name="educationDegree" id="educationDegree" formControlName="educationDegree"
+                                    [readonly]="isRead">
+                                <div class="validate"></div>
+                                <div *ngIf="submitted && f.educationDegree.errors" class="invalid-feedback">
+                                    <div
+                                        *ngIf="f.educationDegree.errors.required && serviceProviderService.lang == 'th'">
+                                        {{'pleaseEnter' | langTh}} {{'highestEducation' | langTh}}</div>
+                                    <div
+                                        *ngIf="f.educationDegree.errors.required && serviceProviderService.lang == 'en'">
+                                        {{'pleaseEnter' | langEn}} {{'highestEducation' | langEn}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=" col-xs-12 pd0" style="padding: 15px 0px;background-color: {{checkColorback(isRead)}}">
+                    <div class="col-md-6 col-xs-6 pd0 ">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt">
+                            1.&nbsp;{{'completeBachelorVeterinary' | langTh}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt">
+                            1.&nbsp;{{'completeBachelorVeterinary' | langEn}}</div>
+                        <div class="col-xs-12 ">
+                            <div class="col-xs-12 pd0 ">
+                                <div class="col-md-3 col-xs-3 pd0">
+                                    <select formControlName="educationYear" class="form-control kanit regisbt"
+                                        [attr.disabled]="isRead ? '' : null"
+                                        [ngClass]="{ 'is-invalid': submitted && f.educationYear.errors }">
+                                        <option>ปี</option>
+                                        <option *ngFor="let item of yearList">{{item}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-9 p-0">
+                                    <select formControlName="education" class="form-control kanit regisbt"
+                                        [attr.disabled]="isRead ? '' : null" (change)="checkEducation()"
+                                        [ngClass]="{ 'is-invalid': submitted && f.education.errors }">
+                                        <option value="" disabled selected>สถาบัน</option>
+                                        <option *ngFor="let item of universityList">{{item}}</option>
+                                    </select>
+                                    <div *ngIf="showInputEducation" class="col-xs-12 p-0">
+                                        <input type="text" class="form-control kanit regisbt" placeholder="สถาบัน"
+                                            [ngClass]="{ 'is-invalid': submitted && f.education.errors }"
+                                            name="education" id="education" formControlName="education"
+                                            [readonly]="isRead">
+                                        <div class="validate"></div>
+                                        <div *ngIf="submitted && f.education.errors" class="invalid-feedback">
+                                            <div *ngIf="f.education.errors.required">กรุณากรอก สถาบัน</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=" col-xs-12 pd0" style="padding: 15px 0px;background-color: {{checkColorback(isRead)}}">
+                    <div class="col-md-6 col-xs-6 pd0 ">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt"><span
+                                style="color: red;"></span>2.&nbsp;{{'otherProfessionalCertificate' | langTh}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt"><span
+                                style="color: red;"></span>2.&nbsp;{{'otherProfessionalCertificate' | langEn}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt"><span
+                                style="color: red;"></span>{{'highestLevelOfEducation' | langTh}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt"><span
+                                style="color: red;"></span>{{'highestLevelOfEducation' | langEn}}</div>
+                        <div class="col-xs-12 ">
+                            <div class="col-xs-12 pd0 ">
+                                <div class="col-md-3 col-xs-3 pd0">
+                                    <select formControlName="secondaryEducationYear" class="form-control kanit regisbt"
+                                        [attr.disabled]="isRead ? '' : null">
+                                        <option>ปี</option>
+                                        <option *ngFor="let item of yearList">{{item}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-9 p-0">
+                                    <select formControlName="secondaryEducation" class="form-control kanit regisbt"
+                                        [attr.disabled]="isRead ? '' : null" (change)="checkSecondaryEducation()"
+                                        [ngClass]="{ 'is-invalid': submitted && f.secondaryEducation.errors }">
+                                        <option value="" disabled selected>สถาบัน</option>
+                                        <option *ngFor="let item of universityList">{{item}}</option>
+                                    </select>
+                                    <div *ngIf="showInputSecondaryEducation" class="col-xs-12 p-0">
+                                        <input type="text" class="form-control kanit regisbt" placeholder="สถาบัน"
+                                            [ngClass]="{ 'is-invalid': submitted && f.secondaryEducation.errors }"
+                                            name="secondaryEducation" id="secondaryEducation"
+                                            formControlName="secondaryEducation" [readonly]="isRead">
+                                        <div class="validate"></div>
+                                        <div *ngIf="submitted && f.secondaryEducation.errors" class="invalid-feedback">
+                                            <div *ngIf="f.secondaryEducation.errors.required">กรุณากรอก สถาบัน</div>
+                                        </div>
+                                    </div>
+                                    <!-- <input type="text" class="form-control kanit regisbt" placeholder="สถาบัน"
+                    formControlName="secondaryEducation"
+                    [ngClass]="{ 'is-invalid': submitted && f.secondaryEducation.errors }"> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=" col-xs-12 pd0" style="padding: 27px 0px;background-color: {{checkColorback(isRead)}}">
+                    <div class="col-xs-12 pd0 ">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt"><span
+                                style="color: red;"></span>2.&nbsp;{{'noteForOfficers' | langTh}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt"><span
+                                style="color: red;"></span>2.&nbsp;{{'noteForOfficers' | langEn}}</div>
+                        <div class="col-xs-12 ">
+                            <div class="col-xs-12 pd0 ">
+                                <input type="text" class="form-control kanit regisbt"
+                                    placeholder="หมายเหตุ (สำหรับเจ้าหน้าที่)" formControlName="note"
+                                    [ngClass]="{ 'is-invalid': submitted && f.note.errors }" [readonly]="isRead">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=" col-xs-12 pd0" style="padding: 10px 0px;background-color: {{checkColorback(isRead)}}">
+                    <div class="col-xs-12 pd0 ">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt">เลขอนุญาต</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt">license number</div>
+                        <div class="col-xs-12 ">
+                            <div class="col-xs-6 p-0">
+                                <input type="text" class="form-control kanit regisbt" placeholder="เลขอนุญาต"
+                                    formControlName="licenseNumber"
+                                    [ngClass]="{ 'is-invalid': submitted && f.licenseNumber.errors }"
+                                    [readonly]="isRead">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 ">
+                            <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 mt-4 registxt">
+                                วันที่เริ่มต้น</div>
+                            <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt">Date of Issue
+                            </div>
+                            <div class="col-xs-6 p-0 ">
+                                <div class="col-xs-12 p-0">
+                                    <div class="col-md-4 col-xs-4 p-0 ">
+                                        <select formControlName="dayOfIssue" class="form-control kanit regisbt"
+                                            [attr.disabled]="isRead ? '' : null"
+                                            [ngClass]="{ 'is-invalid': submitted && f.dayOfIssue.errors }">
+                                            <option *ngIf="serviceProviderService.lang == 'th'">{{'day' | langTh}}
+                                            </option>
+                                            <option *ngIf="serviceProviderService.lang == 'en'">{{'day' | langEn}}
+                                            </option>
+                                            <option *ngFor="let item of dayIssueList">{{item}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 col-xs-4 p-0 ">
+                                        <select formControlName="monthOfIssue" class="form-control kanit regisbt"
+                                            [attr.disabled]="isRead ? '' : null"
+                                            [ngClass]="{ 'is-invalid': submitted && f.monthOfIssue.errors }"
+                                            (change)="checkDayIssue()">
+                                            <option *ngIf="serviceProviderService.lang == 'th'">{{'month' | langTh}}
+                                            </option>
+                                            <option *ngIf="serviceProviderService.lang == 'en'">{{'month' | langEn}}
+                                            </option>
+                                            <option *ngFor="let item of monthList">{{item}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 col-xs-4 p-0 ">
+                                        <select formControlName="yearOfIssue" class="form-control kanit regisbt"
+                                            [attr.disabled]="isRead ? '' : null"
+                                            [ngClass]="{ 'is-invalid': submitted && f.yearOfIssue.errors }"
+                                            (change)="checkDayIssue()">
+                                            <option *ngIf="serviceProviderService.lang == 'th'">{{'year' | langTh}}
+                                            </option>
+                                            <option *ngIf="serviceProviderService.lang == 'en'">{{'year' | langEn}}
+                                            </option>
+                                            <option *ngFor="let item of yearList">{{item}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 mt-4 registxt">
+                                วันที่สิ้นสุด</div>
+                            <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt">Date of Expiry
+                            </div>
+                            <div class="col-xs-6 p-0 ">
+                                <div class="col-xs-12 p-0">
+                                    <div class="col-md-4 col-xs-4 p-0">
+                                        <select formControlName="dayOfExpiry" class="form-control kanit regisbt"
+                                            [attr.disabled]="isRead ? '' : null"
+                                            [ngClass]="{ 'is-invalid': submitted && f.dayOfExpiry.errors }">
+                                            <option *ngIf="serviceProviderService.lang == 'th'">{{'day' | langTh}}
+                                            </option>
+                                            <option *ngIf="serviceProviderService.lang == 'en'">{{'day' | langEn}}
+                                            </option>
+                                            <option *ngFor="let item of dayExpiryList">{{item}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 col-xs-4 p-0">
+                                        <select formControlName="monthOfExpiry" class="form-control kanit regisbt"
+                                            [attr.disabled]="isRead ? '' : null"
+                                            [ngClass]="{ 'is-invalid': submitted && f.monthOfExpiry.errors }"
+                                            (change)="checkDayExpiry()">
+                                            <option *ngIf="serviceProviderService.lang == 'th'">{{'month' | langTh}}
+                                            </option>
+                                            <option *ngIf="serviceProviderService.lang == 'en'">{{'month' | langEn}}
+                                            </option>
+                                            <option *ngFor="let item of monthList">{{item}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 col-xs-4 p-0">
+                                        <select formControlName="yearOfExpiry" class="form-control kanit regisbt"
+                                            [attr.disabled]="isRead ? '' : null"
+                                            [ngClass]="{ 'is-invalid': submitted && f.yearOfExpiry.errors }"
+                                            (change)="checkDayExpiry()">
+                                            <option *ngIf="serviceProviderService.lang == 'th'">{{'year' | langTh}}
+                                            </option>
+                                            <option *ngIf="serviceProviderService.lang == 'en'">{{'year' | langEn}}
+                                            </option>
+                                            <option *ngFor="let item of yearList">{{item}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="col-xs-12 mt55 p-0">
+                    <div class="col-xs-12">
+                        <a *ngIf="serviceProviderService.lang == 'th'" download="file_register.pdf" target="_blank"
+                            href="/assets/file_register.pdf">{{'downloadLicenseForm'| langTh}}</a>
+                        <a *ngIf="serviceProviderService.lang == 'en'" download="file_register.pdf" target="_blank"
+                            href="/assets/file_register.pdf">{{'downloadLicenseForm'| langEn}}</a>
+                    </div>
+                </div>
+                <div class="col-xs-12 mt-4 p-0">
+                    <div class="col-xs-12">
+                        <cdsf (cModel)="model.file = $event" [label]="'ไฟล์ PDF (วางไฟล์ใบอนุญาต PDF)'"
+                            [data]="[{ fileUrl: model.fileUrl == '' ? '' : imageFile }]" [code]="'register'">
+                        </cdsf>
+                    </div>
+                </div> -->
+
+                <div *ngIf="code == ''" class="col-xs-12" style="display: flex;justify-content: center;margin: 9% 0%;">
+                    <button *ngIf="serviceProviderService.lang == 'th'" type="button" class="form-control kanit"
+                        style="width: 600px;height: 90px;border-radius: 20px;font-size: 22px;color: #fff;text-align: center; background-color:#E19B24"
+                        (click)="validate()">{{'register' | langTh}}</button>
+                    <button *ngIf="serviceProviderService.lang == 'en'" type="button" class="form-control kanit"
+                        style="width: 600px;height: 90px;border-radius: 20px;font-size: 22px;color: #fff;text-align: center; background-color:#E19B24"
+                        (click)="validate()">{{'register' | langEn}}</button>
+                </div>
+
+                <div *ngIf="code != ''" class="col-xs-12" style="display: flex;justify-content: center;margin: 9% 0%;">
+                    <button *ngIf="serviceProviderService.lang == 'th'" type="button" class="form-control kanit"
+                        style="width: 600px;height: 90px;border-radius: 20px;font-size: 22px;color: #fff;text-align: center; background-color:#E19B24"
+                        (click)="validate()">บันทึก</button>
+                    <button *ngIf="serviceProviderService.lang == 'en'" type="button" class="form-control kanit"
+                        style="width: 600px;height: 90px;border-radius: 20px;font-size: 22px;color: #fff;text-align: center; background-color:#E19B24"
+                        (click)="validate()">save</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="col-xs-12 m-0 p-0 d-block d-lg-none">
+    <div class="col-xs-12 m-0 mt-2" style="padding: 0% 4%;">
+        <form [formGroup]="registerForm">
+            <div *ngIf="serviceProviderService.lang == 'th' && code == ''" class="col-xs-12 mt-4"
+                style="font-size: 22px;font-weight: bold;color: #1B6CA8;">{{'register' | langTh}}</div>
+            <div *ngIf="serviceProviderService.lang == 'en' && code == ''" class="col-xs-12 mt-4"
+                style="font-size: 22px;font-weight: bold;color: #1B6CA8;">{{'register' | langEn}}</div>
+            <div *ngIf="serviceProviderService.lang == 'th' && code != ''" class="col-xs-12 mt-4"
+                style="font-size: 22px;font-weight: bold;color: #1B6CA8;">{{'personalInformation' | langTh}}</div>
+            <div *ngIf="serviceProviderService.lang == 'en' && code != ''" class="col-xs-12 mt-4"
+                style="font-size: 22px;font-weight: bold;color: #1B6CA8;">{{'personalInformation' | langEn}}</div>
+            <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 mt30"
+                style="font-size: 16px; line-height: 1.3;opacity: 0.55;"> {{'applyRegisterVet' | langTh}} </div>
+            <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 mt30"
+                style="font-size: 16px; line-height: 1.3;opacity: 0.55;"> {{'applyRegisterVet' | langEn}} </div>
+            <!-- Email -->
+            <div class="col-xs-12"
+                style="padding: 10px 0px;background-color: {{checkColorback(!isRead && !isEdit ? false : true)}}">
+                <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c"><span
+                        style="color: red;">*&nbsp;</span>{{'IDNumber' | langTh}}</div>
+                <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c"><span
+                        style="color: red;">*&nbsp;</span>{{'IDNumber' | langEn}}</div>
+                <div class="col-xs-12">
+                    <input type="text" class="form-control kanit regisbt-m" placeholder="_ ____ _____ __ _"
+                        [ngClass]="{ 'is-invalid': submitted && f.idcard.errors }" autocomplete="idcard"
+                        formControlName="idcard" [readonly]="(!isRead && !isEdit ? false : true)">
+                    <div class="validate"></div>
+                    <div *ngIf="submitted && f.idcard.errors" class="invalid-feedback">
+                        <div *ngIf="f.idcard.errors.required && serviceProviderService.lang == 'th'">
+                            {{'pleaseEnter' | langTh}} {{'IDNumber' | langEn}}</div>
+                        <div *ngIf="f.idcard.errors.required && serviceProviderService.lang == 'en'">
+                            {{'IDNumber' | langEn}}</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Password -->
+            <div class="col-xs-12"
+                style="padding: 10px 0px;background-color: {{checkColorback(!isRead && !isEdit ? false : true)}}">
+                <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c"><span
+                        style="color: red;">*&nbsp;</span>Password</div>
+                <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c"><span
+                        style="color: red;">*&nbsp;</span>Password</div>
+                <div class="col-xs-12">
+                    <input type="password" class="form-control kanit regisbt-m" placeholder="Password"
+                        [ngClass]="{ 'is-invalid': submitted && f.password.errors }" autocomplete="password"
+                        formControlName="password" [readonly]="(!isRead && !isEdit ? false : true)">
+                    <div class="validate"></div>
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.pattern && serviceProviderService.lang == 'th'">Password
+                            {{'notValid' | langTh}}.</div>
+                        <div *ngIf="f.password.errors.pattern && serviceProviderService.lang == 'en'">Password
+                            {{'notValid' | langEn}}.</div>
+                        <div *ngIf="f.password.errors.required && serviceProviderService.lang == 'th'">
+                            {{'pleaseEnter' | langTh}} password</div>
+                        <div *ngIf="f.password.errors.required && serviceProviderService.lang == 'en'">
+                            {{'pleaseEnter' | langEn}} password</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ข้อมูลส่วนตัว -->
+            <div class="col-xs-12" style="padding: 10px 0px;">
+                <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-6 p-0 fs3">
+                    {{'personalInformation' | langTh}}</div>
+                <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-6 p-0 fs3">
+                    {{'personalInformation' | langEn}}</div>
+            </div>
+            <!-- เลขประจำตัวประชาชน -->
+            <div class="col-xs-12" style="padding: 10px 0px;background-color: {{checkColorback(isEdit)}}">
+                <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">
+                    Email</div>
+                <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">
+                    Email</div>
+                <div class="col-xs-12">
+                    <input type="text" class="form-control kanit regisbt-m" placeholder="Email"
+                        [ngClass]="{ 'is-invalid': submitted && f.email.errors }" autocomplete="email"
+                        formControlName="email" [readonly]="isEdit">
+                    <div class="validate"></div>
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.pattern && serviceProviderService.lang == 'th'">Email
+                            {{'notValid' | langTh}}.</div>
+                        <div *ngIf="f.email.errors.pattern && serviceProviderService.lang == 'en'">Email
+                            {{'notValid' | langEn}}.</div>
+                        <div *ngIf="f.email.errors.required && serviceProviderService.lang == 'th'">
+                            {{'pleaseEnter' | langTh}} email</div>
+                        <div *ngIf="f.email.errors.required && serviceProviderService.lang == 'en'">
+                            {{'pleaseEnter' | langEn}} email</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- เบอร์ติดต่อ -->
+            <div class="col-xs-12" style="padding: 15px 0px;background-color: {{checkColorback(isEdit)}}">
+                <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">
+                    {{'phoneNumber' | langTh}}</div>
+                <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">
+                    {{'phoneNumber' | langEn}}</div>
+                <div class="col-xs-12">
+                    <div class="col-xs-12 p-0 ">
+                        <input type="number" class="form-control kanit regisbt-m" placeholder="0__ - ___ - _____"
+                            [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" autocomplete="phone"
+                            formControlName="phone" [readonly]="isEdit">
+                        <div class="validate"></div>
+                        <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                            <div *ngIf="f.phone.errors.required && serviceProviderService.lang == 'th'">
+                                {{'pleaseEnter' | langTh}} {{'phoneNumber' | langEn}}</div>
+                            <div *ngIf="f.phone.errors.required && serviceProviderService.lang == 'en'">
+                                {{'pleaseEnter' | langEn}} {{'phoneNumber' | langEn}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Line ID -->
+            <div class="col-xs-12" style="padding: 15px 0px;background-color: {{checkColorback(isEdit)}}">
+                <div class="col-xs-12 kanit_m c-6c">Line ID </div>
+                <div class="col-xs-12">
+                    <input type="text" class="form-control kanit regisbt-m" placeholder="Line ID"
+                        formControlName="lineID" autocomplete="lineID" [readonly]="isEdit"
+                        [ngClass]="{ 'is-invalid': submitted && f.lineID.errors }">
+                    <div class="validate"></div>
+                    <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                        <div *ngIf="f.phone.errors.required && serviceProviderService.lang == 'th'">
+                            {{'pleaseEnter' | langTh}} {{'phoneNumber' | langEn}}</div>
+                        <div *ngIf="f.phone.errors.required && serviceProviderService.lang == 'en'">
+                            {{'pleaseEnter' | langEn}} {{'phoneNumber' | langEn}}</div>
+                        <div *ngIf="f.phone.errors.required">กรุณากรอก lineID</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ชื่อ - นามสกุล -->
+            <div class=" col-xs-12"
+                style="padding: 15px 0px;background-color: {{checkColorback(!isRead && !isEdit ? false : true)}};">
+                <div class="col-xs-12 pd0">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c"><span
+                            style="color: red;">*&nbsp;</span>{{'nameSurname' | langTh}}
+                    </div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c"><span
+                            style="color: red;">*&nbsp;</span>{{'nameSurname' | langEn}}
+                    </div>
+                    <div class="col-xs-12 pd0">
+                        <div class="col-xs-6 ">
+                            <input type="text" class="form-control kanit regisbt-m aCenter" placeholder="ยศ"
+                                [readonly]="isRead" autocomplete="position" formControlName="position">
+                        </div>
+                        <div class="col-xs-6 ">
+                            <select formControlName="prefixName" class="form-control kanit regisbt-m aCenter select"
+                                [attr.disabled]="(!isRead && !isEdit ? null : '')"
+                                [ngClass]="{ 'is-invalid': submitted && f.prefixName.errors }">
+                                <option>คำนำหน้า</option>
+                                <option *ngFor="let option of options">{{option}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 pd0" style="padding-bottom: 10px;">
+                        <div class="col-xs-6 ">
+                            <input type="text" class="form-control kanit regisbt-m" placeholder="*ชื่อ"
+                                [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" autocomplete="firstName"
+                                formControlName="firstName" [readonly]="(!isRead && !isEdit ? false : true)">
+                            <div class="validate"></div>
+                            <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                                <div *ngIf="f.firstName.errors.required && serviceProviderService.lang == 'th'">
+                                    {{'pleaseEnter' | langTh}} {{'name' | langEn}}</div>
+                                <div *ngIf="f.firstName.errors.required && serviceProviderService.lang == 'en'">
+                                    {{'pleaseEnter' | langEn}} {{'mane' | langEn}}</div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 ">
+                            <input type="text" class="form-control kanit regisbt-m" placeholder="*นามสกุล"
+                                [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" autocomplete="lastName"
+                                formControlName="lastName" [readonly]="(!isRead && !isEdit ? false : true)">
+                            <div class="validate"></div>
+                            <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                                <div *ngIf="f.lastName.errors.required && serviceProviderService.lang == 'th'">
+                                    {{'pleaseEnter' | langTh}} {{'familyName' | langEn}}</div>
+                                <div *ngIf="f.lastName.errors.required && serviceProviderService.lang == 'en'">
+                                    {{'pleaseEnter' | langEn}} {{'familyName' | langEn}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 pd0"
+                        style="background-color: {{checkColorback(isEdit)}};padding-bottom: 10px;">
+                        <div class="col-xs-6 ">
+                            <input type="text" class="form-control kanit regisbt-m" placeholder="Name"
+                                [ngClass]="{ 'is-invalid': submitted && f.firstNameEN.errors }"
+                                autocomplete="firstNameEN" formControlName="firstNameEN" [readonly]="isEdit">
+                            <div class="validate"></div>
+                            <div *ngIf="submitted && f.firstNameEN.errors" class="invalid-feedback">
+                                <div *ngIf="f.firstNameEN.errors.required && serviceProviderService.lang == 'th'">
+                                    {{'pleaseEnter' | langTh}} ชื่อภาษาอังกฤษ</div>
+                                <div *ngIf="f.firstNameEN.errors.required && serviceProviderService.lang == 'en'">
+                                    {{'pleaseEnter' | langEn}} name</div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 ">
+                            <input type="text" class="form-control kanit regisbt-m" placeholder="Family Name"
+                                [ngClass]="{ 'is-invalid': submitted && f.lastNameEN.errors }" autocomplete="lastNameEN"
+                                formControlName="lastNameEN" [readonly]="isEdit">
+                            <div class="validate"></div>
+                            <div *ngIf="submitted && f.lastNameEN.errors" class="invalid-feedback">
+                                <div *ngIf="f.firstNameEN.errors.required && serviceProviderService.lang == 'th'">
+                                    {{'pleaseEnter' | langTh}} ภาษาอังกฤษ</div>
+                                <div *ngIf="f.firstNameEN.errors.required && serviceProviderService.lang == 'en'">
+                                    {{'pleaseEnter' | langEn}} Family Name</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ชื่อ - นามสกุล เดิม -->
+            <div class=" col-xs-12" style="padding: 10px 0px;background-color: {{checkColorback(isEdit)}}">
+                <div class="col-xs-12 pd0">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c"><span
+                            style="color: red;"></span>{{'oldNameSurname' | langTh}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c"><span
+                            style="color: red;"></span>{{'oldNameSurname' | langEn}}</div>
+                    <div class="col-xs-12 pd0">
+                        <div class="col-xs-6 ">
+                            <input type="text" class="form-control kanit regisbt-m aCenter" placeholder="ยศ"
+                                [readonly]="isEdit" formControlName="oldPosition"
+                                [ngClass]="{ 'is-invalid': submitted && f.oldPosition.errors }">
+                        </div>
+                        <div class="col-xs-6 ">
+                            <select formControlName="oldPrefixName" [attr.disabled]="isEdit ? '' : null"
+                                class="form-control kanit regisbt-m aCenter select">
+                                <option>คำนำหน้า</option>
+                                <option *ngFor="let option of options">{{option}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 pd0">
+                        <div class="col-xs-6 ">
+                            <input type="text" class="form-control kanit regisbt-m" placeholder="ชื่อ"
+                                autocomplete="firstName" formControlName="oldFirstName" [readonly]="isEdit">
+                        </div>
+                        <div class="col-xs-6 ">
+                            <input type="text" class="form-control kanit regisbt-m" placeholder="นามสกุล"
+                                autocomplete="lastName" formControlName="oldLastName" [readonly]="isEdit">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 pd0">
+                        <div class="col-xs-6 ">
+                            <input type="text" class="form-control kanit regisbt-m" placeholder="Old Name"
+                                autocomplete="firstNameEN" formControlName="oldFirstNameEN" [readonly]="isEdit">
+                        </div>
+                        <div class="col-xs-6 ">
+                            <input type="text" class="form-control kanit regisbt-m" placeholder="Old Name"
+                                autocomplete="lastNameEN" formControlName="oldLastNameEN" [readonly]="isEdit">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- วันเดือนปีเกิด -->
+            <div class="col-xs-12" style="padding: 15px 0px;background-color: {{checkColorback(isRead)}}">
+                <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">
+                    {{'dateOfBirth' | langTh}}</div>
+                <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">
+                    {{'dateOfBirth' | langEn}}</div>
+                <div class="col-xs-12 pd0">
+                    <div class="col-xs-4 ">
+                        <select formControlName="dayOfBirth" class="form-control kanit regisbt-m"
+                            [attr.disabled]="isRead ? '' : null"
+                            [ngClass]="{ 'is-invalid': submitted && f.dayOfBirth.errors }">
+                            <option *ngIf="serviceProviderService.lang == 'th'">วัน</option>
+                            <option *ngIf="serviceProviderService.lang == 'en'">day</option>
+                            <option *ngFor="let item of dayList">{{item}}</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-4 ">
+                        <select formControlName="monthOfBirth" class="form-control kanit regisbt-m"
+                            [attr.disabled]="isRead ? '' : null"
+                            [ngClass]="{ 'is-invalid': submitted && f.monthOfBirth.errors }" (change)="checkDay()">
+                            <option *ngIf="serviceProviderService.lang == 'th'">เดือน</option>
+                            <option *ngIf="serviceProviderService.lang == 'en'">month</option>
+                            <option *ngFor="let item of monthList">{{item}}</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-4 ">
+                        <select formControlName="yearOfBirth" class="form-control kanit regisbt-m"
+                            [attr.disabled]="isRead ? '' : null"
+                            [ngClass]="{ 'is-invalid': submitted && f.yearOfBirth.errors }" (change)="checkDay()">
+                            <option *ngIf="serviceProviderService.lang == 'th'">ปี</option>
+                            <option *ngIf="serviceProviderService.lang == 'en'">year</option>
+                            <option *ngFor="let item of yearList">{{item}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!-- อายุ -->
+            <div class="col-xs-12"
+                style="padding: 15px 0px;background-color: {{checkColorback(!isRead && !isEdit ? false : true)}}">
+                <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">
+                    {{'age' | langTh}}</div>
+                <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">
+                    {{'age' | langEn}}</div>
+                <div class="col-xs-6">
+                    <input type="number" class="form-control kanit regisbt-m" placeholder="อายุ"
+                        [ngClass]="{ 'is-invalid': submitted && f.age.errors }" name="age" id="age"
+                        formControlName="age" [readonly]="(!isRead && !isEdit ? false : true)">
+                    <div class="validate"></div>
+                    <div *ngIf="submitted && f.age.errors" class="invalid-feedback">
+                        <div *ngIf="f.age.errors.required && serviceProviderService.lang == 'th'">
+                            {{'pleaseEnter' | langTh}} {{'age' | langTh}}</div>
+                        <div *ngIf="f.age.errors.required && serviceProviderService.lang == 'en'">
+                            {{'pleaseEnter' | langEn}} {{'age' | langEn}}</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- สัญชาติ -->
+            <div class=" col-xs-12"
+                style="padding: 15px 0px;background-color: {{checkColorback(!isRead && !isEdit ? false : true)}};">
+                <div class="col-xs-6 pd0">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">
+                        {{'nationality' | langTh}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">
+                        {{'nationality' | langEn}}</div>
+                    <div class="col-xs-12 pd0">
+                        <div class="col-xs-12">
+                            <input type="text" class="form-control kanit regisbt-m" placeholder="สัญชาติ"
+                                [ngClass]="{ 'is-invalid': submitted && f.nationality.errors }" name="nationality"
+                                id="nationality" formControlName="nationality"
+                                [readonly]="(!isRead && !isEdit ? false : true)">
+                            <div class="validate"></div>
+                            <div *ngIf="submitted && f.nationality.errors" class="invalid-feedback">
+                                <div *ngIf="f.nationality.errors.required && serviceProviderService.lang == 'th'">
+                                    {{'pleaseEnter' | langTh}} {{'nationality' | langTh}}</div>
+                                <div *ngIf="f.nationality.errors.required && serviceProviderService.lang == 'en'">
+                                    {{'pleaseEnter' | langEn}} {{'nationality' | langEn}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 pd0">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">
+                        {{'race' | langTh}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">
+                        {{'race' | langEn}}</div>
+                    <div class="col-xs-12 pd0">
+                        <input type="text" class="form-control kanit regisbt-m" placeholder="เชื้อสัญชาติ"
+                            [ngClass]="{ 'is-invalid': submitted && f.race.errors }" name="race" id="race"
+                            formControlName="race" [readonly]="(!isRead && !isEdit ? false : true)">
+                        <div class="validate"></div>
+                        <div *ngIf="submitted && f.race.errors" class="invalid-feedback">
+                            <div *ngIf="f.race.errors.required && serviceProviderService.lang == 'th'">
+                                {{'pleaseEnter' | langTh}} {{'race' | langTh}}</div>
+                            <div *ngIf="f.race.errors.required && serviceProviderService.lang == 'en'">
+                                {{'pleaseEnter' | langEn}} {{'race' | langEn}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ศาสนา -->
+            <div class=" col-xs-12"
+                style="padding: 15px 0px;background-color: {{checkColorback(!isRead && !isEdit ? false : true)}};">
+                <div class="col-xs-6 pd0">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">
+                        {{'religion' | langTh}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">
+                        {{'religion' | langEn}}</div>
+                    <div class="col-xs-12 pd0">
+                        <div class="col-xs-12 ">
+                            <input type="text" class="form-control kanit regisbt-m" placeholder="ศาสนา"
+                                [ngClass]="{ 'is-invalid': submitted && f.religion.errors }" name="religion"
+                                id="religion" formControlName="religion"
+                                [readonly]="(!isRead && !isEdit ? false : true)">
+                            <div class="validate"></div>
+                            <div *ngIf="submitted && f.religion.errors" class="invalid-feedback">
+                                <div *ngIf="f.religion.errors.required && serviceProviderService.lang == 'th'">
+                                    {{'pleaseEnter' | langTh}} {{'religion' | langTh}}</div>
+                                <div *ngIf="f.religion.errors.required && serviceProviderService.lang == 'en'">
+                                    {{'pleaseEnter' | langEn}} {{'religion' | langEn}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-xs-12" style="padding: 15px 0px;">
+                <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_l">
+                    {{'homeAddress' | langTh}}</div>
+                <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_l">
+                    {{'homeAddress' | langEn}}</div>
+            </div>
+            <!-- เบอร์โทรศัพท์บ้าน -->
+            <div class=" col-xs-12" style="padding: 15px 0px;background-color: {{checkColorback(isRead)}}">
+                <div class="col-xs-12 pd0">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">
+                        {{'phoneNumber' | langTh}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">
+                        {{'phoneNumber' | langEn}}</div>
+                    <div class="col-xs-12 pd0">
+                        <div class="col-xs-12 ">
+                            <input type="number" class="form-control kanit regisbt-m" placeholder="02_ - ___ - _____"
+                                [ngClass]="{ 'is-invalid': submitted && f.telephone.errors }" name="telephone"
+                                id="telephone" formControlName="telephone" [readonly]="isRead">
+                            <div class="validate"></div>
+                            <div *ngIf="submitted && f.telephone.errors" class="invalid-feedback">
+                                <div *ngIf="f.telephone.errors.required && serviceProviderService.lang == 'th'">
+                                    {{'phoneNumber' | langTh}}</div>
+                                <div *ngIf="f.telephone.errors.required && serviceProviderService.lang == 'en'">
+                                    {{'phoneNumber' | langEn}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- เลขที่ และ หมู่ที่ -->
+            <div class="col-xs-12" style="padding: 15px 0px;background-color: {{checkColorback(isRead)}}">
+                <div class="col-xs-6 pd0">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">
+                        {{'addressHouse' | langTh}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">
+                        {{'addressHouse' | langEn}}</div>
+                    <div class="col-xs-12 pd0">
+                        <div class="col-xs-6 " style="padding-right: 0px;">
+                            <input type="text" class="form-control kanit regisbt-m aCenter" placeholder="เลขที่"
+                                [ngClass]="{ 'is-invalid': submitted && f.address.errors }" name="address" id="address"
+                                formControlName="address" [readonly]="isRead">
+                            <div class="validate"></div>
+                            <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                                <div *ngIf="f.address.errors.required && serviceProviderService.lang == 'th'">
+                                    {{'houseNumber' | langTh}}</div>
+                                <div *ngIf="f.address.errors.required && serviceProviderService.lang == 'en'">
+                                    {{'houseNumber' | langEn}}</div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 " style="padding-left: 0px;">
+                            <input type="text" class="form-control kanit regisbt-m aCenter" placeholder="หมู่ที่"
+                                formControlName="moo" [readonly]="isRead">
+                        </div>
+                    </div>
+                </div>
+                <!-- อาคาร / หมู่บ้าน -->
+                <div class="col-xs-6 pd0">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">
+                        {{'villageBuilding' | langTh}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">
+                        {{'villageBuilding' | langEn}}</div>
+                    <div class="col-xs-12">
+                        <input type="text" class="form-control kanit regisbt-m" placeholder="อาคาร / หมู่บ้าน"
+                            [ngClass]="{ 'is-invalid': submitted && f.address2.errors }" name="address2" id="address2"
+                            formControlName="address2" [readonly]="isRead">
+                        <div class="validate"></div>
+                        <div *ngIf="submitted && f.address2.errors" class="invalid-feedback">
+                            <div *ngIf="f.address2.errors.required && serviceProviderService.lang == 'th'">
+                                {{'villageBuilding' | langTh}}</div>
+                            <div *ngIf="f.address2.errors.required && serviceProviderService.lang == 'en'">
+                                {{'villageBuilding' | langEn}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ซอย -->
+            <div class="col-xs-12" style="padding: 15px 0px;background-color: {{checkColorback(isRead)}}">
+                <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c"><span
+                        style="color: red;"></span>{{'lane' | langTh}}</div>
+                <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c"><span
+                        style="color: red;"></span>{{'lane' | langEn}}</div>
+                <div class="col-xs-12 pd0">
+                    <div class="col-xs-12 ">
+                        <input type="text" class="form-control kanit regisbt-m" placeholder="ซอย" formControlName="soi"
+                            [ngClass]="{ 'is-invalid': submitted && f.soi.errors }" [readonly]="isRead">
+                    </div>
+                </div>
+            </div>
+            <!-- ถนน -->
+            <div class="col-xs-12" style="padding: 15px 0px;background-color: {{checkColorback(isRead)}}">
+                <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c"><span
+                        style="color: red;"></span>{{'road' | langTh}}</div>
+                <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c"><span
+                        style="color: red;"></span>{{'road' | langEn}}</div>
+                <div class="col-xs-12">
+                    <input type="text" class="form-control kanit regisbt-m" placeholder="ถนน" formControlName="road"
+                        [readonly]="isRead" [ngClass]="{ 'is-invalid': submitted && f.road.errors }"
+                        [readonly]="isRead">
+                </div>
+            </div>
+
+            <!-- แขวง / ตำบล -->
+            <div class=" col-xs-12" style="padding: 15px 0px;background-color: {{checkColorback(isRead)}}">
+                <div class="col-xs-6 pd0">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">
+                        {{'subDistrictSubArea' | langTh}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">
+                        {{'subDistrictSubArea' | langEn}}</div>
+                    <div class="col-xs-12 pd0">
+                        <div class="col-xs-12 ">
+                            <input type="text" class="form-control kanit regisbt-m" placeholder="แขวง / ตำบล"
+                                [ngClass]="{ 'is-invalid': submitted && f.tambon.errors }" name="tambon" id="tambon"
+                                formControlName="tambon" [readonly]="isRead">
+                            <div class="validate"></div>
+                            <div *ngIf="submitted && f.tambon.errors" class="invalid-feedback">
+                                <div *ngIf="f.tambon.errors.required && serviceProviderService.lang == 'th'">
+                                    {{'subDistrictSubArea' | langTh}}</div>
+                                <div *ngIf="f.tambon.errors.required && serviceProviderService.lang == 'en'">
+                                    {{'subDistrictSubArea' | langEn}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 pd0">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">
+                        {{'districtArea' | langTh}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">
+                        {{'districtArea' | langEn}}</div>
+                    <div class="col-xs-12 pd0">
+                        <input type="text" class="form-control kanit regisbt-m" placeholder="เขต / อำเภอ"
+                            [ngClass]="{ 'is-invalid': submitted && f.amphoe.errors }" name="amphoe" id="amphoe"
+                            formControlName="amphoe" [readonly]="isRead">
+                        <div class="validate"></div>
+                        <div *ngIf="submitted && f.amphoe.errors" class="invalid-feedback">
+                            <div *ngIf="f.amphoe.errors.required && serviceProviderService.lang == 'th'">
+                                {{'districtArea' | langTh}}</div>
+                            <div *ngIf="f.amphoe.errors.required && serviceProviderService.lang == 'en'">
+                                {{'districtArea' | langEn}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- จังหวัด -->
+            <div class=" col-xs-12" style="padding: 15px 0px;background-color: {{checkColorback(isRead)}}">
+                <div class="col-xs-6 pd0">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">
+                        {{'province' | langTh}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">
+                        {{'province' | langEn}}</div>
+                    <div class="col-xs-12 pd0">
+                        <div class="col-xs-12 ">
+                            <select formControlName="province" class="form-control kanit regisbt-m select"
+                                [attr.disabled]="isRead ? '' : null"
+                                [ngClass]="{ 'is-invalid': submitted && f.province.errors }">
+                                <option>จังหวัด</option>
+                                <option *ngFor="let province of provinces">{{province.title}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 pd0">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">
+                        {{'postalCode' | langTh}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">
+                        {{'postalCode' | langEn}}</div>
+                    <div class="col-xs-12 pd0">
+                        <input type="text" class="form-control kanit regisbt-m" placeholder="รหัสไปรษณีย์"
+                            [ngClass]="{ 'is-invalid': submitted && f.postno.errors }" name="postno" id="postno"
+                            formControlName="postno" [readonly]="isRead">
+                        <div class="validate"></div>
+                        <div *ngIf="submitted && f.postno.errors" class="invalid-feedback">
+                            <div *ngIf="f.postno.errors.required && serviceProviderService.lang == 'th'">
+                                {{'postalCode' | langTh}}</div>
+                            <div *ngIf="f.postno.errors.required && serviceProviderService.lang == 'en'">
+                                {{'postalCode' | langEn}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 mt20 pd0" style="margin-bottom: 15px;">
+                <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 fs3">{{'workAddress' | langTh}}
+                </div>
+                <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 fs3">{{'workAddress' | langEn}}
+                </div>
+            </div>
+            <div class="col-xs-12 pd0" style="padding: 10px 0px 40px 0px;background-color: {{checkColorback(isEdit)}}">
+                <div class="col-xs-12 pd0">
+                    <label class="custom-checkbox">
+                        <input type="checkbox" value="checkbox1" [(ngModel)]="model.isWorkSameHome"
+                            (ngModelChange)="setAddress($event,'home')" [ngModelOptions]="{standalone: true}"
+                            [attr.disabled]="isEdit ? '' : null">
+                        <span *ngIf="serviceProviderService.lang == 'th'"
+                            style="float: right; position: absolute;padding: 1.5% 40px;  font-size: 17px;  opacity: 1;color: #6C6C6C;font-weight: normal;">{{'sameHomeAddress' | langTh}}</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'"
+                            style="float: right; position: absolute;padding: 1.5% 40px;  font-size: 17px;  opacity: 1;color: #6C6C6C;font-weight: normal;">{{'sameHomeAddress' | langEn}}</span>
+                    </label>
+                </div>
+            </div>
+            <div class="col-xs-12" style="padding: 15px 0px;background-color: {{checkColorback(isEdit)}}">
+                <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">{{'careers' | langTh}}
+                </div>
+                <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">{{'careers' | langEn}}
+                </div>
+            </div>
+            <div *ngIf="code == ''" class=" col-xs-12 pd0" ng-controller="workType">
+                <div class="col-xs-6 pd0">
+                    <label class="custom-checkbox">
+                        <input type="checkbox" [(ngModel)]="workType1" (click)="checkWorkType($event,1)"
+                            [ngModelOptions]="{standalone: true}">
+                        <span *ngIf="serviceProviderService.lang == 'th'"
+                            style="float: right; position: absolute;padding-left:40px;padding-top: 4%;font-size: 15px;  opacity: 1;color: #6C6C6C;font-weight: normal;">{{'office' | langTh}}</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'"
+                            style="float: right; position: absolute;padding-left:40px;padding-top: 4%;font-size: 15px;  opacity: 1;color: #6C6C6C;font-weight: normal;">{{'office' | langEn}}</span>
+                    </label>
+                </div>
+                <div class="col-xs-6 pd0">
+                    <label class="custom-checkbox">
+                        <input type="checkbox" [(ngModel)]="workType2" (click)="checkWorkType($event,2)"
+                            [ngModelOptions]="{standalone: true}">
+                        <span *ngIf="serviceProviderService.lang == 'th'"
+                            style="float: right; position: absolute;padding-left:40px;padding-top: 4%;font-size: 15px;  opacity: 1;color: #6C6C6C;font-weight: normal;">{{'civilServant' | langTh}}</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'"
+                            style="float: right; position: absolute;padding-left:40px;padding-top: 4%;font-size: 15px;  opacity: 1;color: #6C6C6C;font-weight: normal;">{{'civilServant' | langEn}}</span>
+                    </label>
+                </div>
+            </div>
+            <div *ngIf="code == ''" class=" col-xs-12 mt55 pd0" ng-controller="workType">
+                <div class="col-xs-6 pd0">
+                    <label class="custom-checkbox">
+                        <input type="checkbox" [(ngModel)]="workType3" (click)="checkWorkType($event,3)"
+                            [ngModelOptions]="{standalone: true}">
+                        <span *ngIf="serviceProviderService.lang == 'th'"
+                            style="float: right; position: absolute;padding-left:40px;padding-top: 4%;font-size: 15px;  opacity: 1;color: #6C6C6C;font-weight: normal;">{{'clinicVeterinary' | langTh}}</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'"
+                            style="float: right; position: absolute;padding-left:40px;padding-top: 4%;font-size: 15px;  opacity: 1;color: #6C6C6C;font-weight: normal;">{{'clinicVeterinary' | langEn}}</span>
+                    </label>
+                </div>
+                <div class="col-xs-6 pd0">
+                    <label class="custom-checkbox">
+                        <input type="checkbox" [(ngModel)]="workType4" (click)="checkWorkType($event,4)"
+                            [ngModelOptions]="{standalone: true}">
+                        <span *ngIf="serviceProviderService.lang == 'th'"
+                            style="float: right; position: absolute;padding-left:40px;padding-top: 4%;font-size: 15px;  opacity: 1;color: #6C6C6C;font-weight: normal;">{{'farm' | langTh}}</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'"
+                            style="float: right; position: absolute;padding-left:40px;padding-top: 4%;font-size: 15px;  opacity: 1;color: #6C6C6C;font-weight: normal;">{{'farm' | langEn}}</span>
+                    </label>
+                </div>
+            </div>
+            <div *ngIf="code == ''" class=" col-xs-12 mt55 pd0">
+                <div class="col-xs-6 pd0">
+                    <div class="col-xs-12 pd0">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" [(ngModel)]="workType5" (click)="checkWorkType($event,5)"
+                                [ngModelOptions]="{standalone: true}">
+                            <span *ngIf="serviceProviderService.lang == 'th'"
+                                style="float: right; position: absolute;padding-left:40px;padding-top: 4%;font-size: 15px;  opacity: 1;color: #6C6C6C;font-weight: normal;">{{'professor' | langTh}}</span>
+                            <span *ngIf="serviceProviderService.lang == 'en'"
+                                style="float: right; position: absolute;padding-left:40px;padding-top: 4%;font-size: 15px;  opacity: 1;color: #6C6C6C;font-weight: normal;">{{'professor' | langEn}}</span>
+                        </label>
+                    </div>
+                    <div class="col-xs-12 mt40">
+                        <input type="text" class="form-control kanit regisbt-m" placeholder="อาจารย์"
+                            [(ngModel)]="workType5Description" [ngModelOptions]="{standalone: true}">
+                    </div>
+                </div>
+                <div class="col-xs-6 pd0">
+                    <div class="col-xs-12 pd0">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" [(ngModel)]="workType6" (click)="checkWorkType($event,6)"
+                                [ngModelOptions]="{standalone: true}">
+                            <span *ngIf="serviceProviderService.lang == 'th'"
+                                style="float: right; position: absolute;padding-left:40px;padding-top: 4%;font-size: 15px;  opacity: 1;color: #6C6C6C;font-weight: normal;">{{'other' | langTh}}</span>
+                            <span *ngIf="serviceProviderService.lang == 'en'"
+                                style="float: right; position: absolute;padding-left:40px;padding-top: 4%;font-size: 15px;  opacity: 1;color: #6C6C6C;font-weight: normal;">{{'other' | langEn}}</span>
+                        </label>
+                    </div>
+                    <div class="col-xs-12 mt40 pd0">
+                        <input type="text" class="form-control kanit regisbt-m" placeholder="อื่นๆ"
+                            [(ngModel)]="workType6Description" [ngModelOptions]="{standalone: true}">
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="code != ''" class="col-xs-12 pd0" style="background-color: {{checkColorback(isEdit)}}">
+                <div class="col-xs-12">
+                    <input type="text" class="form-control kanit regisbt-m" placeholder="ประเภทหน่วยงาน"
+                        [(ngModel)]="model.workType" [ngModelOptions]="{standalone: true}" [readonly]="isEdit">
+                </div>
+            </div>
+
+            <div *ngIf="!model.isWorkSameHome" class=" col-xs-12"
+                style="padding: 15px 0px;background-color: {{checkColorback(isEdit)}}">
+                <div class="col-xs-6 pd0">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">
+                        {{'phoneNumber' | langTh}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">
+                        {{'phoneNumber' | langEn}}</div>
+                    <div class="col-xs-12 pd0">
+                        <div class="col-xs-12 ">
+                            <input type="number" class="form-control kanit regisbt-m" placeholder="02_ - ___ - _____"
+                                [ngClass]="{ 'is-invalid': submitted && f.workPhone.errors }" name="workPhone"
+                                id="workPhone" formControlName="workPhone" [readonly]="isEdit">
+                            <div class="validate"></div>
+                            <div *ngIf="submitted && f.workPhone.errors" class="invalid-feedback">
+                                <div *ngIf="f.workPhone.errors.required && serviceProviderService.lang == 'th'">
+                                    {{'pleaseEnter' | langTh}} {{'phoneNumber' | langTh}}</div>
+                                <div *ngIf="f.workPhone.errors.required && serviceProviderService.lang == 'en'">
+                                    {{'pleaseEnter' | langEn}} {{'phoneNumber' | langEn}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="!model.isWorkSameHome" class=" col-xs-12"
+                style="padding: 15px 0px;background-color: {{checkColorback(isEdit)}}">
+                <div class="col-xs-6 pd0">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">
+                        {{'addressHouse' | langTh}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">
+                        {{'addressHouse' | langEn}}</div>
+                    <div class="col-xs-12 pd0">
+                        <div class="col-xs-6 " style="padding-right: 0px;">
+                            <input type="text" class="form-control kanit regisbt-m aCenter" placeholder="เลขที่"
+                                [ngClass]="{ 'is-invalid': submitted && f.workAddress.errors }" name="workAddress"
+                                id="workAddress" formControlName="workAddress" [readonly]="isEdit">
+                            <div class="validate"></div>
+                            <div *ngIf="submitted && f.workAddress.errors" class="invalid-feedback">
+                                <div *ngIf="f.workAddress.errors.required && serviceProviderService.lang == 'th'">
+                                    {{'pleaseEnter' | langTh}} {{'houseNumber' | langTh}}</div>
+                                <div *ngIf="f.workAddress2.errors.required && serviceProviderService.lang == 'en'">
+                                    {{'pleaseEnter' | langEn}} {{'houseNumber' | langEn}}</div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6" style="padding-left: 0px;">
+                            <input type="text" class="form-control kanit regisbt-m aCenter" placeholder="หมู่ที่"
+                                [readonly]="isEdit" formControlName="moo"
+                                [ngClass]="{ 'is-invalid': submitted && f.moo.errors }">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 pd0">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">
+                        {{'villageBuilding' | langTh}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">
+                        {{'villageBuilding' | langEn}}</div>
+                    <div class="col-xs-12">
+                        <input type="text" class="form-control kanit regisbt-m" placeholder="อาคาร / หมู่บ้าน"
+                            [ngClass]="{ 'is-invalid': submitted && f.workAddress2.errors }" name="workAddress2"
+                            id="workAddress2" formControlName="workAddress2" [readonly]="isEdit">
+                        <div class="validate"></div>
+                        <div *ngIf="submitted && f.workAddress2.errors" class="invalid-feedback">
+                            <div *ngIf="f.workAddress2.errors.required && serviceProviderService.lang == 'th'">
+                                {{'pleaseEnter' | langTh}} {{'villageBuilding' | langTh}}</div>
+                            <div *ngIf="f.workAddress2.errors.required && serviceProviderService.lang == 'en'">
+                                {{'pleaseEnter' | langEn}} {{'villageBuilding' | langEn}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="!model.isWorkSameHome" class=" col-xs-12"
+                style="padding: 15px 0px;background-color: {{checkColorback(isEdit)}}">
+                <div class="col-xs-6 pd0">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">{{'lane' | langTh}}
+                    </div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">{{'lane' | langEn}}
+                    </div>
+                    <div class="col-xs-12 pd0">
+                        <div class="col-xs-12 ">
+                            <input type="text" class="form-control kanit regisbt-m" placeholder="ซอย"
+                                [readonly]="isEdit" formControlName="workSoi"
+                                [ngClass]="{ 'is-invalid': submitted && f.workSoi.errors }">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 pd0">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">{{'road' | langTh}}
+                    </div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">{{'road' | langEn}}
+                    </div>
+                    <div class="col-xs-12">
+                        <input type="text" class="form-control kanit regisbt-m" placeholder="ถนน" [readonly]="isEdit"
+                            formControlName="workRoad" [ngClass]="{ 'is-invalid': submitted && f.workRoad.errors }">
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="!model.isWorkSameHome" class=" col-xs-12"
+                style="padding: 15px 0px;background-color: {{checkColorback(isEdit)}}">
+                <div class="col-xs-6 pd0">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">
+                        {{'subDistrictSubArea' | langTh}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">
+                        {{'subDistrictSubArea' | langEn}}</div>
+                    <div class="col-xs-12 pd0">
+                        <div class="col-xs-12">
+                            <input type="text" class="form-control kanit regisbt-m" placeholder="แขวง / ตำบล"
+                                [ngClass]="{ 'is-invalid': submitted && f.workTambon.errors }" name="workTambon"
+                                id="workTambon" formControlName="workTambon" [readonly]="isEdit">
+                            <div class="validate"></div>
+                            <div *ngIf="submitted && f.workTambon.errors" class="invalid-feedback">
+                                <div *ngIf="f.workTambon.errors.required && serviceProviderService.lang == 'th'">
+                                    {{'pleaseEnter' | langTh}} {{'subDistrictSubArea' | langTh}}</div>
+                                <div *ngIf="f.workTambon.errors.required && serviceProviderService.lang == 'en'">
+                                    {{'pleaseEnter' | langEn}} {{'subDistrictSubArea' | langEn}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 pd0">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">
+                        {{'districtArea' | langTh}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">
+                        {{'districtArea' | langEn}}</div>
+                    <div class="col-xs-12 pd0">
+                        <input type="text" class="form-control kanit regisbt-m" placeholder="เขต / อำเภอ"
+                            [ngClass]="{ 'is-invalid': submitted && f.workAmphoe.errors }" name="workAmphoe"
+                            id="workAmphoe" formControlName="workAmphoe" [readonly]="isEdit">
+                        <div class="validate"></div>
+                        <div *ngIf="submitted && f.workAmphoe.errors" class="invalid-feedback">
+                            <div *ngIf="f.workAmphoe.errors.required && serviceProviderService.lang == 'th'">
+                                {{'pleaseEnter' | langTh}} {{'districtArea' | langTh}}</div>
+                            <div *ngIf="f.workAmphoe.errors.required && serviceProviderService.lang == 'en'">
+                                {{'pleaseEnter' | langEn}} {{'districtArea' | langEn}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="!model.isWorkSameHome" class=" col-xs-12"
+                style="padding: 15px 0px;background-color: {{checkColorback(isEdit)}}">
+                <div class="col-xs-6 pd0">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">
+                        {{'districtArea' | langTh}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">
+                        {{'districtArea' | langEn}}</div>
+                    <div class="col-xs-12 pd0">
+                        <div class="col-xs-12 ">
+                            <select formControlName="workProvince" class="form-control kanit regisbt-m select"
+                                [attr.disabled]="isEdit ? '' : null"
+                                [ngClass]="{ 'is-invalid': submitted && f.workProvince.errors }">
+                                <option>จังหวัด</option>
+                                <option *ngFor="let province of provinces">{{province.title}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 pd0">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">
+                        {{'postalCode' | langTh}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">
+                        {{'postalCode' | langEn}}</div>
+                    <div class="col-xs-12 pd0">
+                        <input type="number" class="form-control kanit regisbt-m" placeholder="รหัสไปรษณีย์"
+                            [ngClass]="{ 'is-invalid': submitted && f.workPostno.errors }" name="workPostno"
+                            [attr.disabled]="isEdit ? '' : null" id="workPostno" formControlName="workPostno"
+                            [readonly]="isEdit">
+                        <div class="validate"></div>
+                        <div *ngIf="submitted && f.workPostno.errors" class="invalid-feedback">
+                            <div *ngIf="f.workPostno.errors.required && serviceProviderService.lang == 'th'">
+                                {{'pleaseEnter' | langTh}} {{'postalCode' | langTh}}</div>
+                            <div *ngIf="f.workPostno.errors.required && serviceProviderService.lang == 'en'">
+                                {{'pleaseEnter' | langEn}} {{'postalCode' | langEn}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 mt20 pd0" style="margin-bottom: 15px;">
+                <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-6 fs3">{{'mailingAddress' | langTh}}
+                </div>
+                <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-6 fs3">{{'mailingAddress' | langEn}}
+                </div>
+            </div>
+            <div class=" col-xs-12" style="padding: 10px 0px 40px 0px;background-color: {{checkColorback(isEdit)}}">
+                <div class="col-xs-12 pd0">
+                    <label class="custom-checkbox">
+                        <input type="checkbox" value="checkbox1" [(ngModel)]="model.isCurrentSameHome"
+                            (ngModelChange)="setAddress($event,'currentSameHome')" [attr.disabled]="isEdit ? '' : null"
+                            [ngModelOptions]="{standalone: true}">
+                        <span *ngIf="serviceProviderService.lang == 'th'"
+                            style="float: right; position: absolute;padding: 1.5% 40px;  font-size: 17px;  opacity: 1;color: #6C6C6C;font-weight: normal;">{{'sameHomeAddress' | langTh}}</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'"
+                            style="float: right; position: absolute;padding: 1.5% 40px;  font-size: 17px;  opacity: 1;color: #6C6C6C;font-weight: normal;">{{'sameHomeAddress' | langEn}}</span>
+                    </label>
+                </div>
+            </div>
+            <div class=" col-xs-12" style="padding: 10px 0px 40px 0px;background-color: {{checkColorback(isEdit)}}">
+                <div class="col-xs-12 pd0">
+                    <label class="custom-checkbox">
+                        <input type="checkbox" value="checkbox1" [(ngModel)]="model.isCurrentSameWork"
+                            (ngModelChange)="setAddress($event,'currentSameWork')" [attr.disabled]="isEdit ? '' : null"
+                            [ngModelOptions]="{standalone: true}">
+                        <span *ngIf="serviceProviderService.lang == 'th'"
+                            style="float: right; position: absolute;padding: 1.5% 40px;  font-size: 17px;  opacity: 1;color: #6C6C6C;font-weight: normal;">{{'sameWorkAddress' | langTh}}</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'"
+                            style="float: right; position: absolute;padding: 1.5% 40px;  font-size: 17px;  opacity: 1;color: #6C6C6C;font-weight: normal;">{{'sameWorkAddress' | langEn}}</span>
+                    </label>
+                </div>
+            </div>
+
+            <div *ngIf="!(model.isCurrentSameHome || model.isCurrentSameWork)" class=" col-xs-12"
+                style="padding: 15px 0px;background-color: {{checkColorback(isEdit)}}">
+                <div class="col-xs-6 pd0">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">
+                        {{'phoneNumber' | langTh}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">
+                        {{'phoneNumber' | langEn}}</div>
+                    <div class="col-xs-12 pd0">
+                        <div class="col-xs-12 ">
+                            <input type="number" class="form-control kanit regisbt-m" placeholder="02_ - ___ - _____"
+                                [ngClass]="{ 'is-invalid': submitted && f.currentPhone.errors }" name="currentPhone"
+                                id="currentPhone" formControlName="currentPhone" [readonly]="isEdit">
+                            <div class="validate"></div>
+                            <div *ngIf="submitted && f.currentPhone.errors" class="invalid-feedback">
+                                <div *ngIf="f.currentPhone.errors.required && serviceProviderService.lang == 'th'">
+                                    {{'pleaseEnter' | langTh}} {{'phoneNumber' | langTh}}</div>
+                                <div *ngIf="f.currentPhone.errors.required && serviceProviderService.lang == 'en'">
+                                    {{'pleaseEnter' | langEn}} {{'phoneNumber' | langEn}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="!(model.isCurrentSameHome || model.isCurrentSameWork)" class=" col-xs-12"
+                style="padding: 15px 0px;background-color: {{checkColorback(isEdit)}}">
+                <div class="col-xs-6 pd0">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">
+                        {{'addressHouse' | langTh}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">
+                        {{'addressHouse' | langEn}}</div>
+                    <div class="col-xs-12 pd0">
+                        <div class="col-xs-6 " style="padding-right: 0px;">
+                            <input type="text" class="form-control kanit regisbt-m aCenter" placeholder="เลขที่"
+                                [ngClass]="{ 'is-invalid': submitted && f.currentAddress.errors }" name="currentAddress"
+                                id="currentAddress" formControlName="currentAddress" [readonly]="isEdit">
+                            <div class="validate"></div>
+                            <div *ngIf="submitted && f.currentAddress.errors" class="invalid-feedback">
+                                <div *ngIf="f.currentAddress.errors.required && serviceProviderService.lang == 'th'">
+                                    {{'pleaseEnter' | langTh}} {{'houseNumber' | langTh}}</div>
+                                <div *ngIf="f.currentAddress.errors.required && serviceProviderService.lang == 'en'">
+                                    {{'pleaseEnter' | langEn}} {{'houseNumber' | langEn}}</div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 " style="padding-left: 0px;">
+                            <input type="text" class="form-control kanit regisbt-m aCenter" placeholder="หมู่ที่"
+                                formControlName="currentMoo" [readonly]="isEdit"
+                                [ngClass]="{ 'is-invalid': submitted && f.currentMoo.errors }">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 pd0">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">
+                        {{'villageBuilding' | langTh}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">
+                        {{'villageBuilding' | langEn}}</div>
+                    <div class="col-xs-12 pd0">
+                        <input type="text" class="form-control kanit regisbt-m" placeholder="อาคาร / หมู่บ้าน"
+                            [ngClass]="{ 'is-invalid': submitted && f.currentAddress2.errors }" name="currentAddress2"
+                            id="currentAddress2" formControlName="currentAddress2" [readonly]="isEdit">
+                        <div class="validate"></div>
+                        <div *ngIf="submitted && f.currentAddress2.errors" class="invalid-feedback">
+                            <div *ngIf="f.currentAddress2.errors.required && serviceProviderService.lang == 'th'">
+                                {{'pleaseEnter' | langTh}} {{'villageBuilding' | langTh}}</div>
+                            <div *ngIf="f.currentAddress2.errors.required && serviceProviderService.lang == 'en'">
+                                {{'pleaseEnter' | langEn}} {{'villageBuilding' | langEn}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="!(model.isCurrentSameHome || model.isCurrentSameWork)" class=" col-xs-12"
+                style="padding: 15px 0px;background-color: {{checkColorback(isEdit)}}">
+                <div class="col-xs-6 pd0">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">{{'lane' | langTh}}
+                    </div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">{{'lane' | langEn}}
+                    </div>
+                    <div class="col-xs-12 pd0">
+                        <div class="col-xs-12 ">
+                            <input type="text" class="form-control kanit regisbt-m" placeholder="ซอย"
+                                formControlName="currentSoi" [readonly]="isEdit"
+                                [ngClass]="{ 'is-invalid': submitted && f.currentSoi.errors }">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 pd0">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">{{'road' | langTh}}
+                    </div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">{{'road' | langEn}}
+                    </div>
+                    <div class="col-xs-12 pd0">
+                        <input type="text" class="form-control kanit regisbt-m" placeholder="ถนน"
+                            formControlName="currentRoad" [readonly]="isEdit"
+                            [ngClass]="{ 'is-invalid': submitted && f.currentRoad.errors }">
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="!(model.isCurrentSameHome || model.isCurrentSameWork)" class=" col-xs-12"
+                style="padding: 15px 0px;background-color: {{checkColorback(isEdit)}}">
+                <div class="col-xs-6 pd0">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">
+                        {{'subDistrictSubArea' | langTh}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">
+                        {{'subDistrictSubArea' | langEn}}</div>
+                    <div class="col-xs-12 pd0">
+                        <div class="col-xs-12 ">
+                            <input type="text" class="form-control kanit regisbt-m" placeholder="แขวง / ตำบล"
+                                [ngClass]="{ 'is-invalid': submitted && f.currentTambon.errors }" name="currentTambon"
+                                id="currentTambon" formControlName="currentTambon" [readonly]="isEdit">
+                            <div class="validate"></div>
+                            <div *ngIf="submitted && f.currentTambon.errors" class="invalid-feedback">
+                                <div *ngIf="f.currentTambon.errors.required && serviceProviderService.lang == 'th'">
+                                    {{'pleaseEnter' | langTh}} {{'subDistrictSubArea' | langTh}}</div>
+                                <div *ngIf="f.currentTambon.errors.required && serviceProviderService.lang == 'en'">
+                                    {{'pleaseEnter' | langEn}} {{'subDistrictSubArea' | langEn}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 pd0">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">
+                        {{'districtArea' | langTh}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">
+                        {{'districtArea' | langEn}}</div>
+                    <div class="col-xs-12 pd0">
+                        <input type="text" class="form-control kanit regisbt-m" placeholder="เขต / อำเภอ"
+                            [ngClass]="{ 'is-invalid': submitted && f.currentAmphoe.errors }" name="currentAmphoe"
+                            id="currentAmphoe" formControlName="currentAmphoe" [readonly]="isEdit">
+                        <div class="validate"></div>
+                        <div *ngIf="submitted && f.currentAmphoe.errors" class="invalid-feedback">
+                            <div *ngIf="f.currentAmphoe.errors.required && serviceProviderService.lang == 'th'">
+                                {{'pleaseEnter' | langTh}} {{'districtArea' | langTh}}</div>
+                            <div *ngIf="f.currentAmphoe.errors.required && serviceProviderService.lang == 'en'">
+                                {{'pleaseEnter' | langEn}} {{'districtArea' | langEn}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="!(model.isCurrentSameHome || model.isCurrentSameWork)" class=" col-xs-12"
+                style="padding: 15px 0px;background-color: {{checkColorback(isEdit)}}">
+                <div class="col-xs-6 pd0">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">
+                        {{'province' | langTh}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">
+                        {{'province' | langEn}}</div>
+                    <div class="col-xs-12 pd0">
+                        <div class="col-xs-12 ">
+                            <select formControlName="currentProvince" class="form-control kanit regisbt-m select"
+                                [attr.disabled]="isEdit ? '' : null"
+                                [ngClass]="{ 'is-invalid': submitted && f.currentProvince.errors }">
+                                <option>จังหวัด</option>
+                                <option *ngFor="let province of provinces">{{province.title}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 pd0">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">
+                        {{'postalCode' | langTh}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">
+                        {{'postalCode' | langEn}}</div>
+                    <div class="col-xs-12 pd0">
+                        <input type="number" class="form-control kanit regisbt-m" placeholder="รหัสไปรษณีย์"
+                            [ngClass]="{ 'is-invalid': submitted && f.currentPostno.errors }" name="currentPostno"
+                            id="currentPostno" formControlName="currentPostno" [readonly]="isEdit">
+                        <div class="validate"></div>
+                        <div *ngIf="submitted && f.currentPostno.errors" class="invalid-feedback">
+                            <div *ngIf="f.currentPostno.errors.required && serviceProviderService.lang == 'th'">
+                                {{'pleaseEnter' | langTh}} {{'postalCode' | langTh}}</div>
+                            <div *ngIf="f.currentPostno.errors.required && serviceProviderService.lang == 'en'">
+                                {{'pleaseEnter' | langEn}} {{'postalCode' | langEn}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 mt20 pd0" style="margin-bottom: 10px;">
+                <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-6 fs3">{{'education' | langTh}}</div>
+                <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-6 fs3">{{'education' | langEn}}</div>
+            </div>
+            <div class=" col-xs-12" style="padding: 15px 0px;background-color: {{checkColorback(isRead)}}">
+                <div class="col-xs-6 pd0">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">
+                        {{'highestEducation' | langTh}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">
+                        {{'highestEducation' | langEn}}</div>
+                    <div class="col-xs-12 pd0">
+                        <div class="col-xs-12">
+                            <input type="text" class="form-control kanit regisbt-m" placeholder="การศึกษาสูงสุด"
+                                [ngClass]="{ 'is-invalid': submitted && f.educationDegree.errors }"
+                                name="educationDegree" id="educationDegree" formControlName="educationDegree"
+                                [readonly]="isRead">
+                            <div class="validate"></div>
+                            <div *ngIf="submitted && f.educationDegree.errors" class="invalid-feedback">
+                                <div *ngIf="f.educationDegree.errors.required && serviceProviderService.lang == 'th'">
+                                    {{'pleaseEnter' | langTh}} {{'highestEducation' | langTh}}</div>
+                                <div *ngIf="f.educationDegree.errors.required && serviceProviderService.lang == 'en'">
+                                    {{'pleaseEnter' | langEn}} {{'highestEducation' | langEn}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class=" col-xs-12" style="padding: 15px 0px;background-color: {{checkColorback(isRead)}}">
+                <div class="col-xs-12 pd0">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">
+                        1.{{'completeBachelorVeterinary' | langTh}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">
+                        1.{{'completeBachelorVeterinary' | langEn}}</div>
+                    <div class="col-xs-12 pd0">
+                        <div class="col-xs-12">
+                            <div class="col-xs-3 pd0">
+                                <select formControlName="educationYear" class="form-control kanit regisbt-m"
+                                    [attr.disabled]="isRead ? '' : null"
+                                    [ngClass]="{ 'is-invalid': submitted && f.educationYear.errors }">
+                                    <option *ngIf="serviceProviderService.lang == 'th'">ปี</option>
+                                    <option *ngIf="serviceProviderService.lang == 'en'">year</option>
+                                    <option *ngFor="let item of yearList">{{item}}</option>
+                                </select>
+                            </div>
+                            <div class="col-xs-9 pd0">
+                                <select formControlName="education" class="form-control kanit regisbt-m"
+                                    [attr.disabled]="isRead ? '' : null" (change)="checkEducation()">
+                                    <option *ngIf="serviceProviderService.lang == 'th'" value="" disabled selected>
+                                        สถาบัน</option>
+                                    <option *ngIf="serviceProviderService.lang == 'en'" value="" disabled selected>
+                                        institution</option>
+                                    <option *ngFor="let item of universityList">{{item}}</option>
+                                </select>
+                                <div *ngIf="showInputEducation" class="col-xs-12">
+                                    <input type="text" class="form-control kanit regisbt-m" placeholder="สถาบัน"
+                                        [ngClass]="{ 'is-invalid': submitted && f.education.errors }" name="education"
+                                        id="education" formControlName="education" [readonly]="isRead">
+                                    <div class="validate"></div>
+                                    <div *ngIf="submitted && f.education.errors" class="invalid-feedback">
+                                        <div *ngIf="f.education.errors.required && serviceProviderService.lang == 'th'">
+                                            กรุณากรอก สถาบัน</div>
+                                        <div *ngIf="f.education.errors.required && serviceProviderService.lang == 'en'">
+                                            {{'pleaseEnter' | langEn}} institution</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class=" col-xs-12" style="padding: 15px 0px;background-color: {{checkColorback(isRead)}}">
+                <div class="col-xs-12 pd0">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">
+                        2.{{'otherProfessionalCertificate' | langTh}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">
+                        2.{{'otherProfessionalCertificate' | langEn}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">
+                        {{'highestLevelOfEducation' | langTh}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">
+                        {{'highestLevelOfEducation' | langEn}}</div>
+                    <div class="col-xs-12 pd0">
+                        <div class="col-xs-12 ">
+                            <div class="col-xs-3 pd0">
+                                <select formControlName="secondaryEducationYear" class="form-control kanit regisbt-m"
+                                    [attr.disabled]="isRead ? '' : null">
+                                    <option>ปี</option>
+                                    <option *ngFor="let item of yearList">{{item}}</option>
+                                </select>
+                            </div>
+                            <div class="col-xs-9 pd0">
+                                <select formControlName="secondaryEducation" class="form-control kanit regisbt-m"
+                                    [attr.disabled]="isRead ? '' : null" (change)="checkSecondaryEducation()">
+                                    <option *ngIf="serviceProviderService.lang == 'th'" value="" disabled selected>
+                                        สถาบัน</option>
+                                    <option *ngIf="serviceProviderService.lang == 'en'" value="" disabled selected>
+                                        institution</option>
+                                    <option *ngFor="let item of universityList">{{item}}</option>
+                                </select>
+                                <div *ngIf="showInputSecondaryEducation" class="col-xs-12">
+                                    <input type="text" class="form-control kanit regisbt-m" placeholder="สถาบัน"
+                                        [ngClass]="{ 'is-invalid': submitted && f.secondaryEducation.errors }"
+                                        name="secondaryEducation" id="secondaryEducation"
+                                        formControlName="secondaryEducation" [readonly]="isRead">
+                                    <div class="validate"></div>
+                                    <div *ngIf="submitted && f.secondaryEducation.errors" class="invalid-feedback">
+                                        <div
+                                            *ngIf="f.secondaryEducation.errors.required && serviceProviderService.lang == 'th'">
+                                            กรุณากรอก สถาบัน</div>
+                                        <div
+                                            *ngIf="f.secondaryEducation.errors.required && serviceProviderService.lang == 'en'">
+                                            {{'pleaseEnter' | langEn}} institution</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class=" col-xs-12" style="padding: 27px 0px;background-color: {{checkColorback(isRead)}}">
+                <div class="col-xs-12 pd0">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 kanit_m c-6c">
+                        2.{{'noteForOfficers' | langTh}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 kanit_m c-6c">
+                        2.{{'noteForOfficers' | langEn}}</div>
+                    <div class="col-xs-12 pd0">
+                        <div class="col-xs-12 ">
+                            <input type="text" class="form-control kanit regisbt-m"
+                                placeholder="หมายเหตุ (สำหรับเจ้าหน้าที่)" formControlName="note"
+                                [ngClass]="{ 'is-invalid': submitted && f.note.errors }">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class=" col-xs-12" style="padding: 10px 0px;background-color: {{checkColorback(isRead)}}">
+                <div class="col-xs-12 pd0">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 registxt">เลขอนุญาต</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt">license number</div>
+                    <div class="col-xs-12 pd0">
+                        <div class="col-xs-12">
+                            <input type="text" class="form-control kanit regisbt-m" placeholder="เลขอนุญาต"
+                                formControlName="licenseNumber" [readonly]="isRead"
+                                [ngClass]="{ 'is-invalid': submitted && f.licenseNumber.errors }">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 pd0">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 mt-4 registxt">วันที่เริ่มต้น
+                        </div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt">Date of Issue</div>
+                        <div class="col-xs-12 pd0">
+                            <div class="col-xs-12 pd0">
+                                <div class="col-md-4 col-xs-4 ">
+                                    <select formControlName="dayOfIssue" class="form-control kanit regisbt-m"
+                                        [attr.disabled]="isRead ? '' : null"
+                                        [ngClass]="{ 'is-invalid': submitted && f.dayOfIssue.errors }">
+                                        <option *ngIf="serviceProviderService.lang == 'th'">{{'day' | langTh}}</option>
+                                        <option *ngIf="serviceProviderService.lang == 'en'">{{'day' | langEn}}</option>
+                                        <option *ngFor="let item of dayIssueList">{{item}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4 col-xs-4 ">
+                                    <select formControlName="monthOfIssue" class="form-control kanit regisbt-m"
+                                        [attr.disabled]="isRead ? '' : null"
+                                        [ngClass]="{ 'is-invalid': submitted && f.monthOfIssue.errors }"
+                                        (change)="checkDayIssue()">
+                                        <option *ngIf="serviceProviderService.lang == 'th'">{{'month' | langTh}}
+                                        </option>
+                                        <option *ngIf="serviceProviderService.lang == 'en'">{{'month' | langEn}}
+                                        </option>
+                                        <option *ngFor="let item of monthList">{{item}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4 col-xs-4 ">
+                                    <select formControlName="yearOfIssue" class="form-control kanit regisbt-m"
+                                        [attr.disabled]="isRead ? '' : null"
+                                        [ngClass]="{ 'is-invalid': submitted && f.yearOfIssue.errors }"
+                                        (change)="checkDayIssue()">
+                                        <option *ngIf="serviceProviderService.lang == 'th'">{{'year' | langTh}}</option>
+                                        <option *ngIf="serviceProviderService.lang == 'en'">{{'year' | langEn}}</option>
+                                        <option *ngFor="let item of yearList">{{item}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12 mt-4 registxt">วันที่สิ้นสุด
+                        </div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12 registxt">Date of Expiry</div>
+                        <div class="col-xs-12 pd0">
+                            <div class="col-xs-12 pd0">
+                                <div class="col-md-4 col-xs-4">
+                                    <select formControlName="dayOfExpiry" class="form-control kanit regisbt-m"
+                                        [attr.disabled]="isRead ? '' : null"
+                                        [ngClass]="{ 'is-invalid': submitted && f.dayOfExpiry.errors }">
+                                        <option *ngIf="serviceProviderService.lang == 'th'">{{'day' | langTh}}</option>
+                                        <option *ngIf="serviceProviderService.lang == 'en'">{{'day' | langEn}}</option>
+                                        <option *ngFor="let item of dayExpiryList">{{item}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4 col-xs-4">
+                                    <select formControlName="monthOfExpiry" class="form-control kanit regisbt-m"
+                                        [attr.disabled]="isRead ? '' : null"
+                                        [ngClass]="{ 'is-invalid': submitted && f.monthOfExpiry.errors }"
+                                        (change)="checkDayExpiry()">
+                                        <option *ngIf="serviceProviderService.lang == 'th'">{{'month' | langTh}}
+                                        </option>
+                                        <option *ngIf="serviceProviderService.lang == 'en'">{{'month' | langEn}}
+                                        </option>
+                                        <option *ngFor="let item of monthList">{{item}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4 col-xs-4">
+                                    <select formControlName="yearOfExpiry" class="form-control kanit regisbt-m"
+                                        [attr.disabled]="isRead ? '' : null"
+                                        [ngClass]="{ 'is-invalid': submitted && f.yearOfExpiry.errors }"
+                                        (change)="checkDayExpiry()">
+                                        <option *ngIf="serviceProviderService.lang == 'th'">{{'year' | langTh}}</option>
+                                        <option *ngIf="serviceProviderService.lang == 'en'">{{'year' | langEn}}</option>
+                                        <option *ngFor="let item of yearList">{{item}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class=" col-xs-12  mt55 pd0">
+                <div class="col-xs-12">
+                    <a *ngIf="serviceProviderService.lang == 'th'" download="file_register.pdf" target="_blank"
+                        href="/assets/file_register.pdf">
+                        {{'downloadLicenseForm' | langTh}}
+                    </a>
+                    <a *ngIf="serviceProviderService.lang == 'en'" download="file_register.pdf" target="_blank"
+                        href="/assets/file_register.pdf">
+                        {{'downloadLicenseForm' | langEn}}
+                    </a>
+                </div>
+            </div>
+            <div class=" col-xs-12  mt-4 pd0">
+                <div class="col-xs-12">
+                    <cdsf (cModel)="model.file = $event" [label]="'ไฟล์ PDF (วางไฟล์ใบอนุญาต PDF)'"
+                        [data]="[{ imageUrl: model.fileUrl == '' ? '' : imageFile }]" [code]="'register'">
+                    </cdsf>
+                </div>
+            </div> -->
+
+            <div *ngIf="code == ''" class="col-xs-12" style="display: flex;justify-content: center;margin: 9% 0%;">
+                <button *ngIf="serviceProviderService.lang == 'th'" type="button" class="form-control kanit"
+                    style="width: 30vw;height: 8vw;border-radius: 2.5vw;font-size: 3vw;color: #fff;text-align: center; background-color:#E19B24"
+                    (click)="validate()">
+                    {{'register' | langTh}}</button>
+                <button *ngIf="serviceProviderService.lang == 'en'" type="button" class="form-control kanit"
+                    style="width: 30vw;height: 8vw;border-radius: 2.5vw;font-size: 3vw;color: #fff;text-align: center; background-color:#E19B24"
+                    (click)="validate()">
+                    {{'register' | langEn}}</button>
+            </div>
+            <div *ngIf="code != ''" class="col-xs-12" style="display: flex;justify-content: center;margin: 9% 0%;">
+                <button *ngIf="serviceProviderService.lang == 'th'" type="button" class="form-control kanit"
+                    style="width: 30vw;height: 8vw;border-radius: 2.5vw;font-size: 3vw;color: #fff;text-align: center; background-color:#E19B24"
+                    (click)="validate()">
+                    บันทึก</button>
+                <button *ngIf="serviceProviderService.lang == 'en'" type="button" class="form-control kanit"
+                    style="width: 30vw;height: 8vw;border-radius: 2.5vw;font-size: 3vw;color: #fff;text-align: center; background-color:#E19B24"
+                    (click)="validate()">
+                    save</button>
+
+            </div>
+
+
+        </form>
+    </div>
+</div>
+
+
+<!-- component header type 1 -->
+<app-d-t1-footer></app-d-t1-footer>
+
+<register-preview *ngIf="showPreview" [model]="model" (callback)="fromModal($event)"></register-preview>

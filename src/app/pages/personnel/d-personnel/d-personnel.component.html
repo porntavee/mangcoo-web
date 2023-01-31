@@ -1,0 +1,357 @@
+<app-d-t1-header></app-d-t1-header>
+
+<div class="col-md-12 m-0 p-0 d-none d-lg-block minDiv">
+    <!-- banner -->
+    <div class="col-md-12  col-xs-12 minDiv pd0">
+        <img style="width:100%;object-fit: fill;" src="./assets/img/background_vet.png">
+        <!-- TH -->
+        <div class="btn-group" style="display:flex;justify-content: center;" *ngIf="serviceProviderService.lang == 'th'">
+            <button type="button" class="btn-personnel kanit_xl font-w500 pointer" [class.btn-personnel-active]="menuSelected == 0" (click)="changeMenu(0)">คณะกรรมการสัตวแพทยสภา</button>
+            <button type="button" class="btn-personnel kanit_xl font-w500 pointer" [class.btn-personnel-active]="menuSelected == 1" (click)="changeMenu(1)">โครงสร้างสำนักงาน</button>
+            <button type="button" class="btn-personnel kanit_xl font-w500 pointer" [class.btn-personnel-active]="menuSelected == 2" (click)="changeMenu(2)">บุคลากรเจ้าหน้าที่</button>
+        </div>
+        <!-- EN -->
+        <div class="btn-group" style="display:flex;justify-content: center;" *ngIf="serviceProviderService.lang == 'en'">
+            <button type="button" class="btn-personnel kanit_xl font-w500 pointer" [class.btn-personnel-active]="menuSelected == 0" (click)="changeMenu(0)">
+                Board of Veterinary Council</button>
+            <button type="button" class="btn-personnel kanit_xl font-w500 pointer" [class.btn-personnel-active]="menuSelected == 1" (click)="changeMenu(1)">Office Structure
+            </button>
+            <button type="button" class="btn-personnel kanit_xl font-w500 pointer" [class.btn-personnel-active]="menuSelected == 2" (click)="changeMenu(2)">Staff Personnel
+            </button>
+        </div>
+    </div>
+
+    <!-- คณะกรรมการสัตวแพทยสภา -->
+    <div *ngIf="menuSelected == 0 && serviceProviderService.lang == 'th'">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div style="height: 2em;"></div>
+            <div class="df kanit_xxl font-w600" style="justify-content: center;color: #1B6CA8;">
+                <span>{{categorySelected2.title}}
+                    {{categorySelected.title}}</span>
+            </div>
+            <div style="height: 2px; background-color: #707070;width: 100%;margin: 20px 0;opacity: 0.36;"></div>
+            <div class="df" style="flex-wrap: wrap;">
+                <div *ngFor="let category2 of categoryList2" class="menu-personnel pointer kanit_l" [class.menu-personnel-active]="category2.code === categorySelected2.code" (click)="changeCategory(category2)">
+                    <span>{{category2.title}}</span>
+                </div>
+            </div>
+            <div style="height: 2px; width: 100%;margin: 20px 0;"></div>
+            <span *ngIf="categoryList.length >0" class="kanit_l mb-4" style="width: 100%;">{{'term'|
+                langTh}}</span>
+            <div class="df" style="flex-wrap: wrap;">
+                <div *ngFor="let category of categoryList" class="menu-personnel pointer kanit_l" [class.menu-personnel-active]="category.code === categorySelected.code" (click)="changeYear(category)">
+                    {{category.title}}</div>
+            </div>
+            <div class="df kanit_xxl" style="justify-content: center;color: #3B7BA2;font-weight: 600;margin: 50px 0;">
+                <span>{{categorySelected2.title}} พ.ศ.
+                    {{categorySelected.title}}</span>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div *ngFor="let p of personnelStructureList;let i = index;">
+            <div class="dfc" id="aa{{i}}" style="width: 100%;justify-content: center;background-color: {{checkColor(i)}};padding-bottom: 30px;">
+                <div class="box-header-position-personnel">
+                    <div class="header-position-personnel">
+                        {{p.position}}</div>
+                </div>
+                <div class="row" *ngFor="let r of p.personnelRow;let ix = index;" id="aabb{{ix}}">
+                    <div class="box-personnel-card" style="max-width: 1980%;min-width: 1280px;justify-content: center;">
+                        <div class="personnel-card dfc" *ngFor="let person of r.model;let idx = index;" id="cc{{idx}}">
+                            <img src="{{person.imageUrl}}" height="150px" width="150px" style="object-fit: fill;border-radius: 50%;" alt="{{person.title}}">
+                            <div style="height: 2em;"></div>
+                            <div style="font-size: 1.3rem;font-weight: 500;text-align: center;" (click)="copyMessage(person)">
+                                {{person.firstName}} {{person.lastName}}
+                            </div>
+                            <div style="height: 1em;"></div>
+                            <div style="color: #707070;font-size: 1.2rem;text-align: center;">{{person.description}}</div>
+
+                        </div>
+                    </div>
+                    <div style="height: 4em;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="menuSelected == 0 && serviceProviderService.lang == 'en'">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div style="height: 2em;"></div>
+            <div class="df kanit_xxl font-w600" style="justify-content: center;color: #1B6CA8;">
+                <span>{{categorySelected2.titleEN}}
+                    {{categorySelected.titleEN}}</span>
+            </div>
+            <div style="height: 2px; background-color: #707070;width: 100%;margin: 20px 0;opacity: 0.36;"></div>
+            <div class="df" style="flex-wrap: wrap;">
+                <div *ngFor="let category2 of categoryList2" class="menu-personnel pointer kanit_l" [class.menu-personnel-active]="category2.code === categorySelected2.code" (click)="changeCategory(category2)">
+                    <span>{{category2.titleEN}}</span>
+                </div>
+            </div>
+            <div style="height: 2px; width: 100%;margin: 20px 0;"></div>
+            <span *ngIf="categoryList.length >0" class="kanit_l mb-4" style="width: 100%;">{{'term'|
+                langEn}}</span>
+            <div class="df" style="flex-wrap: wrap;">
+                <div *ngFor="let category of categoryList" class="menu-personnel pointer kanit_l" [class.menu-personnel-active]="category.code === categorySelected.code" (click)="changeYear(category)">
+                    {{category.titleEN}}</div>
+            </div>
+            <div class="df kanit_xxl" style="justify-content: center;color: #3B7BA2;font-weight: 600;margin: 50px 0;">
+                <span>{{categorySelected2.titleEN}}
+                    {{categorySelected.titleEN}}</span>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div *ngFor="let p of personnelStructureListEN;let i = index;">
+            <div class="dfc" style="width: 100%;justify-content: center;background-color: {{checkColor(i)}};padding-bottom: 30px;">
+                <div class="box-header-position-personnel">
+                    <div class="header-position-personnel">
+                        {{p.positionEN}}</div>
+                </div>
+                <div class="row" *ngFor="let r of p.personnelRowEN">
+                    <div class="box-personnel-card" style="max-width: 1980%;min-width: 1280px;justify-content: center;">
+                        <div class="personnel-card dfc" *ngFor="let person of r.model;">
+                            <img src="{{person.imageUrl}}" height="150px" width="150px" style="object-fit: fill;border-radius: 50%;" alt="{{person.titleEN}}">
+                            <div style="height: 2em;"></div>
+                            <div style="font-size: 1.3rem;font-weight: 500;text-align: center;" (click)="copyMessageEN(person)">
+                                {{person.firstNameEN}} {{person.lastNameEN}}
+                            </div>
+                            <div style="height: 1em;"></div>
+                            <div style="color: #707070;font-size: 1.2rem;text-align: center;">{{person.descriptionEN}}</div>
+                        </div>
+                    </div>
+                    <div style="height: 4em;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- โครงสร้างสำนักงาน -->
+    <div *ngIf="menuSelected == 1" class="dfc" style="width: 100%;">
+        <div class="df" style="margin:40px 0;justify-content: center;font-size: 3rem;color: #1B6CA8;font-weight: 600;">
+            <span *ngIf="serviceProviderService.lang == 'th'">โครงสร้างสำนักงานสัตวแพทยสภา</span>
+            <span *ngIf="serviceProviderService.lang == 'en'">Office Structure</span>
+        </div>
+        <div class="df" style="width: 100%;padding: 20px; justify-content: center;">
+            <!-- <img src="http://vet.we-builds.com/vet-document/images/member/member_225919222.png" width="100%" height="100%"> -->
+            <img src="https://www.vetcouncil.or.th/vet-document/images/aboutUs/aboutUs_220856270.png" width="90%" height="90%">
+
+
+        </div>
+        <div class="df" style="width: 100%;padding: 20px; justify-content: center;">
+            <img src="https://www.vetcouncil.or.th/vet-document/images/aboutUs/aboutUs_220925138.png" width="90%" height="90%">
+
+        </div>
+    </div>
+
+    <!-- บุคลากรเจ้าหน้าที่ -->
+    <div *ngIf="menuSelected == 2" class="dfc" style="width: 100%;">
+        <div class="df" style="margin:40px 0;justify-content: center;font-size: 3rem;color: #1B6CA8;font-weight: 600;">
+            {{personnelListHead.position}}</div>
+        <div class="df" style="width: 100%;justify-content: center;">
+            <div class="box-personnel-card" style="max-width: 1980%;min-width: 1280px;justify-content: center;">
+                <div style="width: 30%;"></div>
+                <div class="personnel-card dfc">
+                    <img src="{{personnelListHead.imageUrl}}" height="150px" width="150px" style="object-fit: fill;border-radius: 50%;" alt="{{personnelListHead.title}}">
+                    <div style="height: 2em;"></div>
+                    <div style="font-size: 1.3rem;font-weight: 500;text-align: center;" (click)="copyMessage(person,'2')">
+                        {{personnelListHead.prefixName}} {{personnelListHead.firstName}} {{personnelListHead.lastName}}
+                    </div>
+                    <div style="height: 1em;"></div>
+                    <div style="color: #707070;font-size: 1.2rem;text-align: center;">{{personnelListHead.description}}</div>
+                </div>
+                <div style="width: 30%;"></div>
+            </div>
+        </div>
+        <div style="height: 8em;"></div>
+        <div class="row" *ngFor="let p of personnelList;let i = index;">
+            <div class="dfc" *ngIf="i > 0" style="width: 100%;justify-content: center;background-color: {{checkColor(i)}};padding-bottom: 30px;">
+                <div class="box-header-position-personnel">
+                    <div class="header-position-personnel">{{p.position}}</div>
+                </div>
+                <div class="row" *ngFor="let r of p.personnelListRow">
+                    <div class="box-personnel-card" style="max-width: 1980%;min-width: 1280px;justify-content: center;">
+                        <div class="personnel-card dfc" *ngFor="let person of r.model;">
+                            <img src="{{person.imageUrl}}" height="150px" width="150px" style="object-fit: fill;border-radius: 50%;" alt="{{person.title}}">
+                            <div style="height: 2em;"></div>
+                            <div *ngIf="serviceProviderService.lang == 'th'" style="font-size: 1.3rem;font-weight: 500;text-align: center;" (click)="copyMessage(person,'2')">
+                                {{person.prefixName}} {{person.firstName}} {{person.lastName}}
+                            </div>
+                            <div *ngIf="serviceProviderService.lang == 'en'" style="font-size: 1.3rem;font-weight: 500;text-align: center;" (click)="copyMessage(person,'2')">
+                                {{person.prefixNameEN}} {{person.firstNameEN}} {{person.lastNameEN}}
+                            </div>
+                            <div style="height: 1em;"></div>
+                            <div *ngIf="serviceProviderService.lang == 'th'" style="color: #707070;font-size: 1.2rem;text-align: center;">{{person.description}}</div>
+                            <div *ngIf="serviceProviderService.lang == 'en'" style="color: #707070;font-size: 1.2rem;text-align: center;">{{person.descriptionEN}}</div>
+                        </div>
+                    </div>
+                    <div style="height: 4em;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-xs-12 m-0 p-0 d-block d-lg-none">
+    <!-- banner -->
+    <div class="col-xs-12 p-0 m-0" style="width:100%;height: 35vw;">
+        <img style="width:100%;object-fit: fill;height: 35vw;" src="./assets/img/background_vet.png">
+    </div>
+    <div class="col-xs-12 m-0 btn-group" style="display:flex;flex-wrap: wrap;padding: 10px;row-gap: 2vw;column-gap: 2vw;">
+        <button type="button" class="btn-personnel-m kanit_m font-w500 pointer" [class.btn-personnel-m-active]="menuSelected == 0" (click)="changeMenu(0)">คณะกรรมการสัตวแพทยสภา</button>
+        <button type="button" class="btn-personnel-m kanit_m font-w500  pointer" [class.btn-personnel-m-active]="menuSelected == 1" (click)="changeMenu(1)">โครงสร้างสำนักงาน</button>
+        <button type="button" class="btn-personnel-m kanit_m font-w500  pointer" [class.btn-personnel-m-active]="menuSelected == 2" (click)="changeMenu(2)">บุคลากรเจ้าหน้าที่</button>
+    </div>
+    <!-- คณะกรรมการสัตวแพทยสภา -->
+    <div *ngIf="menuSelected == 0 && serviceProviderService.lang == 'th'" class="col-xs-12 m-0 ph-14">
+        <div style="height: 2em;"></div>
+        <div class="df kanit_l font-w600" style="color: #1B6CA8;">{{categorySelected2.title}} {{categorySelected.title}}
+        </div>
+        <div style="height: 2px; background-color: #707070;width: 100%;margin: 5vw 0;opacity: 0.36;"></div>
+        <div class="df" style="flex-wrap: wrap;column-gap: 10px;row-gap: 5px;margin-bottom: 50px;width: 100%;">
+            <div class="df" style="flex-wrap: wrap;row-gap: 2vw;">
+                <div *ngFor="let category2 of categoryList2" class="menu-personnel pointer kanit_m" [class.menu-personnel-active]="category2.code === categorySelected2.code" (click)="changeCategory(category2)">
+                    {{category2.title}}</div>
+            </div>
+        </div>
+        <span *ngIf="categoryList.length >0" class="kanit_m mb-4" style="width: 100%;">{{'term'|
+            langTh}}</span>
+        <div style="display: flex;justify-content: start;width: 100%;margin: 10px 0 50px 0;">
+            <div class="div-dropdown-year" #droppedYear (click)="showHamburger('year')">
+                <div class="div-dropdown-content-year" [ngStyle]="{'display': showYear ? 'flex' : 'none'}" style="padding: 10px;">
+                    <div class="div-dropdown-item-year" *ngFor="let category of categoryList">
+                        <div class="menu-personnel pointer kanit_m" [class.menu-personnel-active]="category.code === categorySelected.code" (click)="changeYear(category)">{{category.title}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="div-category-knowledge kanit_m pointer" [class.div-category-knowledge-active]="true" style="margin-left: 20px;max-width: 70vw;">{{categorySelected.title}}</div>
+        </div>
+        <div class="df kanit_l" style="justify-content: center;color: #3B7BA2;font-weight: 600;margin: 30px 0 50px 0;">
+            {{categorySelected2.title}} พ.ศ. {{categorySelected.title}}</div>
+        <div *ngFor="let p of personnelStructureList;let i = index;">
+            <div class="dfc" style="width: 100%;justify-content: center;background-color: {{checkColor(i)}};padding-bottom: 30px;">
+                <div class="box-header-position-personnel">
+                    <div class="header-position-personnel">{{p.position}}</div>
+                </div>
+                <div class="box-personnel-card-m" *ngFor="let r of p.personnelRow">
+                    <div class="personnel-card-m dfc" *ngFor="let person of r.model">
+                        <img src="{{person.imageUrl}}" style="object-fit: fill;border-radius: 50%;" alt="{{person.firstName}} {{person.lastName}}">
+                        <div style="height: 2em;"></div>
+                        <div style="font-size: 1.6rem;text-align: center;" (click)="copyMessage(person)">{{person.firstName}} {{person.lastName}}
+                        </div>
+                        <div style="height: 2em;"></div>
+                        <div style="color: #707070;font-size: 1.5rem;text-align: center;">{{person.description}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="menuSelected == 0 && serviceProviderService.lang == 'en'" class="col-xs-12 m-0 ph-14">
+        <div style="height: 2em;"></div>
+        <div class="df kanit_l font-w600" style="color: #1B6CA8;">{{categorySelected2.titleEN}} {{categorySelected.titleEN}}
+        </div>
+        <div style="height: 2px; background-color: #707070;width: 100%;margin: 5vw 0;opacity: 0.36;"></div>
+        <div class="df" style="flex-wrap: wrap;column-gap: 10px;row-gap: 5px;margin-bottom: 50px;width: 100%;">
+            <div class="df" style="flex-wrap: wrap;row-gap: 2vw;">
+                <div *ngFor="let category2 of categoryList2" class="menu-personnel pointer kanit_m" [class.menu-personnel-active]="category2.code === categorySelected2.code" (click)="changeCategory(category2)">
+                    {{category2.titleEN}}</div>
+            </div>
+        </div>
+        <span *ngIf="categoryList.length >0" class="kanit_m mb-4" style="width: 100%;">{{'term'|
+            langEn}}</span>
+        <div style="display: flex;justify-content: start;width: 100%;margin: 10px 0 50px 0;">
+            <div class="div-dropdown-year" #droppedYear (click)="showHamburger('year')">
+                <div class="div-dropdown-content-year" [ngStyle]="{'display': showYear ? 'flex' : 'none'}" style="padding: 10px;">
+                    <div class="div-dropdown-item-year" *ngFor="let category of categoryList">
+                        <div class="menu-personnel pointer kanit_m" [class.menu-personnel-active]="category.code === categorySelected.code" (click)="changeYear(category)">{{category.titleEN}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="div-category-knowledge kanit_m pointer" [class.div-category-knowledge-active]="true" style="margin-left: 20px;max-width: 70vw;">{{categorySelected.titleEN}}</div>
+        </div>
+        <div class="df kanit_l" style="justify-content: center;color: #3B7BA2;font-weight: 600;margin: 30px 0 50px 0;">
+            {{categorySelected2.titleEN}} {{categorySelected.titleEN}}</div>
+        <div *ngFor="let p of personnelStructureListEN;let i = index;">
+            <div class="dfc" style="width: 100%;justify-content: center;background-color: {{checkColor(i)}};padding-bottom: 30px;">
+                <div class="box-header-position-personnel">
+                    <div class="header-position-personnel">{{p.positionEN}}</div>
+                </div>
+                <div class="box-personnel-card-m" *ngFor="let r of p.personnelRowEN">
+                    <div class="personnel-card-m dfc" *ngFor="let person of r.model">
+                        <img src="{{person.imageUrl}}" style="object-fit: fill;border-radius: 50%;" alt="{{person.firstNameEN}} {{person.lastNameEN}}">
+                        <div style="height: 2em;"></div>
+                        <div style="font-size: 1.6rem;text-align: center;" (click)="copyMessageEN(person)">{{person.firstNameEN}} {{person.lastNameEN}}
+                        </div>
+                        <div style="height: 2em;"></div>
+                        <div style="color: #707070;font-size: 1.5rem;text-align: center;">{{person.descriptionEN}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- โครงสร้างสำนักงาน -->
+    <div *ngIf="menuSelected == 1" class="dfc ph-14" style="width: 100%;">
+        <div class="df" style="margin:40px 0;justify-content: center;font-size: 3rem;color: #1B6CA8;font-weight: 600;">
+            โครงสร้างสำนักงานสัตวแพทยสภา</div>
+        <div class="df" style="width: 100%;padding: 20px;justify-content: center;">
+            <!-- <img src="http://vet.we-builds.com/vet-document/images/member/member_225919222.png" width="100%"
+                height="100%"> -->
+            <img src="https://www.vetcouncil.or.th/vet-document/images/aboutUs/aboutUs_220856270.png" width="90%" height="90%">
+
+        </div>
+        <div class="df" style="width: 100%;padding: 20px;justify-content: center;">
+            <!-- <img src="http://vet.we-builds.com/vet-document/images/member/member_225919222.png" width="100%"
+                height="100%"> -->
+
+            <img src="https://www.vetcouncil.or.th/vet-document/images/aboutUs/aboutUs_220925138.png" width="90%" height="90%">
+
+
+        </div>
+    </div>
+
+    <!-- บุคลากรเจ้าหน้าที่ -->
+    <div *ngIf="menuSelected == 2" class="dfc col-xs-12">
+        <div class="df kanit_l" style="margin:40px 0;justify-content: center;font-size: 3rem;color: #1B6CA8;font-weight: 600;">
+            {{personnelListHead.position}}</div>
+        <div class="dfc" style="width: 100%;justify-content: center;padding-bottom: 30px;">
+            <div class="box-personnel-card-m" style="justify-content: center;">
+                <!-- <div style="width: 30%;"></div> -->
+                <div class="personnel-card-m dfc">
+                    <img src="{{personnelListHead.imageUrl}}" style="object-fit: fill;border-radius: 50%;" alt="{{personnelListHead.title}}">
+                    <div style="height: 2em;"></div>
+                    <div style="font-size: 1.6rem;font-weight: 500;text-align: center;">{{personnelListHead.prefixName}} {{personnelListHead.firstName}} {{personnelListHead.lastName}}
+                    </div>
+                    <div style="height: 1em;"></div>
+                    <div style="color: #707070;font-size: 16px;text-align: center;">{{personnelListHead.description}}</div>
+                </div>
+            </div>
+        </div>
+        <div style="height: 8em;"></div>
+        <div class="row" *ngFor="let p of personnelList;let i = index;">
+            <div class="dfc" *ngIf="i > 0" style="width: 100%;justify-content: center;background-color: {{checkColor(i)}};padding-bottom: 30px;">
+                <div class="box-header-position-personnel">
+                    <div class="header-position-personnel">{{p.position}}</div>
+                </div>
+                <div class="row" *ngFor="let r of p.personnelListRow">
+                    <div class="box-personnel-card-m" style="justify-content: center;">
+                        <div class="personnel-card-m dfc" *ngFor="let person of r.model;">
+                            <img src="{{person.imageUrl}}" style="object-fit: fill;border-radius: 50%;" alt="{{person.title}}">
+                            <div style="height: 2em;"></div>
+                            <div style="font-size: 1.6rem;font-weight: 500;text-align: center;" (click)="copyMessage(person,'2')">
+                                {{person.prefixName}} {{person.firstName}} {{person.lastName}}
+                            </div>
+                            <div style="height: 1em;"></div>
+                            <div style="color: #707070;font-size: 16px;text-align: center;">{{person.description}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<button (click)="topFunction()" id="go-top" title="Go to top"><img src="./assets/img/UP.png" width="50px" height="50px"
+        alt=""></button>
+
+<!-- footer -->
+<app-d-t1-footer></app-d-t1-footer>

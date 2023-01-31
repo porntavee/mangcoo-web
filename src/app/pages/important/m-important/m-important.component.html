@@ -1,0 +1,34 @@
+<!-- component header type 1 -->
+<app-m-t1-header></app-m-t1-header>
+
+<div class="col-md-1"></div>
+<div class="col-md-10">
+    <div class="important-all-top">
+        <div class="df box">
+            <div class="left">ข้อมูลสำคัญสำหรับสมาชิกทั้งหมด</div>
+        </div>
+    </div>
+    <div class="df box-other-group">
+        <div class="important-card pointer" *ngFor="let item of model;" (click)="navToDetail(item.code)">
+            <img src="{{item.imageUrl}}" height="200px" width="100%" alt="" style="border-radius: 10px;">
+            <div *ngIf="serviceProviderService.lang == 'th'" class="dfc important-card-content">
+                <div class="df">
+                    <div class="kanit_sm important-create-by-box" *ngIf="item.center != ''">{{item.center}}</div>
+                </div>
+                <div class="color_grey70 kanit_m">{{item.title}}</div>
+                <div class="color_grey70 kanit_sm important-text-description">{{convertToPlain(item.description)}}</div>
+                <div class="color_grey70 kanit_sm">{{item.createDate | dateFormat}}</div>
+            </div>
+            <div *ngIf="serviceProviderService.lang == 'en'" class="dfc important-card-content">
+                <div class="df">
+                    <div class="kanit_sm important-create-by-box" *ngIf="item.center != ''">{{item.center}}</div>
+                </div>
+                <div class="color_grey70 kanit_m">{{item.titleEN}}</div>
+                <div class="color_grey70 kanit_sm important-text-description">{{convertToPlain(item.descriptionEN)}}
+                </div>
+                <div class="color_grey70 kanit_sm">{{item.createDate | dateFormat}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-1"></div>

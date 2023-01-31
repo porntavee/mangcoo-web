@@ -1,0 +1,36 @@
+
+ngx-gallery /deep/ .ngx-gallery-arrow {
+    /* your styles */
+    color: #E19B24;
+}
+
+ngx-gallery ::ng-deep .ngx-gallery-thumbnails .ngx-gallery-thumbnail {
+    border: none !important;
+}
+.btn-action {
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 27px;
+    display: flex;
+    border-radius: 3px;
+    color: white;
+    font-size: 1.3rem;
+}
+
+.background-active {
+    background-color: #E19B24;
+}
+
+.send-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 130px;
+    background: #E19B24;
+    border-radius: 10px;
+    font-size: 18px;
+    opacity: 1;
+    color: white;
+    height: 40px;
+}

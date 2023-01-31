@@ -1,0 +1,136 @@
+<div id="modal">
+  <div>
+    <div class="shopee-modal__transition-enter-done"></div>
+  </div>
+  <div tabindex="0" class="_2IJN-0">
+    <div class="_1lzg0h">
+      <div>
+        <div class="shopee-popup-form _2dpFWO">
+          <div class="shopee-popup-form__header">
+            <div class="shopee-popup-form__title">แก้ไขที่อยู่</div>
+          </div>
+          <div class="shopee-popup-form__main">
+            <div class="shopee-popup-form__main-container">
+              <div></div>
+              <div class="_1dpE-N">
+                <div class="_7Fiz4c">
+                  <div class="-cdiFe">
+                    <div class="_3ZW3SX">
+                      <div class="_2PIkC2 _1PkWEv">ชื่อ-นามสกุล</div><input class="_2D9bmD" type="text"
+                        placeholder="ชื่อ-นามสกุล" [(ngModel)]="model.title" (ngModelChange)="model.title = $event"
+                        name="model.title">
+                    </div>
+                    <div></div>
+                  </div>
+                </div>
+                <div class="_1fsKo2"></div>
+                <div class="_7Fiz4c">
+                  <div class="-cdiFe">
+                    <div class="_3ZW3SX">
+                      <div class="_2PIkC2 _1PkWEv">หมายเลขโทรศัพท์</div><input class="_2D9bmD" type="text"
+                        placeholder="หมายเลขโทรศัพท์" [(ngModel)]="model.phone" (ngModelChange)="model.phone = $event"
+                        name="model.phone">
+                    </div>
+                    <div></div>
+                  </div>
+                </div>
+              </div>
+              <div class="_3kjL76">
+                <div class="oZ3h8i" tabindex="0">
+                  <div class="_3wDsXH">จังหวัด, อำเภอ/เขต, ตำบล/รหัสไปรษณีย์</div>
+                  <div (click)="showSelectedProvince = !showSelectedProvince" class="_2SECXb pointer">
+                    <div class="_3YiIOV" [ngClass]="{'_1CBB_a': !hasCategorySelectedTitle}">{{categorySelectedTitle}}
+                    </div>
+                  </div>
+                  <div *ngIf="showSelectedProvince" class="q2wJSK">
+                    <div class="df5pnf">
+                      <div class="_2-Gce8">
+                        <div class="_26VoYO pointer"
+                          [ngClass]="(categorySelected == 'province')?'_1xBdI3':(provinceSelected.code == null) ? '_351klN' : ''"
+                          aria-disabled="categorySelected === 'province'" (click)="selectHeadCategory('province')">
+                          จังหวัด</div>
+                        <div class="_26VoYO pointer"
+                          [ngClass]="(categorySelected == 'district')?'_1xBdI3':(districtSelected.code == null) ? '_351klN' : ''"
+                          (click)="selectHeadCategory('district')">เขต/อำเภอ</div>
+                        <div class="_26VoYO pointer"
+                          [ngClass]="(categorySelected == 'subDistrict')?'_1xBdI3':(subDistrictSelected.code == null) ? '_351klN' : ''"
+                          (click)="selectHeadCategory('subDistrict')">ตำบล/รหัสไปรษณีย์</div>
+                      </div>
+                      <div [hidden]="categorySelected != 'province'" class="_1NCcLD">
+                        <div class="_8jiI7u pointer" *ngFor="let i of provinceList; let idx = index;"
+                          (click)="selectItemCategory('province',i)"
+                          [ngStyle]="{'color': provinceSelected.code == i.code ? '#ee4d2d' : '#000000'}">{{i.title}}
+                        </div>
+                      </div>
+                      <div [hidden]="categorySelected != 'district'" class="_1NCcLD">
+                        <div class="_8jiI7u pointer" *ngFor="let i of districtList; let idx = index;"
+                          (click)="selectItemCategory('district',i)"
+                          [ngStyle]="{'color': districtSelected.code == i.code ? '#ee4d2d' : '#000000'}">{{i.title}}
+                        </div>
+                      </div>
+                      <div [hidden]="categorySelected != 'subDistrict'" class="_1NCcLD">
+                        <div class="_8jiI7u pointer" *ngFor="let i of subDistrictList; let idx = index;"
+                          (click)="selectItemCategory('subDistrict',i)"
+                          [ngStyle]="{'color': subDistrictSelected.code == i.code ? '#ee4d2d' : '#000000'}">{{i.title}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="q2wJSK"></div>
+                </div>
+                <div class="_1gYvlr">
+                  <div></div>
+                </div>
+                <div class="BQMiT2 _2wfwSJ _3bgM61 _2_5aiu"><svg viewBox="0 0 20 20" fill="none" width="16" height="16"
+                    color="rgba(0, 0, 0, 0.26)">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zM6.041 7.102L8.94 10l-2.898 2.898 1.06 1.06L10 11.062l2.898 2.898 1.06-1.06-2.896-2.9 2.898-2.898-1.06-1.06L10 8.938 7.102 6.041l-1.06 1.06z"
+                      fill="currentColor"></path>
+                  </svg></div>
+              </div>
+              <div class="">
+                <div class="_7Fiz4c">
+                  <div class="-cdiFe _3tt8fE">
+                    <div class="_1TuCtm _1xsxFb">
+                      <div class="_3v0HIs _1dnd0U">รายละเอียดที่อยู่</div>
+                      <textarea class="_3fTyNS" [(ngModel)]="model.address" (ngModelChange)="model.address"
+                        placeholder="รายละเอียดที่อยู่">{{model.address}}</textarea>
+                    </div>
+                    <div class="_2wzPNb"></div>
+                    <div></div>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="_2Y_sWW">
+                <div class="TVRZZP">ติดป้ายเป็น:</div>
+                <div class="rLhYlZ">
+                  <div>
+                    <div class="_39FXI4"><span>บ้าน</span></div>
+                  </div>
+                  <div>
+                    <div class="_39FXI4"><span>ที่ทำงาน</span></div>
+                  </div>
+                </div>
+              </div> -->
+              <!-- <div class="uuvK6n">
+                <div class="_3M-hd5"><label class="stardust-checkbox"><input class="stardust-checkbox__input"
+                      type="checkbox">
+                    <div class="stardust-checkbox__box" [(ngModel)]="model.isDefault"
+                      (ngModelChange)="model.isDefault = $event"></div>เลือกเป็นที่อยู่ตั้งต้น{{model.isDefault}}
+                  </label>
+                </div>
+              </div> -->
+              <div class="uuvK6n"></div>
+            </div>
+          </div>
+          <div class="shopee-popup-form__footer">
+            <button class="cancel-btn" (click)="cancel()">ยกเลิก</button>
+            <button type="button" class="btn btn-solid-primary btn--s btn--inline btn-solid-primary _1wSE68"
+              aria-disabled="false" (click)="submit()">ยืนยัน</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="uYEgjK"></div>
+  </div>
+</div>

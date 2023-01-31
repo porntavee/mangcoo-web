@@ -1,0 +1,33 @@
+<app-d-t1-header></app-d-t1-header>
+
+<div class="col-md-12 mt40">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 pd0">
+        <div class="col-md-12 pd0" style="margin: 40px 0px">
+            <img src="{{modelDetail.imageUrl}}"
+            width="100%" height="350px" alt="">
+        </div>
+        <div class="col-md-12 pd0">
+            <div style="font-size: 3.5rem;color: #216DA6;line-height: 1.5;">{{modelDetail.title}}</div>
+        </div>
+        <div class="col-md-12 pd0 mb70">
+            <div class="line-c5c5c5"></div>
+            
+            <div class="col-md-12 pd0 mt15">
+                <div class="df">
+                    <div style="font-size: 2rem;color: #707070;">Date {{modelDetail.createDate | dateFormat}}</div>
+                    <div style="width: 20px;"></div>
+
+                    <div class="btn-action background-not-active pointer">แชร์</div>
+                </div>
+            </div>
+            <div class="col-md-12 pd0 mt40">
+                <div *ngIf="serviceProviderService.lang == 'th'" style="font-size: 1.7rem;color: #707070;line-height: 1.5;" [innerHtml]="modelDetail.description | safeHtml"></div>
+                <div *ngIf="serviceProviderService.lang == 'en'" style="font-size: 1.7rem;color: #707070;line-height: 1.5;" [innerHtml]="modelDetail.descriptionEN | safeHtml"></div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-1"></div>
+</div>
+<app-d-t1-footer></app-d-t1-footer>

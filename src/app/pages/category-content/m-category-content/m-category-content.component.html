@@ -1,0 +1,75 @@
+<!-- header 1 -->
+<div class="box-img fixed-hd">
+    <div class="box-hd bg-twotone">
+        <div class="circle-tb">
+            <span style="
+                  color: white;" class="glyphicon glyphicon-chevron-left fs2" (click)="backClicked()"></span>
+        </div>
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="12.12 Non-Stop SUKSAPAN PayDay | ส่งฟรี* ขั้นต่ำ 0.-">
+            <button type="button" class="btn btn-primary">
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+            </button>
+        </div>
+        <span style="margin-left: 10px;color: white;" class="glyphicon glyphicon-filter fs2" (click)="filter()"></span>
+    </div>
+</div>
+
+<div class="bg-white mb5 mt-m-hd">
+    <div class="box-mall">
+        <div>SSP Mall</div>
+        <div (click)="navTo('m/all/shop')">ดูทั้งหมด</div>
+    </div>
+    <div class="scroll pv10 dfc" style="display: -webkit-box; padding-left: 5px;">
+        <div class="df mallI" *ngFor="let item of r_product_Model|slice:0:5;" (click)="selectedMall(item.code)">
+            <img src="{{item.imageUrl}}" alt="" height="48px" width="78px" style="object-fit: contain;">
+        </div>
+    </div>
+</div>
+
+<div class="bg-white mb5">
+    <div class="box-top-pick">
+        <div>TOP PICKS</div>
+    </div>
+    <div class="scroll pv5 dfc" style="display: -webkit-box; padding-left: 5px;">
+        <div class="dfc topPI" *ngFor="let item of products_Model|slice:0:5;" (click)="selectedCategory(item.code)">
+            <img src="{{item.imageUrl}}" alt="" height="60" width="60" style="object-fit: contain;">
+            <div>{{item.title}}</div>
+        </div>
+        <!-- <div class="dfc topPI" *ngFor="let item of top_picks_Model|slice:0:5;" (click)="selectedCategory(item.code)">
+            <img src="{{item.imageUrl}}" alt="" height="60" width="60" style="object-fit: contain;">
+            <div>{{item.title}}</div>
+        </div> -->
+    </div>
+</div>
+
+<!-- <div class="bg-white mb5">
+    <div class="box-top-pick">
+        <div>TOP PICKS TRENDING</div>
+    </div>
+    <div class="scroll pv5 dfc" style="display: -webkit-box; padding-left: 5px;">
+        <div class="dfc topPI" *ngFor="let item of top_trending_Model|slice:0:5;" (click)="selectedCategory(item.code)">
+            <img src="{{item.imageUrl}}" alt="" height="60" width="60" style="object-fit: contain;">
+            <div>{{item.title}}</div>
+        </div>
+    </div>
+</div> -->
+
+<div class="df bg-white sortCat">
+    <div class="c-70">ยอดนิยม</div>
+    <div class="separate"></div>
+    <div class="c-70">สินค้าขายดี</div>
+    <div class="separate"></div>
+    <div class="c-70">ล่าสุด</div>
+    <div class="separate"></div>
+    <div class="c-70">ราคา</div>
+</div>
+
+<div class="dpf">
+    <div class="col-md-10" style="padding: 0px;">
+        <div class="search-results" infinite-scroll [infiniteScrollDistance]="5" [infiniteScrollThrottle]="500"
+            (scrolled)="onScrollDown()">
+            <product-card class="col-xs-6 p-0" *ngFor="let item of products_Model" [model]="item"></product-card>
+        </div>
+    </div>
+</div>

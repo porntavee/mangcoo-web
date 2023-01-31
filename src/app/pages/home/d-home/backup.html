@@ -1,0 +1,756 @@
+<!-- component header type 1 -->
+<app-d-t1-header></app-d-t1-header>
+
+<!-- main popup -->
+<div *ngIf="!hidePopup" style="display: block;">
+    <div class="main-popup">
+        <div class="main-popup-content" style="height: 100%;" #outMainPopup>
+            <div class="row">
+                <div data-ride="carousel" id="myCarousel">
+                    <div class="carousel-item" style="justify-content: center;align-items: center;align-content: center;" *ngFor="let i of modelMainPopup;  let idx = index;" [class.active]="selectedMainPopupIndex == idx">
+                        <div class="col-md-1 d-none d-lg-block" style="height: 50vh;">
+                            <div class="main-popup-next-btn">
+                                <a (click)="nextMinaPopup(idx-1)">
+                                    <img class="img-slide animate__animated animate__fadeInLeft" *ngIf="i.imageUrl != ''" src="./assets/img/arrow_left.png" width="100%" style="max-height: 450px;max-width: 800px;object-fit: contain;" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xs-1 d-block d-lg-none p-0" style="height: 60px;">
+                            <div class="main-popup-next-btn">
+                                <a (click)="nextMinaPopup(idx-1)">
+                                    <img class="img-slide animate__animated animate__fadeInLeft" *ngIf="i.imageUrl != ''" src="./assets/img/arrow_left.png" width="100%" style="max-height: 450px;max-width: 100px;object-fit: contain;" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-10 col-xs-10">
+                            <a *ngIf="i.action == 'none'">
+                                <img class="img-slide animate__animated animate__fadeInLeft" *ngIf="i.imageUrl != ''" src="{{i.imageUrl}}" width="100%" style="max-height: 500px; max-width: 800px; object-fit: contain;" />
+                            </a>
+                            <a *ngIf="i.action == 'out'" (click)="openRef(i.linkUrl)">
+                                <img class="img-slide animate__animated animate__fadeInLeft" *ngIf="i.imageUrl != ''" src="{{i.imageUrl}}" width="100%" style="max-height: 500px; max-width: 800px; object-fit: contain;" />
+                            </a>
+                            <a *ngIf="i.action == 'in'" (click)="navToMainPopupDetail(i.code)">
+                                <img class="img-slide animate__animated animate__fadeInLeft" *ngIf="i.imageUrl != ''" src="{{i.imageUrl}}" width="100%" style="max-height: 500px; max-width: 800px; object-fit: contain;" />
+                            </a>
+                        </div>
+                        <div class="col-md-1 d-none d-lg-block" style="height: 50vh;">
+                            <div class="main-popup-next-btn">
+                                <a (click)="nextMinaPopup(idx+1)">
+                                    <img class="img-slide animate__animated animate__fadeInLeft" *ngIf="i.imageUrl != ''" src="./assets/img/arrow_right2.png" width="100%" style="max-height: 450px;max-width: 800px;object-fit: contain;" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xs-1 d-block d-lg-none p-0" style="height: 60px;">
+                            <div class="main-popup-next-btn">
+                                <a (click)="nextMinaPopup(idx+1)">
+                                    <img class="img-slide animate__animated animate__fadeInLeft" *ngIf="i.imageUrl != ''" src="./assets/img/arrow_right2.png" width="100%" style="max-height: 450px;max-width: 100px;object-fit: contain;" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 df" style="align-items: center;z-index: 400;">
+                    <label class="custom-checkbox">
+                        <input type="checkbox" [(ngModel)]="notShowAgain" (ngModelChange)="checkShowAgain($event)"
+                            style="height: 30px;width: 30px;" [ngModelOptions]="{standalone: true}">
+                    </label>
+                    <div class="kanit_m c-white" style="margin-left: 10px;">ไม่แสดงโฆษณาอีกในวันนี้</div>
+                </div>
+            </div>
+            <div class="main-popup-close">
+                <div class="main-popup-close-btn" (click)="setNotShowMainPopup()">
+                    <img src="./assets/img/closemenu.png" alt="" style="height: 20px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Desktop -->
+<div class="col-md-12 pd0 d-none d-lg-block" style="position: relative;">
+    <!-- banner -->
+    <div class="col-md-12 pd0 d-none d-lg-block">
+        <div class="row">
+            <div style="height: 31vw;width: 100%;">
+                <div data-ride="carousel" id="myCarousel" style="text-align: center!important;">
+                    <div class="carousel-item pointer" *ngFor="let i of bannerModel;  let idx = index;" [class.active]="selectedIndex == idx">
+                        <a *ngIf="i.linkUrl != ''" href="{{i.linkUrl}}" target="_blank">
+                            <img class="img-slide animate__animated animate__fadeInLeft" style="height: 30vw" *ngIf="i.imageUrl != ''" src="{{i.imageUrl}}" height="" width="100%" />
+                        </a>
+                        <a *ngIf="i.linkUrl == ''" (click)="navToBannerDetail(i.code)">
+                            <img class="img-slide animate__animated animate__fadeInLeft" style="height: 30vw" *ngIf="i.imageUrl != ''" src="{{i.imageUrl}}" height="" width="100%" />
+                        </a>
+                    </div>
+                    <ol class="carousel-indicators" style="margin-bottom: 3%;">
+                        <li *ngFor="let i of bannerModel;  let idx = index;" [class.active]="selectedIndex == idx" data-target="'#myCarousel' + idx" data-slide-to="idx" (click)="setIndex('',idx)"></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12 col-xs-12 pd0 mt55">
+        <img style="height: 50px;" src="./assets/img/appstore-icon.png">
+        <img style="height: 50px;margin-left: 20px;" src="./assets/img/googleplay-icon.png">
+    </div>
+
+    <!-- Menu -->
+    <div class="col-md-12 col-xs-12 minDiv" style="padding: 0% 10%;">
+        <div class="row ">
+            <div class="col-md-1"></div>
+            <div class="col-md-10" style="display: flex;flex-wrap: nowrap;justify-content: space-between;">
+                <div class="col-md-4 menu-vet pointer" (click)="navToCenter(centerModel[1].code)">
+                    <div class="col-md-12 ">
+                        <div class="imgmenu">
+                            <img src="./assets/img/Menu_1.png" class="center">
+                        </div>
+                    </div>
+                    <div class="col-md-12  mt100">
+                        <div class="col-md-12 fsMenu font-w500">
+                            <span *ngIf="serviceProviderService.lang == 'th'">{{centerModel[1].title}}</span>
+                            <span *ngIf="serviceProviderService.lang == 'en'">{{centerModel[1].titleEN}}</span>
+                        </div>
+
+                    </div>
+                    <div class="overlay">
+                        <div class="text"><span *ngIf="serviceProviderService.lang == 'th'">{{centerModel[1].title}}</span>
+                            <span *ngIf="serviceProviderService.lang == 'en'">{{centerModel[1].titleEN}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 menu-vet pointer" (click)="navToCenter(centerModel[2].code)">
+                    <div class="col-md-12 ">
+                        <div class="imgmenu">
+                            <img src="./assets/img/Menu_2.png" class="center">
+                        </div>
+                    </div>
+                    <div class="col-md-12  mt100">
+                        <div class="col-md-12 fsMenu font-w500">
+                            <span *ngIf="serviceProviderService.lang == 'th'">{{centerModel[2].title}}</span>
+                            <span *ngIf="serviceProviderService.lang == 'en'">{{centerModel[2].titleEN}}</span>
+                        </div>
+
+                    </div>
+                    <div class="overlay">
+                        <div class="text">
+                            <span *ngIf="serviceProviderService.lang == 'th'">{{centerModel[2].title}}</span>
+                            <span *ngIf="serviceProviderService.lang == 'en'">{{centerModel[2].titleEN}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 menu-vet pointer" (click)="navToCenter(centerModel[3].code)">
+                    <div class="col-md-12 ">
+                        <div class="imgmenu">
+                            <img src="./assets/img/Menu_3.png" class="center">
+                        </div>
+                    </div>
+                    <div class="col-md-12  mt100">
+                        <div class="col-md-12 fsMenu font-w500">
+                            <span *ngIf="serviceProviderService.lang == 'th'">{{centerModel[3].title}}</span>
+                            <span *ngIf="serviceProviderService.lang == 'en'">{{centerModel[3].titleEN}}</span>
+                        </div>
+
+                    </div>
+                    <div class="overlay">
+                        <div class="text">
+                            <span *ngIf="serviceProviderService.lang == 'th'">{{centerModel[3].title}}</span>
+                            <span *ngIf="serviceProviderService.lang == 'en'">{{centerModel[3].titleEN}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+
+
+
+            <div class="col-md-1"></div>
+            <div class="col-md-10" style="display: flex;flex-wrap: nowrap;justify-content: space-between;">
+                <div class="col-md-4 menu-vet pointer" (click)="navToCenter(centerModel[4].code)">
+                    <div class="col-md-12 ">
+                        <div class="imgmenu">
+                            <img src="./assets/img/Menu_4.png" class="center">
+                        </div>
+                    </div>
+                    <div class="col-md-12  mt100">
+                        <div class="col-md-12 fsMenu font-w500">
+                            <span *ngIf="serviceProviderService.lang == 'th'">{{centerModel[4].title}}</span>
+                            <span *ngIf="serviceProviderService.lang == 'en'">{{centerModel[4].titleEN}}</span>
+                        </div>
+                    </div>
+                    <div class="overlay">
+                        <div class="text"><span *ngIf="serviceProviderService.lang == 'th'">{{centerModel[4].title}}</span>
+                            <span *ngIf="serviceProviderService.lang == 'en'">{{centerModel[4].titleEN}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 menu-vet pointer" (click)="navToCenter(centerModel[5].code)">
+                    <div class="col-md-12 ">
+                        <div class="imgmenu">
+                            <img src="./assets/img/Menu_5.png" class="center">
+                        </div>
+                    </div>
+                    <div class="col-md-12  mt100">
+                        <div class="col-md-12 fsMenu font-w500">
+                            <span *ngIf="serviceProviderService.lang == 'th'">{{centerModel[5].title}}</span>
+                            <span *ngIf="serviceProviderService.lang == 'en'">{{centerModel[5].titleEN}}</span>
+                        </div>
+                    </div>
+                    <div class="overlay">
+                        <div class="text"><span *ngIf="serviceProviderService.lang == 'th'">{{centerModel[5].title}}</span>
+                            <span *ngIf="serviceProviderService.lang == 'en'">{{centerModel[5].titleEN}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 menu-vet pointer" (click)="navToCenter(centerModel[6].code)">
+                    <div class="col-md-12 ">
+                        <div class="imgmenu">
+                            <img src="./assets/img/Menu_6.png" class="center">
+                        </div>
+                    </div>
+                    <div class="col-md-12  mt100">
+                        <div class="col-md-12 fsMenu font-w500">
+                            <span *ngIf="serviceProviderService.lang == 'th'">{{centerModel[6].title}}</span>
+                            <span *ngIf="serviceProviderService.lang == 'en'">{{centerModel[6].titleEN}}</span>
+                        </div>
+                    </div>
+                    <div class="overlay">
+                        <div class="text"><span *ngIf="serviceProviderService.lang == 'th'">{{centerModel[6].title}}</span>
+                            <span *ngIf="serviceProviderService.lang == 'en'">{{centerModel[6].titleEN}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1">
+
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+<!-- Mobile -->
+<div class="col-xs-12 pd0 d-block d-lg-none">
+    <!-- banner Mobile -->
+    <div class="col-xs-12 pd0">
+        <div style="height: 48vw;width: 100%;">
+            <div data-ride="carousel" id="myCarousel" style="text-align: center!important;">
+                <div class="carousel-item" *ngFor="let i of bannerModel;  let idx = index;" [class.active]="selectedIndex == idx">
+                    <a *ngIf="i.linkUrl != ''" href="{{i.linkUrl}}" target="_blank">
+                        <div style="height: 48vw;width: 100%;">
+                            <img class="img-slide animate__animated animate__fadeInLeft" *ngIf="i.imageUrl != ''" src="{{i.imageUrl}}" height="100%" width="100%" />
+                        </div>
+                    </a>
+                    <a *ngIf="i.linkUrl == ''" href="javascript:void(0)">
+                        <div style="height: 48vw;width: 100%;">
+                            <img class="img-slide animate__animated animate__fadeInLeft" *ngIf="i.imageUrl != ''" src="{{i.imageUrl}}" height="100%" width="100%" />
+                        </div>
+                    </a>
+                </div>
+                <ol class="carousel-indicators" style="margin-bottom: 10%;">
+                    <li *ngFor="let i of bannerModel;  let idx = index;" [class.active]="selectedIndex == idx" data-target="'#myCarousel' + idx" data-slide-to="idx" (click)="setIndex('',idx)"></li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="d-flex flex-row btn-mvet pd0" style="width: 85%; height: max-content;">
+            <div class="col-xs-1 pd0" style="align-self: center; margin: 2%;">
+                <span class="glyphicon glyphicon-search fa-2x" style="font-size:20px;"></span>
+            </div>
+            <div class="col-xs-6 pd0" style="align-self: center; margin: 2% 0;">
+                <span (click)="nav('search')">
+                    <span *ngIf="serviceProviderService.lang == 'th'">{{'searchVet'| langTh}}</span>
+                <span *ngIf="serviceProviderService.lang == 'en'">{{'searchVet'| langEn}}</span>
+                </span>
+            </div>
+            <div class="col-xs-1 pd0" style="align-self: center; border-left: 2px solid #987135;height: 30px;margin: 2% 1%;">
+            </div>
+            <div class="col-xs-4 pd0" style="align-items: center; justify-items: start; align-self: center; margin: 2% 0;font-size: 15px;color: black;" (click)="nav('login')">
+                <i class="fa fa-user-circle" style='font-size:17px;margin-right: 5px;'></i>
+                <span *ngIf="serviceProviderService.lang == 'th' && userData.profileCode == ''">
+                    {{'login'| langTh}}</span>
+                <span *ngIf="serviceProviderService.lang == 'en' && userData.profileCode == ''">
+                    {{'login'| langEn}}</span>
+                <span *ngIf="serviceProviderService.lang == 'th' && userData.profileCode != ''">{{'welcome'| langTh}}</span>
+                <span *ngIf="serviceProviderService.lang == 'en' && userData.profileCode != ''">{{'welcome'| langEn}}</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Text Mobile-->
+    <div class="col-xs-12 mt55">
+        <div class="hmvet1" style="font-size: 20px;">“
+            <span *ngIf="serviceProviderService.lang == 'th'"> {{'article'| langTh}}</span>
+            <span *ngIf="serviceProviderService.lang == 'en'"> {{'article'| langEn}}</span>
+            <!-- <br /> 
+             <span *ngIf="serviceProviderService.lang == 'th'"> {{'marticle2'| langTh}}</span>
+             <span *ngIf="serviceProviderService.lang == 'en'"> {{'marticle2'| langEn}}</span> -->
+            ”
+        </div>
+        <div class="hmvet2" style="font-size: 13px;">-
+            <span *ngIf="serviceProviderService.lang == 'th'"> {{'article2'| langTh}}</span>
+            <span *ngIf="serviceProviderService.lang == 'en'"> {{'article2'| langEn}}</span> -
+        </div>
+        <hr />
+    </div>
+
+    <!-- Menu Mobile-->
+    <div class="col-xs-12">
+        <div class="row ">
+            <div class="col-xs-1"></div>
+            <div class="col-xs-10 div-center-home">
+                <div class="col-xs-6 div-menu-vet" (click)="navToCenter(centerModel[1].code)">
+                    <div class="col-xs-12 pd0">
+                        <div class="div-imgmenu">
+                            <img src="./assets/img/Menu_1.png" class="center">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 div-fsMenu mt5 pd0">
+                        <span *ngIf="serviceProviderService.lang == 'th'">{{centerModel[1].title}}</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">{{centerModel[1].titleEN}}</span>
+                    </div>
+                    <div class="overlay">
+                        <div class="text">
+                            <span *ngIf="serviceProviderService.lang == 'th'">{{centerModel[1].title}}</span>
+                            <span *ngIf="serviceProviderService.lang == 'en'">{{centerModel[1].titleEN}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 div-menu-vet" (click)="navToCenter(centerModel[2].code)">
+                    <div class="col-xs-12 pd0">
+                        <div class="div-imgmenu">
+                            <img src="./assets/img/Menu_2.png" class="center">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 div-fsMenu mt5 pd0">
+                        <span *ngIf="serviceProviderService.lang == 'th'">{{centerModel[2].title}}</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">{{centerModel[2].titleEN}}</span>
+                    </div>
+                    <div class="overlay">
+                        <div class="text"><span *ngIf="serviceProviderService.lang == 'th'">{{centerModel[2].title}}</span>
+                            <span *ngIf="serviceProviderService.lang == 'en'">{{centerModel[2].titleEN}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-1"></div>
+        </div>
+
+        <div class="row ">
+            <div class="col-xs-1"></div>
+            <div class="col-xs-10 div-center-home">
+                <div class="col-xs-6 div-menu-vet" (click)="navToCenter(centerModel[3].code)">
+                    <div class="col-xs-12 pd0">
+                        <div class="div-imgmenu">
+                            <img src="./assets/img/Menu_3.png" class="center">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 div-fsMenu mt5 pd0">
+                        <span *ngIf="serviceProviderService.lang == 'th'">{{centerModel[3].title}}</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">{{centerModel[3].titleEN}}</span>
+                    </div>
+                    <div class="overlay">
+                        <div class="text">
+                            <span *ngIf="serviceProviderService.lang == 'th'">{{centerModel[3].title}}</span>
+                            <span *ngIf="serviceProviderService.lang == 'en'">{{centerModel[3].titleEN}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 div-menu-vet" (click)="navToCenter(centerModel[4].code)">
+                    <div class="col-xs-12 pd0">
+                        <div class="div-imgmenu">
+                            <img src="./assets/img/Menu_4.png" class="center">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 div-fsMenu mt5 pd0">
+                        <span *ngIf="serviceProviderService.lang == 'th'">{{centerModel[4].title}}</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">{{centerModel[4].titleEN}}</span>
+                    </div>
+                    <div class="overlay">
+                        <div class="text"><span *ngIf="serviceProviderService.lang == 'th'">{{centerModel[4].title}}</span>
+                            <span *ngIf="serviceProviderService.lang == 'en'">{{centerModel[4].titleEN}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-1"></div>
+        </div>
+
+        <div class="row ">
+            <div class="col-xs-1"></div>
+            <div class="col-xs-10 div-center-home">
+                <div class="col-xs-6 div-menu-vet" (click)="navToCenter(centerModel[5].code)">
+                    <div class="col-xs-12 pd0">
+                        <div class="div-imgmenu">
+                            <img src="./assets/img/Menu_5.png" class="center">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 div-fsMenu mt5 pd0">
+                        <span *ngIf="serviceProviderService.lang == 'th'">{{centerModel[5].title}}</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">{{centerModel[5].titleEN}}</span>
+                    </div>
+                    <div class="overlay">
+                        <div class="text">
+                            <span *ngIf="serviceProviderService.lang == 'th'">{{centerModel[5].title}}</span>
+                            <span *ngIf="serviceProviderService.lang == 'en'">{{centerModel[5].titleEN}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 div-menu-vet" (click)="navToCenter(centerModel[6].code)">
+                    <div class="col-xs-12 pd0">
+                        <div class="div-imgmenu">
+                            <img src="./assets/img/Menu_6.png" class="center">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 div-fsMenu mt5 pd0">
+                        <span *ngIf="serviceProviderService.lang == 'th'">{{centerModel[6].title}}</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">{{centerModel[6].titleEN}}</span>
+                    </div>
+                    <div class="overlay">
+                        <div class="text"><span *ngIf="serviceProviderService.lang == 'th'">{{centerModel[6].title}}</span>
+                            <span *ngIf="serviceProviderService.lang == 'en'">{{centerModel[6].titleEN}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-1"></div>
+        </div>
+
+    </div>
+
+    <!-- เรื่องสำคัญ -->
+    <div *ngIf="importantModel.length > 0" class="col-xs-12 ptb20 mt30" style="background-color: #FFCD77; line-height: initial;">
+        <div class="col-xs-12">
+            <div class="col-xs-9 div-hleft pd0">
+                <div class="pd0">
+                    <span *ngIf="serviceProviderService.lang == 'th'">{{'important'| langTh}}</span>
+                    <span *ngIf="serviceProviderService.lang == 'en'">{{'important'| langEn}}</span>
+                </div>
+            </div>
+            <div class="col-xs-3 pd0">
+                <div (click)="navToAllImportant()" class="kn div-hright pointer">
+                    <span *ngIf="serviceProviderService.lang == 'th'">{{'viewall'| langTh}}</span>
+                    <span *ngIf="serviceProviderService.lang == 'en'">{{'viewall'| langEn}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 mt10 pointer" style="height: 52vw;" (click)="navToImportantDetail(importantModel[0].code)">
+            <img width="100%" height="100%" style="border-radius: 15px;" src="{{importantModel[0].imageUrl}}">
+            <div class="div-bottom-left" style="font-size: 17px;">
+                <span *ngIf="serviceProviderService.lang == 'th'">{{importantModel[0].title}}</span>
+                <span *ngIf="serviceProviderService.lang == 'en'">{{importantModel[0].titleEN}}</span>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="col-xs-12 pd0 mt10" style="display: flex;justify-content: space-between;">
+                <div *ngFor="let item of importantModel | slice:1:3" class="col-xs-6 pointer" style="padding: 0;height: 25vw;width: 48%;position: relative;" (click)="navToImportantDetail(item.code)">
+                    <img style="width:100%;height: 100%;border-radius: 15px;" src="{{item.imageUrl}}">
+                    <div class="div-bottom-left f-over" style="font-size: 13px;">
+                        <span *ngIf="serviceProviderService.lang == 'th'">{{item.title}}</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">{{item.titleEN}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ข่าวประชาสัมพันธ์ -->
+    <div class="col-xs-12 ptb20">
+        <div class="col-xs-12">
+            <div class="col-xs-9 div-hleft pd0">
+                <div class="pd0">
+                    <span *ngIf="serviceProviderService.lang == 'th'">{{'news'| langTh}}</span>
+                    <span *ngIf="serviceProviderService.lang == 'en'">{{'news'| langEn}}</span>
+                </div>
+            </div>
+            <div class="col-xs-3 pd0">
+                <div (click)="navToAllNews()" class="kn div-hright pointer" style="font-size: 15px;float:right; background-color: #E19B24;">
+                    <span *ngIf="serviceProviderService.lang == 'th'">{{'viewall'| langTh}}</span>
+                    <span *ngIf="serviceProviderService.lang == 'en'">{{'viewall'| langEn}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 mt15">
+            <div class="row" *ngIf="modelNews.length > 0">
+                <a *ngFor="let item of modelNews | slice:0:1" class=" col-xs-12 pointer" href="{{path}}news-detail/{{item.code}}">
+                    <div style="height: 52vw;">
+                        <img class="img-contain" height="100%" width="100%" style="border-radius: 15px;" src="{{item.imageUrl}}">
+                    </div>
+                    <div class="div-news-border mt15">
+                        <span *ngIf="serviceProviderService.lang == 'th'">จาก {{item.centertitle}}</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">From {{item.centertitleEN}}</span>
+                    </div>
+                    <div class="fsh2 pd0 mt15 line-clamp-2" style="color: #1d1616; font-size: 24px;">
+                        <span *ngIf="serviceProviderService.lang == 'th'">{{item.title}}</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">{{item.titleEN}}</span>
+                    </div>
+                    <div class="fsh1 line-clamp-2">
+                        <span *ngIf="serviceProviderService.lang == 'th'">{{convertToPlain(item.description)}}</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">{{convertToPlain(item.descriptionEN)}}</span>
+                    </div>
+                    <div class="fsh1 mt15">Date {{item.createDate | dateFormat}} </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="col-xs-12 pd0">
+                <div style="margin-top: 20px;flex-wrap: wrap;row-gap: 2em;column-gap: 2%;display: flex;justify-content: space-between;">
+                    <a *ngFor="let item of modelNews | slice:1:5;" class="txt-de-none" style="width:48%;height: max-content;border-radius: 10px;" href="{{path}}news-detail/{{item.code}}">
+                        <div class="col-xs-12 pd0 pointer" style="height: 25vw;">
+                            <img class="img-contain" style="width:100%;height: 100%;border-radius: 15px;" src="{{item.imageUrl}}">
+                        </div>
+                        <div class="col-xs-12 pd0">
+                            <div class="div-news-border" style="margin: 15px 0;">
+                                <span *ngIf="serviceProviderService.lang == 'th'">จาก {{item.centertitle}}</span>
+                                <span *ngIf="serviceProviderService.lang == 'en'">From {{item.centertitleEN}}</span>
+                            </div>
+                            <div class="fsh2 pd0 line-clamp-2" style="color: #707070; font-size: 15px;">
+                                <span *ngIf="serviceProviderService.lang == 'th'">{{item.title}}</span>
+                                <span *ngIf="serviceProviderService.lang == 'en'">{{item.titleEN}}</span>
+                            </div>
+                            <!-- <div class="fsh1 line-clamp-2 font-size: 15px;">{{convertToPlain(item.description)}}</div> -->
+                            <div class="fsh1">Date {{item.createDate | dateFormat}}</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ปฏิทินกิจกรรม -->
+    <div class="col-xs-12 ptb20">
+        <div class="col-xs-12">
+            <div class="col-xs-9 div-hleft pd0">
+                <div class="div-hleft2 pd0">
+                    <span *ngIf="serviceProviderService.lang == 'th'">{{'event'| langTh}}</span>
+                    <span *ngIf="serviceProviderService.lang == 'en'">{{'event'| langEn}}</span>
+                </div>
+                <div class="div-hleft pd0">
+                    <span *ngIf="serviceProviderService.lang == 'th'">{{'currentMonth'| langTh}}</span>
+                    <span *ngIf="serviceProviderService.lang == 'en'">{{'currentMonthEng'| langEn}}</span>
+                </div>
+            </div>
+            <div class="col-xs-3 pd0">
+                <div (click)="navToAllEventCalendar()" class="kn div-hright pointer" style="font-size: 15px;float:right; background-color: #E19B24; text-align: center;">
+                    <span *ngIf="serviceProviderService.lang == 'th'">{{'viewall'| langTh}}</span>
+                    <span *ngIf="serviceProviderService.lang == 'en'">{{'viewall'| langEn}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 mt15">
+            <div class="row" *ngIf="modelEventCalendar.length > 0">
+                <a *ngFor="let item of modelEventCalendar | slice:0:1" class=" col-xs-12 txt-de-none pointer" href="{{path}}eventcalendar-detail/{{item.code}}">
+                    <div style="height: 52vw;">
+                        <img class="img-contain" height="100%" width="100%" style="border-radius: 15px;" src="{{item.imageUrl}}">
+                    </div>
+                    <div class="div-news-border mt15">
+                        <span *ngIf="serviceProviderService.lang == 'th'">จาก {{item.centertitle}}</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">From {{item.centertitleEN}}</span>
+                    </div>
+                    <div class="fsh2 pd0 mt15 line-clamp-2" style="color: #707070; font-size: 24px;">
+                        <span *ngIf="serviceProviderService.lang == 'th'">{{item.title}}</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">{{item.titleEN}}</span>
+                    </div>
+                    <div class="fsh1 line-clamp-2">
+                        <span *ngIf="serviceProviderService.lang == 'th'">{{convertToPlain(item.description)}}</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">{{convertToPlain(item.descriptionEN)}}</span>
+                    </div>
+                    <div class="fsh1 mt15">Date {{item.createDate | dateFormat}} </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="col-xs-12 pd0">
+                <div style="margin-top: 20px;flex-wrap: wrap;row-gap: 2em;column-gap: 2%;display: flex;justify-content: space-between;">
+                    <a *ngFor="let item of modelEventCalendar | slice:1:5;" class="txt-de-none" style="width:48%;height: max-content;border-radius: 10px;" href="{{path}}eventcalendar-detail/{{item.code}}">
+                        <div style="height: 25vw;">
+                            <img class="img-contain" style="width:100%;height: 100%;border-radius: 15px;" src="{{item.imageUrl}}">
+                        </div>
+                        <div class="col-xs-12 pd0">
+                            <div class="div-news-border" style="margin: 15px 0;">
+                                <span *ngIf="serviceProviderService.lang == 'th'">จาก {{item.centertitle}}</span>
+                                <span *ngIf="serviceProviderService.lang == 'en'">From {{item.centertitleEN}}</span>
+                            </div>
+                            <div class="fsh2 pd0 line-clamp-2" style="color: #707070; font-size: 15px;">
+                                <span *ngIf="serviceProviderService.lang == 'th'">{{item.title}}</span>
+                                <span *ngIf="serviceProviderService.lang == 'en'">{{item.titleEN}}</span>
+                            </div>
+                            <!-- <div class="fsh1 line-clamp-2 font-size: 15px;">{{convertToPlain(item.description)}}</div> -->
+                            <div class="fsh1">Date {{item.dateStart | dateFormat}}</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ภาพกิจกรรม -->
+    <div class="col-xs-12 ptb20">
+        <div class="col-xs-12">
+            <div class="col-xs-9 div-hleft pd0">
+                <div class="pd0">
+                    <span *ngIf="serviceProviderService.lang == 'th'">{{'imageEvent'| langTh}}</span>
+                    <span *ngIf="serviceProviderService.lang == 'en'">{{'imageEvent'| langEn}}</span>
+                </div>
+            </div>
+            <div class="col-xs-3 pd0">
+                <div (click)="navToAllImageEvent()" class="kn div-hright pointer" style="font-size: 15px;float:right; background-color: #E19B24;">
+                    <span *ngIf="serviceProviderService.lang == 'th'">{{'viewall'| langTh}}</span>
+                    <span *ngIf="serviceProviderService.lang == 'en'">{{'viewall'| langEn}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 mt15">
+            <div class="row" *ngIf="modelImageEvent.length > 0">
+                <a *ngFor="let item of modelImageEvent | slice:0:1" class="col-xs-12 txt-de-none pointer" href="{{path}}image-event-detail/{{item.code}}">
+                    <div style="height: 52vw;">
+                        <img class="img-contain" width="100%" height="100%" style="border-radius: 15px;" src="{{item.imageUrl}}">
+                    </div>
+                    <div class="div-news-border mt15">
+                        <span *ngIf="serviceProviderService.lang == 'th'">จาก {{item.centertitle}}</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">From {{item.centertitleEN}}</span>
+                    </div>
+                    <div class="fsh2 pd0 mt15 line-clamp-2" style="color: #707070; font-size: 24px;">
+                        <span *ngIf="serviceProviderService.lang == 'th'">{{item.title}}</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">{{item.titleEN}}</span>
+                    </div>
+                    <div class="fsh1 line-clamp-2">
+                        <span *ngIf="serviceProviderService.lang == 'th'">{{convertToPlain(item.description)}}</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">{{convertToPlain(item.descriptionEN)}}</span>
+                    </div>
+                    <div class="fsh1 mt15">Date {{item.createDate | dateFormat}} </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="col-xs-12 pd0">
+                <div style="margin-top: 20px;flex-wrap: wrap;row-gap: 2em;column-gap: 2%;display: flex;justify-content: space-between;">
+                    <a *ngFor="let item of modelImageEvent | slice:1:5;" class="txt-de-none" style="width:49%;height: max-content;border-radius: 10px;" href="{{path}}image-event-detail/{{item.code}}">
+                        <div style="height: 25vw;">
+                            <img class="img-contain" style="width:100%;height: 100%;border-radius: 15px;" src="{{item.imageUrl}}">
+                        </div>
+                        <div class="col-xs-12 pd0">
+                            <div class="div-news-border" style="margin: 15px 0;">
+                                <span *ngIf="serviceProviderService.lang == 'th'">จาก {{item.centertitle}}</span>
+                                <span *ngIf="serviceProviderService.lang == 'en'">From {{item.centertitleEN}}</span>
+                            </div>
+                            <div class="fsh2 pd0 line-clamp-2" style="color: #707070; font-size: 15px;">
+                                <span *ngIf="serviceProviderService.lang == 'th'">{{item.title}}</span>
+                                <span *ngIf="serviceProviderService.lang == 'en'">{{item.titleEN}}</span>
+                            </div>
+                            <!-- <div class="fsh1 line-clamp-2 font-size: 15px;">{{convertToPlain(item.description)}}</div> -->
+                            <div class="fsh1">Date {{item.createDate | dateFormat}}</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- สารสัตวแพทยสภา -->
+    <div class="col-xs-12 mt20">
+        <div class="col-xs-12 pd0">
+            <div class="col-xs-7 div-hleft pd0">
+                <span *ngIf="serviceProviderService.lang == 'th'">{{'vetsubstances'| langTh}}</span>
+                <span *ngIf="serviceProviderService.lang == 'en'">{{'vetsubstances'| langEn}}</span>
+            </div>
+            <div class="col-xs-5 pd0">
+                <span class="kn div-hright pointer" style="font-size: 15px;float:right;background-color: #E19B24;" (click)="navToAllKnowledgeVet()">
+                    <span *ngIf="serviceProviderService.lang == 'th'">{{'viewall'| langTh}}</span>
+                <span *ngIf="serviceProviderService.lang == 'en'">{{'viewall'| langEn}}</span>
+                </span>
+            </div>
+        </div>
+
+        <div class="col-xs-12 pd0 mt15">
+            <div class="col-xs-12 pd0">
+                <a *ngFor="let item of modelKnowledgeVet | slice:0:4" class="col-xs-6 txt-de-none pd0" href="{{path}}knowledge-vet-detail/{{item.code}}">
+                    <div style="width: 43vw; height: 43vw;">
+                        <img class="div-img-kl img-contain" src="{{item.imageUrl}}">
+                    </div>
+                    <div class="kn" style="color: black;font-size: 13px; margin-bottom: 15px;">
+                        <span *ngIf="serviceProviderService.lang == 'th'">{{item.title}}</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">{{item.titleEN}}</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- สัตวแพทยสภาอีนิวส์ -->
+    <div class="col-xs-12 mt20">
+        <div class="col-xs-12 pd0">
+            <div class="col-xs-7 div-hleft pd0">
+                <span *ngIf="serviceProviderService.lang == 'th'">{{'vetenews'| langTh}}</span>
+                <span *ngIf="serviceProviderService.lang == 'en'">{{'vetenews'| langEn}}</span>
+            </div>
+            <div class="col-xs-5 pd0">
+                <span class="kn div-hright pointer" style="font-size: 15px;float:right;background-color: #E19B24;" (click)="navToAllVetEnews()">
+                    <span *ngIf="serviceProviderService.lang == 'th'">{{'viewall'| langTh}}</span>
+                <span *ngIf="serviceProviderService.lang == 'en'">{{'viewall'| langEn}}</span>
+                </span>
+            </div>
+        </div>
+
+        <div class="col-xs-12 pd0 mt15">
+            <div class="col-xs-12 pd0">
+                <a *ngFor="let item of modelVetEnews | slice:0:4" class="col-xs-6 txt-de-none pd0" href="{{path}}vet-enews-detail/{{item.code}}">
+                    <div style="width: 43vw; height: 43vw;">
+                        <img class="div-img-kl img-contain" src="{{item.imageUrl}}">
+                    </div>
+                    <div class="kn" style="color: black;font-size: 13px; margin-bottom: 15px;">
+                        <span *ngIf="serviceProviderService.lang == 'th'">{{item.title}}</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">{{item.titleEN}}</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- partner -->
+    <div class="col-xs-12">
+        <app-partner [mainPage]="true"></app-partner>
+    </div>
+
+    <!-- Application  สัตวแพทยสภา-->
+    <div class="col-xs-12">
+        <div class="col-xs-12 pd0">
+            <div class="col-xs-12 pd0" style="margin-top: 10%;">
+                <div class="col-xs-12 pd0" style="color: #1B6CA8;font-size: 20px;  font-family: 'kanit', sans-serif;font-weight: bold;">
+                    <span *ngIf="serviceProviderService.lang == 'th'">{{'apptitle'| langTh}}</span>
+                    <span *ngIf="serviceProviderService.lang == 'en'">{{'apptitle'| langEn}}</span>
+                </div>
+                <div class="col-xs-12 pd0 mt20" style="font-size: 13px;  font-family: 'kanit', sans-serif;">
+                    <span *ngIf="serviceProviderService.lang == 'th'">{{'appdes'| langTh}}</span>
+                    <span *ngIf="serviceProviderService.lang == 'en'">{{'appdes'| langEn}}</span>
+                    <br>
+                    <span *ngIf="serviceProviderService.lang == 'th'">{{'appdes2'| langTh}}</span>
+                    <span *ngIf="serviceProviderService.lang == 'en'">{{'appdes2'| langEn}}</span>
+                </div>
+                <div class="col-xs-12 pd0 mt30">
+                    <img class="img-contain" style="width:80%; margin-left: auto;margin-right: auto;display: block;" src="./assets/img/Mobile.png">
+                </div>
+                <div class="col-xs-12 pd0 " style="font-size: 13px;  font-family: 'kanit', sans-serif;font-weight: bold;margin-top: 15%;">
+                    Download Now
+                </div>
+                <div class="col-xs-12 pd0 mt15" style="margin-bottom: 30px;display: flex;">
+                    <div style="height: 8vw; width: 22vw;">
+                        <img style="width:100%;height: 100%;" src="./assets/img/appstore-icon.png">
+                    </div>
+                    <div style="height: 8vw; width: 22vw; margin-left: 10px;">
+                        <img style="width:100%;height: 100%;" src="./assets/img/googleplay-icon.png">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<button (click)="topFunction()" id="go-top" title="Go to top"><img src="./assets/img/UP.png" width="50px" height="50px" alt=""></button>
+
+<!-- component footer type 1 -->
+<app-d-t1-footer></app-d-t1-footer>

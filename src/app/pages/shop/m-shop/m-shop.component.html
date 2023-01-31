@@ -1,0 +1,70 @@
+<!-- <app-d-t1-header></app-d-t1-header> -->
+<div class="box-img fixed-hd">
+  <div class="box-hd bg-twotone">
+    <div class="circle-tb">
+      <span style="
+                  color: white;" class="glyphicon glyphicon-chevron-left fs2" (click)="backClicked()"></span>
+    </div>
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="12.12 Non-Stop SUKSAPAN PayDay | ส่งฟรี* ขั้นต่ำ 0.-">
+      <button type="button" class="btn btn-primary">
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+      </button>
+    </div>
+    <span style="margin-left: 10px;color: white;" class="glyphicon glyphicon-filter fs2"
+      (click)="filter()"></span>
+  </div>
+</div>
+
+<div class="box-hd-2 flex-col bg-twotone">
+  <!-- <div class="nav-hd">
+    <span style="margin-left: 10px;color: white;" class="glyphicon glyphicon-chevron-left fs2"
+      (click)="backClicked()"></span>
+    <div></div>
+    <div class="glyphicon glyphicon-option-vertical fs2"></div>
+  </div> -->
+  <div>
+    <img src="{{shopInfo.imageUrl}}" height="70" width="70" class="logo-sh" alt="">
+    <span class="text-sh">{{shopInfo.title}}</span>
+  </div>
+  <div class="box-st">
+    <div class="flex-col tc text-sh">
+      <span>5</span>
+      <span>rating</span>
+    </div>
+    <div style="width: 1px;background-color: white;margin: 10px 0;"></div>
+    <div class="flex-col tc text-sh">
+      <span>5,900</span>
+      <span>follower</span>
+    </div>
+    <div style="width: 1px;background-color: white;margin: 10px 0;"></div>
+    <div class="flex-col tc text-sh">
+      <span>100%</span>
+      <span>chat</span>
+    </div>
+  </div>
+</div>
+
+<div class="box-sticky scroll bg-white">
+  <div class="box-cat" [ngClass]="{'focus-cat': categorySelected.code == category.code}" (click)="fCategorySelected(category)"
+    *ngFor="let category of categoryList ;let catIndex = index;">
+    {{category.title}}
+  </div>
+</div>
+
+<div class="col-md-12 p-4 pt-2">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10" style="padding: 0px;">
+      <div class="search-results" infinite-scroll [infiniteScrollDistance]="5" [infiniteScrollThrottle]="500"
+        (scrolled)="onScrollDown()">
+        <product-card class="col-xs-6 p-0" *ngFor="let item of model" [model]="item"></product-card>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>
+
+<div *ngIf="model.length <= 0" class="nfi">
+    ยังไม่มีสินค้า
+</div>

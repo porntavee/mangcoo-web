@@ -1,0 +1,159 @@
+<!-- <div class="fixed-hd"> -->
+<div class="col-md-12 m-0 p-0 d-none d-lg-block pd0">
+    <!-- footer 1 -->
+    <div class="col-md-12 col-xs-12 pt-3 pd0 minDiv" style="background: transparent linear-gradient(296deg, #2FC4B2 0%, #1b9d8e 100%) 0% 0% no-repeat padding-box;height: auto;padding-bottom: 30px;
+    ">
+        <div class="col-md-12 col-xs-12  mt30">
+            <div class="col-md-1 "></div>
+            <div class="col-md-10 col-xs-12">
+                <div class="col-md-1 col-xs-1 pd0">
+                    <img src="./assets/img/icon2.png" width="80px" height="80px">
+                </div>
+                <div *ngIf="serviceProviderService.lang == 'th'" class="col-md-10 col-xs-10 pd0 center-footer" style="font-size: 30px; font-weight: 400;color: #ffffff;font-family: 'kanit', sans-serif; padding-top: 10px !important;">
+                    {{aboutUs.title}} <br><br> {{aboutUs.titleEN}}
+                </div>
+                <!-- <div class="col-md-10 col-xs-10  pd0 center-footer" style="font-size: 30px; font-weight: 400;color: #ffffff;font-family: 'kanit', sans-serif;">
+
+                </div> -->
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <div class="col-md-12 col-xs-12 mt30">
+            <div class="col-md-1"></div>
+            <div class="col-md-10 col-xs-12">
+                <div class="col-md-12 pd0 m-0" (mouseout)="mouseOvered1=999">
+                    <div class="col-md-4 pd0 mt15 df">
+                        <div class="bg-icon-footer bg-white">
+                            <img src="./assets/img/location.png" class="si-location">
+                        </div>
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="font-des-footer" style="display:flex;align-items:center;margin-left: 10px;width: 80%;">
+                            {{aboutUs.address}}
+                        </div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="font-des-footer" style="display:flex;align-items:center;margin-left: 10px;width: 80%;">
+                            {{aboutUs.addressEN}}
+                        </div>
+                    </div>
+                    <div class="col-md-4 pd0 mt15 df">
+                        <div class="bg-icon-footer bg-white">
+                            <img src="./assets/img/phone.png" class="si-phone">
+                        </div>
+                        <div class="font-des-footer" style="display:flex;align-items:center;margin-left: 10px;width: 80%;">
+                            <!-- {{aboutUs.telephone}} -->
+                            <a href="tel:{{aboutUs.telephone}}">{{aboutUs.telephone}}</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 pd0 mt15 df">
+                        <div class="bg-icon-footer bg-white">
+                            <img src="./assets/img/mail.png" class="si-mail">
+                        </div>
+                        <div class="font-des-footer" style="display:flex;align-items:center;margin-left: 10px;width: 80%;">
+                            <!-- {{aboutUs.email}} -->
+                            <a href="mailto:{{aboutUs.email}}?subject=Subject&body=message%20goes%20here" target="_blank" style="text-decoration: none;color: white;">{{aboutUs.email}}</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 pd0 mt15 df">
+                        <div class="bg-icon-footer bg-green-mint">
+                            <img src="./assets/img/youtube.png" class="si-youtube">
+                        </div>
+                        <div class="font-des-footer pointer" style="display:flex;align-items:center;margin-left: 10px;width: 80%;">
+                            <a href="{{aboutUs.youtube}}" target="_blank" style="text-decoration: none;color: white;">Mangcoo</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 pd0 mt15 df">
+                        <div class="bg-icon-footer bg-green-mint">
+                            <img src="./assets/img/line.png" class="si-line">
+                        </div>
+                        <div class="font-des-footer pointer" style="display:flex;align-items:center;margin-left: 10px;width: 80%;">
+                            <a href="{{aboutUs.lineOfficial}}" target="_blank" style="text-decoration: none;color: white;">@mangcoo</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 pd0 mt15 df">
+                        <div class="bg-icon-footer bg-blue-deep">
+                            <img src="./assets/img/facebook.png" class="si-facebook">
+                        </div>
+                        <a href="{{aboutUs.facebook}}" target="_blank"></a>
+                        <div class="font-des-footer pointer" style="display:flex;align-items:center;margin-left: 10px;width: 80%;">
+                            <a href="{{aboutUs.facebook}}" target="_blank" style="text-decoration: none;color: white;">Mangcoo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</div>
+
+<div class="col-xs-12 m-0 p-0 d-block d-lg-none">
+    <!-- footer 1 -->
+    <div class="col-xs-12 pt-3" style="background: transparent linear-gradient(296deg, #2FC4B2 0%, #1b9d8e 100%) 0% 0% no-repeat padding-box;height: auto;padding-bottom: 30px;
+">
+        <div class="col-xs-12  mt20">
+            <div class="col-xs-3 pd0">
+                <img src="./assets/img/icon2.png" width="80px" height="80px">
+            </div>
+            <div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-9" style="padding: 15px;font-size: 20px; font-weight: 400;color: #ffffff;font-family: 'kanit', sans-serif; padding-top: 10px !important;">
+                {{aboutUs.title}} <br><br> {{aboutUs.titleEN}}
+            </div>
+            <!-- <div class="col-xs-10" style="padding: 15px;font-size: 20px; font-weight: 400;color: #ffffff;font-family: 'kanit', sans-serif;">
+                {{aboutUs.titleEN}}
+            </div> -->
+        </div>
+        <div class="col-xs-12 mt20">
+            <div class="col-xs-12 pd0 m-0">
+                <div class="col-xs-12 pd0 mt15 df">
+                    <div class="bg-icon-footer bg-white">
+                        <img src="./assets/img/location.png" class="si-location">
+                    </div>
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="font-des-footer" style="display:flex;align-items:center;margin-left: 10px;width: 80%;">
+                        {{aboutUs.address}}
+                    </div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="font-des-footer" style="display:flex;align-items:center;margin-left: 10px;width: 80%;">
+                        {{aboutUs.addressEN}}
+                    </div>
+                </div>
+                <div class="col-xs-12 pd0 mt15 df">
+                    <div class="bg-icon-footer bg-white">
+                        <img src="./assets/img/phone.png" class="si-phone">
+                    </div>
+                    <div class="font-des-footer" style="display:flex;align-items:center;margin-left: 10px;width: 80%;">
+                        <a href="tel:{{aboutUs.telephone}}">{{aboutUs.telephone}}</a>
+                    </div>
+                </div>
+                <div class="col-xs-12 pd0 mt15 df">
+                    <div class="bg-icon-footer bg-white">
+                        <img src="./assets/img/mail.png" class="si-mail">
+                    </div>
+                    <div class="font-des-footer" style="display:flex;align-items:center;margin-left: 10px;width: 80%;">
+                        <a href="mailto:{{aboutUs.email}}?subject=Subject&body=message%20goes%20here" target="_blank" style="text-decoration: none;color: white;">{{aboutUs.email}}</a>
+                    </div>
+                </div>
+                <div class="col-xs-12 pd0 mt15 df">
+                    <div class="bg-icon-footer bg-green-mint">
+                        <img src="./assets/img/youtube.png" class="si-youtube">
+                    </div>
+                    <div class="font-des-footer" style="display:flex;align-items:center;margin-left: 10px;width: 80%;">
+                        <a href="{{aboutUs.youtube}}" target="_blank" style="text-decoration: none;color: white;">Mangcoo</a>
+                    </div>
+                </div>
+                <div class="col-xs-12 pd0 mt15 df">
+                    <div class="bg-icon-footer bg-green-mint">
+                        <img src="./assets/img/line.png" class="si-line">
+                    </div>
+                    <div class="font-des-footer" style="display:flex;align-items:center;margin-left: 10px;width: 80%;">
+                        <a href="{{aboutUs.lineOfficial}}" target="_blank" style="text-decoration: none;color: white;">@mangcoo</a>
+                        <!-- {{aboutUs.lineOfficial}} -->
+                    </div>
+                </div>
+                <div class="col-xs-12 pd0 mt15 df">
+                    <div class="bg-icon-footer bg-blue-deep">
+                        <img src="./assets/img/facebook.png" class="si-facebook">
+                    </div>
+                    <div class="font-des-footer" style="display:flex;align-items:center;margin-left: 10px;width: 80%;">
+                        <a href="{{aboutUs.facebook}}" target="_blank" style="text-decoration: none;color: white;">Mangcoo</a>
+                        <!-- {{aboutUs.facebook}} -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<!-- component header type 1 -->
+<app-d-t1-header></app-d-t1-header>
+
+<div class="col-md-12 p-4 pt-2 mt125">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10 pt-4 bg-white">
+            <div>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="fs1-5">&nbsp;&nbsp;&nbsp;&nbsp;<b>ร้านค้าทั้งหมด</b></span>
+            </div>
+            <div class="search-results pt-5" infinite-scroll [infiniteScrollDistance]="5" [infiniteScrollThrottle]="500" (scrolled)="onScrollDown()">
+                <shopall-card class="col-xs-2 p-0" *ngFor="let item of modelShopShowAll" [model]="item"></shopall-card>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>

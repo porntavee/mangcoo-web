@@ -1,0 +1,49 @@
+<app-d-t1-header></app-d-t1-header>
+
+<div class="col-md-12 mt40">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 pd0">
+        <div class="df" style="color:#216DA6;font-size: 4rem;height: 30px;justify-content: start;">
+            แบบฟอร์มดาวโหลด
+        </div>
+        <div class="line-c5c5c5"></div>
+        <div class="col-md-12 pd0" style="margin: 40px 0px">
+            <div class="col-md-4">
+                <img src="{{modelDetail.imageUrl}}" width="100%" height="480px" alt="" style="border-radius: 30px;
+                    ">
+            </div>
+            <div class="col-md-8">
+                <div style="font-size: 3.5rem;color: #707070;line-height: 1.5;">{{modelDetail.title}}</div>
+                <div style="height: 10px;"></div>
+                <div style="color: #1B6CA8;font-size: 2.5rem;">ผู้แต่ง {{modelDetail.author}}</div>
+                <div style="height: 15px;"></div>
+                <div class="df">
+                    <div class="btn-action background-not-active pointer">แชร์</div>
+                    <div style="width: 10px;"></div>
+                    <div class="btn-action background-active pointer" (click)="downloadPDF1()">ดาวน์โหลด</div>
+                </div>
+                <div style="height: 50px;"></div>
+                <div style="font-size: 2.5rem;">ข้อมูลเอกสาร</div>
+                <div style="height: 20px;"></div>
+                <div class="df fs1-7">
+                    <div style="width: 100px;">หมวดหมู่</div>{{modelDetail.categorytitle}}
+                </div>
+                <div class="df fs1-7 mt15">
+                    <div style="width: 100px;">ประเภทไฟล์</div>PDF
+                </div>
+                <div class="df fs1-7 mt15">
+                    <div style="width: 100px;">จำนวนหน้า</div>{{modelDetail.numberOfPages}}
+                </div>
+                <!-- <div class="df fs1-7 mt15">
+                    <div style="width: 100px;">ขนาด</div>10 MB
+                </div> -->
+                <div style="height: 80px;"></div>
+                <div class="fs1-7" style="line-height: 1.5;">{{modelDetail.description}}
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-1"></div>
+</div>
+<app-d-t1-footer></app-d-t1-footer>

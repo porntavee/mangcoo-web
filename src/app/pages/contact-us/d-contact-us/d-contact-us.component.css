@@ -1,0 +1,76 @@
+.send-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 130px;
+    background: #E19B24;
+    border-radius: 10px;
+    font-size: 18px;
+    opacity: 1;
+    color: white;
+    height: 40px;
+}
+
+.a-link {
+    text-decoration: none;
+    color: #333;
+}
+
+.a-link:hover {
+    text-decoration: underline;
+}
+
+.box-uni {
+    padding-left: 40px;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    row-gap: 10px;
+}
+
+.university {
+    display: flex;
+    padding: 10px;
+    height: max-content;
+    border: solid 1px #000;
+    border-radius: 10px;
+    align-items: center;
+}
+
+.hide {
+    display: none;
+}
+
+.myDIV:hover+.hide {
+    display: block;
+    color: red;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: transparent;
+    min-width: 500px;
+    padding: 0px;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: flex;
+}
+
+.bg-icon-footer {
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+}
+
+.font-des-footer {
+    text-decoration: none;
+    color: #000;
+    font-size: 16px;
+}

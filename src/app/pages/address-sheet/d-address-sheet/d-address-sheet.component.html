@@ -1,0 +1,233 @@
+<div class="row" style="background-color: #707070;height: 100%;">
+    <div class="row" style="padding-bottom: 3%;">
+    </div>
+    <div class="col-md-12">
+        <div class="col-md-12">
+            <div class="col-md-12">
+                <span style="font-weight: bold">ที่อยู่ตามทะเบียนบ้าน</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="col-md-6">
+            <div class="col-md-6">
+                <span style="padding-right: 20px;">เลขที่:</span> {{model.address}}
+            </div>
+            <div class="col-md-6">
+                <span style="padding-right: 20px;">หมู่ที่:</span> {{model.moo}}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <span style="padding-right: 20px;">อาคาร/หมู่บ้าน:</span> {{model.address2}}
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="col-md-6">
+            <div class="col-md-12">
+                <span style="padding-right: 20px;">ซอย:</span> {{model.soi}}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <span style="padding-right: 20px;">ถนน:</span> {{model.road}}
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="col-md-6">
+            <div class="col-md-12">
+                <span style="padding-right: 20px;">แขวน/ตำบล:</span> {{model.tambon}}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <span style="padding-right: 20px;">เขต/อำเภอ:</span> {{model.amphoe}}
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="col-md-6">
+            <div class="col-md-12">
+                <span style="padding-right: 20px;">จังหวัด:</span> {{model.province}}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <span style="padding-right: 20px;">รหัสไปรษณีย์:</span> {{model.postno}}
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="col-md-6">
+            <div class="col-md-12">
+                <span style="padding-right: 20px;">โทรศัพท์:</span> {{model.telephone}}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <span style="padding-right: 20px;">โทรศัพท์มือถือ:</span> {{model.phone}}
+        </div>
+    </div>
+    <!-- ------------------------------------ -->
+    <div class="row" style="padding-bottom: 3%;">
+    </div>
+    <div class="col-md-12">
+        <div class="col-md-12">
+            <div class="col-md-12">
+                <span style="font-weight: bold">ที่อยู่ที่ทำงาน</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="col-md-6">
+            <div class="col-md-6">
+                <span style="padding-right: 20px;">เลขที่:</span> {{model.workAddress}}
+            </div>
+            <div class="col-md-6">
+                <span style="padding-right: 20px;">หมู่ที่:</span> {{model.workMoo}}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <span style="padding-right: 20px;">อาคาร/หมู่บ้าน:</span> {{model.workAddress2}}
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="col-md-6">
+            <div class="col-md-12">
+                <span style="padding-right: 20px;">ซอย:</span> {{model.workSoi}}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <span style="padding-right: 20px;">ถนน:</span> {{model.workRoad}}
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="col-md-6">
+            <div class="col-md-12">
+                <span style="padding-right: 20px;">แขวน/ตำบล:</span> {{model.workTambon}}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <span style="padding-right: 20px;">เขต/อำเภอ:</span> {{model.workAmphoe}}
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="col-md-6">
+            <div class="col-md-12">
+                <span style="padding-right: 20px;">จังหวัด:</span> {{model.workProvince}}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <span style="padding-right: 20px;">รหัสไปรษณีย์:</span> {{model.workPostno}}
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="col-md-6">
+            <div class="col-md-12">
+                <span style="padding-right: 20px;">โทรศัพท์:</span> {{model.workPhone}}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <span style="padding-right: 20px;">โทรศัพท์มือถือ:</span> {{model.workPhone}}
+        </div>
+    </div>
+    <!-- ------------------------------------ -->
+    <div class="row" style="padding-bottom: 3%;">
+    </div>
+    <div class="col-md-12">
+        <div class="col-md-12">
+            <div class="col-md-12">
+                <span style="font-weight: bold">ที่อยู่สำสำหรับส่งเอกสาร</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="col-md-6">
+            <div class="col-md-6">
+                <span style="padding-right: 20px;">เลขที่:</span> {{model.currentAddress}}
+            </div>
+            <div class="col-md-6">
+                <span style="padding-right: 20px;">หมู่ที่:</span> {{model.currentMoo}}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <span style="padding-right: 20px;">อาคาร/หมู่บ้าน:</span> {{model.currentAddress2}}
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="col-md-6">
+            <div class="col-md-12">
+                <span style="padding-right: 20px;">ซอย:</span> {{model.currentSoi}}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <span style="padding-right: 20px;">ถนน:</span> {{model.currentRoad}}
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="col-md-6">
+            <div class="col-md-12">
+                <span style="padding-right: 20px;">แขวน/ตำบล:</span> {{model.currentTambon}}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <span style="padding-right: 20px;">เขต/อำเภอ:</span> {{model.currentAmphoe}}
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="col-md-6">
+            <div class="col-md-12">
+                <span style="padding-right: 20px;">จังหวัด:</span> {{model.currentProvince}}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <span style="padding-right: 20px;">รหัสไปรษณีย์:</span> {{model.currentPostno}}
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="col-md-6">
+            <div class="col-md-12">
+                <span style="padding-right: 20px;">โทรศัพท์:</span> {{model.currentPhone}}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <span style="padding-right: 20px;">โทรศัพท์มือถือ:</span> {{model.currentPhone}}
+        </div>
+    </div>
+    <!-- ------------------------------------ -->
+    <div class="row" style="padding-bottom: 3%;">
+    </div>
+    <div class="col-md-12">
+        <div class="col-md-12">
+            <div class="col-md-12">
+                <span style="font-weight: bold">การศึกษา</span>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-12">
+                <span >การศึกษาสูงสุด</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="col-md-12">
+            <div class="col-md-7">
+                <span style="padding-right: 20px;">1) จบการศึกษาสัตวแพทยศาสตรบัณติดปีีการศึกษา:</span> {{model.educationYear}}
+            </div>
+            <div class="col-md-5">
+                <span style="padding-right: 20px;">จาก:</span> {{model.education}}
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-7">
+                <span style="padding-right: 20px;">2) ได้รับปริญญาหรือประกาศนียบัตรในวิชาชีพอื่นคือ:</span> {{model.secondaryEducationYear}}
+            </div>
+            <div class="col-md-5">
+                <span style="padding-right: 20px;">จาก:</span> {{model.secondaryEducation}}
+            </div>
+        </div>
+    </div>
+    <div class="row" style="padding-bottom: 3%;">
+    </div>
+    <div class="col-md-12" style="text-align: center;">
+        <button type="button" (click)="goToProfile()">ย้อนกลับ</button>
+
+        <button type="button" (click)="downloadPDF()">พิมพ์ใบ Payln</button>
+    </div>
+
+    <div class="row" style="padding-bottom: 1%;">
+    </div>
+</div>

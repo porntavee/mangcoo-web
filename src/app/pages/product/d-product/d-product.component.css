@@ -1,0 +1,211 @@
+.vertical-line {
+    width: 1px;
+    /* Line width */
+    background-color: black;
+    /* Line color */
+    height: 90% !important;
+    /* Override in-line if you want specific height. */
+    float: left;
+    /* Causes the line to float to left of content. 
+      You can instead use position:absolute or display:inline-block
+      if this fits better with your design */
+}
+
+.checked {
+    color: #1EB7D7;
+}
+
+.bugget-orange {
+    background-color: #ED5643;
+    color: white;
+    padding: 5px;
+    font-size: 1rem;
+}
+
+.bugget-gray {
+    background-color: #707070;
+    color: white;
+    padding: 5px;
+    font-size: 1rem;
+}
+
+.f-orange {
+    color: #ED5643;
+}
+
+.f-line-through {
+    text-decoration: line-through;
+}
+
+.mat-button-toggle-appearance-standard{
+    color:#707070 !important;
+}
+
+.mat-button-toggle-checked{
+    background-color:#2CB7D5 !important;
+    color: #FFFFFF !important;
+}
+
+mat-button-toggle-group {
+    /* display: inline-flex !important;
+    flex-direction: column !important; */
+}
+
+span.num-qty {
+    color: #707070 !important;
+    margin-left: 20px !important;
+}
+
+i
+{
+  float:left !important;
+  position: relative !important;
+}
+
+.ratingbox
+{
+    display: block !important;
+    clear: both !important;
+}
+.fa-star-half-o,.fa-star
+{
+    color: #1EB7D7 !important;
+  
+}
+.rated{
+    color: #1EB7D7 !important;
+    cursor: pointer !important;
+}
+
+.unrated{
+    color: #aff1ff !important;
+    cursor: pointer !important;
+}
+
+.fa-star-half-empty:after, .fa-star-half-full:after, .fa-star-half-o:after {
+    content: "\f123" !important;
+    transform: rotateY(-180deg) !important;
+    display: inline-block !important;
+    left: 5px !important;
+    position: absolute !important;
+    top: 0 !important;
+    color: #aff1ff !important;
+    overflow: hidden !important;
+    width: 8.1px !important;
+}
+.span-textcolor-707070{
+color: #707070;
+}
+
+.span-textcolor-1794D2{
+    color: #1794D2;
+}
+
+.span-textcolor-1EB7D7{
+    color: #1EB7D7;
+}
+
+.btn-chat-now {
+    color: #ED5643 !important;
+    background-color: #FBD9D5 !important;
+    border-color: #ED5643 !important;
+    width: 80px !important;
+    height: 40px !important;
+    text-align: center;
+    font-size: 12px !important;
+    margin-top: 10px;
+    margin-right: 10px;
+  }
+
+.btn-show-shop {
+    color: #707070 !important;
+    border-color: #707070 !important;
+    width: 80px !important;
+    height: 40px !important;
+    text-align: center;
+    font-size: 12px !important;
+    margin-top: 10px;
+    margin-right: 10px;
+  }
+
+  .btn-score-shop {
+    color: #707070 !important;
+    border-color: #707070 !important;
+    min-width: 80px !important;
+    height: 32px !important;
+    text-align: center;
+    font-size: 12px !important;
+    margin-top: 10px;
+    margin-right: 10px;
+    background-color: #FFFFFF !important;
+  }
+
+  a:-webkit-any-link {
+    color: #000000;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+.margin-15px{
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.font-size-30px{
+    font-size: 30px;
+}
+
+.font-size-20px{
+    font-size: 20px;
+}
+
+.font-size-15px{
+    font-size: 15px;
+}
+
+.bg-div {
+    background-color: #F5F5F5 !important;
+  }
+
+.bg-div-E4E4E4 {
+    background-color: #E4E4E4 !important;
+  }  
+  
+.bg-div-F0FDFF {
+    background-color: #F0FDFF !important;
+  }
+
+.p-6 {
+    padding: 4rem!important;
+}
+
+.active {
+    color: #ED5643 !important;
+    border-color: #EB5749 !important;
+    fill: #EB5749 !important;
+}
+
+.border-radius-50{
+    border-radius: 50% !important;
+}
+
+
+.border-bottom{
+    border-color: #707070;
+}
+
+div.scroll
+{
+overflow-x:scroll;
+overflow-y: hidden;
+white-space: nowrap;
+}
+
+.ngx-gallery { 
+    display: inline-block; 
+    margin-bottom: 20px;
+}
+
+.min-width-300px{
+    min-width: 300px !important;
+}

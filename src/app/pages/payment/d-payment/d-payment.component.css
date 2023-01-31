@@ -1,0 +1,384 @@
+div {
+    display: block;
+}
+
+._193wCc {
+    transition: margin-top .3s cubic-bezier(.4,0,.2,1);
+    -webkit-overflow-scrolling: touch;
+}
+
+._3D9BVC {
+  position: relative;
+  -webkit-flex-grow: 1;
+  -moz-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  width: 980px;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-left: 1.6875rem;
+  min-width: 0;
+  background: #fff;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 13%);
+  border-radius: .125rem;
+}
+
+._1QwuCJ {
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 1.25rem 0 3.125rem;
+}
+.container {
+    width: 1200px;
+}
+.container, .container-fluid {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.h4QDlo {
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -moz-box-orient: vertical;
+  -moz-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  min-height: 100%;
+}
+
+.my-account-section, .my-account-section__header {
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.my-account-section {
+    -webkit-flex-direction: column;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding: 0 30px 20px;
+    background: #fff;
+    overflow: visible;
+}
+
+.my-account-section__header {
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-bottom: 1px solid #efefef;
+    padding: 22px 0;
+    height: 80px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.my-account-section, .my-account-section__header {
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.my-account-section__header-left {
+    -webkit-flex: 1;
+    -moz-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+
+.my-account-section__header-button {
+    margin-left: 10px;
+}
+
+.my-account-section__header-title {
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+    color: #333;
+    text-transform: capitalize;
+}
+
+.my-account-section__header-subtitle {
+    font-size: .875rem;
+    line-height: 1.0625rem;
+    color: #555;
+    margin-top: 3px;
+}
+
+.button-with-icon, .button-with-icon__icon {
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.button-with-icon {
+    -webkit-justify-content: space-between;
+    -moz-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.button-with-icon__icon {
+    margin-right: 10px;
+}
+
+.shopee-svg-icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+    position: relative;
+}
+
+.shopee-button-solid--address-tab, .shopee-button-solid--bacc-tab {
+    height: 40px;
+    padding: 0 20px;
+    font-size: 14px;
+    text-transform: capitalize;
+    font-weight: 400;
+}
+
+.shopee-button-solid--address-tab, .shopee-button-solid--bacc-tab {
+    height: 40px;
+    padding: 0 20px;
+    font-size: 14px;
+    text-transform: capitalize;
+    font-weight: 400;
+}
+
+.shopee-button-solid {
+    outline: none;
+    cursor: pointer;
+    border: none;
+    font-size: .875rem;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: 0;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    transition: background-color .1s cubic-bezier(.4,0,.6,1);
+    position: relative;
+    background: #ee4d2d;
+    color: #fff;
+    transition: opacity .2s ease;
+    border-radius: 2px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    box-shadow: 0 1px 1px 0 rgb(0 0 0 / 9%);
+}
+
+button, html input[type=button], input[type=reset], input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+
+.creditcard-card__logo img {
+    -o-object-fit: contain;
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+
+img {
+    border: 0;
+}
+
+.creditcard-card:last-child {
+    margin-bottom: 0;
+    border: none;
+}
+
+.creditcard-card {
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background: #fff;
+    width: 100%;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 25px 0;
+    cursor: default;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #efefef;
+}
+
+.button-with-icon {
+    justify-content: space-between;
+    width: 100%;
+}
+.button-with-icon, .button-with-icon__icon {
+    display: flex;
+    align-items: center;
+}
+
+.creditcard-card__logo {
+    width: 67px;
+    height: 40px;
+    margin-right: 20px;
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    border: 1px solid rgba(0,0,0,.14);
+    border-radius: 2px;
+    font-weight: 600;
+}
+
+.creditcard-card__type {
+    font-size: 1rem;
+    margin-right: 12px;
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    color: rgba(0,0,0,.8);
+}
+
+.bacc-default-badge {
+    display: inline-block;
+    background: #00bfa5;
+    color: #fff;
+    border-radius: 3px;
+    padding: 3px 7px 2px;
+    text-transform: capitalize;
+    font-size: 13px;
+    font-weight: 500;
+    width: auto;
+    white-space: nowrap;
+    margin-right: 12px;
+}
+
+.creditcard-card__spacer {
+    -webkit-flex: 1;
+    -moz-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+
+._11C6dM {
+    font-family: OCR A Std;
+    font-size: .875rem;
+    letter-spacing: 0;
+    margin-left: 1.25rem;
+    padding-top: .25rem;
+}
+
+.creditcard-card__actions {
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 300px;
+    -webkit-justify-content: flex-end;
+    -moz-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+}
+
+.bacc-secondary-action-btn {
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-transform: capitalize;
+    padding: 7px 0;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    color: #555;
+    margin-right: 20px;
+    text-decoration: underline;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.btn-light--disabled {
+    background: #fff!important;
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+.btn-light {
+    background: #fff;
+    color: #555;
+    border: 1px solid rgba(0,0,0,.09);
+    box-shadow: 0 1px 1px 0 rgb(0 0 0 / 3%);
+}
+.btn--s {
+    height: 34px;
+    padding: 0 15px;
+    min-width: 60px;
+    max-width: 190px;
+}
+.btn--inline {
+    display: -webkit-inline-flex;
+    display: -moz-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+}
+.btn {
+    overflow: hidden;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    -webkit-flex-direction: column;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    font-size: 14px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    box-shadow: 0 1px 1px 0 rgb(0 0 0 / 9%);
+    border-radius: 2px;
+    border: 0;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    text-transform: capitalize;
+    outline: 0;
+    cursor: pointer;
+}

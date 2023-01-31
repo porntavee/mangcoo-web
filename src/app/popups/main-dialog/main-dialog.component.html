@@ -1,0 +1,19 @@
+<!-- <button mat-button class="close-icon" [mat-dialog-close]="true">
+        X
+</button> -->
+<div *ngIf="isShowDialog == true">
+        <img *ngIf="data[data[0].index].linkUrl == ''" [src]="data[data[0].index].imageUrl" height="400">
+        <div class="icon_close fa fa-times" [mat-dialog-close]="true">
+        </div>
+    <a href="{{data[data[0].index].linkUrl}}">
+        <img *ngIf="data[data[0].index].linkUrl != ''" [src]="data[data[0].index].imageUrl" height="400" >
+    </a>
+</div>
+<div *ngIf="isShowDialog != true">
+    <img *ngIf="data[data[0].index].linkUrl == ''" [src]="data[data[0].index].imageUrl" height="200">
+    <div class="icon_close_m fa fa-times" [mat-dialog-close]="true">
+    </div>
+<a href="{{data[data[0].index].linkUrl}}">
+    <img *ngIf="data[data[0].index].linkUrl != ''" [src]="data[data[0].index].imageUrl" height="200" >
+</a>
+</div>

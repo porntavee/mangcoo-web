@@ -1,0 +1,192 @@
+.nav-login{
+    height: 5.25rem;
+    align-items: center;
+    display: flex;
+    box-shadow: 0 6px 6px rgb(0 0 0 / 6%);
+}
+
+.nav-in{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    /* margin: 0 auto; */
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+
+.nav-in ,.nav-r1 {
+    display: flex;
+    align-items: center;
+}
+
+.nav-in,.nav-r1, img {
+    height: 4rem;
+    margin: 0 auto;
+}
+
+.nav-in,.nav-r1, p {
+    height: 20px;
+    margin-left: 10px;
+}
+
+.login-help{
+    color:#1EB7D7;
+    text-decoration: none;
+}
+
+.login-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1EB7D7;
+    height: 600px;
+    margin: 0 auto;
+    flex-direction: row;
+}
+
+.login-content .r1{
+    display: flex;
+    align-items: center;
+    min-height: 470px;
+    width: 380px;
+    background-size: auto;
+    background-image: url('./../../../../assets/img/we_mart.png');
+     background-size: contain;
+      background-repeat: no-repeat;
+       background-position: center center;
+}
+
+.login-content .r2{
+    display: block;
+    border-radius: 5px;
+    margin: 0 15px;
+    padding: 20px;
+    background-color: white;
+    width: 380px;
+    height: 470px;
+    -webkit-text-size-adjust: none;
+}
+
+.box-border{
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,.25);
+    box-shadow: inset 0 2px 0 rgb(0 0 0 / 2%);
+}
+
+.mbf {
+    margin-bottom: 20px;
+}
+
+.mb-40 {
+    margin-bottom: 40px;
+}
+
+.input {
+    padding: 10px;
+    width: 100%;
+    outline: none;
+    border: none;
+    -webkit-flex: 1;
+    -moz-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    -webkit-filter: none;
+    filter: none;
+}
+
+.wevld {
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0 10px 0 10px;
+}
+
+.login-confirm {
+    color: #fff;
+    width: 100%;
+    height: 40px;
+    outline: none;
+    padding: 0 10px;
+    cursor: pointer;
+    border: 0;
+    background: none;
+    border-radius: 3px;
+    background-color: #1EB7D7;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 9%);
+}
+
+.login-confirm:hover {
+    opacity: .7;
+}
+
+.sc-box {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding-bottom: 9px;
+}
+
+.sc-line {
+    height: 1px;
+    width: 100%;
+    background-color: #dbdbdb;
+}
+
+.sc-line-txt {
+    padding: 0 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.sc-btn {
+    margin-left: 10px;
+    flex:1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    padding: 0 2px;
+    border-radius: 2px;
+    width: 100%;
+    height: 35px;
+    font-size: 10px;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 9%);
+    padding-right: 8px;
+}
+
+.sc-txt {
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+.bgf{
+    background-color: #1877f2;
+    color: #fff;
+}
+
+.bgg{
+    background-color: #00a1f1;
+    color: #fff;
+
+}
+
+.bga{
+    background-color: #000;
+    color: #fff;
+}
+
+.bgl{
+    background-color: #00b900;
+    color: #fff;
+}

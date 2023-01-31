@@ -1,0 +1,194 @@
+<!-- component header type 1 -->
+<app-d-t1-header></app-d-t1-header>
+
+
+<!-- content -->
+<div class="col-md-12 p-0 d-none d-lg-block mt-5 kanit">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 p-0" *ngIf="serviceProviderService.lang == 'th'">
+        <div class="col-md-12 kanit_xl c-blue-deep">ผลค้นหา</div>
+        <div class="col-md-12 fs2 mt30">
+            <span
+                style="color: #1B6CA8;">"{{this.keyword}}"</span>&nbsp;&nbsp;พบจำนวน&nbsp;&nbsp;{{this.total}}&nbsp;&nbsp;รายการ
+        </div>
+        <div class="col-md-12 fs2 mt30">
+            การเข้าถึง <span
+                style="color: #1B6CA8;">"{{this.keyword}}"</span>&nbsp;&nbsp;พบจำนวน&nbsp;&nbsp;{{this.totalmodel}}&nbsp;&nbsp;รายการ
+        </div>
+        <div class="col-md-12 mt30 ">
+            <div class="box-other">
+                <div class="card-other pointer" *ngFor="let item of model | slice:0:3;">
+                    <div class="right">
+                        <div>
+                            <a href="{{item.url}}" style="font-size: 20px;">{{item.title}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 fs2 mt30">
+            เนื้อหา <span
+                style="color: #1B6CA8;">"{{this.keyword}}"</span>&nbsp;&nbsp;พบจำนวน&nbsp;&nbsp;{{this.totalcontent}}&nbsp;&nbsp;รายการ
+        </div>
+        <div class="col-md-12 mt30 ">
+            <div class="box-other">
+                <div class="card-other pointer col-md-6" *ngFor="let item of content" (click)="nav(item)">
+                    <div style="width: 200px;">
+                        <img src="{{item.imageUrl}}" height="100%" width="100%" class="left" alt="">
+                    </div>
+                    <div class="right">
+                        <div>
+                            <p class="f-over" style="font-size: 20px;">{{item.title}}</p>
+                            <div class="df">
+                                <div class="kanit_m c-blue-deep"
+                                    style="border-radius: 10px;border: 1px solid #1B6CA8;padding: 0 7px;">
+                                    จาก {{item.createBy}}</div>
+                            </div>
+                            <p class="kanit_m" style="padding-top: 10px;">{{item.createDate | datetimeFormat}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-10 p-0" *ngIf="serviceProviderService.lang == 'en'">
+        <div class="col-md-12 kanit_xl c-blue-deep">Search Results</div>
+        <div class="col-md-12 fs2 mt30">
+            <span style="color: #1B6CA8;">"{{this.keyword}}"</span>&nbsp;&nbsp;Number
+            Found&nbsp;&nbsp;{{this.total}}&nbsp;&nbsp;List
+        </div>
+        <div class="col-md-12 fs2 mt30">
+            Accessibility <span style="color: #1B6CA8;">"{{this.keyword}}"</span>&nbsp;&nbsp;Number
+            Found&nbsp;&nbsp;{{this.totalmodel}}&nbsp;&nbsp;List
+        </div>
+        <div class="col-md-12 mt30 ">
+            <div class="box-other">
+                <div class="card-other pointer" *ngFor="let item of model | slice:0:3;">
+                    <div class="right">
+                        <div>
+                            <a href="{{item.url}}" style="font-size: 20px;">{{item.title}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 fs2 mt30">
+            Content <span style="color: #1B6CA8;">"{{this.keyword}}"</span>&nbsp;&nbsp;Number
+            Found&nbsp;&nbsp;{{this.totalcontent}}&nbsp;&nbsp;List
+        </div>
+        <div class="col-md-12 mt30 ">
+            <div class="box-other">
+                <div class="card-other pointer col-md-6" *ngFor="let item of content" (click)="nav(item)">
+                    <div style="width: 200px;">
+                        <img src="{{item.imageUrl}}" height="100%" width="100%" class="left" alt="">
+                    </div>
+                    <div class="right">
+                        <div>
+                            <p class="f-over" style="font-size: 20px;">{{item.title}}</p>
+                            <div class="df">
+                                <div class="kanit_m c-blue-deep"
+                                    style="border-radius: 10px;border: 1px solid #1B6CA8;padding: 0 7px;">
+                                    From {{item.createBy}}</div>
+                            </div>
+                            <p class="kanit_m" style="padding-top: 10px;">{{item.createDate | datetimeFormat}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+
+<div class="col-xs-12 p-0 d-block d-lg-none mt55 kanit" style="padding: 0 2vw;">
+    <div class="col-md-12 p-0 m-0" *ngIf="serviceProviderService.lang == 'th'">
+        <div class="col-md-12 kanit_xl c-blue-deep">ผลค้นหา</div>
+        <div class="col-md-12 fs2 mt-3">
+            <span
+                style="color: #1B6CA8;">"{{this.keyword}}"</span>&nbsp;&nbsp;พบจำนวน&nbsp;&nbsp;{{this.total}}&nbsp;&nbsp;รายการ
+        </div>
+        <div class="col-md-12 fs2 mt-3">การเข้าถึง
+            <span
+                style="color: #1B6CA8;">"{{this.keyword}}"</span>&nbsp;&nbsp;พบจำนวน&nbsp;&nbsp;{{this.totalmodel}}&nbsp;&nbsp;รายการ
+        </div>
+        <div class="col-md-12 mt-3">
+            <div class="box-other">
+                <div class="card-other pointer" *ngFor="let item of model | slice:0:3;">
+                    <div class="right">
+                        <div>
+                            <a href="{{item.url}}" style="font-size: 20px;">{{item.title}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 fs2 mt-4">เนื้อหา
+            <span
+                style="color: #1B6CA8;">"{{this.keyword}}"</span>&nbsp;&nbsp;พบจำนวน&nbsp;&nbsp;{{this.totalcontent}}&nbsp;&nbsp;รายการ
+        </div>
+        <div class="col-md-12 mt-4">
+            <div class="box-other">
+                <div class="card-other pointer" *ngFor="let item of content" (click)="nav(item)">
+                    <div style="width: 200px;">
+                        <img src="{{item.imageUrl}}" class="left" alt="" height="100%" width="100%"
+                            style="object-fit: contain;border-radius: 10px;">
+                    </div>
+                    <div style="margin-left: 2vw;">
+                        <p class="f-over" style="font-size: 20px;">{{item.title}}</p>
+                        <div class="df">
+                            <div
+                                style="color: #1B6CA8;font-size: 1.4rem;border-radius: 10px;border: 1px solid #1B6CA8;padding: 0 7px;">
+                                จาก {{item.createBy}}</div>
+                        </div>
+                        <p style="padding-top: 10px; font-size: 18px;">{{item.createDate | datetimeFormat}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 p-0 m-0" *ngIf="serviceProviderService.lang == 'en'">
+        <div class="col-md-12 kanit_xl c-blue-deep">Search Results</div>
+        <div class="col-md-12 fs2 mt-3">
+            <span style="color: #1B6CA8;">"{{this.keyword}}"</span>&nbsp;&nbsp;Number
+            Found&nbsp;&nbsp;{{this.total}}&nbsp;&nbsp;List
+        </div>
+        <div class="col-md-12 fs2 mt-3">Accessibility
+            <span style="color: #1B6CA8;">"{{this.keyword}}"</span>&nbsp;&nbsp;Number
+            Found&nbsp;&nbsp;{{this.totalmodel}}&nbsp;&nbsp;List
+        </div>
+        <div class="col-md-12 mt-3">
+            <div class="box-other">
+                <div class="card-other pointer" *ngFor="let item of model | slice:0:3;">
+                    <div class="right">
+                        <div>
+                            <a href="{{item.url}}" style="font-size: 20px;">{{item.title}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 fs2 mt-4">Content
+            <span style="color: #1B6CA8;">"{{this.keyword}}"</span>&nbsp;&nbsp;Number
+            Found&nbsp;&nbsp;{{this.totalcontent}}&nbsp;&nbsp;List
+        </div>
+        <div class="col-md-12 mt-4">
+            <div class="box-other">
+                <div class="card-other pointer" *ngFor="let item of content" (click)="nav(item)">
+                    <div style="width: 200px;">
+                        <img src="{{item.imageUrl}}" class="left" alt="" height="100%" width="100%"
+                            style="object-fit: contain;border-radius: 10px;">
+                    </div>
+                    <div style="margin-left: 2vw;">
+                        <p class="f-over" style="font-size: 20px;">{{item.title}}</p>
+                        <div class="df">
+                            <div
+                                style="color: #1B6CA8;font-size: 1.4rem;border-radius: 10px;border: 1px solid #1B6CA8;padding: 0 7px;">
+                                From {{item.createBy}}</div>
+                        </div>
+                        <p style="padding-top: 10px; font-size: 18px;">{{item.createDate | datetimeFormat}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

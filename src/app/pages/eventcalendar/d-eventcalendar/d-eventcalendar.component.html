@@ -1,0 +1,274 @@
+<!-- component header type 1 -->
+<app-d-t1-header></app-d-t1-header>
+
+<div class="col-md-12 m-0 p-0 d-none d-lg-block minDiv">
+    <!-- content -->
+    <div class="col-lg-12 m-0" style="padding: 0% 10%;">
+        <div class="col-md-1"></div>
+        <div class="kanit col-md-10 eventcalendar-box-content">
+            <div class="col-md-12 m-0 p-0">
+                <p class="p-f30" *ngIf="serviceProviderService.lang == 'th'">{{'event'| langTh}}</p>
+                <p class="p-f30" *ngIf="serviceProviderService.lang == 'en'">{{'event'| langEn}}</p>
+            </div>
+            <!-- center -->
+            <div class="df" style="flex-wrap: wrap;column-gap: 10px;row-gap: 5px;margin-bottom: 20px;">
+                <div *ngFor="let center of centerList">
+                    <div *ngIf="serviceProviderService.lang == 'th'" class="menu-eventcalendar pointer kanit_l" [class.menu-eventcalendar-active]="center.code === centerSelected.code" (click)="selectedCenter(center)">{{center.titleShort}}</div>
+                    <div *ngIf="serviceProviderService.lang == 'en'" class="menu-eventcalendar pointer kanit_l" [class.menu-eventcalendars-active]="center.code === centerSelected.code" (click)="selectedCenter(center)">{{center.titleShortEN}}</div>
+                </div>
+            </div>
+            <div class="col-md-12 p-0 line-c5c5c5" style="margin-bottom: 20px;"></div>
+            <!-- title month selected -->
+            <div class="col-md-12 m-0 p-0 df" style="justify-content: space-between;">
+                <p class="p-f50" *ngIf="categoryValueMonthSelected != '' && categoryValueYearSelected != '' ">
+                    {{categoryTitleMonthSelected}} {{categoryTitleYearSelected}}</p>
+                <div class="df">
+                    <div class="icon_close_m fa fa-th-large item-change-mode border-change-mode-left" [class.colors-change-mode]="gridViewMode === true" (click)="changeMode(true)"></div>
+                    <div class="icon_close_m fa fa-th-list item-change-mode border-change-mode-right" [class.colors-change-mode]="gridViewMode === false" (click)="changeMode(false)"></div>
+                </div>
+            </div>
+            <!-- month -->
+            <div class="col-md-12 p-0 line-c5c5c5" style="margin-bottom: 20px;"></div>
+            <div class="col-md-12 p-0 df" style="margin-bottom: 80px; flex-wrap: wrap; column-gap: 2vw;row-gap: 10px;">
+                <div *ngFor="let category of categoryListMonth">
+                    <p *ngIf="category.value != ''" class="menu-eventcalendar pointer" [class.menu-eventcalendar-active]="category.value === categorySelectedMonth" (click)="selectedCategoryMonth(category.value)">
+                        <span *ngIf="serviceProviderService.lang == 'th'">{{category.title}}</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">{{category.titleEN}}</span>
+                    </p>
+                    <p *ngIf="category.value == ''" class="menu-eventcalendar pointer" [class.menu-eventcalendar-active]="category.value === categorySelectedMonth" (click)="selectedYear()">
+                        <span *ngIf="serviceProviderService.lang == 'th'">{{'earlierThisYear'| langTh}}</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">{{'earlierThisYear'| langEn}}</span>
+
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-12 m-0 p-0" *ngFor="let i of model;">
+                <div class="p-f40" style="color: #1B6CA8;">{{i.date | dateFormatLL}}</div>
+                <div class="p-f24" style="color: #000000;">{{i.length}}
+                    <span *ngIf="serviceProviderService.lang == 'th'">{{'evnt'| langTh}}</span>
+                    <span *ngIf="serviceProviderService.lang == 'en'">{{'evnt'| langEn}}</span>
+                </div>
+                <div class="df" style="justify-content: center;">
+                    <div style="width: 100%;">
+                        <div *ngIf="gridViewMode == true" class="df pointer" style="flex-wrap: wrap;">
+                            <a *ngFor="let j of i.items; let idxItem = index" class="txt-de-none" style="width: 24%; border-radius: 10px; margin: 1% 1% 0 0;" href="{{path}}/{{j.code}}">
+                                <!-- <img src="{{j.imageUrl}}" width="100%" alt="" style="border-radius: 10px;height: 13vw;object-fit: cover;"> -->
+                                <div class="div-imageUrl-news-relevant">
+                                    <img height="100%" width="100%" style="border-radius: 15px;object-fit: contain;" src="{{j.imageUrl}}">
+                                </div>
+                                <div class="dfc" style="justify-content: space-between; padding: 10px ;">
+                                    <p class="p-f20 line-clamp-2" style="color: #707070;">{{j.title}}</p>
+                                    <p class="line-clamp-2" style="-webkit-line-clamp: 3; color: #707070;">
+                                        {{convertToPlain(j.description)}}</p>
+                                    <p style="color: #707070;">{{j.dateStart | dateFormat}} - {{j.dateEnd | dateFormat}}
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                        <div *ngIf="gridViewMode == false" class="df pointer" style="flex-wrap: wrap;">
+                            <a *ngFor="let j of i.items; let idxItem = index" class="txt-de-none" style="width: 100%; border-radius: 10px; margin: 1% 1% 0 0;" href="{{path}}/{{j.code}}">
+                                <!-- <img src="{{j.imageUrl}}" width="100%" alt="" style="border-radius: 10px;height: 13vw;object-fit: cover;"> -->
+                                <div class="dfc" style="justify-content: space-between; padding: 10px ;border-bottom: 1px solid #cfcfcf;padding: 0 0 5px 0;">
+                                    <p class="p-f20 line-clamp-2" style="color: #707070;">{{j.title}}</p>
+                                    <p class="line-clamp-2" style="-webkit-line-clamp: 3; color: #707070;">
+                                        {{convertToPlain(j.description)}}</p>
+                                    <p style="color: #707070;">{{j.dateStart | dateFormat}} - {{j.dateEnd | dateFormat}}
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- partner -->
+            <app-partner [eventPage]="true"></app-partner>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <div class="col-lg-12 m-0 p-0" *ngIf="showSelectYear == true" class="selected-product">
+        <div class="selected-product-bg">
+            <div class="selected-product-box">
+                <span class="glyphicon glyphicon-remove fs2 selected-product-top-close" (click)="closeSelectedYear()"></span>
+                <div class="selected-product-bottom dfc">
+                    <div class="df selected-product-box-center-qty">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10" >
+                            <p class="p-f30" style="color:#FFFFFF" *ngIf="serviceProviderService.lang == 'th'">กรุณาเลือกปี</p>
+                            <p class="p-f30" style="color:#FFFFFF" *ngIf="serviceProviderService.lang == 'en'">Please select year</p>
+                            <div class="line-c5c5c5"></div>
+                            <div class="df" style="margin-bottom: 30px; flex-wrap: wrap; width: 100%;">
+                                <div *ngFor="let category of categoryListYear">
+                                    <p *ngIf="category.value != ''" class="menu-eventcalendar-year pointer" [class.menu-eventcalendar-year-active]="category.value === categorySelectedYear" (click)="selectedCategoryYear(category.value)">{{category.title}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+                    <div class="df selected-product-box-center-qty">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10" *ngIf="serviceProviderService.lang == 'th'">
+                            <p class="p-f30" style="color:#FFFFFF">กรุณาเลือกเดือน</p>
+                            <div class="line-c5c5c5"></div>
+                            <div class="df" style="margin-bottom: 30px; flex-wrap: wrap; width: 90%;">
+                                <div *ngFor="let category of categoryListMonth">
+                                    <p *ngIf="category.value != ''" class="menu-eventcalendar-month pointer" [class.menu-eventcalendar-month-active]="category.value === categorySelectedMonth" (click)="selectedCategoryMonth(category.value)">{{category.title}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-10" *ngIf="serviceProviderService.lang == 'en'">
+                            <p class="p-f30" style="color:#FFFFFF">Please select a month</p>
+                            <div class="line-c5c5c5"></div>
+                            <div class="df" style="margin-bottom: 30px; flex-wrap: wrap; width: 90%;">
+                                <div *ngFor="let category of categoryListMonth">
+                                    <p *ngIf="category.value != ''" class="menu-eventcalendar-month pointer" [class.menu-eventcalendar-month-active]="category.value === categorySelectedMonth" (click)="selectedCategoryMonth(category.value)">{{category.titleEN}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+                    <div class="search-btn pointer" *ngIf="serviceProviderService.lang == 'th'" (click)="search()">ค้นหา</div>
+                    <div class="search-btn pointer" *ngIf="serviceProviderService.lang == 'en'" (click)="search()">search</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-xs-12 m-0 p-0 d-block d-lg-none">
+    <!-- content -->
+    <div class="kanit col-md-12 m-0 eventcalendar-box-content" style="padding: 0 2vw">
+        <div class="col-md-12 m-0 p-0">
+            <p class="kanit_m font-w400 c-70" style="margin: 10px 0;">
+                <span *ngIf="serviceProviderService.lang == 'th'">{{'event'| langTh}}</span>
+                <span *ngIf="serviceProviderService.lang == 'en'">{{'event'| langEn}}</span>
+            </p>
+        </div>
+        <!-- center -->
+        <div style="display: flex;justify-content: start;width: 100%;margin-bottom: 20px;">
+            <div class="div-dropdown" #droppedCenter (click)="showHamburger('center')">
+                <div class="div-dropdown-content" [ngStyle]="{'display': showCenter ? 'flex' : 'none'}" style="padding: 10px;">
+                    <div class="div-dropdown-item" *ngFor="let center of centerList">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="div-menu-knowledge kanit_m pointer" [class.div-menu-knowledge-active]="center.code === centerSelected.code" (click)="selectedCenter(center)">{{center.titleShort}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="div-menu-knowledge kanit_m pointer" [class.div-menu-knowledge-active]="center.code === centerSelected.code" (click)="selectedCenter(center)">{{center.titleShortEN}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="div-category-knowledge kanit_m pointer" [class.div-category-knowledge-active]="true" style="margin-left: 20px;max-width: 70vw;">
+                <span *ngIf="serviceProviderService.lang == 'th'">{{centerSelected.title}}</span>
+                <span *ngIf="serviceProviderService.lang == 'en'">{{centerSelected.titleEN}}</span>
+            </div>
+        </div>
+        <div class="col-md-12 p-0 line-c5c5c5" style="margin-bottom: 20px;"></div>
+        <div class="col-md-12 m-0 p-0 df" style="justify-content: space-between;">
+            <p class="kanit_l font-w600 c-blue-deep" *ngIf="categoryValueMonthSelected != '' && categoryValueYearSelected != '' ">
+                {{categoryTitleMonthSelected}} {{categoryTitleYearSelected}}</p>
+                <div class="df">
+                    <div class="icon_close_m fa fa-th-large item-change-mode border-change-mode-left" [class.colors-change-mode]="gridViewMode === true" (click)="changeMode(true)"></div>
+                    <div class="icon_close_m fa fa-th-list item-change-mode border-change-mode-right" [class.colors-change-mode]="gridViewMode === false" (click)="changeMode(false)"></div>
+                </div>
+        </div>
+        <div class="col-md-12 p-0 line-c5c5c5" style="margin-bottom: 20px;"></div>
+        <div style="display: flex;justify-content: start;width: 100%;margin-bottom: 20px;">
+            <div class="div-dropdown-year" #droppedYear (click)="showHamburger('year')">
+                <div class="div-dropdown-content-year" [ngStyle]="{'display': showYear ? 'flex' : 'none'}" style="padding: 10px;">
+                    <div class="div-dropdown-item-year" *ngFor="let category of categoryListMonth">
+                        <div *ngIf="category.value != ''">
+                            <div *ngIf="serviceProviderService.lang == 'th'" class="div-menu-knowledge kanit_m pointer" [class.div-menu-knowledge-active]="category.value === categorySelectedMonth" (click)="selectedCategoryMonth(category.value)">{{category.title}}</div>
+                            <div *ngIf="serviceProviderService.lang == 'en'" class="div-menu-knowledge kanit_m pointer" [class.div-menu-knowledge-active]="category.value === categorySelectedMonth" (click)="selectedCategoryMonth(category.value)">{{category.titleEN}}</div>
+                        </div>
+                        <div *ngIf="category.value == ''">
+                            <div *ngIf="serviceProviderService.lang == 'th'" class="div-menu-knowledge kanit_m pointer" [class.div-menu-knowledge-active]="category.value === categorySelectedMonth" (click)="selectedYear()">{{category.title}}</div>
+                            <div *ngIf="serviceProviderService.lang == 'en'" class="div-menu-knowledge kanit_m pointer" [class.div-menu-knowledge-active]="category.value === categorySelectedMonth" (click)="selectedYear()">{{category.titleEN}}</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="div-category-knowledge kanit_m pointer" [class.div-category-knowledge-active]="true" style="margin-left: 20px;max-width: 70vw;">{{categoryTitleMonthSelected}}</div>
+        </div>
+        <div class="col-lg-12 p-0" style="margin: 15px 0;" *ngFor="let i of model;">
+            <div class="p-f40" style="color: #1B6CA8;">{{i.date | dateFormatLL}}</div>
+            <div class="p-f24 mb-4" style="color: #000000;">{{i.length}}
+                <span *ngIf="serviceProviderService.lang == 'th'">{{'evnt'| langTh}}</span>
+                <span *ngIf="serviceProviderService.lang == 'en'">{{'evnt'| langEn}}</span>
+            </div>
+            <div class="df" style="justify-content: center;">
+                <div style="width: 100%;">
+                    <div *ngIf="gridViewMode == true" class="df pointer" style="flex-wrap: wrap;column-gap: 2vw;row-gap: 2vw;">
+                        <a *ngFor="let j of i.items; let idxItem = index" class="txt-de-none" style="width: 47vw; border-radius: 10px;" href="{{path}}/{{j.code}}">
+                            <img src="{{j.imageUrl}}" width="100%" alt="" style="border-radius: 10px; height: 29vw;object-fit: contain;">
+                            <div class="dfc" style="justify-content: space-between; padding: 10px ;">
+                                <p class="p-f20 line-clamp-2" style="color: #707070;">{{j.title}}</p>
+                                <p class="line-clamp-2" style="-webkit-line-clamp: 3; color: #707070;">
+                                    {{convertToPlain(j.description)}}</p>
+                                <p style="color: #707070;">{{j.dateStart | dateFormat}} - {{j.dateEnd | dateFormat}}</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div *ngIf="gridViewMode == false" class="df pointer" style="flex-wrap: wrap;">
+                        <a *ngFor="let j of i.items; let idxItem = index" class="txt-de-none" style="width: 100%; border-radius: 10px; margin: 1% 1% 0 0;"  href="{{path}}/{{j.code}}">
+                            <!-- <img src="{{j.imageUrl}}" width="100%" alt="" style="border-radius: 10px;height: 13vw;object-fit: cover;"> -->
+                            <div class="dfc" style="justify-content: space-between; padding: 10px ;border-bottom: 1px solid #cfcfcf;padding: 0 0 5px 0;">
+                                <p class="p-f20 line-clamp-2" style="color: #707070;">{{j.title}}</p>
+                                <!-- <p class="line-clamp-2" style="-webkit-line-clamp: 3; color: #707070;">
+                                    {{convertToPlain(j.description)}}</p> -->
+                                <p style="color: #707070;">{{j.dateStart | dateFormat}} - {{j.dateEnd | dateFormat}}
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- partner -->
+        <app-partner [eventPage]="true"></app-partner>
+    </div>
+    <div class="col-xs-12 m-0" *ngIf="showSelectYear == true" class="selected-product">
+        <div class="selected-product-bg">
+            <div class="selected-product-box">
+                <span class="glyphicon glyphicon-remove fs2 selected-product-top-close" (click)="closeSelectedYear()"></span>
+                <div class="selected-product-bottom dfc">
+                    <div class="df selected-product-box-center-qty">
+                        <div class="col-xs-12">
+                            <p class="p-f30" style="color:#FFFFFF" *ngIf="serviceProviderService.lang == 'th'">กรุณาเลือกปี</p>
+                            <p class="p-f30" style="color:#FFFFFF" *ngIf="serviceProviderService.lang == 'en'">Please select year</p>
+                            <div class="line-c5c5c5"></div>
+                            <div class="df" style="margin-bottom: 10px; flex-wrap: wrap; width: 100%;">
+                                <div *ngFor="let category of categoryListYear">
+                                    <p *ngIf="category.value != ''" class="menu-eventcalendar-year pointer" [class.menu-eventcalendar-year-active]="category.value === categorySelectedYear" (click)="selectedCategoryYear(category.value)">{{category.title}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="df selected-product-box-center-qty">
+                        <div class="col-xs-12" *ngIf="serviceProviderService.lang == 'th'">
+                            <p class="p-f30" style="color:#FFFFFF">กรุณาเลือกเดือน</p>
+                            <div class="line-c5c5c5"></div>
+                            <div class="df" style="margin-bottom: 10px; flex-wrap: wrap; width: 100%;">
+                                <div *ngFor="let category of categoryListMonth">
+                                    <p *ngIf="category.value != ''" class="menu-eventcalendar-month pointer" [class.menu-eventcalendar-month-active]="category.value === categorySelectedMonth" (click)="selectedCategoryMonth(category.value)">{{category.title}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12" *ngIf="serviceProviderService.lang == 'en'">
+                            <p class="p-f30" style="color:#FFFFFF">Please select a month</p>
+                            <div class="line-c5c5c5"></div>
+                            <div class="df" style="margin-bottom: 10px; flex-wrap: wrap; width: 100%;">
+                                <div *ngFor="let category of categoryListMonth">
+                                    <p *ngIf="category.value != ''" class="menu-eventcalendar-month pointer" [class.menu-eventcalendar-month-active]="category.value === categorySelectedMonth" (click)="selectedCategoryMonth(category.value)">{{category.titleEN}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="search-btn pointer" style="width: 90%;" *ngIf="serviceProviderService.lang == 'th'" (click)="search()">ค้นหา</div>
+                    <div class="search-btn pointer" style="width: 90%;" *ngIf="serviceProviderService.lang == 'en'" (click)="search()">search</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- footer -->
+<app-d-t1-footer></app-d-t1-footer>

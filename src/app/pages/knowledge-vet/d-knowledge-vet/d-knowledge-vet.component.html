@@ -1,0 +1,187 @@
+<!-- component header type 1 -->
+<app-d-t1-header></app-d-t1-header>
+
+<div class="col-md-12 m-0 d-none d-lg-block minDiv" style="padding: 0% 10%;background-color: #F7F7F7 !important;">
+    <div class="col-md-12">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="df mt55" style="color:#1B6CA8;font-size: 4rem;height: 30px;justify-content: center;">
+                <span *ngIf="serviceProviderService.lang == 'th'">{{'vetsubstances'| langTh}}</span>
+                <span *ngIf="serviceProviderService.lang == 'en'">{{'vetsubstances'| langEn}}</span>
+            </div>
+            <div class="line-c5c5c5"></div>
+            <div class="df" style="margin: 10px 20px;column-gap: 20px;row-gap: 10px;flex-wrap: wrap;">
+                <div *ngFor="let category of categoryList" style="flex-wrap: wrap;padding: 5px;">
+                    <div class="menu-knowledge pointer"
+                        [class.menu-knowledge-active]="category.code === categorySelected.code"
+                        (click)="selectedCategory(category.code)">{{category.title}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+
+    <div class="col-md-12 col-xs-12 minDiv" style="background-color: #F7F7F7 !important;">
+        <div class="row">
+            <div class="col-md-12 col-xs-12" style="margin: 70px 0;">
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-10">
+                    <div class="knowledge-all-left pointer">
+                        <span *ngIf="serviceProviderService.lang == 'th'">{{'vetsubstances'| langTh}}</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">{{'vetsubstances'| langEn}}</span>
+                        {{categorySelected.title}}
+                    </div>
+                    <div class="div-box-other-group">
+                        <div class="div-knowledge-vet-card pointer" *ngFor="let item of model;"
+                            style="position: relative;" (click)="selectedItem(item.code)">
+                            <div class="div-imageUrl-knowledge-vet">
+                                <img src="{{item.imageUrl}}" width="100%" height="100%"
+                                    style="border-radius: 15px;object-fit: contain;">
+                            </div>
+                            <div class="dfc" style="justify-content: space-between;padding: 15px 0;">
+                                <div style="font-size: 20px;" *ngIf="serviceProviderService.lang == 'th'">{{item.title}}
+                                </div>
+                                <div style="font-size: 20px;" *ngIf="serviceProviderService.lang == 'en'">
+                                    {{item.titleEN}}</div>
+                            </div>
+                            <div *ngIf="item.isHighlight && serviceProviderService.lang == 'th'"
+                                class="kanit c-white bg-primary-light tag-interest">
+                                แนะนำ
+                                <span *ngIf="serviceProviderService.lang == 'en'">Recommend</span>
+                            </div>
+                            <div *ngIf="item.isHighlight && serviceProviderService.lang == 'en'"
+                                class="kanit c-white bg-primary-light tag-interest-en">
+                                Recommend
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+            <div class="col-md-12" style="margin: 70px 0;">
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-10">
+                    <div class="knowledge-all-left pointer">
+                        <!-- สารสัตวแพทยสภาที่น่าสนใจ -->
+                        <span *ngIf="serviceProviderService.lang == 'th'">{{'vetsubstancesLike'| langTh}}</span>
+                        <span *ngIf="serviceProviderService.lang == 'en'">{{'vetsubstancesLike'| langEn}}</span>
+                    </div>
+                    <div class="div-box-other-group">
+                        <div class="div-knowledge-vet-card pointer" *ngFor="let item of modelInterest | slice:0:4"
+                            style="position: relative;" (click)="selectedItem(item.code)">
+                            <div class="div-imageUrl-knowledge-vet">
+                                <img src="{{item.imageUrl}}" width="100%" height="100%"
+                                    style="border-radius: 15px;object-fit: contain;">
+                            </div>
+                            <div class="dfc" style="justify-content: space-between;padding: 15px 0;">
+                                <div style="font-size: 20px;" *ngIf="serviceProviderService.lang == 'th'">{{item.title}}
+                                </div>
+                                <div style="font-size: 20px;" *ngIf="serviceProviderService.lang == 'en'">
+                                    {{item.titleEN}}</div>
+                            </div>
+                            <div *ngIf="item.isHighlight && serviceProviderService.lang == 'th'"
+                                class="kanit c-white bg-primary-light tag-interest">
+                                แนะนำ
+                                <span *ngIf="serviceProviderService.lang == 'en'">Recommend</span>
+                            </div>
+                            <div *ngIf="item.isHighlight && serviceProviderService.lang == 'en'"
+                                class="kanit c-white bg-primary-light tag-interest-en">
+                                Recommend
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-xs-12 m-0 p-0 d-block d-lg-none">
+    <div class="col-xs-12" style="background-color: #F7F7F7 !important;">
+        <div class="div-title-menu-enews">
+            <span *ngIf="serviceProviderService.lang == 'th'">{{'vetsubstances'| langTh}}</span>
+            <span *ngIf="serviceProviderService.lang == 'en'">{{'vetsubstances'| langEn}}</span>
+        </div>
+        <div class="line-c5c5c5"></div>
+        <div style="display: flex;justify-content: start;width: 100%;margin: 10px 0 0 0;">
+            <div class="div-dropdown-year" #droppedYear (click)="showHamburger('year')">
+                <div class="div-dropdown-content-year" [ngStyle]="{'display': showYear ? 'flex' : 'none'}"
+                    style="padding: 10px;">
+                    <div class="div-dropdown-item-year" *ngFor="let category of categoryList">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="div-menu-knowledge kanit_m pointer"
+                            [class.div-menu-knowledge-active]="category.code === categorySelected.code"
+                            (click)="selectedCategory(category.code)">{{category.title}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="div-menu-knowledge kanit_m pointer"
+                            [class.div-menu-knowledge-active]="category.code === categorySelected.code"
+                            (click)="selectedCategory(category.code)">{{category.title}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="div-category-knowledge kanit_m pointer" [class.div-category-knowledge-active]="true"
+                style="margin-left: 20px;max-width: 70vw;">{{categorySelected.title}}</div>
+        </div>
+    </div>
+    <div class="col-xs-12" style="background-color: #F7F7F7 !important; padding-top: 40px;">
+        <div class="div-knowledge-all-left pointer">
+            <span *ngIf="serviceProviderService.lang == 'th'">{{'vetsubstances'| langTh}}</span>
+            <span *ngIf="serviceProviderService.lang == 'en'">{{'vetsubstances'| langEn}}</span>
+            {{categorySelected.title}}
+        </div>
+        <div class="df" style="margin-top: 20px;flex-wrap: wrap;row-gap: 10px;column-gap: 2%;">
+            <div *ngFor="let item of model;" style="width: 49%;border-radius: 10px;position: relative;" class="pointer"
+                (click)="selectedItem(item.code)">
+                <div style="height: 59.2vw;width: 44.8vw;">
+                    <img src="{{item.imageUrl}}" width="100%" height="100%" alt="" style="border-radius: 10px;">
+                </div>
+                <div class="dfc" style="justify-content: space-between;padding: 10px 0;">
+                    <div class="font-w500 f-over kanit_m c-70" *ngIf="serviceProviderService.lang == 'th'">
+                        {{item.title}}</div>
+                    <div class="font-w500 f-over kanit_m c-70" *ngIf="serviceProviderService.lang == 'en'">
+                        {{item.titleEN}}</div>
+                </div>
+                <div *ngIf="item.isHighlight && serviceProviderService.lang == 'th'"
+                    class="kanit c-white bg-primary-light tag-interest-m">
+                    แนะนำ
+                </div>
+                <div *ngIf="item.isHighlight && serviceProviderService.lang == 'en'"
+                    class="kanit c-white bg-primary-light tag-interest-m-en">
+                    Recommend
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12" style="margin: 70px 0;">
+        <div class="div-knowledge-all-left pointer">
+            <!-- สารสัตวแพทยสภาที่น่าสนใจ -->
+            <span *ngIf="serviceProviderService.lang == 'th'">{{'vetsubstancesLike'| langTh}}</span>
+            <span *ngIf="serviceProviderService.lang == 'en'">{{'vetsubstancesLike'| langEn}}</span>
+        </div>
+        <div class="df" style="margin-top: 20px;flex-wrap: wrap;row-gap: 10px;column-gap: 2%;">
+            <div *ngFor="let item of modelInterest | slice:0:4"
+                style="width: 49%;border-radius: 10px;position: relative;" class="pointer"
+                (click)="selectedItem(item.code)">
+                <div style="height: 59.2vw;width: 44.8vw;">
+                    <img src="{{item.imageUrl}}" width="100%" height="100%" alt="" style="border-radius: 10px;">
+                </div>
+                <div class="dfc" style="justify-content: space-between;padding: 10px 0;">
+                    <div class="font-w500 f-over kanit_m c-70" *ngIf="serviceProviderService.lang == 'th'">
+                        {{item.title}}</div>
+                    <div class="font-w500 f-over kanit_m c-70" *ngIf="serviceProviderService.lang == 'en'">
+                        {{item.titleEN}}</div>
+                </div>
+                <div *ngIf="item.isHighlight && serviceProviderService.lang == 'th'"
+                    class="kanit c-white bg-primary-light tag-interest-m">
+                    แนะนำ
+                </div>
+                <div *ngIf="item.isHighlight && serviceProviderService.lang == 'en'"
+                    class="kanit c-white bg-primary-light tag-interest-m-en">
+                    Recommend
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-d-t1-footer></app-d-t1-footer>

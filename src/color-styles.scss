@@ -1,0 +1,296 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600&display=swap');
+// $logo-color: './assets/img/we_mart_b.png';
+// $logo-white: './assets/img/we_mart.png';
+// $primary: #1794D2;
+// $primary-light: #1EB7D7;
+// $secondary: #ED5643;
+// $secondary-light: #FBD9D5;
+// __________________________________________________
+// __________________________________________________
+$logo-color: './assets/img/ssp.png';
+$logo-white: './assets/img/ssp_w.png';
+$primary: #EC008C;
+$primary-light: #E19B24;
+$secondary: #ED5643;
+$secondary-light: #FBD9D5;
+// __________________________________________________
+$white: #ffffff;
+$black: #000000;
+$grey-c5: #c5c5c5;
+$grey-70: #707070;
+$grey-e4: #E4E4E4;
+// logo
+.logo-primary {
+    background-image: url($logo-color);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.logo-secondary {
+    background-image: url($logo-white);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+// color
+.c-primary {
+    color: $primary !important;
+}
+
+.c-primary-light {
+    color: $primary-light !important;
+}
+
+.c-secondary {
+    color: $secondary !important;
+}
+
+.c-secondary-light {
+    color: $secondary-light !important;
+}
+
+.c-70 {
+    color: $grey-70 !important;
+}
+
+.c-6c {
+    color: #6c6c6c !important;
+}
+
+.c-c5 {
+    color: $grey-c5 !important;
+}
+
+.c-black {
+    color: $black !important;
+}
+
+.c-white {
+    color: $white !important;
+}
+.c-blue-deep {
+    color: #1B6CA8;
+}
+
+// background
+.bg-twotone {
+    background: transparent linear-gradient(99deg, $primary-light 0%, $primary 100%) 0% 0% no-repeat padding-box;
+    color: $white;
+}
+
+.bg-primary {
+    background-color: $primary !important;
+}
+
+.bg-primary-light {
+    background-color: $primary-light !important;
+}
+
+.bg-secondary {
+    background-color: $secondary !important;
+}
+
+.bg-secondary-light {
+    background-color: $secondary-light !important;
+}
+
+.bg-white {
+    background-color: $white !important;
+}
+
+.bg-70 {
+    background-color: $grey-70 !important;
+}
+
+.bg-blue-deep {
+    background-color: #1B6CA8;
+}
+
+.bg-green-mint {
+    background-color: #128986;
+}
+
+// border
+.bor-c-primary {
+    border-color: $primary !important;
+}
+
+.bor-c-primary-light {
+    border-color: $primary-light !important;
+}
+
+.bor-c-secondary {
+    border-color: $secondary !important;
+}
+
+.bor-c-secondary-light {
+    border-color: $secondary-light !important;
+}
+
+.btn-primary {
+    background-color: $primary-light !important;
+    border-color: $primary-light !important;
+}
+
+.btn-secondary {
+    background-color: $secondary !important;
+    border-color: $secondary !important;
+}
+
+.btn-outline-primary {
+    color: $primary-light !important;
+    border-color: $primary-light !important;
+}
+
+.btn-outline-secondary {
+    margin-right: 10px !important;
+}
+
+.btn-outline-secondary:focus {
+    margin-right: 10px !important;
+    color: $primary-light !important;
+    border-color: $primary-light !important;
+    outline: 5px solid $primary-light !important;
+}
+
+.btn-add-cart {
+    color: $secondary !important;
+    background-color: $secondary-light !important;
+    border-color: $secondary !important;
+    width: 160px !important;
+    height: 40px !important;
+    text-align: center;
+    font-size: 12px;
+}
+
+.btn-buy-product {
+    color: $white !important;
+    background-color: $secondary !important;
+    border-color: $secondary !important;
+    width: 160px !important;
+    height: 40px !important;
+    text-align: center;
+    font-size: 12px;
+}
+
+.btn-qty {
+    color: $grey-70 !important;
+    border-color: $grey-e4 !important;
+    border-radius: 0% !important;
+    font-size: 20px !important;
+    width: 40px !important;
+    height: 40px !important;
+    text-align: center;
+}
+
+.btn-qty-num {
+    color: $black !important;
+    border-color: $grey-e4 !important;
+    border-radius: 0% !important;
+    font-size: 16px !important;
+    height: 40px !important;
+    text-align: center;
+    min-width: 40px !important;
+}
+
+.kanit_sm {
+    font-family: 'Kanit', sans-serif;
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+.kanit_s {
+    font-family: 'Kanit', sans-serif;
+    font-size: 16px;
+    line-height: 1.2;
+}
+
+.kanit_m {
+    font-family: 'Kanit', sans-serif;
+    font-size: 18px;
+    line-height: 1.2;
+}
+
+.kanit_l {
+    font-family: 'Kanit', sans-serif;
+    font-size: 26px;
+    line-height: 1.2;
+}
+
+.kanit_xl {
+    font-family: 'Kanit', sans-serif;
+    font-size: 36px;
+    line-height: 1.4;
+}
+
+.kanit_xxl {
+    font-family: 'Kanit', sans-serif;
+    font-size: 46px;
+    line-height: 1.5;
+}
+
+.color_grey70 {
+    color: $grey-70;
+}
+
+.box_date {
+    margin: 20px 0;
+    display: flex;
+}
+
+.grey_button {
+    padding: 5px 14px;
+    text-align: center;
+    background-color: #CFDAE3;
+    border-radius: 5px;
+    margin-left: 15px;
+}
+
+.font-w400 {
+    font-weight: 400;
+}
+
+.font-w500 {
+    font-weight: 500;
+}
+
+.font-w600 {
+    font-weight: 600;
+}
+
+.mt-80 {
+    margin-top: 80px;
+}
+
+.f-over {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-height: 1.2;
+    max-height: 3em;
+}
+
+.f-over-header {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    line-height: 1.2;
+    max-height: 3em;
+}
+
+.text-center {
+    text-align: center;
+}
+
+@media(min-width: 400px) {
+    .kanit_l {
+
+    }
+}

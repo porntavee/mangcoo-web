@@ -1,0 +1,295 @@
+<!-- header 1 -->
+<div class="col-md-12 p-3 bg-twotone">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+    </div>
+    <div class="col-md-5 text-right">
+      <span class="pointer" (click)="goTo('notification')"><span
+          class="glyphicon glyphicon-bell"></span>&nbsp;การแจ้งเตือน</span> &nbsp;&nbsp;&nbsp;
+      <span class="pointer" (click)="goTo('contactHelp')"><span
+          class="glyphicon glyphicon-question-sign"></span>&nbsp;ช่วยเหลือ</span>
+      &nbsp;&nbsp;&nbsp;
+      <span *ngIf="userData.profileCode == ''" class="pointer" (click)="goTo('register')">สมัครใหม่</span>
+      <span *ngIf="userData.profileCode == ''" class="pointer">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+      <span *ngIf="userData.profileCode == ''" class="pointer" (click)="goTo('login')">เข้าสู่ระบบ</span>
+      <span *ngIf="userData.profileCode != ''" class="pointer"
+        (click)="goTo('profile')">{{userData.first_name}}&nbsp;{{userData.first_name}}</span>
+      <span *ngIf="userData.profileCode != ''" class="pointer">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+      <span *ngIf="userData.profileCode != ''" class="pointer" (click)="logout()">ออกจากระบบ</span>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>
+
+<!-- header 2 -->
+<div class="col-md-12 p-4 pb-0 bg-white">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-2">
+      <!-- <h1>SUKSAPAN</h1> -->
+      <a href="/">
+        <div class="logo-primary" style="height: 60px;width: 150px;margin-left: 20px"></div>
+      </a>
+      <!-- <a href="/"><img src="./assets/img/we_mart_b.png" style="margin-left: 20px;" width="150"></a> -->
+    </div>
+    <div class="col-md-8 p-4">
+    </div>
+    <div class="col-md-1 p-4">
+    </div>
+  </div>
+</div>
+
+<!-- address default -->
+<div *ngIf="!isShowAddress" class="col-md-12" style="display: flex;justify-content: center;margin-top: 10px;">
+  <div style="padding: 20px 20px 20px 20px;width: 80%;background-color: white;">
+    <div style="display: flex;justify-content: space-between;">
+      <h3 style="color: #EB5749;">ที่อยู่ในการจัดส่ง</h3>
+      <div *ngIf="address.code == null" style="display: flex;">
+        <div class="btnAddress pointer" style="margin-right: 15px;" (click)="showModal = !showModal">
+          เพิ่มที่อยู่
+        </div>
+        <div class="btnAdC pointer" (click)="goTo('address')">
+          จัดการที่อยู่
+        </div>
+      </div>
+    </div>
+    <div *ngIf="address.code != null" style="display: flex;align-items: center;">
+      <span style="font-size: 15px;margin-right: 15px;">{{address.title}}&nbsp;&nbsp;(+66)&nbsp;{{address.phone}}</span>
+      <span
+        style="font-size: 14px;flex: auto;">&nbsp;&nbsp;{{address.address}}&nbsp;{{address.subDistrictTitle}}&nbsp;{{address.districtTitle}}&nbsp;{{address.provinceTitle}}&nbsp;{{address.postalCode}}
+      </span>
+      <p class="col-md-2 text-right" style="color: #707070;">ค่าเริ่มต้น</p>
+      <p class="col-md-1 pd0 text-right pointer" (click)="isShowAddress = !isShowAddress">เปลี่ยน</p>
+    </div>
+  </div>
+</div>
+
+<!-- address list -->
+<div *ngIf="isShowAddress" class="col-md-12" style="display: flex;justify-content: center;margin-top: 10px;">
+  <div style="padding: 20px 20px 20px 20px;width: 80%;background-color: white;">
+    <div style="display: flex;justify-content: space-between;">
+      <h3 style="color: #EB5749;">ที่อยู่ในการจัดส่ง</h3>
+      <div style="display: flex;">
+        <div class="btnAddress pointer" style="margin-right: 15px;" (click)="showModal = !showModal">
+          เพิ่มที่อยู่
+        </div>
+        <div class="btnAdC pointer" (click)="goTo('address')">
+          จัดการที่อยู่
+        </div>
+      </div>
+    </div>
+    <div *ngFor="let item of addressList;" style="display: flex;align-items: center;">
+      <input type="checkbox" class="radio" style="margin-right: 20px;" [(ngModel)]="item.check"
+        [ngModelOptions]="{standalone: true}" (click)="selectAddress(item)">
+      <span style="font-size: 15px;margin-right: 15px;">{{item.title}}&nbsp;&nbsp;(+66)&nbsp;{{item.phone}}</span>
+      <span
+        style="font-size: 14px;flex: auto;">&nbsp;&nbsp;{{item.address}}&nbsp;{{item.subDistrictTitle}}&nbsp;{{item.districtTitle}}&nbsp;{{address.provinceTitle}}&nbsp;{{address.postalCode}}
+      </span>
+      <p *ngIf="item.isDefault" class="col-md-2 text-right" style="color: #707070;">ค่าเริ่มต้น</p>
+    </div>
+    <div class="bxM">
+      <div style="display:flex;">
+        <div class="btnAddress pointer" style="margin-right: 15px;" (click)="changeAddress()">
+          ยืนยัน
+        </div>
+        <div class="btnAdC pointer" (click)="isShowAddress = !isShowAddress">
+          ยกเลิก
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- product header -->
+<div class="col-md-12" style="display: flex;justify-content: center;margin-top: 10px;">
+  <div style="padding: 20px 20px 0px 20px;width: 80%;background-color: white;">
+    <div style="display: flex;align-items: center;">
+      <h3 class="col-md-6 mg0 pd0 text-left">สั่งซื้อสินค้าแล้ว</h3>
+      <h3 class="col-md-2 mg0 text-center">ราคาต่อหน่วย</h3>
+      <p class="col-md-2 mg0 text-left" style="color: #707070;">จำนวน</p>
+      <p class="col-md-2 mg0 pd0 text-right">รวม</p>
+    </div>
+  </div>
+</div>
+
+<!-- product -->
+<div class="col-md-12 boxOPd" *ngFor="let i of model; let idxShop = index">
+  <div class="bxM" [ngStyle]="{'margin-top': (idxShop > 0) ? '10px' : '0px'}">
+    <!-- shop -->
+    <div style="display: flex;align-items: center;">
+      <p>{{i.shopName}}&nbsp;&nbsp;</p>
+      <p style="color: #707070;">|&nbsp;&nbsp;</p>
+      <p style="color: #10BC37;">แชทเลย</p>
+    </div>
+  </div>
+  <!-- list product -->
+  <div *ngFor="let j of i.items; let idxItem = index"
+    style="display:flex;padding: 20px 20px 20px 20px;width: 80%;background-color: white;">
+    <div style="display: flex;align-items: center; width: 50%;">
+      <img src="{{j.imageUrl}}" height="50px" width="50px" alt="">
+      <p class="pText" style="width: 60%;font-size: 13px;">{{j.goodsTitle}}</p>
+      <p style="color: #707070;font-size: 13px;">ตัวเลือกสินค้า: {{j.title}}</p>
+    </div>
+    <div style="width: 16.6%;display: flex;justify-content: center;font-size: 13px;">
+      ฿{{formatPrice(j.netPrice)}}
+    </div>
+    <div style="width: 16.6%;display: flex;padding-left: 20px;font-size: 13px;">
+      {{j.qty}}
+    </div>
+    <div style="width: 16.6%;display: flex;justify-content: flex-end;font-size: 13px;">
+      ฿{{formatPrice(j.netPrice * j.qty)}}
+    </div>
+  </div>
+  <!-- coupon -->
+  <div
+    style="display:flex;padding: 20px 20px 20px 20px;width: 80%;border-bottom: 1px dashed rgba(0,0,0,.09);border-top: 1px dashed rgba(0,0,0,.09);background-color: white;">
+    <div style="width: 40%;"></div>
+    <div style="display: flex; width: 60%;">
+      <span style="color: #10BC37;width: 30%;font-size: 13px;">Shipping Option:</span>
+      <span style="font-size: 13px; width: 40%;margin-left: 15px;">Standard Delivery - ส่งธรรมดาในประเทศ
+        จะได้รับในวันที่ 9 ส.ค. - 12 ส.ค.
+      </span>
+      <span
+        style="color: #1b10bc;justify-content: stretch; font-size: 13px;width: 15%;text-align: right;">เปลี่ยน</span>
+      <span style="justify-content: stretch;font-size: 13px; width: 15%;text-align: right;">฿30</span>
+    </div>
+  </div>
+  <!-- sum in shop -->
+  <div style="display:flex;padding: 20px 20px 20px 20px;width: 80%;background-color: white;justify-content: flex-end;">
+    <span style="color: #707070;justify-content: stretch; font-size: 13px;text-align: right;">ยอดสั่งซื้อทั้งหมด
+      ({{formatPrice(sumQtyShop(i))}} ชิ้น):</span>
+    <span
+      style="color:#ED5643;justify-content: stretch;font-size: 20px;text-align: right;margin-left: 25px;">฿{{formatPrice(sumPriceShop(i))}}</span>
+  </div>
+</div>
+
+<div class="col-md-12 boxOPd" style="margin-top: 15px;">
+  <div class="bxM">
+    <div style="display:flex;background-color: white;justify-content: space-between;">
+      <span style="margin-bottom:20px;font-size: 18px;text-align: right;">โค้ดส่วนลด</span>
+      <span
+        style="color:#1b10bc;justify-content: stretch;font-size: 13px;text-align: right;margin-left: 25px;">เลือกโค้ดส่วนลด</span>
+    </div>
+  </div>
+</div>
+
+<!-- we point -->
+<div class="col-md-12 boxOPd" style="margin-top: 2px;">
+  <div class="bxM">
+    <div style="display:flex;background-color: white;justify-content: space-between;margin-bottom:20px;">
+      <div>
+        <span style="font-size: 18px;text-align: right;">We point
+        </span>
+        <span style="color: #707070;margin-left: 13px;">ไม่สามารถแลกเหรียญได้</span>
+      </div>
+      <div>
+        <span
+          style="color:#707070;justify-content: stretch;font-size: 13px;text-align: right;margin-right: 10px;">[-฿0]</span>
+        <input type="checkbox">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- total sum -->
+<div class="col-md-12 boxOPd" style="margin-top: 15px;">
+  <div class="bxM">
+    <div class="col-md-6" style="display:flex;justify-content: flex-start;margin-bottom:20px;">
+      <div style="width: 100%;">
+        <div style="margin-top: 10px;display:flex;">
+          <label>
+            <input disabled name="options" ng-control="options" type="radio" value="CD" [(ngModel)]="paymentType">
+            <span disabled name="options" class="textSum" style="margin-left: 10px;">เก็บเงินปลายทาง
+              (ปิดบริการชั่วคราว)</span>
+          </label>
+
+        </div>
+        <div style="margin-top: 10px;display:flex;">
+          <label>
+            <input name="options" ng-control="options" type="radio" value="TQ" [(ngModel)]="paymentType">
+            <span name="options" class="textSum" style="margin-left: 10px;">Thai QR</span>
+          </label>
+        </div>
+        <div style="margin-top: 10px;display:flex;">
+          <label>
+            <input name="options" ng-control="options" type="radio" value="PP" [(ngModel)]="paymentType">
+            <span name="options" class="textSum" style="margin-left: 10px;">PromptPay</span>
+          </label>
+        </div>
+        <div style="margin-top: 10px;display:flex;">
+          <label>
+            <input disabled name="options" ng-control="options" type="radio" value="CC" [(ngModel)]="paymentType">
+            <span disabled name="options" class="textSum" style="margin-left: 10px;">บัตรเครดิต/บัตรเดบิต
+              (ปิดบริการชั่วคราว)</span>
+          </label>
+        </div>
+        <div style="margin-top: 10px;display:flex;">
+          <label>
+            <input disabled name="options" ng-control="options" type="radio" value="CT" [(ngModel)]="paymentType">
+            <span disabled name="options" class="textSum" style="margin-left: 10px;">เคาท์เตอร์เซอร์วิท
+              (ปิดบริการชั่วคราว)</span>
+          </label>
+        </div>
+        <div style="margin-top: 10px;display:flex;">
+          <label disabled>
+            <input disabled name="options" ng-control="options" type="radio" value="DD" [(ngModel)]="paymentType">
+            <span disabled name="options" class="textSum" style="margin-left: 10px;">Mobile Banking
+              (ปิดบริการชั่วคราว)</span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6" style="display:flex;justify-content: flex-end;margin-bottom:20px;">
+      <div style="width: 50%;">
+        <div class="bxFBtMt10">
+          <span class="textSum">ยอดรวมสินค้า:</span>
+          <span class="textSum">฿{{formatPrice(sumPriceTotal())}}</span>
+        </div>
+        <div class="bxFBtMt10">
+          <span class="textSum">รวมการจัดส่ง:</span>
+          <span class="textSum">฿{{formatPrice(sumShippingPrice())}}</span>
+        </div>
+        <div class="bxFBtMt10">
+          <span class="textSum">การชำระเงินทั้งหมด:</span>
+          <span class="textSum"
+            style="font-size: 18px !important;color: #ED5643;">฿{{formatPrice(resultPrice())}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- action='https://payment.webpakpay.com/api.php' -->
+<form *ngIf="paymentType != 'PP'" #form ngNoForm name='pymt' method='post'
+  action='https://payment.webpakpay.com/api.php'>
+  <input type='hidden' name='pymtToken' value='0f13a9c9abae1a592cd197d54c089b103aaa7dc7e77f1cd718c3e90fa27b0e8e'>
+  <input type='hidden' name='pymtProcess' value='PAYMENT'>
+  <input type='hidden' name='pymtType' value='PDT'>
+  <input type='hidden' name='pymtMethod' value='{{paymentType}}'>
+  <input type='hidden' name='pymtLang' value='TH'>
+  <input type='hidden' name='pymtCurrency' value='THB'>
+  <input type='hidden' name='pymtAmount' value='0.25'>
+  <input type='hidden' name='pymtDesc' value='Description'>
+  <input type='hidden' name='pymtNumber' value="{{paymentNumber}}">
+  <input type='hidden' name='pymtCustName' value="{{address.title}}">
+  <input type='hidden' name='pymtCustMobile' value='{{address.phone}}'>
+  <input type='hidden' name='pymtCustEmail' value=''>
+  <input type='hidden' name='pymtCustIP' value="{{ipAddress}}">
+  <input type='hidden' name='pymtReturnURL' value='{{serverPayment}}'>
+  <input type='hidden' name='pymtTermURL' value='https://suksapanonline.com/#/demo-routing-objects'>
+  <div class="col-md-12 boxOPd" style="margin: 20px 0px 40px 0px;">
+    <div class="bxM" style="display: flex;justify-content: flex-end;">
+      <input class="btnSm pointer" type='submit' name='submit' value='ชำระเงิน' (click)="updateData()">
+    </div>
+  </div>
+</form>
+
+<div *ngIf="paymentType == 'PP'" class="col-md-12 boxOPd" style="margin: 20px 0px 40px 0px;">
+  <div class="bxM" style="display: flex;justify-content: flex-end;">
+    <input class="btnSm pointer" type='submit' name='submit' value='ชำระเงิน' (click)="updateDataOmise()">
+  </div>
+</div>
+
+<modal-address *ngIf="showModal" (callback)="fromModal($event)"></modal-address>

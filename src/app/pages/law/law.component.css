@@ -1,0 +1,354 @@
+.menu-knowledge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #216DA6;
+    border-radius: 25px;
+    opacity: 1;
+    padding: 10px;
+    background-color: white;
+    /* margin-right: 10px; */
+    color: #216DA6;
+}
+
+.menu-knowledge:hover {
+    background-color: #216DA6;
+    color: white;
+}
+
+.menu-knowledge-active {
+    background-color: #216DA6;
+    color: white;
+}
+
+.category-knowledge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #216DA6;
+    border-radius: 18px;
+    opacity: 1;
+    padding: 5px 10px;
+    background-color: white;
+    /* margin-right: 10px; */
+    color: #216DA6;
+}
+
+.category-knowledge:hover {
+    background-color: #216DA6;
+    color: white;
+}
+
+.category-knowledge-active {
+    background-color: #216DA6;
+    color: white;
+}
+
+.knowledge-all-left {
+    align-items: center;
+    color: #216DA6;
+    font-size: 28px;
+}
+
+.knowledge-all-right {
+    width: 100px;
+    height: 50px;
+    background-color: #CFDAE3;
+    border-radius: 50px;
+    text-align: center;
+    display: flex;
+    color: #FFFFFF;
+    font-size: 24px;
+    justify-content: center;
+    align-items: center;
+}
+
+.knowledge-all-right:hover {
+    background-color: #E19B24;
+}
+
+.text-center {
+    display: flex;
+    color: #216DA6;
+    margin: 20px 0;
+    font-size: 2.6rem;
+    justify-content: center;
+}
+
+.knowledge-box-content {
+    /* padding: 0 80px; */
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.knowledge-top-content {
+    display: flex;
+    justify-content: center;
+}
+
+.knowledge-box-main {
+    height: 500px;
+    width: 700px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.knowledge-box-main .top {
+    height: 400px;
+    width: 700px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.knowledge-card-content .head {
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1.2;
+}
+
+.knowledge-card-content .description {
+    font-size: 18px;
+    line-height: 1.2;
+}
+
+
+.knowledge-box-other {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 480px;
+    height: 380px;
+    /* min-width: 510px; */
+}
+
+.knowledge-card-other {
+    display: flex;
+    height: 130px;
+    border-radius: 10px;
+}
+
+.knowledge-card-other .right {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    color: #707070;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.knowledge-card-other .left {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.knowledge-all-top {
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.knowledge-all-top .box {
+    justify-content: space-between;
+    font-size: 2.6rem;
+    width: 100%;
+}
+
+.knowledge-all-top .box .left {
+    align-items: center;
+}
+
+.knowledge-all-top .box .right {
+    background-color: #CFDAE3;
+    border-radius: 50px;
+    padding: 10px 20px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.knowledge-all-top .box .right:hover {
+    background-color: #E19B24;
+}
+
+.knowledge-card-content {
+    height: 140px;
+    /* justify-content: space-between; */
+    padding: 10px 0;
+}
+
+.knowledge-card-content .head {
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 1.2;
+}
+
+.knowledge-card-content .description {
+    font-size: 24px;
+    line-height: 1.2;
+}
+
+.knowledge-create-by-box {
+    color: #1B6CA8;
+    border-radius: 12.5px;
+    height: 25px;
+    border: 1px solid #1B6CA8;
+    padding: 5px 8px;
+    white-space: normal;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.knowledge-card {
+    width: 23.5%;
+    height: 340px;
+    border-radius: 10px;
+}
+
+.box-other-group {
+    margin-top: 20px;
+    flex-wrap: wrap;
+    row-gap: 2em;
+    column-gap: 2%;
+}
+
+.knowledge-text-description {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.carousel-indicators {
+    width: auto;
+}
+
+.carousel-indicators li {
+    height: 20px;
+    width: 20px;
+    border-radius: 15px;
+    margin: 5px;
+}
+
+.bt-carousel {
+    color: #ffffff;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 20px;
+    width: 20px;
+    background-color: #000;
+    border-radius: 50%;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    background-image: url('../../../assets/img/showSelectMenu.png');
+    background-size: 50px 50px;
+    width: 50px;
+    height: 50px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    flex-wrap: wrap;
+    padding: 0px;
+    z-index: 1;
+    padding: 10px;
+    margin-left: 50px;
+    width: calc(100vw - 70px);
+}
+
+.dropdown-item {
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 0 10px;
+    width: 100%;
+    white-space: inherit;
+}
+
+/* .dropdown:hover .dropdown-content {
+    display: flex;
+} */
+
+.dropdown-year {
+    position: relative;
+    display: inline-block;
+    background-image: url('../../../assets/img/showSelectMenu.png');
+    background-size: 50px 50px;
+    width: 50px;
+    height: 50px;
+}
+
+.dropdown-content-year {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    flex-wrap: wrap;
+    padding: 0px;
+    z-index: 1;
+    padding: 10px;
+    width: calc(100vw - 70px);
+    margin-left: 50px;
+}
+
+.dropdown-item-year {
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 0 10px;
+    min-width: 38vw;
+    max-width: 250px;
+}
+
+.knowledge-all-right-m {
+    min-width: 100px;
+    height: 40px;
+    background-color: #CFDAE3;
+    border-radius: 20px;
+    text-align: center;
+    display: flex;
+    color: #FFFFFF;
+    justify-content: center;
+    align-items: center;
+}
+
+.item-change-mode{
+    display: flex;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #216DA6;
+    color: #216DA6;
+    cursor: pointer;
+}
+
+.border-change-mode-left{
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.border-change-mode-right{
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+/* .item-change-mode:hover {
+    cursor: pointer;
+    background-color: #cfcfcf;
+} */
+
+.colors-change-mode {
+    background-color: #216DA6;
+    color: #FFFFFF;
+}
+
+
+/* .dropdown-year:hover .dropdown-content-year {
+    display: flex;
+} */

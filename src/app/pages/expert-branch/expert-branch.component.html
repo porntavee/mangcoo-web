@@ -1,0 +1,883 @@
+<ngx-spinner></ngx-spinner>
+<!-- component header type 1 -->
+<app-d-t1-header></app-d-t1-header>
+
+<div class="col-md-12 m-0 d-none d-lg-block" style="padding: 0% 10%;background-color: #F7F7F7;">
+    <!-- category -->
+    <div class="col-md-12 m-0  dfc" style="align-items: center;">
+        <div class="text-center">
+            <span class="kanit_xxl pointer" *ngIf="serviceProviderService.lang == 'th'"
+                (click)="reset()">{{'expertBranch'| langTh}}</span>
+            <span class="kanit_xxl pointer" *ngIf="serviceProviderService.lang == 'en'"
+                (click)="reset()">{{'expertBranch'| langEn}}</span>
+        </div>
+        <div style="display: flex;justify-content: center;width: 100%;">
+            <div class="line-c5c5c5" style="width: 80%;margin: 20px;"></div>
+        </div>
+        <div class="df" style="flex-wrap: wrap;column-gap: 10px;row-gap: 5px;margin-bottom: 50px;">
+            <div *ngFor="let center of centerList">
+                <div *ngIf="serviceProviderService.lang == 'th'" class="menu-knowledge pointer kanit_l"
+                    [class.menu-knowledge-active]="center.code === centerSelected.code"
+                    (click)="selectedCenter(center)">{{center.titleShort}}</div>
+                <div *ngIf="serviceProviderService.lang == 'en'" class="menu-knowledge pointer kanit_l"
+                    [class.menu-knowledge-active]="center.code === centerSelected.code"
+                    (click)="selectedCenter(center)">{{center.titleShortEN}}</div>
+            </div>
+        </div>
+        <span class="kanit_l mb-4" style="width: 100%;" *ngIf="serviceProviderService.lang == 'th'"
+            (click)="reset()">{{'category'| langTh}}</span>
+        <span class="kanit_l mb-4" style="width: 100%;" *ngIf="serviceProviderService.lang == 'en'"
+            (click)="reset()">{{'category'| langEn}}</span>
+        <div class="df" style="flex-wrap: wrap;column-gap: 10px;row-gap: 5px;margin-bottom: 50px;width: 100%;">
+            <div *ngFor="let category of categoryList">
+                <div *ngIf="serviceProviderService.lang == 'th'" class="category-knowledge pointer kanit_m"
+                    [class.category-knowledge-active]="category.code === categorySelected.code"
+                    (click)="selectedCategory(category)">{{category.title}}</div>
+                <div *ngIf="serviceProviderService.lang == 'en'" class="category-knowledge pointer kanit_m"
+                    [class.category-knowledge-active]="category.code === categorySelected.code"
+                    (click)="selectedCategory(category)">{{category.titleEN}}</div>
+            </div>
+        </div>
+        <span class="kanit_l mb-4" style="width: 100%;" *ngIf="serviceProviderService.lang == 'th'"
+            (click)="reset()">{{'year'| langTh}}</span>
+        <span class="kanit_l mb-4" style="width: 100%;" *ngIf="serviceProviderService.lang == 'en'"
+            (click)="reset()">{{'year'| langEn}}</span>
+        <div class="df" style="flex-wrap: wrap;column-gap: 10px;row-gap: 5px;margin-bottom: 50px;width: 100%;">
+            <div *ngFor="let year of yearList">
+                <div *ngIf="serviceProviderService.lang == 'th'" class="category-knowledge pointer kanit_m"
+                    [class.category-knowledge-active]="year.code === yearSelected.code" (click)="selectedYear(year)">
+                    {{year.title}}</div>
+                <div *ngIf="serviceProviderService.lang == 'en'" class="category-knowledge pointer kanit_m"
+                    [class.category-knowledge-active]="year.code === yearSelected.code" (click)="selectedYear(year)">
+                    {{year.title}}</div>
+            </div>
+        </div>
+    </div>
+    <!-- content -->
+    <div class="col-md-12 m-0" style="background-color: #F7F7F7;">
+        <div *ngIf="modelAll.length > 0">
+            <div class="col-md-12 m-0 p-0 dfc" style="background-color: #F7F7F7 !important;justify-content: center;">
+                <div class="col-md-12 m-0 p-0" style="background-color: #F7F7F7 !important;align-items: center;">
+
+                    <div class="col-md-12 m-0" *ngIf="model.length > 0">
+                        <div class="df" style="margin: 20px 0; justify-content: space-between;">
+                            <div class="knowledge-all-left pointer kanit_l">
+                                <span *ngIf="serviceProviderService.lang == 'th'">
+                                    {{centerSelected.title}}
+                                </span>
+                                <span *ngIf="serviceProviderService.lang == 'en'">
+                                    {{centerSelected.titleEN}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="df" style="justify-content: center;">
+                            <div class="col-md-12 pd0">
+                                <div class="div-box-other-group-knowledge">
+                                    <div *ngFor="let item of model ;let i=index" (click)="navToDetail(item.code)"
+                                        class="div-knowledge-card pointer">
+                                        <div class="div-imageUrl-knowledge">
+                                            <img src="{{item.imageUrl}}" width="100%" height="100%"
+                                                style="border-radius: 15px;object-fit: contain;">
+                                        </div>
+                                        <div style="color: #707070;padding: 10px 0;text-align: center;">
+                                            <span *ngIf="serviceProviderService.lang == 'th'">
+                                                {{item.title}}
+                                            </span>
+                                            <span *ngIf="serviceProviderService.lang == 'en'">
+                                                {{item.titleEN}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 m-0 " *ngIf="modelAV.length > 0">
+                        <div class="df" style="margin: 20px 0; justify-content: space-between;">
+                            <div class="knowledge-all-left pointer kanit_l">
+                                <span *ngIf="serviceProviderService.lang == 'th'">
+                                    อนุมัติบัตร
+                                </span>
+                                <span *ngIf="serviceProviderService.lang == 'en'">
+                                    Certificates
+                                </span>
+                            </div>
+                        </div>
+                        <div class="df" style="justify-content: center;">
+                            <div class="col-md-12 pd0">
+                                <div class="div-box-other-group-knowledge">
+                                    <div *ngFor="let item of modelAV ;let i=index" (click)="navToDetail(item.code)"
+                                        class="div-knowledge-card pointer">
+                                        <div class="div-imageUrl-knowledge">
+                                            <img src="{{item.imageUrl}}" width="100%" height="100%"
+                                                style="border-radius: 15px;object-fit: contain;">
+                                        </div>
+                                        <div style="color: #707070;padding: 10px 0;text-align: center;">
+                                            <span *ngIf="serviceProviderService.lang == 'th'">
+                                                {{item.title}}
+                                            </span>
+                                            <span *ngIf="serviceProviderService.lang == 'en'">
+                                                {{item.titleEN}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 m-0 " *ngIf="modelVV.length > 0">
+                        <div class="df" style="margin: 20px 0; justify-content: space-between;">
+                            <div class="knowledge-all-left pointer kanit_l">
+                                <span *ngIf="serviceProviderService.lang == 'th'">
+                                    วุฒิบัตร
+                                </span>
+                                <span *ngIf="serviceProviderService.lang == 'en'">
+                                    Qualifications
+                                </span>
+                            </div>
+                        </div>
+                        <div class="df" style="justify-content: center;">
+                            <div class="col-md-12 pd0">
+                                <div class="div-box-other-group-knowledge">
+                                    <div *ngFor="let item of modelVV ;let i=index" (click)="navToDetail(item.code)"
+                                        class="div-knowledge-card pointer">
+                                        <div class="div-imageUrl-knowledge">
+                                            <img src="{{item.imageUrl}}" width="100%" height="100%"
+                                                style="border-radius: 15px;object-fit: contain;">
+                                        </div>
+                                        <div style="color: #707070;padding: 10px 0;text-align: center;">
+                                            <span *ngIf="serviceProviderService.lang == 'th'">
+                                                {{item.title}}
+                                            </span>
+                                            <span *ngIf="serviceProviderService.lang == 'en'">
+                                                {{item.titleEN}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div *ngIf="centerSelected.code == ''" class="col-md-12 m-0 p-0 dfc"
+                style="background-color: #F7F7F7 !important;justify-content: center;">
+                <div class="col-md-12 m-0 p-0" *ngIf="model001.length > 0 "
+                    style="background-color: #dfe6eb !important;align-items: center;">
+                    <div class="col-md-12 m-0">
+                        <div class="df" style="margin: 20px 0; justify-content: space-between;">
+                            <div class="knowledge-all-left pointer kanit_l">{{titleCategory('001')}}</div>
+                            <div class="df right" style="justify-content: end">
+                                <div class="knowledge-all-right pointer" (click)="showCenterSelectedALl('001')">
+                                    <span *ngIf="serviceProviderService.lang == 'th'">
+                                        ทั้งหมด
+                                    </span>
+                                    <span *ngIf="serviceProviderService.lang == 'en'">
+                                        All
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="df" style="justify-content: center;">
+                            <div class="col-md-12 pd0">
+                                <div class="div-box-other-group-knowledge">
+                                    <div *ngFor="let item of model001 | slice:0:4; ;let i=index"
+                                        (click)="navToDetail(item.code)" class="div-knowledge-card pointer">
+                                        <div class="div-imageUrl-knowledge">
+                                            <img src="{{item.imageUrl}}" width="100%" height="100%"
+                                                style="border-radius: 15px;object-fit: contain;">
+                                        </div>
+                                        <div style="color: #707070;padding: 10px 0;text-align: center;">
+                                            <span *ngIf="serviceProviderService.lang == 'th'">
+                                                {{item.title}}
+                                            </span>
+                                            <span *ngIf="serviceProviderService.lang == 'en'">
+                                                {{item.titleEN}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-12 m-0 p-0" *ngIf="model002.length > 0"
+                    style="background-color: #F7F7F7 !important;align-items: center;">
+
+                    <div class="col-md-12 m-0">
+                        <div class="df" style="margin: 20px 0; justify-content: space-between;">
+                            <div class="knowledge-all-left pointer kanit_l">{{titleCategory('002')}}</div>
+                            <div class="df right" style="justify-content: end">
+                                <div class="knowledge-all-right pointer" (click)="showCenterSelectedALl('002')">
+                                    <span *ngIf="serviceProviderService.lang == 'th'">
+                                        ทั้งหมด
+                                    </span>
+                                    <span *ngIf="serviceProviderService.lang == 'en'">
+                                        All
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="df" style="justify-content: center;">
+                            <div class="col-md-12 pd0">
+                                <div class="div-box-other-group-knowledge">
+                                    <div *ngFor="let item of model002 | slice:0:4; ;let i=index"
+                                        (click)="navToDetail(item.code)" class="div-knowledge-card pointer">
+                                        <div class="div-imageUrl-knowledge">
+                                            <img src="{{item.imageUrl}}" width="100%" height="100%"
+                                                style="border-radius: 15px;object-fit: contain;">
+                                        </div>
+                                        <div style="color: #707070;padding: 10px 0;text-align: center;">
+                                            <span *ngIf="serviceProviderService.lang == 'th'">
+                                                {{item.title}}
+                                            </span>
+                                            <span *ngIf="serviceProviderService.lang == 'en'">
+                                                {{item.titleEN}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-12 m-0 p-0" *ngIf="model003.length > 0"
+                    style="background-color: #dfe6eb !important;align-items: center;">
+
+                    <div class="col-md-12 m-0 ">
+                        <div class="df" style="margin: 20px 0; justify-content: space-between;">
+                            <div class="knowledge-all-left pointer kanit_l">{{titleCategory('003')}}</div>
+                            <div class="df right" style="justify-content: end">
+                                <div class="knowledge-all-right pointer" (click)="showCenterSelectedALl('003')">
+                                    <span *ngIf="serviceProviderService.lang == 'th'">
+                                        ทั้งหมด
+                                    </span>
+                                    <span *ngIf="serviceProviderService.lang == 'en'">
+                                        All
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="df" style="justify-content: center;">
+                            <div class="col-md-12 pd0">
+                                <div class="div-box-other-group-knowledge">
+                                    <div *ngFor="let item of model003 | slice:0:4; ;let i=index"
+                                        (click)="navToDetail(item.code)" class="div-knowledge-card pointer">
+                                        <div class="div-imageUrl-knowledge">
+                                            <img src="{{item.imageUrl}}" width="100%" height="100%"
+                                                style="border-radius: 15px;object-fit: contain;">
+                                        </div>
+                                        <div style="color: #707070;padding: 10px 0;text-align: center;">
+                                            <span *ngIf="serviceProviderService.lang == 'th'">
+                                                {{item.title}}
+                                            </span>
+                                            <span *ngIf="serviceProviderService.lang == 'en'">
+                                                {{item.titleEN}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-12 m-0 p-0" *ngIf="model004.length > 0"
+                    style="background-color: #F7F7F7 !important;align-items: center;">
+
+                    <div class="col-md-12 m-0 ">
+                        <div class="df" style="margin: 20px 0; justify-content: space-between;">
+                            <div class="knowledge-all-left pointer kanit_l">{{titleCategory('004')}}</div>
+                            <div class="df right" style="justify-content: end">
+                                <div class="knowledge-all-right pointer" (click)="showCenterSelectedALl('004')">
+                                    <span *ngIf="serviceProviderService.lang == 'th'">
+                                        ทั้งหมด
+                                    </span>
+                                    <span *ngIf="serviceProviderService.lang == 'en'">
+                                        All
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="df" style="justify-content: center;">
+                            <div class="col-md-12 pd0">
+                                <div class="div-box-other-group-knowledge">
+                                    <div *ngFor="let item of model004 | slice:0:4; ;let i=index"
+                                        (click)="navToDetail(item.code)" class="div-knowledge-card pointer">
+                                        <div class="div-imageUrl-knowledge">
+                                            <img src="{{item.imageUrl}}" width="100%" height="100%"
+                                                style="border-radius: 15px;object-fit: contain;">
+                                        </div>
+                                        <div style="color: #707070;padding: 10px 0;text-align: center;">
+                                            <span *ngIf="serviceProviderService.lang == 'th'">
+                                                {{item.title}}
+                                            </span>
+                                            <span *ngIf="serviceProviderService.lang == 'en'">
+                                                {{item.titleEN}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-12 m-0 p-0" *ngIf="model005.length > 0"
+                    style="background-color: #dfe6eb !important;align-items: center;">
+
+                    <div class="col-md-12 m-0 ">
+                        <div class="df" style="margin: 20px 0; justify-content: space-between;">
+                            <div class="knowledge-all-left pointer kanit_l">{{titleCategory('005')}}</div>
+                            <div class="df right" style="justify-content: end">
+                                <div class="knowledge-all-right pointer" (click)="showCenterSelectedALl('005')">
+                                    <span *ngIf="serviceProviderService.lang == 'th'">
+                                        ทั้งหมด
+                                    </span>
+                                    <span *ngIf="serviceProviderService.lang == 'en'">
+                                        All
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="df" style="justify-content: center;">
+                            <div class="col-md-12 pd0">
+                                <div class="div-box-other-group-knowledge">
+                                    <div *ngFor="let item of model005 | slice:0:4; ;let i=index"
+                                        (click)="navToDetail(item.code)" class="div-knowledge-card pointer">
+                                        <div class="div-imageUrl-knowledge">
+                                            <img src="{{item.imageUrl}}" width="100%" height="100%"
+                                                style="border-radius: 15px;object-fit: contain;">
+                                        </div>
+                                        <div style="color: #707070;padding: 10px 0;text-align: center;">
+                                            <span *ngIf="serviceProviderService.lang == 'th'">
+                                                {{item.title}}
+                                            </span>
+                                            <span *ngIf="serviceProviderService.lang == 'en'">
+                                                {{item.titleEN}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-12 m-0 p-0" *ngIf="model006.length > 0"
+                    style="background-color: #F7F7F7 !important;align-items: center;">
+
+                    <div class="col-md-12 m-0 ">
+                        <div class="df" style="margin: 20px 0; justify-content: space-between;">
+                            <div class="knowledge-all-left pointer kanit_l">{{titleCategory('006')}}</div>
+                            <div class="df right" style="justify-content: end">
+                                <div class="knowledge-all-right pointer" (click)="showCenterSelectedALl('006')">
+                                    <span *ngIf="serviceProviderService.lang == 'th'">
+                                        ทั้งหมด
+                                    </span>
+                                    <span *ngIf="serviceProviderService.lang == 'en'">
+                                        All
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="div-box-other-group-knowledge">
+                            <div *ngFor="let item of model006 | slice:0:4; ;let i=index"
+                                (click)="navToDetail(item.code)" class="div-knowledge-card pointer">
+                                <div class="div-imageUrl-knowledge">
+                                    <img src="{{item.imageUrl}}" width="100%" height="100%"
+                                        style="border-radius: 15px;object-fit: contain;">
+                                </div>
+                                <div style="color: #707070;padding: 10px 0;text-align: center;">
+                                    <span *ngIf="serviceProviderService.lang == 'th'">
+                                        {{item.title}}
+                                    </span>
+                                    <span *ngIf="serviceProviderService.lang == 'en'">
+                                        {{item.titleEN}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="modelAll.length == 0" class="kanit_xxl"
+            style="display:flex;justify-content: center;align-items: center;height: 500px;">
+            <span *ngIf="serviceProviderService.lang == 'th'">
+                {{'notFound'| langTh}}
+            </span>
+            <span *ngIf="serviceProviderService.lang == 'en'">
+                {{'notFound'| langEn}}
+            </span>
+        </div>
+
+        <div class="col-md-12 m-0 p-0">
+            <div class="col-md-12 m-0 p-0">
+                <app-partner [expertBranchPage]="true"></app-partner>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-xs-12 m-0 p-0 d-block d-lg-none" style="background-color: #F7F7F7 !important;">
+    <!-- category -->
+    <div class="col-xs-12 m-0 dfc" style="align-items: center;">
+        <div class="div-text-center">
+            <span class="pointer" *ngIf="serviceProviderService.lang == 'th'">{{'expertBranch'| langTh}}</span>
+            <span class="pointer" *ngIf="serviceProviderService.lang == 'en'">{{'expertBranch'| langEn}}</span>
+        </div>
+        <div class="line-c5c5c5" style="width: 100%;margin: 20px;"></div>
+        <div style="display: flex;justify-content: start;width: 100%;">
+            <div class="dropdown" (click)="showHamburger('center')">
+                <div class="dropdown-content" #droppedCenter [ngStyle]="{'display': showCenter ? 'flex' : 'none'}"
+                    style="padding: 10px;">
+                    <div class="dropdown-item" *ngFor="let center of centerList">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="menu-knowledge kanit_m pointer"
+                            [class.menu-knowledge-active]="center.code === centerSelected.code"
+                            (click)="selectedCenter(center)">{{center.titleShort}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="menu-knowledge kanit_m pointer"
+                            [class.menu-knowledge-active]="center.code === centerSelected.code"
+                            (click)="selectedCenter(center)">{{center.titleShortEN}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="category-knowledge pointer kanit_m" [class.category-knowledge-active]="true"
+                style="margin-left: 20px;max-width: 70vw;">
+                <span *ngIf="serviceProviderService.lang == 'th'">
+                    {{centerSelected.title}}
+                </span>
+                <span *ngIf="serviceProviderService.lang == 'en'">
+                    {{centerSelected.titleEN}}
+                </span>
+            </div>
+        </div>
+        <span class="kanit_m mb-2 mt-4" style="width: 100%;" *ngIf="serviceProviderService.lang == 'th'">{{'category'|
+            langTh}}</span>
+        <span class="kanit_m mb-2 mt-4" style="width: 100%;" *ngIf="serviceProviderService.lang == 'en'">{{'category'|
+            langEn}}</span>
+        <div style="display: flex;justify-content: start;width: 100%;">
+            <div class="dropdown" (click)="showHamburger('category')">
+                <div class="dropdown-content" #droppedCategory [ngStyle]="{'display': showCategory ? 'flex' : 'none'}"
+                    style="padding: 10px;">
+                    <div class="dropdown-item" *ngFor="let category of categoryList">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="menu-knowledge pointer kanit_m"
+                            [class.menu-knowledge-active]="category.code === categorySelected.code"
+                            (click)="selectedCategory(category)">{{category.title}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="menu-knowledge pointer kanit_m"
+                            [class.menu-knowledge-active]="category.code === categorySelected.code"
+                            (click)="selectedCategory(category)">{{category.titleEN}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="category-knowledge pointer kanit_m" [class.category-knowledge-active]="true"
+                style="margin-left: 20px;">
+                <span *ngIf="serviceProviderService.lang == 'th'">
+                    {{categorySelected.title}}
+                </span>
+                <span *ngIf="serviceProviderService.lang == 'en'">
+                    {{categorySelected.titleEN}}
+                </span>
+            </div>
+        </div>
+        <span class="kanit_m mb-2 mt-4" style="width: 100%;" *ngIf="serviceProviderService.lang == 'th'">{{'year'|
+            langTh}}</span>
+        <span class="kanit_m mb-2 mt-4" style="width: 100%;" *ngIf="serviceProviderService.lang == 'en'">{{'year'|
+            langEn}}</span>
+        <div style="display: flex;justify-content: start;width: 100%;">
+            <div class="dropdown-year" (click)="showHamburger('year')">
+                <div class="dropdown-content-year" #droppedYear [ngStyle]="{'display': showYear ? 'flex' : 'none'}">
+                    <div class="dropdown-item-year" *ngFor="let year of yearList">
+                        <div *ngIf="serviceProviderService.lang == 'th'" class="menu-knowledge pointer kanit_m"
+                            [class.menu-knowledge-active]="year.code === yearSelected.code" [ngClass]=""
+                            (click)="selectedYear(year)">
+                            {{year.title}}</div>
+                        <div *ngIf="serviceProviderService.lang == 'en'" class="menu-knowledge pointer kanit_m"
+                            [class.menu-knowledge-active]="year.code === yearSelected.code"
+                            (click)="selectedYear(year)">
+                            {{year.titleEN}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-knowledge pointer kanit_m" [class.menu-knowledge-active]="true" style="margin-left: 20px;">
+                {{yearSelected.title}}</div>
+        </div>
+    </div>
+    <!-- content -->
+    <div class="col-xs-12 m-0 p-0 " style="background-color: #F7F7F7;">
+        <div class="col-xs-12 m-0 p-0" *ngIf="model.length != 0" style="background-color: #F7F7F7;">
+            <div class="col-xs-12 p-0 m-0">
+                <div class="col-xs-1 p-0 m-0"></div>
+                <div class="col-xs-10 p-0 mt-5 pointer kanit_m c-blue-deep">
+                    <span *ngIf="serviceProviderService.lang == 'th'">
+                        {{centerSelected.title}}
+                    </span>
+                    <span *ngIf="serviceProviderService.lang == 'en'">
+                        {{centerSelected.titleEN}}
+                    </span>
+                </div>
+                <div class="col-xs-1 p-0 m-0"></div>
+            </div>
+            <div class="col-xs-1 p-0 m-0"></div>
+            <div class="col-xs-10 p-0">
+                <div class="div-knowledge">
+                    <div *ngFor="let item of model ;let i=index" (click)="navToDetail(item.code)"
+                        class="div-item-knowledge pointer">
+                        <div style="height: 59.2vw; width: 40vw;background-color: #ffffff;">
+                            <img src="{{item.imageUrl}}"
+                                style="height: 100%;width:100%;object-fit: contain;border-radius: 10px;" alt="">
+                        </div>
+                        <div class="dfc" style="padding: 5px 0;">
+                            <div class="fh1">
+                                <span *ngIf="serviceProviderService.lang == 'th'">
+                                    {{item.title}}
+                                </span>
+                                <span *ngIf="serviceProviderService.lang == 'en'">
+                                    {{item.titleEN}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-1 p-0 m-0"></div>
+        </div>
+        <div class="col-xs-12 m-0 p-0" *ngIf="modelAV.length != 0" style="background-color: #F7F7F7;">
+            <div class="col-xs-12 p-0 m-0">
+                <div class="col-xs-1 p-0 m-0"></div>
+                <div class="col-xs-10 p-0 mt-5 pointer kanit_m c-blue-deep">
+                    <span *ngIf="serviceProviderService.lang == 'th'">
+                        อนุมัติบัตร
+                    </span>
+                    <span *ngIf="serviceProviderService.lang == 'en'">
+                        Certificates
+                    </span>
+                </div>
+                <div class="col-xs-1 p-0 m-0"></div>
+            </div>
+            <div class="col-xs-1 p-0 m-0"></div>
+            <div class="col-xs-10 p-0">
+                <div class="div-knowledge">
+                    <div *ngFor="let item of modelAV ;let i=index" (click)="navToDetail(item.code)"
+                        class="div-item-knowledge pointer">
+                        <div style="height: 59.2vw; width: 40vw;background-color: #ffffff;">
+                            <img src="{{item.imageUrl}}"
+                                style="height: 100%;width:100%;object-fit: contain;border-radius: 10px;" alt="">
+                        </div>
+                        <div class="dfc" style="padding: 5px 0;">
+                            <div class="fh1">
+                                <span *ngIf="serviceProviderService.lang == 'th'">
+                                    {{item.title}}
+                                </span>
+                                <span *ngIf="serviceProviderService.lang == 'en'">
+                                    {{item.titleEN}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-1 p-0 m-0"></div>
+        </div>
+        <div class="col-xs-12 m-0 p-0" *ngIf="modelVV.length != 0" style="background-color: #F7F7F7;">
+            <div class="col-xs-12 p-0 m-0">
+                <div class="col-xs-1 p-0 m-0"></div>
+                <div class="col-xs-10 p-0 mt-5 pointer kanit_m c-blue-deep">
+                    <span *ngIf="serviceProviderService.lang == 'th'">
+                        วุฒิบัตร
+                    </span>
+                    <span *ngIf="serviceProviderService.lang == 'en'">
+                        Qualifications
+                    </span>
+                </div>
+                <div class="col-xs-1 p-0 m-0"></div>
+            </div>
+            <div class="col-xs-1 p-0 m-0"></div>
+            <div class="col-xs-10 p-0">
+                <div class="div-knowledge">
+                    <div *ngFor="let item of modelVV ;let i=index" (click)="navToDetail(item.code)"
+                        class="div-item-knowledge pointer">
+                        <div style="height: 59.2vw; width: 40vw;background-color: #ffffff;">
+                            <img src="{{item.imageUrl}}"
+                                style="height: 100%;width:100%;object-fit: contain;border-radius: 10px;" alt="">
+                        </div>
+                        <div class="dfc" style="padding: 5px 0;">
+                            <div class="fh1">
+                                <span *ngIf="serviceProviderService.lang == 'th'">
+                                    {{item.title}}
+                                </span>
+                                <span *ngIf="serviceProviderService.lang == 'en'">
+                                    {{item.titleEN}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-1 p-0 m-0"></div>
+        </div>
+        <div *ngIf="modelAll.length > 0 && centerSelected.code == ''" class="col-xs-12 m-0 p-0 dfc"
+            style="background-color: #F7F7F7 !important;justify-content: center;">
+            <div class="col-xs-12 m-0 p-0" *ngIf="model001.length > 0"
+                style="background-color: #dfe6eb !important;align-items: center;">
+                <div class="col-xs-1 m-0 p-0"></div>
+                <div class="col-xs-10 m-0 p-0">
+                    <div class="df" style="margin: 20px 0; justify-content: space-between;">
+                        <div class="pointer kanit_m c-blue-deep">{{titleCategory('001')}}</div>
+                        <div class="df right" style="justify-content: end">
+                            <div class="kanit_m pointer knowledge-all-right-m" (click)="showCenterSelectedALl('001')">
+                                <span *ngIf="serviceProviderService.lang == 'th'">
+                                    ทั้งหมด
+                                </span>
+                                <span *ngIf="serviceProviderService.lang == 'en'">
+                                    All
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="df" style="justify-content: center;">
+                        <div class="col-xs-12 p-0 m-0">
+                            <div class="df" style="flex-wrap: wrap;column-gap: 2vw;row-gap: 2vw;">
+                                <div *ngFor="let item of model001 | slice:0:6;;let i=index"
+                                    (click)="navToDetail(item.code)" class="col-xs-3 pointer pd0" style="width: 40vw;">
+                                    <img src="{{item.imageUrl}}"
+                                        style="object-fit: contain;border-radius: 10px; height: 60vw;background-color:white;"
+                                        width="100%" alt="">
+                                    <div style="color: #707070;padding: 10px 0;text-align: center;"> <span
+                                            *ngIf="serviceProviderService.lang == 'th'">
+                                            {{item.title}}
+                                        </span>
+                                        <span *ngIf="serviceProviderService.lang == 'en'">
+                                            {{item.titleEN}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-1 m-0 p-0"></div>
+            </div>
+            <div class="col-xs-12 m-0 p-0" *ngIf="model002.length > 0"
+                style="background-color: #F7F7F7 !important;align-items: center;">
+                <div class="col-xs-1 m-0 p-0"></div>
+                <div class="col-xs-10 m-0 p-0">
+                    <div class="df" style="margin: 20px 0; justify-content: space-between;">
+                        <div class="pointer kanit_m c-blue-deep">{{titleCategory('002')}}</div>
+                        <div class="df right" style="justify-content: end">
+                            <div class="kanit_m pointer knowledge-all-right-m" (click)="showCenterSelectedALl('002')">
+                                <span *ngIf="serviceProviderService.lang == 'th'">
+                                    ทั้งหมด
+                                </span>
+                                <span *ngIf="serviceProviderService.lang == 'en'">
+                                    All
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="df" style="justify-content: center;">
+                        <div class="col-xs-12 pd0">
+                            <div class="df" style="flex-wrap: wrap;column-gap: 2vw;row-gap: 2vw;">
+                                <div *ngFor="let item of model002 | slice:0:6;;let i=index"
+                                    (click)="navToDetail(item.code)" class="col-xs-3 pointer pd0" style="width: 40vw;">
+                                    <img src="{{item.imageUrl}}"
+                                        style="object-fit: contain;border-radius: 10px; height: 60vw;background-color:white;"
+                                        width="100%" alt="">
+                                    <div style="color: #707070;padding: 10px 0;text-align: center;">
+                                        <span *ngIf="serviceProviderService.lang == 'th'">
+                                            {{item.title}}
+                                        </span>
+                                        <span *ngIf="serviceProviderService.lang == 'en'">
+                                            {{item.titleEN}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-1 m-0 p-0"></div>
+            </div>
+            <div class="col-xs-12 m-0 p-0" *ngIf="model003.length > 0"
+                style="background-color: #dfe6eb !important;align-items: center;">
+                <div class="col-xs-1 m-0 p-0"></div>
+                <div class="col-xs-10 m-0 p-0">
+                    <div class="df" style="margin: 20px 0; justify-content: space-between;">
+                        <div class="pointer kanit_m c-blue-deep">{{titleCategory('003')}}</div>
+                        <div class="df right" style="justify-content: end">
+                            <div class="kanit_m pointer knowledge-all-right-m" (click)="showCenterSelectedALl('003')">
+                                <span *ngIf="serviceProviderService.lang == 'th'">
+                                    ทั้งหมด
+                                </span>
+                                <span *ngIf="serviceProviderService.lang == 'en'">
+                                    All
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="df" style="justify-content: center;">
+                        <div class="col-xs-12 pd0">
+                            <div class="df" style="flex-wrap: wrap;column-gap: 2vw;row-gap: 2vw;">
+                                <div *ngFor="let item of model003 | slice:0:6;;let i=index"
+                                    (click)="navToDetail(item.code)" class="col-xs-3 pointer pd0" style="width: 40vw;">
+                                    <img src="{{item.imageUrl}}"
+                                        style="object-fit: contain;border-radius: 10px; height: 60vw;background-color:white;"
+                                        width="100%" alt="">
+                                    <div style="color: #707070;padding: 10px 0;text-align: center;">
+                                        <span *ngIf="serviceProviderService.lang == 'th'">
+                                            {{item.title}}
+                                        </span>
+                                        <span *ngIf="serviceProviderService.lang == 'en'">
+                                            {{item.titleEN}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-1 m-0 p-0"></div>
+            </div>
+            <div class="col-xs-12 m-0 p-0" *ngIf="model004.length > 0"
+                style="background-color: #F7F7F7 !important;align-items: center;">
+                <div class="col-xs-1 m-0 p-0"></div>
+                <div class="col-xs-10 m-0 p-0">
+                    <div class="df" style="margin: 20px 0; justify-content: space-between;">
+                        <div class="pointer kanit_m c-blue-deep">{{titleCategory('004')}}</div>
+                        <div class="df right" style="justify-content: end">
+                            <div class="kanit_m pointer knowledge-all-right-m" (click)="showCenterSelectedALl('004')">
+                                <span *ngIf="serviceProviderService.lang == 'th'">
+                                    ทั้งหมด
+                                </span>
+                                <span *ngIf="serviceProviderService.lang == 'en'">
+                                    All
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="df" style="justify-content: center;">
+                        <div class="col-xs-12 pd0">
+                            <div class="df" style="flex-wrap: wrap;column-gap: 2vw;row-gap: 2vw;">
+                                <div *ngFor="let item of model004 | slice:0:6;;let i=index"
+                                    (click)="navToDetail(item.code)" class="col-xs-3 pointer pd0" style="width: 40vw;">
+                                    <img src="{{item.imageUrl}}"
+                                        style="object-fit: contain;border-radius: 10px; height: 60vw;background-color:white;"
+                                        width="100%" alt="">
+                                    <div style="color: #707070;padding: 10px 0;text-align: center;">
+                                        <span *ngIf="serviceProviderService.lang == 'th'">
+                                            {{item.title}}
+                                        </span>
+                                        <span *ngIf="serviceProviderService.lang == 'en'">
+                                            {{item.titleEN}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-1 m-0 p-0"></div>
+            </div>
+            <div class="col-xs-12 m-0 p-0" *ngIf="model005.length > 0"
+                style="background-color: #dfe6eb !important;align-items: center;">
+                <div class="col-xs-1 m-0 p-0"></div>
+                <div class="col-xs-10 m-0 p-0">
+                    <div class="df" style="margin: 20px 0; justify-content: space-between;">
+                        <div class="pointer kanit_m c-blue-deep">{{titleCategory('005')}}</div>
+                        <div class="df right" style="justify-content: end">
+                            <div class="kanit_m pointer knowledge-all-right-m" (click)="showCenterSelectedALl('005')">
+                                <span *ngIf="serviceProviderService.lang == 'th'">
+                                    ทั้งหมด
+                                </span>
+                                <span *ngIf="serviceProviderService.lang == 'en'">
+                                    All
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="df" style="justify-content: center;">
+                        <div class="col-xs-12 pd0">
+                            <div class="df" style="flex-wrap: wrap;column-gap: 2vw;row-gap: 2vw;">
+                                <div *ngFor="let item of model005 | slice:0:6;;let i=index"
+                                    (click)="navToDetail(item.code)" class="col-xs-3 pointer pd0" style="width: 40vw;">
+                                    <img src="{{item.imageUrl}}"
+                                        style="object-fit: contain;border-radius: 10px; height: 60vw;background-color:white;"
+                                        width="100%" alt="">
+                                    <div style="color: #707070;padding: 10px 0;text-align: center;">
+                                        <span *ngIf="serviceProviderService.lang == 'th'">
+                                            {{item.title}}
+                                        </span>
+                                        <span *ngIf="serviceProviderService.lang == 'en'">
+                                            {{item.titleEN}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-1 m-0 p-0"></div>
+            </div>
+            <div class="col-xs-12 m-0 p-0" *ngIf="model006.length > 0"
+                style="background-color: #F7F7F7 !important;align-items: center;">
+                <div class="col-xs-1 m-0 p-0"></div>
+                <div class="col-xs-10 m-0 p-0">
+                    <div class="df" style="margin: 20px 0; justify-content: space-between;">
+                        <div class="pointer kanit_m c-blue-deep">{{titleCategory('006')}}</div>
+                        <div class="df right" style="justify-content: end">
+                            <div class="kanit_m pointer knowledge-all-right-m" (click)="showCenterSelectedALl('006')">
+                                <span *ngIf="serviceProviderService.lang == 'th'">
+                                    ทั้งหมด
+                                </span>
+                                <span *ngIf="serviceProviderService.lang == 'en'">
+                                    All
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="df" style="justify-content: center;">
+                        <div class="col-xs-12 pd0">
+                            <div class="df" style="flex-wrap: wrap;column-gap: 2vw;row-gap: 2vw;">
+                                <div *ngFor="let item of model006 | slice:0:6;;let i=index"
+                                    (click)="navToDetail(item.code)" class="col-xs-3 pointer pd0" style="width: 40vw;">
+                                    <img src="{{item.imageUrl}}"
+                                        style="object-fit: contain;border-radius: 10px; height: 60vw;background-color:white;"
+                                        width="100%" alt="">
+                                    <div style="color: #707070;padding: 10px 0;text-align: center;">
+                                        <span *ngIf="serviceProviderService.lang == 'th'">
+                                            {{item.title}}
+                                        </span>
+                                        <span *ngIf="serviceProviderService.lang == 'en'">
+                                            {{item.titleEN}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-1 m-0 p-0"></div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 m-0" *ngIf="modelAll.length == 0" class="kanit_xl"
+            style="display:flex;justify-content: center;align-items: center;height: 300px;">
+            <span *ngIf="serviceProviderService.lang == 'th'">
+                {{'notFound'| langTh}} </span>
+            <span *ngIf="serviceProviderService.lang == 'en'">
+                {{'notFound'| langEn}}</span>
+        </div>
+        <div class="col-xs-12 m-0">
+            <app-partner [expertBranchPage]="true"></app-partner>
+        </div>
+    </div>
+</div>
+
+<!-- footer -->
+<app-d-t1-footer></app-d-t1-footer>

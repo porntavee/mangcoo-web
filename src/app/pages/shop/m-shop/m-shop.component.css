@@ -1,0 +1,93 @@
+.box-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box-hd {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  margin: 0 0 5px 0;
+  background-color: #00000026;
+  height: 40px;
+  width: 100%;
+}
+
+.circle-tb {
+  /* height: 30px;
+    width: 30px;
+    border-radius: 50%; */
+}
+.box-sticky {
+  height: 40px;
+  position: sticky;
+  position: -webkit-sticky;
+  width: 100%;
+  top: 0px;
+  z-index: 100;
+  display: flex;
+}
+
+.box-hd-2 {
+  /* background-image: url(https://images.unsplash.com/photo-1631739067309-16289738ed57?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=80); */
+  /* background-size: cover; */
+  padding: 10px;
+  width: 100%;
+  margin-top: 35px;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-hd {
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  align-items: center;
+}
+
+.logo-sh {
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.text-sh {
+  font-size: 15px;
+  color: white;
+}
+
+.tc {
+  text-align: center;
+}
+
+.box-st {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+}
+
+div.scroll {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.box-cat {
+  align-items: center;
+  padding: 10px;
+}
+
+.focus-cat {
+    border-bottom: 3px solid red;
+}
+
+.nfi {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 50%;
+}

@@ -1,0 +1,138 @@
+<!-- component header type 1 -->
+<app-d-t1-header></app-d-t1-header>
+<!--  -->
+
+<div class="container _1QwuCJ mt125">
+  <app-d-user [menuActive]="'mySell'"></app-d-user>
+
+
+  <div class="_3D9BVC">
+    <div class="_3zmZLR">
+      <div></div>
+      <div class="iTmqFf">
+        <a class="_2s-sXW _228tyk" (click)="goToall()" [ngClass]="{'active': menuSubActive === 'all'}"><span
+            class="_2-GXl7">ทั้งหมด</span></a>
+        <a class="_2s-sXW" (click)="goTotobepaid()" [ngClass]="{'active': menuSubActive === 's'}"><span
+            class="_2-GXl7">ที่ต้องจัดส่ง</span></a>
+        <a class="_2s-sXW"><span class="_2-GXl7">ที่ต้องได้รับ</span></a>
+        <a class="_2s-sXW"><span class="_2-GXl7">สำเร็จแล้ว</span></a>
+        <a class="_2s-sXW"><span class="_2-GXl7">ยกเลิกแล้ว</span></a>
+      </div>
+      <div class="_2e9rzB">
+        <svg width="19px" height="19px" viewBox="0 0 19 19">
+          <g id="Search-New" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="my-purchase-copy-27" transform="translate(-399.000000, -221.000000)" stroke-width="2">
+              <g id="Group-32" transform="translate(400.000000, 222.000000)">
+                <circle id="Oval-27" cx="7" cy="7" r="7"></circle>
+                <path d="M12,12 L16.9799555,16.919354" id="Path-184" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+              </g>
+            </g>
+          </g>
+        </svg><input autocomplete="off" placeholder="Search" value="">
+      </div>
+      <div class="iTmqFf">
+        <div class="col-md-10 col-sm-10 text-left pointer" style="padding: 10px;font-size: 16px;">
+          <a style="padding-left: 10px;">
+            <input style="height: 20px;width: 20px;text-align: left;" type="checkbox" (click)="checkUncheckAll()"
+              [(ngModel)]="itemSelected" [ngModelOptions]="{standalone: true}" /></a>
+          <a style="padding-left: 10px;" (click)="checkUncheckAll()"><span>เลือกทั้งหมด</span></a>
+        </div>
+        <div class="col-md-2 col-sm-2 text-left pointer"
+          style="background-color: #ED5643;padding: 10px; text-align: center;border-radius: 3px;" (click)="printOut()">
+          <span style="color: white;">โหลดเอกสาร</span>
+        </div>
+      </div>
+      <div>
+        <div class="_32cw_C" *ngFor="let consignee of modelAll;let idxShop = index;">
+          <div class="_3wGW0m">
+            <div class="_3xIZfd">
+              <div class="_1DPpu5">
+                <div class="_1CIbL0">{{consignee.consigneeName}}</div>
+              </div>
+
+              <div class="_1lE6Rh">
+                <div class="_2hRxNA"><a class="_3nBhmP">
+                    <span class="_36mfQM">{{formatStatus(consignee.items[0].status)}}</span>
+                  </a>
+                </div>
+                <div class="clakWe">สำเร็จแล้ว</div>
+              </div>
+            </div>
+            <div class="_39XDzv"></div>
+            <div class="_2lVoQ1" *ngFor="let item of consignee.items; let idxItem = index;">
+              <div class="_1limL3">
+                <div>
+                  <span class="_1BJEKe">
+                    <div class="_3huAcN">
+                      <div class="col-md-1 col-sm-1 pt-1">
+                        <input style="height: 20px;width: 20px;" type="checkbox" [(ngModel)]="item.isSelected"
+                          [ngModelOptions]="{standalone: true}" (click)="checkUncheckShop(idxShop,idxItem)" />
+                      </div>
+                      <div class="_3btL3m">
+                        <div class="shopee-image__wrapper">
+                          <div class="shopee-image__place-holder">
+                          </div>
+                          <div class="shopee-image__content"
+                            style="background-image: url(&quot;{{item.imageUrl}}&quot;);">
+                            <div class="shopee-image__content--blur"> </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="_1cxKtp">
+                        <div>
+                          <div class="_1xHDVY"><span class="_30COVM">{{item.goodsTitle}}</span></div>
+                        </div>
+                        <div>
+                          <div class="y8ewrc">ตัวเลือกสินค้า: {{item.title}}</div>
+                          <div class="_2H6lAy">x{{item.qty}}</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="_1kvNGb">
+                      <div><span class="_34DOjq">฿{{item.price}}</span><span
+                          class="mBERmM _2mEJ4q">฿{{item.netPrice}}</span></div>
+                    </div>
+                  </span>
+                </div>
+                <!-- <div *ngIf="(idxItem != s[0].items.length - 1)" class="_39XDzv MgTo"></div>
+
+                </div> -->
+              </div>
+              <div class="g7tA3o"></div>
+            </div>
+            <div class="_1J7vLy">
+              <div class="DI-rNr tyOBoQ"> </div>
+              <div class="DI-rNr _25igL4"> </div>
+            </div>
+            <div class="_39ypT2">
+              <div class="h0Jexl">
+                <div class="_3LfHXA">ยอดคำสั่งซื้อทั้งหมด:</div>
+                <div class="isoXOF">฿{{formatPrice(consignee.total)}}</div>
+              </div>
+            </div>
+            <!-- <div class="_2GvoV8">
+            <div class="_1YuAW0"><span class="RJy7fe">ให้คะแนนสินค้าภายใน<div class="shopee-drawer"><u
+                    class="_1-dXW-">07-08-2021</u></div></span><span class="_3YDKgY">รีวิวเลยตอนนี้
+                เพื่อรับ 0.5 Shopee coins</span></div>
+            <div class="sCoiFR">
+              <div *ngIf="s[0].items[0].status == 'V'" class="EoE22E"><button class="stardust-button stardust-button--primary _3iADE8" (click)="goTo('qr-payment',s[0].orderNoReference)">จ่ายเงิน</button>
+              </div>
+              <div *ngIf="s[0].items[0].status != 'V'" class="EoE22E"><button class="stardust-button stardust-button--primary _3iADE8">ให้คะแนน</button>
+              </div>
+              <div class="Vt1J92"><button
+                  class="stardust-button stardust-button--secondary _3iADE8">ติดต่อผู้ขาย</button>
+              </div>
+              <div class="Vt1J92"><button
+                  class="stardust-button stardust-button--secondary _3iADE8">ซื้ออีกครั้ง</button>
+              </div>
+            </div>
+          </div> -->
+          </div>
+          <!--  -->
+          <div *ngIf="menuSubActive === 's'">การซื้อของฉัน</div>
+        </div>
+      </div>
+    </div>
+
+  </div>

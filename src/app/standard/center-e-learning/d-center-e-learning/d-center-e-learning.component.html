@@ -1,0 +1,8 @@
+<!-- component header type 1 -->
+<div class="col-md-12">
+    <div *ngIf="serviceProviderService.lang == 'th'" style="color: #216DA6;margin: 20px 0;font-size: 24px;">{{messageInput.subTitle}}</div>
+    <div *ngIf="serviceProviderService.lang == 'en'" style="color: #216DA6;margin: 20px 0;font-size: 24px;">{{messageInput.subTitleEN}}</div>
+    <div class="col-md-12" style="padding: 20px;" *ngIf="model.imageUrl != ''">
+        <img src="{{model.imageUrl}}" width="90%" height="90%">
+    </div>
+</div>

@@ -1,0 +1,140 @@
+.cart-drawer .webuild-cart-number-badge {
+  top: -18px;
+  left: -8px;
+}
+
+.webuild-cart-number-badge,
+.webuild-notification-number-badge {
+  position: relative;
+  border-radius: 44px;
+  min-width: 11px;
+  line-height: 20px;
+  padding: 0 5px;
+  text-align: center;
+  height: 16px;
+  border: 2px solid #ff0000;
+  border: 2px solid var(--brand-primary-color, #ff0000);
+  color: #ff0000;
+  color: var(--brand-primary-color, #ff0000);
+  background-color: #fff;
+  left: -18px;
+  top: -8px;
+  margin-right: -14px;
+}
+
+.cart-drawer {
+  cursor: pointer;
+  margin: 0 0 0 5px;
+}
+
+.cart-drawer-container {
+  padding: 10px 0;
+  width: 10;
+}
+
+/*  css เลือกร้านค้า */
+
+
+.select-with-status--hover .select-with-status__dropdown {
+  visibility: visible;
+}
+
+.select-with-status__dropdown {
+  visibility: hidden;
+  position: absolute;
+  /* top: calc(100% + 1px); */
+  top: calc(80% + 1px);
+  left: 65%;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, .09);
+  box-shadow: 0 1px 1px 0 rgb(0 0 0 / 5%);
+  /* max-height: 16.875rem; */
+  z-index: 10000;
+  /* width: 100%; */
+  overflow-y: auto;
+  padding: 10px;
+  /* margin: 0 1px; */
+  /* border-radius: 2px; */
+  text-align: center;
+}
+
+.center-footer {
+  margin: auto;
+  width: 60%;
+  padding-top: 26px;
+}
+
+.bg-icon-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+}
+
+.font-des-footer {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 25px;
+  line-height: 1.2;
+}
+
+.si-location {
+  width: 17px;
+  height: 23px;
+}
+
+.si-phone {
+  width: 20px;
+  height: 20px;
+}
+
+.si-mail {
+  width: 21px;
+  height: 15px;
+}
+
+.si-line {
+  width: 23px;
+  height: 10px;
+}
+
+.si-facebook {
+  width: 20px;
+  height: 20px;
+}
+
+@media only screen and (max-width: 1601px) {
+
+  /* For desktop: */
+  .bg-icon-footer {
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+  }
+
+  .font-des-footer {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 13px;
+  }
+}
+
+.font-des-footer-ra {
+  color: #ffffff;
+  font-size: 13px;
+  opacity: 0.4
+}
+
+.oval {
+  border: 1px solid #FFFFFF;
+  border-radius: 15px;
+  opacity: 0.4;
+  padding: 2px 5px;
+  /* background-color: white; */
+  margin: 5px;
+  color: #FFFFFF;
+  font-size: 9px;
+  /* width: 233px;  */
+}

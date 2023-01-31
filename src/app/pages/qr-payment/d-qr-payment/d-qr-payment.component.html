@@ -1,0 +1,35 @@
+<!-- header 1 -->
+<ngx-spinner></ngx-spinner>
+<div>
+    <div class="box-he bg-twotone">
+      <span style="margin-left: 10px;color: white;" class="glyphicon glyphicon-chevron-left fs2"
+        (click)="backClicked()"></span>
+      กลับ
+    </div>
+</div>
+<div style="display: flex;justify-content: center;align-items: center;height: 100%;">
+  <div class="bg-white" style="height: 600px;width: 400px;border-radius: 10px;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;">
+    <div *ngIf="model.respStatus == '1'" class="boxxqr">
+        <p style="font-size: 30px;">ชำระเงิน</p>
+        <img src="{{model.respURL}}" alt="" height="250" width="250">
+      <div style="display:flex;width: 300px;justify-content:space-between;margin-top: 40px;">
+        <p>เลขอ้างอิง&nbsp;:</p>
+        <p>{{model.respNumber}}</p>
+      </div>
+      <div style="display:flex;width: 300px;justify-content:space-between">
+        <p>ราคา&nbsp;:&nbsp;</p>
+        <div class="df">
+          <p>{{model.respAmount}}&nbsp;</p>
+          <p>{{model.respCurrency}}</p>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="model.respStatus == '2'" class="boxxqr">
+      <span class="glyphicon glyphicon-ok-circle pay-success"></span>
+      <p style="font-size: 30px;">ชำระเงินสำเร็จ</p>
+  </div>
+  </div>
+</div>
+
+
+<!-- <div *ngIf="check">success</div> -->

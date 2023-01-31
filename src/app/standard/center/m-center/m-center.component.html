@@ -1,0 +1,53 @@
+<!-- component header type 1 -->
+<app-m-t1-header></app-m-t1-header>
+<!-- TH -->
+<div *ngIf="serviceProviderService.lang == 'th'" class="col-xs-12">
+    <div style="color: #216DA6;font-size: 24px;margin: 20px 0 20px 0;">{{categorySelected.referenceTitle}}</div>
+    <div class="df" style="flex-wrap: wrap;column-gap: 8px;row-gap: 10px;">
+        <div *ngFor="let category of categoryList">
+            <div class="menu-office pointer" [class.menu-office-active]="category.code === categorySelected.code" (click)="selectedCategory(category.code)">{{category.title}}</div>
+        </div>
+        <div style="margin-left: auto; margin-right: 5%; ">
+            <span [class]="isMousePrice ? 'select-with-status select-with-status--hover' : 'select-with-status'" (mouseenter)="chkMousePriceIn()" (mouseleave)="chkMousePriceOut()">
+                <span>
+                    <div class="menu-office pointer">เมนูทั้งหมด</div>
+                    <span class="select-with-status__dropdown">
+                        <p (click)="selectedCategory(category.code);" style="color: #ffffff; cursor: pointer;"
+                            *ngFor="let category of categoryListMenu;let Index = index;">{{category.title}}</p>
+                    </span>
+            </span>
+            </span>
+        </div>
+    </div>
+    <div class="line-c5c5c5"></div>
+    <app-d-center-main *ngIf="categorySelected.action == 'main'" [messageInput]="categorySelected"></app-d-center-main>
+    <app-d-center-personnel-structure *ngIf="categorySelected.action == 'structure_p'" [messageInput]="categorySelected"></app-d-center-personnel-structure>
+    <app-d-center-e-learning *ngIf="categorySelected.action == 'e-learning'" [messageInput]="categorySelected">
+    </app-d-center-e-learning>
+</div>
+<!-- EN -->
+<div *ngIf="serviceProviderService.lang == 'en'" class="col-xs-12">
+    <div style="color: #216DA6;font-size: 24px;margin: 20px 0 20px 0;">{{categorySelected.referenceTitleEN}}</div>
+    <div class="df" style="flex-wrap: wrap;column-gap: 8px;row-gap: 10px;">
+        <div *ngFor="let category of categoryList">
+            <div class="menu-office pointer" [class.menu-office-active]="category.code === categorySelected.code" (click)="selectedCategory(category.code)">{{category.titleEN}}</div>
+        </div>
+        <div style="margin-left: auto; margin-right: 5%; ">
+            <span [class]="isMousePrice ? 'select-with-status select-with-status--hover' : 'select-with-status'" (mouseenter)="chkMousePriceIn()" (mouseleave)="chkMousePriceOut()">
+                <span>
+                    <div class="menu-office pointer">เมนูทั้งหมด</div>
+                    <span class="select-with-status__dropdown">
+                        <p (click)="selectedCategory(category.code);" style="color: #ffffff; cursor: pointer;"
+                            *ngFor="let category of categoryListMenu;let Index = index;">{{category.titleEN}}</p>
+                    </span>
+            </span>
+            </span>
+        </div>
+    </div>
+    <div class="line-c5c5c5"></div>
+    <app-d-center-main *ngIf="categorySelected.action == 'main'" [messageInput]="categorySelected"></app-d-center-main>
+    <app-d-center-personnel-structure *ngIf="categorySelected.action == 'structure_p'" [messageInput]="categorySelected"></app-d-center-personnel-structure>
+    <app-d-center-e-learning *ngIf="categorySelected.action == 'e-learning'" [messageInput]="categorySelected">
+    </app-d-center-e-learning>
+</div>
+<app-m-t1-footer></app-m-t1-footer>

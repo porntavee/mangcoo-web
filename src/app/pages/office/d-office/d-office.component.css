@@ -1,0 +1,19 @@
+.menu-office {
+    border: 1px solid #216DA6;
+    border-radius: 5px;
+    opacity: 1;
+    padding: 1px 5px;
+    background-color: white;
+    margin-right: 10px;
+    color: #216DA6;
+}
+
+.menu-office:hover {
+    background-color: #216DA6;
+    color: white;
+}
+
+.menu-office-active {
+    background-color: #216DA6;
+    color: white;
+}

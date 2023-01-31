@@ -1,0 +1,6 @@
+{
+    "/api": {
+        "target": "http://core148.we-builds.com",
+        "secure": false
+    }
+}
