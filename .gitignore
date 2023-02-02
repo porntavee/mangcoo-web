@@ -55,4 +55,3 @@ tools/gulp-tasks/cldr/cldr-data/
 # Husky
 .husky/_
 package-lock.json
-package.json
